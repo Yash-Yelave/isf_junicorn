@@ -1,0 +1,77 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Inria+Serif:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-inter: 'Inter', sans-serif;
+  --font-baskerville: 'Libre Baskerville', serif;
+  --font-inria: 'Inria Serif', serif;
+  
+  --color-isf-orange: #ff6600;
+  --color-isf-orange-hover: #e05a00;
+  --color-isf-dark: #111111;
+  --color-isf-gray: #666666;
+  --color-isf-light-gray: #f9f9f9;
+  --color-isf-border: #e6e6e6;
+  --color-isf-hover-bg: #fff6f0;
+}
+
+/* Base resets to match isfnetwork.org style */
+body {
+  font-family: var(--font-inter);
+  background-color: #ffffff;
+  color: #111111;
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-baskerville);
+  font-weight: 700;
+  color: #111111;
+}
+
+/* Helper styles for layouts */
+.container-custom {
+  width: 100%;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.link-transition {
+  transition: color 0.3s ease, background-color 0.3s ease;
+}
+
+/* Custom CSS to match elementor styles from live site */
+.e-shadow {
+  box-shadow: 0px 10px 20px 0px rgba(0, 0, 0, 0.1);
+}
+
+.e-card {
+  background: #ffffff;
+  border: 1px solid #e6e6e6;
+  border-radius: 5px;
+}
+
+/* Marquee animation for continuous scrolling */
+.animate-marquee {
+  animation: marquee 50s linear infinite;
+  will-change: transform;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
