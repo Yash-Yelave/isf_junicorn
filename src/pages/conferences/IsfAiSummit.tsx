@@ -113,7 +113,7 @@ export function IsfAiSummit() {
       </div>
 
       {/* Hero Section */}
-      <section className="relative min-h-[85vh] flex items-center justify-start overflow-hidden px-4 md:px-8 py-24">
+      <section className="relative min-h-[60vh] md:min-h-[70vh] flex items-center justify-start overflow-hidden px-4 md:px-8 py-12 md:py-16">
         <div className="absolute inset-0">
           <img 
             src="/assets/images/pexels-introspectivedsgn-18441165.jpg" 
@@ -125,28 +125,28 @@ export function IsfAiSummit() {
         </div>
         
         <div className="max-w-7xl mx-auto w-full relative z-10">
-          <div className="bg-white/95 backdrop-blur-md border border-slate-200/60 p-8 md:p-12 rounded-3xl shadow-xl max-w-2xl text-slate-800 animate-fade-in-up">
-            <span className="px-3.5 py-1 text-xs md:text-sm font-semibold bg-isf-orange/10 text-isf-orange rounded-full inline-flex items-center gap-1.5 mb-5">
-              <Calendar size={14} />
+          <div className="bg-white/95 backdrop-blur-md border border-slate-200/60 p-6 md:p-8 rounded-2xl shadow-xl max-w-xl text-slate-800 animate-fade-in-up">
+            <span className="px-3 py-0.5 text-xs font-semibold bg-isf-orange/10 text-isf-orange rounded-full inline-flex items-center gap-1.5 mb-3">
+              <Calendar size={13} />
               May 29-30, 2025 • Texas, USA
             </span>
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold font-baskerville mb-5 text-slate-900 leading-tight">
+            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold font-baskerville mb-3 text-slate-900 leading-tight">
               ISF Global Junicorn <br />
               <span className="text-isf-orange">&amp; AI Summit 2025</span>
             </h1>
-            <p className="text-xs sm:text-sm md:text-base text-slate-600 mb-8 max-w-xl leading-relaxed">
+            <p className="text-xs sm:text-sm text-slate-600 mb-5 max-w-lg leading-relaxed">
               Join us for two power-packed days of action, insight, and inspiration with the world's top minds in AI, innovation, and entrepreneurship at Texas State University.
             </p>
-            <div className="flex flex-col sm:flex-row gap-3">
+            <div className="flex flex-col sm:flex-row gap-2.5">
               <a 
                 href="#schedule" 
-                className="inline-flex items-center justify-center text-xs md:text-sm font-bold uppercase tracking-wider bg-isf-orange hover:bg-isf-orange-hover text-white px-6 py-3.5 rounded shadow-md transition-all duration-300"
+                className="inline-flex items-center justify-center text-xs font-bold uppercase tracking-wider bg-isf-orange hover:bg-isf-orange-hover text-white px-5 py-3 rounded shadow-md transition-all duration-300"
               >
                 View Schedule
               </a>
               <a 
                 href="#livestream" 
-                className="inline-flex items-center justify-center text-xs md:text-sm font-bold uppercase tracking-wider border border-slate-300 text-slate-700 hover:bg-slate-100 px-6 py-3.5 rounded transition-all duration-300"
+                className="inline-flex items-center justify-center text-xs font-bold uppercase tracking-wider border border-slate-300 text-slate-700 hover:bg-slate-100 px-5 py-3 rounded transition-all duration-300"
               >
                 Join Livestream
               </a>
