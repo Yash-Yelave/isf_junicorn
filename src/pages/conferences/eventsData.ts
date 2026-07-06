@@ -600,12 +600,12 @@ export const jamaicaSpeakers: EventSpeaker[] = [
   {
     "name": "Ms. Kellie-Dawn Hamilton",
     "role": "CEO, JSEZA",
-    "image": "https://www.isfnetwork.org/wp-content/uploads/2024/04/Kellie-Dawn-Hamilton.png"
+    "image": "/assets/images/user-placeholder.png"
   },
   {
     "name": "Ms. Shullette Cox",
     "role": "President, JAMPRO",
-    "image": "https://www.isfnetwork.org/wp-content/uploads/2024/04/Shullette-Cox.png"
+    "image": "/assets/images/user-placeholder.png"
   },
   {
     "name": "Dr. JA Chowdary",
@@ -615,7 +615,7 @@ export const jamaicaSpeakers: EventSpeaker[] = [
   {
     "name": "Dr. Guna Muppuri",
     "role": "Founder, President & CEO, Bioprist & Indies Group",
-    "image": "https://www.isfnetwork.org/wp-content/uploads/2024/02/Dr.-Guna-S.-Muppuri.jpg"
+    "image": "/assets/images/GUNA-S-MUPPURI.jpg"
   }
 ];
 

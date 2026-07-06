@@ -169,7 +169,7 @@ export function LandingPage() {
     { name: "Diwakar Dayal", title: "MD & VP - India & SAARC, SentinelOne", img: "/assets/images/Diwakar-Dayal,-MD-&-Area-Vice-President---India-&-SAARC,-SentinelOne.jpg" },
     { name: "Dr. Viswanadham Duppatla", title: "Vice President, Biopharma Innovations", img: "/assets/images/Dr.-Viswanadham-Duppatla,-Vice-President,-Biopharma-Innovations.jpg" },
     { name: "Dr Ashok Sangappa Alur", title: "Vice Chancellor, Kodagu University", img: "/assets/images/Dr-Ashok-Sangappa-Alur,-Vice-Chancellor,-Kodagu-University.jpg" },
-    { name: "Dr Babu UV", title: "Director R&D, Himalaya Wellness", img: "https://www.isfnetwork.org/wp-content/themes/jupiterx/assets/img/photos/Dr-Babu-UV,-Director-R&-D,-Himalaya-Wellness.jpg" },
+    { name: "Dr Babu UV", title: "Director R&D, Himalaya Wellness", img: "/assets/images/user-placeholder.png" },
     { name: "Dr B Rajsekhar, IAS", title: "Special Chief Secretary to Government, GoAP", img: "/assets/images/Dr-B-Rajsekhar,-IAS,-Special-Chief-Secretary-to-Government-(Agriculture,-Sericulture,-Cooperation-and-Marketing),-GoAP.jpg" },
     { name: "Dr D Nageshwar Reddy", title: "Chairman, AIG Hospitals", img: "/assets/images/Dr-D-Nageshwar-Reddy,-Chairman,-AIG-Hospitals.jpg" },
     { name: "Dr Kanwaljeet Sunny Anand", title: "Professor of Pediatrics, Stanford University", img: "/assets/images/Dr-Kanwaljeet-Sunny-Anand,-Professor-of-Pediatrics-(Pediatric-Critical-Care)-and-Anesthesiology,-Perioperative-&-Pain-Medicine,-Stanford-University.jpg" }
