@@ -1,4 +1,16 @@
-import { Calendar, MapPin, CheckCircle, Clock } from "lucide-react";
+import React from "react";
+import { 
+  Calendar, 
+  MapPin, 
+  Award, 
+  Clock, 
+  ExternalLink,
+  Info,
+  CheckCircle2,
+  QrCode,
+  DollarSign,
+  ArrowRight
+} from "lucide-react";
 import { Link } from "react-router-dom";
 
 export function IsfNewJersey2024() {
@@ -24,71 +36,102 @@ export function IsfNewJersey2024() {
   ];
 
   return (
-    <div className="font-inter pb-16 pt-24 bg-white">
+    <div className="font-inter pb-20 pt-20 bg-slate-50 text-slate-800 antialiased">
       
-      {/* 1. Header Banner */}
-      <section className="bg-[#111111] text-white py-16 md:py-20 relative overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6 relative z-10">
-          <span className="text-isf-orange font-bold uppercase tracking-widest text-xs block">
-            ISF 2024 NEW JERSEY
-          </span>
-          <h1 className="text-3xl md:text-5xl font-extrabold font-baskerville tracking-tight">
-            CXO Summit & Curtain Raiser
-          </h1>
-          <p className="text-base text-slate-300 max-w-2xl mx-auto font-light">
-            Holmdel, New Jersey — June 2nd, 2024
-          </p>
-          <div className="flex flex-wrap justify-center gap-6 pt-2 text-xs">
-            <span className="flex items-center gap-1.5 text-slate-300">
-              <Calendar size={16} className="text-isf-orange" />
-              June 2, 2024
+      {/* Smooth Scroll Navigation Sub-Header */}
+      <div className="sticky top-20 z-40 bg-white/90 backdrop-blur-md border-b border-slate-200 shadow-sm transition-all duration-300">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5 overflow-x-auto flex gap-6 md:gap-8 scrollbar-none justify-start md:justify-center text-xs md:text-sm font-semibold text-slate-600">
+          <a href="#overview" className="hover:text-blue-700 transition-colors whitespace-nowrap">Overview</a>
+          <a href="#expectations" className="hover:text-blue-700 transition-colors whitespace-nowrap">What to Expect</a>
+          <a href="#agenda" className="hover:text-blue-700 transition-colors whitespace-nowrap">Agenda</a>
+          <a href="#pricing" className="hover:text-blue-700 transition-colors whitespace-nowrap">Pricing &amp; Vouchers</a>
+          <a href="#venue" className="hover:text-blue-700 transition-colors whitespace-nowrap">Venue</a>
+        </div>
+      </div>
+
+      {/* Hero Section */}
+      <section className="relative min-h-[75vh] flex items-center justify-start overflow-hidden px-4 md:px-8 py-20" id="overview">
+        <div className="absolute inset-0">
+          <img 
+            src="/assets/images/pexels-introspectivedsgn-18441165.jpg" 
+            alt="ISF USA Background" 
+            className="w-full h-full object-cover object-center" 
+          />
+          <div className="absolute inset-0 bg-slate-950/25 backdrop-blur-[1px]"></div>
+          <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-slate-50 to-transparent"></div>
+        </div>
+        
+        <div className="max-w-7xl mx-auto w-full relative z-10">
+          <div className="bg-white/95 backdrop-blur-md border border-slate-200/60 p-8 md:p-12 rounded-3xl shadow-xl max-w-2xl text-slate-800 animate-fade-in-up">
+            <span className="px-3.5 py-1 text-xs md:text-sm font-semibold bg-blue-100 text-blue-700 rounded-full inline-flex items-center gap-1.5 mb-5">
+              <Calendar size={14} />
+              June 2nd, 2024 • Holmdel, New Jersey
             </span>
-            <span className="flex items-center gap-1.5 text-slate-300">
-              <MapPin size={16} className="text-isf-orange" />
-              Bell Works, New Jersey
-            </span>
-          </div>
-          <div className="pt-4">
-            <Link
-              to="/registration/delegate"
-              className="bg-isf-orange hover:bg-isf-orange-hover text-white text-xs font-bold uppercase tracking-wider px-6 py-3.5 rounded shadow transition-all inline-block"
-            >
-              Register as Delegate
-            </Link>
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold font-baskerville mb-5 text-slate-900 leading-tight">
+              ISF 2024 <br /><span className="text-blue-600">USA Curtain Raiser</span>
+            </h1>
+            <p className="text-xs sm:text-sm md:text-base text-slate-600 mb-8 max-w-xl leading-relaxed">
+              Welcome and thank you for showing interest to be a part of the ISF 2024 Conference. Participate in high-value CXO connect events, investor pitching, and panels at Bell Works, Holmdel.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-3">
+              <Link 
+                to="/registration/delegate" 
+                className="inline-flex items-center justify-center text-xs md:text-sm font-bold uppercase tracking-wider bg-blue-600 hover:bg-blue-700 text-white px-6 py-3.5 rounded shadow-md transition-all duration-300"
+              >
+                Register as Delegate
+              </Link>
+              <a 
+                href="#pricing" 
+                className="inline-flex items-center justify-center text-xs md:text-sm font-bold uppercase tracking-wider border border-slate-300 text-slate-700 hover:bg-slate-100 px-6 py-3.5 rounded transition-all duration-300"
+              >
+                Pricing &amp; Payment
+              </a>
+            </div>
           </div>
         </div>
-        <div className="absolute inset-0 bg-slate-950/70 z-0"></div>
       </section>
 
-      {/* 2. Intro Section */}
-      <section className="py-16 max-w-4xl mx-auto px-4 text-center space-y-6">
-        <h2 className="text-2xl font-bold font-baskerville text-slate-800">
-          Reimagining Startup Collaborations
-        </h2>
-        <p className="text-sm text-slate-600 leading-relaxed">
-          Join the USA Chapter of the India Startup Festival at Bell Works, Holmdel. Reconnect and collaborate with leading industry experts, founders, and policy advisors to elevate your startup's global blueprint.
-        </p>
+      {/* Slogan Details */}
+      <section className="py-16 md:py-20 bg-white">
+        <div className="max-w-4xl mx-auto px-4 text-center space-y-6">
+          <h2 className="text-2xl md:text-3xl font-bold font-baskerville text-slate-950">
+            Reimagining Global Startup Ecosystems
+          </h2>
+          <p className="text-sm md:text-base text-slate-600 leading-relaxed max-w-2xl mx-auto">
+            Please fill out the delegate registration form to participate. The USA chapter offers cross-border collaborations, insights on tech investment expansions, and seed-funding channels between American and Indian innovators.
+          </p>
+        </div>
       </section>
 
-      {/* 3. What to Expect */}
-      <section className="py-16 bg-slate-50 border-t border-b border-gray-100">
-        <div className="max-w-6xl mx-auto px-4 md:px-8 space-y-12">
-          <div className="text-center space-y-3">
-            <h2 className="text-2xl font-bold font-baskerville">
+      {/* What to Expect Section */}
+      <section className="py-16 md:py-24 bg-slate-50 border-t border-b border-slate-200/80" id="expectations">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <span className="px-3 py-1 text-xs font-semibold bg-blue-100 text-blue-700 rounded-full tracking-wider uppercase inline-block mb-3">
+              Features
+            </span>
+            <h2 className="text-3xl md:text-4xl font-bold font-baskerville text-slate-900">
               What to Expect
             </h2>
-            <div className="w-12 h-1 bg-isf-orange mx-auto rounded"></div>
+            <p className="text-slate-500 text-sm md:text-base max-w-2xl mx-auto mt-2">
+              High-impact tracks designed to bridge capital, innovation, and global mentorship.
+            </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {expects.map((exp, idx) => (
-              <div key={idx} className="bg-white border border-gray-200 p-6 rounded-lg space-y-4">
-                <CheckCircle className="w-6 h-6 text-isf-orange" />
-                <h3 className="text-base font-bold font-baskerville text-slate-800">
-                  {exp.title}
+            {expects.map((item, idx) => (
+              <div 
+                key={idx} 
+                className="bg-white border border-slate-200 rounded-3xl p-6 md:p-8 hover:border-blue-500 transition-all duration-300 shadow-sm"
+              >
+                <div className="w-12 h-12 rounded-2xl bg-blue-100 flex items-center justify-center text-blue-600 mb-6">
+                  <CheckCircle2 size={24} />
+                </div>
+                <h3 className="text-lg font-bold text-slate-900 font-baskerville mb-3">
+                  {item.title}
                 </h3>
-                <p className="text-xs text-slate-500 leading-relaxed">
-                  {exp.desc}
+                <p className="text-xs sm:text-sm text-slate-500 leading-relaxed">
+                  {item.desc}
                 </p>
               </div>
             ))}
@@ -96,59 +139,165 @@ export function IsfNewJersey2024() {
         </div>
       </section>
 
-      {/* 4. Agenda & Location Info */}
-      <section className="py-16 max-w-5xl mx-auto px-4 md:px-8 grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
-        
-        {/* Agenda */}
-        <div className="space-y-6">
-          <h3 className="text-lg font-bold font-baskerville text-slate-900 border-b border-gray-200 pb-3">
-            Jersey Curtain Raiser Agenda
-          </h3>
-          <div className="space-y-4">
-            {agenda.map((item, idx) => (
-              <div key={idx} className="flex items-start gap-4 p-4 bg-slate-50 rounded border border-gray-100">
-                <span className="flex items-center gap-1 text-xxs font-bold text-isf-orange uppercase tracking-wider mt-0.5 whitespace-nowrap">
-                  <Clock size={12} />
-                  {item.time.split(" ")[0] + " " + item.time.split(" ")[1]}
-                </span>
-                <div>
-                  <h4 className="text-xs font-bold text-slate-800">{item.title}</h4>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Location / QR Payment Check */}
-        <div className="bg-white border border-gray-200 p-8 rounded-lg shadow-xxs space-y-6">
-          <h3 className="text-base font-bold font-baskerville text-slate-800">
-            Event Venue & Details
-          </h3>
-          <div className="space-y-2 text-xs text-slate-500 leading-relaxed">
-            <p className="font-bold text-slate-800">Bell Works</p>
-            <p>101 Crawfords, Corner Rd, Holmdel, New Jersey 07733</p>
-            <a
-              href="https://maps.google.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-xs font-bold text-isf-orange hover:underline uppercase tracking-wider block pt-1"
-            >
-              View Google Map →
-            </a>
-          </div>
-
-          <div className="border-t border-gray-100 pt-6 space-y-3">
-            <h4 className="text-xs font-bold text-slate-800 uppercase tracking-wider">
-              Delegate Verification Note
-            </h4>
-            <p className="text-xxs text-slate-500 leading-relaxed">
-              New Jersey delegates are required to register through the main delegate form using customized transaction reference vouchers. QR Code scanning guidelines and payment links are provided inside the registration panels.
+      {/* Agenda & Time Panel */}
+      <section className="py-16 md:py-24 bg-white" id="agenda">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <span className="px-3 py-1 text-xs font-semibold bg-blue-100 text-blue-700 rounded-full tracking-wider uppercase inline-block mb-3">
+              Agenda
+            </span>
+            <h2 className="text-3xl md:text-4xl font-bold font-baskerville text-slate-900">
+              Jersey Curtain Raiser Schedule
+            </h2>
+            <p className="text-slate-500 text-sm md:text-base max-w-2xl mx-auto mt-2">
+              Brevity overview of the curtain raiser timeline and networking dinner.
             </p>
           </div>
-        </div>
 
+          <div className="bg-slate-50 border border-slate-200 rounded-3xl p-6 md:p-8 shadow-sm">
+            <div className="relative border-l border-slate-200 pl-6 ml-4 space-y-8">
+              {agenda.map((item, idx) => (
+                <div key={idx} className="relative group">
+                  {/* Timeline dot */}
+                  <div className="absolute -left-[31px] top-1.5 bg-white border-2 border-blue-600 w-4 h-4 rounded-full group-hover:bg-blue-600 transition-colors"></div>
+                  
+                  <div className="space-y-1">
+                    <span className="inline-flex items-center gap-1 text-xs font-bold text-blue-600 uppercase tracking-wider">
+                      <Clock size={12} />
+                      {item.time}
+                    </span>
+                    <h4 className="text-sm font-bold text-slate-800 leading-relaxed">{item.title}</h4>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
       </section>
 
+      {/* Pricing / QR Code Vouchers */}
+      <section className="py-16 md:py-24 bg-slate-50 border-t border-b border-slate-200/80" id="pricing">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div className="space-y-6">
+              <span className="px-3 py-1 text-xs font-semibold bg-blue-100 text-blue-700 rounded-full tracking-wider uppercase inline-block">
+                Payments
+              </span>
+              <h2 className="text-3xl md:text-4xl font-bold font-baskerville text-slate-900">
+                Pricing &amp; Delegate Vouchers
+              </h2>
+              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                Please scan the payment QR code and pay the delegate registration fee. Enter the Transaction reference ID in the registration form to finalize your admission.
+              </p>
+              
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div className="bg-white border border-slate-200 rounded-2xl p-5 hover:border-blue-500 transition-colors">
+                  <span className="text-xxs font-bold text-slate-400 uppercase tracking-widest block mb-1">
+                    Dallas Vouchers
+                  </span>
+                  <h4 className="text-xl font-bold text-slate-900 flex items-center gap-1">
+                    <DollarSign size={18} className="text-blue-600" />
+                    120 <span className="text-xs text-slate-400 font-normal">/ delegate</span>
+                  </h4>
+                  <p className="text-xxs text-slate-500 mt-2">Dallas Chapter Access • Vouchers at ₹10,000</p>
+                </div>
+                
+                <div className="bg-white border border-slate-200 rounded-2xl p-5 hover:border-blue-500 transition-colors">
+                  <span className="text-xxs font-bold text-slate-400 uppercase tracking-widest block mb-1">
+                    New Jersey Vouchers
+                  </span>
+                  <h4 className="text-xl font-bold text-slate-900 flex items-center gap-1">
+                    <DollarSign size={18} className="text-blue-600" />
+                    120 <span className="text-xs text-slate-400 font-normal">/ delegate</span>
+                  </h4>
+                  <p className="text-xxs text-slate-500 mt-2">NJ Bell Works Access • Vouchers at ₹10,000</p>
+                </div>
+              </div>
+            </div>
+
+            <div className="flex flex-col items-center justify-center bg-white border border-slate-200 rounded-3xl p-8 shadow-sm max-w-sm mx-auto">
+              <QrCode size={48} className="text-blue-600 mb-4" />
+              <h3 className="font-bold text-slate-800 text-base mb-2 font-inter">Scan &amp; Pay Vouchers</h3>
+              <div className="w-48 h-48 border border-slate-200 rounded-2xl p-3 mb-4">
+                <img 
+                  src="/assets/images/isf-qr-code.png" 
+                  alt="ISF Payment QR Code" 
+                  className="w-full h-full object-contain"
+                  onError={(e) => {
+                    e.currentTarget.src = "/assets/images/qr-placeholder.png";
+                  }}
+                />
+              </div>
+              <p className="text-[10px] text-slate-400 text-center leading-relaxed">
+                Save transaction ID &amp; upload to the delegate registration panels to validate your attendance.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Venue Section */}
+      <section className="py-16 md:py-24 bg-white" id="venue">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div className="space-y-6">
+              <span className="px-3 py-1 text-xs font-semibold bg-blue-100 text-blue-700 rounded-full tracking-wider uppercase inline-block">
+                Venue
+              </span>
+              <h2 className="text-3xl md:text-4xl font-bold font-baskerville text-slate-900">
+                Event Location
+              </h2>
+              <div className="space-y-4">
+                <div className="flex gap-4">
+                  <div className="w-10 h-10 rounded-xl bg-blue-100 flex items-center justify-center text-blue-600 flex-shrink-0">
+                    <MapPin size={20} />
+                  </div>
+                  <div>
+                    <h3 className="font-bold text-slate-900 text-sm font-inter">Address</h3>
+                    <p className="text-xs text-slate-500 mt-1 leading-relaxed">
+                      Bell Works<br />
+                      101 Crawfords Corner Rd, Holmdel, New Jersey 07733
+                    </p>
+                  </div>
+                </div>
+                <div className="flex gap-4">
+                  <div className="w-10 h-10 rounded-xl bg-blue-100 flex items-center justify-center text-blue-600 flex-shrink-0">
+                    <Info size={20} />
+                  </div>
+                  <div>
+                    <h3 className="font-bold text-slate-900 text-sm font-inter">Date</h3>
+                    <p className="text-xs text-slate-500 mt-1 leading-relaxed">
+                      June 2, 2024
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div className="pt-4">
+                <Link
+                  to="/registration/delegate"
+                  className="inline-flex items-center justify-center text-xs md:text-sm font-bold uppercase tracking-wider bg-blue-600 hover:bg-blue-700 text-white px-6 py-3.5 rounded shadow-md transition-all duration-300"
+                >
+                  Go to Delegate Registration <ArrowRight size={14} className="ml-2" />
+                </Link>
+              </div>
+            </div>
+            
+            {/* Google Map */}
+            <div className="relative rounded-3xl overflow-hidden shadow-lg border border-slate-200 min-h-[300px]">
+              <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3039.3789457853683!2d-74.1704207241852!3d40.378333158652494!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c231ffc2f6d0f1%3A0xc3d15c7e19f96404!2sBell%20Works!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin" 
+                width="100%" 
+                height="450" 
+                style={{ border: 0 }} 
+                allowFullScreen={true} 
+                loading="lazy"
+                title="Bell Works Holmdel NJ Google Maps Location"
+              ></iframe>
+            </div>
+          </div>
+        </div>
+      </section>
+      
     </div>
   );
 }
