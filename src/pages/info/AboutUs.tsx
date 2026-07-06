@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
-import { Heart, Sparkles, Users, Award, Shield, Target, ArrowRight, Activity, Calendar } from "lucide-react";
+import { Heart, Users, Award, Shield, Target, Activity, Calendar, Zap, Handshake } from "lucide-react";
 
-// --- Helper Hook for Intersection Observer (Scroll Animations) ---
+// --- Animated CountUp Component (kept for numbers but styled flat) ---
 function useIntersectionObserver(options = {}) {
   const [isIntersecting, setIsIntersecting] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
@@ -10,7 +10,6 @@ function useIntersectionObserver(options = {}) {
     const observer = new IntersectionObserver(([entry]) => {
       if (entry.isIntersecting) {
         setIsIntersecting(true);
-        // Optional: Stop observing once visible if we only want it to animate once
         if (ref.current) observer.unobserve(ref.current);
       }
     }, { threshold: 0.1, ...options });
@@ -22,7 +21,6 @@ function useIntersectionObserver(options = {}) {
   return [ref, isIntersecting] as const;
 }
 
-// --- Animated CountUp Component ---
 const CountUp = ({ end, duration = 2000, suffix = "" }: { end: number, duration?: number, suffix?: string }) => {
   const [count, setCount] = useState(0);
   const [ref, isVisible] = useIntersectionObserver();
@@ -37,8 +35,6 @@ const CountUp = ({ end, duration = 2000, suffix = "" }: { end: number, duration?
       if (!startTime) startTime = timestamp;
       const progress = timestamp - startTime;
       const percentage = Math.min(progress / duration, 1);
-      
-      // Easing function (easeOutExpo)
       const easeProgress = percentage === 1 ? 1 : 1 - Math.pow(2, -10 * percentage);
       
       setCount(Math.floor(end * easeProgress));
@@ -62,47 +58,47 @@ const CountUp = ({ end, duration = 2000, suffix = "" }: { end: number, duration?
 
 export function AboutUs() {
   const stats = [
-    { value: 100, suffix: "+", label: "Speakers", delay: 0 },
-    { value: 100, suffix: "+", label: "CEO's & CXOs", delay: 100 },
-    { value: 200, suffix: "+", label: "Investors & Mentors", delay: 200 },
-    { value: 10000, suffix: "+", label: "Startup Registrations", delay: 300 }
+    { value: 100, suffix: "+", label: "Speakers" },
+    { value: 100, suffix: "+", label: "CEO's & CXOs" },
+    { value: 200, suffix: "+", label: "Investors & Mentors" },
+    { value: 10000, suffix: "+", label: "Startup Registrations" }
+  ];
+
+  const coreValues = [
+    { icon: <Handshake size={24} className="text-[#0C3E2B]" />, title: "Collaboration", desc: "Building strong networks across borders to support global ecosystems." },
+    { icon: <Zap size={24} className="text-[#0C3E2B]" />, title: "Empowerment", desc: "Uplifting rural and youth innovators with actionable insights." },
+    { icon: <Heart size={24} className="text-[#0C3E2B]" />, title: "Sustainability", desc: "Focusing on enduring and impactful relationships for the long-term." },
+    { icon: <Award size={24} className="text-[#0C3E2B]" />, title: "Excellence", desc: "Setting high standards for technical and business innovation." }
   ];
 
   const features = [
     {
-      icon: <Award className="w-10 h-10 text-white mb-4 transition-transform duration-500 group-hover:scale-110" />,
+      icon: "globe",
       title: "Enduring Connections",
       desc: "Nurturing lasting relationships between industry experts, leaders, and upcoming innovators globally.",
-      color: "bg-blue-600",
-      colSpan: "md:col-span-2"
+      bg: "bg-[#E8F5E9]",
+      text: "text-[#458B79]",
     },
     {
-      icon: <Users className="w-10 h-10 text-white mb-4 transition-transform duration-500 group-hover:scale-110" />,
+      icon: "users",
       title: "Extensive Network",
       desc: "Reaching across borders to assemble robust ecosystems.",
-      color: "bg-isf-orange",
-      colSpan: "md:col-span-1"
+      bg: "bg-[#FCE4EC]",
+      text: "text-[#D24D7F]",
     },
     {
-      icon: <Shield className="w-10 h-10 text-white mb-4 transition-transform duration-500 group-hover:scale-110" />,
+      icon: "shield",
       title: "Mentorship",
       desc: "Enlisting trusted advisory frameworks for startup validation.",
-      color: "bg-teal-600",
-      colSpan: "md:col-span-1"
+      bg: "bg-[#FFFDE7]",
+      text: "text-[#EAB308]",
     },
     {
-      icon: <Target className="w-10 h-10 text-white mb-4 transition-transform duration-500 group-hover:scale-110" />,
+      icon: "target",
       title: "Rural Enhancement",
       desc: "Empowering rural ecosystems and grassroot innovators.",
-      color: "bg-purple-600",
-      colSpan: "md:col-span-1"
-    },
-    {
-      icon: <Sparkles className="w-10 h-10 text-white mb-4 transition-transform duration-500 group-hover:scale-110" />,
-      title: "Youth Empowerment",
-      desc: "Igniting the entrepreneurial spark in next-generation builders with exclusive academic outreach.",
-      color: "bg-pink-600",
-      colSpan: "md:col-span-1"
+      bg: "bg-[#E8EAF6]",
+      text: "text-[#3B82F6]",
     }
   ];
 
@@ -110,18 +106,32 @@ export function AboutUs() {
     {
       date: "October 2023",
       title: "Pondicherry Rural Innovation Meet",
-      desc: "Focused on bridging the gap between urban innovation and rural empowerment."
+      desc: "Focused on bridging the gap between urban innovation and rural empowerment.",
+      image: "/assets/images/journey-highlight-1.jpg"
     },
     {
       date: "September 2023",
       title: "MoU with Hon' PM of Netherlands",
-      desc: "Strategic partnership aimed at expanding tech corridors and cross-border incubation."
+      desc: "Strategic partnership aimed at expanding tech corridors and cross-border incubation.",
+      image: "/assets/images/journey-highlight-2.jpg"
     },
     {
       date: "January 2024",
       title: "India Tech Talent League, Delhi",
-      desc: "Massive congregation of deep-tech talent showcasing next-generation AI and Robotics."
+      desc: "Massive congregation of deep-tech talent showcasing next-generation AI and Robotics.",
+      image: "/assets/images/journey-highlight-3.jpg"
     }
+  ];
+
+  const team = [
+    { name: "J A Chowdary", role: "Chairperson & Convenor, India Startup Festival", image: "https://www.isfnetwork.org/wp-content/uploads/2024/04/J-A-Chowdary.jpg" },
+    { name: "Dr. Siva Mahesh Tangutooru", role: "Co-founder & Managing Trustee", image: "https://www.isfnetwork.org/wp-content/uploads/2024/04/Dr-Siva-Mahesh-Tangutooru.jpg" },
+    { name: "M. Sathyendra Kumar", role: "Co-founder", image: "https://www.isfnetwork.org/wp-content/uploads/2024/04/M-Sathyendra-Kumar.jpg" },
+    { name: "Deenanath Harapanahalli", role: "Co-founder", image: "https://www.isfnetwork.org/wp-content/uploads/2024/04/Deenanath-Harapanahalli.jpg" },
+    { name: "Seshadri Vangala", role: "Co-founder", image: "/assets/images/Seshadri-Vangala.jpg" },
+    { name: "Achyut Yerragangu", role: "Co-founder & COO", image: "/assets/images/Achyut-Yerragangu.jpg" },
+    { name: "Bipin Chandra Pendyala", role: "Co-founder", image: "https://www.isfnetwork.org/wp-content/uploads/2024/04/Bipin-Chandra-Pendyala.jpg" },
+    { name: "Dr. Bhanu Prakash Varla", role: "Co-founder", image: "https://www.isfnetwork.org/wp-content/uploads/2024/04/Dr-Bhanu-Prakash-Varla.jpg" }
   ];
 
   const awards = [
@@ -134,53 +144,57 @@ export function AboutUs() {
     { name: "Sivakumar Surampudi", role: "Group Head, Agri & IT Businesses, ITC", image: "https://www.isfnetwork.org/wp-content/uploads/2024/04/S-Siva-Kumar-Group-Head-Agri-IT-Businesses-ITC.jpg" }
   ];
 
-  const [missionRef, missionVisible] = useIntersectionObserver();
-
   return (
-    <div className="font-inter bg-slate-50 text-slate-800 antialiased overflow-hidden">
+    <div className="font-inter bg-white text-[#111111] antialiased">
       
-      {/* 1. Interactive Parallax Hero */}
-      <section className="relative min-h-[90vh] flex items-center justify-center pt-24 pb-12 px-4">
-        {/* Parallax Background */}
-        <div className="absolute inset-0 z-0">
-          <div className="absolute inset-0 bg-slate-900/60 z-10 mix-blend-multiply"></div>
-          <img 
-            src="/assets/images/pexels-introspectivedsgn-18441165.jpg" 
-            alt="Hero Background" 
-            className="w-full h-full object-cover fixed top-0 left-0 -z-10 brightness-50"
-          />
+      {/* 1. Hero & Mission Section */}
+      <section className="bg-[#FAF8F5] pt-32 pb-0 border-b border-gray-100">
+        <div className="container-custom text-center space-y-6 pb-16">
+          <div className="space-y-4">
+            <h1 className="text-4xl md:text-5xl font-extrabold text-[#0C3E2B] leading-tight font-baskerville">
+              Unveiling the{" "}
+              <span className="whitespace-nowrap">
+                <span className="text-[#D24D7F]">Inter</span>
+                <span className="text-[#0C3E2B]">national</span>{" "}
+                <span className="text-[#EAB308]">Startup</span>{" "}
+                <span className="text-[#458B79]">Foundation</span>
+              </span>
+            </h1>
+            <p className="text-base md:text-lg text-[#0C3E2B]/85 max-w-2xl mx-auto font-normal leading-relaxed">
+              Dedicated to enhancing India's entrepreneurial landscape, fostering vital connections between founders, resources, and visionary investors.
+            </p>
+          </div>
+
+          <div className="pt-12 max-w-3xl mx-auto space-y-6">
+             <h2 className="text-2xl md:text-3xl font-baskerville font-bold text-[#0C3E2B] leading-tight">
+              Building a brighter future to <span className="text-[#D24D7F]">Empower</span>, <span className="text-[#3B82F6]">Connect</span> and <span className="text-[#458B79]">Thrive</span>.
+            </h2>
+            <p className="text-sm md:text-base text-[#666666] font-light leading-relaxed">
+              Evolving triumph from Seed to Sky, establishing pathways for rural development and global technical capabilities aligned with Atmanirbhar Bharat.
+            </p>
+          </div>
         </div>
-        
-        <div className="max-w-5xl mx-auto w-full relative z-20 text-center space-y-8 animate-fade-in-up">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white text-xs font-semibold uppercase tracking-widest mb-4">
-            <Sparkles size={14} className="text-isf-orange" />
-            connect. collaborate. celebrate.
-          </div>
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-extrabold text-white font-baskerville leading-tight drop-shadow-xl">
-            Unveiling the <br className="hidden md:block" />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-isf-orange to-yellow-400">International Startup Foundation</span>
-          </h1>
-          <p className="text-base md:text-xl text-slate-200 max-w-2xl mx-auto font-light leading-relaxed drop-shadow">
-            Dedicated to enhancing India's entrepreneurial landscape, fostering vital connections between founders, resources, and visionary investors.
-          </p>
-          <div className="pt-8">
-            <a href="#mission" className="inline-flex items-center gap-2 bg-isf-orange hover:bg-white hover:text-isf-orange text-white px-8 py-4 rounded-full font-bold transition-all duration-300 shadow-[0_0_20px_rgba(255,102,0,0.3)] hover:shadow-[0_0_30px_rgba(255,255,255,0.5)]">
-              Explore Our Journey <ArrowRight size={18} />
-            </a>
-          </div>
+
+        {/* Static Cityscape Image Full Width */}
+        <div className="w-full h-[500px] md:h-[600px]">
+          <img 
+            src="/assets/images/about-bg.jpg" 
+            alt="Cityscape" 
+            className="w-full h-full object-cover"
+          />
         </div>
       </section>
 
-      {/* 2. Floating Stats Bar (Negative Margin to pull up over hero) */}
-      <section className="relative z-30 max-w-6xl mx-auto px-4 -mt-16 sm:-mt-24 mb-20">
-        <div className="bg-white rounded-3xl shadow-2xl shadow-slate-200/50 border border-slate-100 p-8 md:p-12">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 divide-x divide-slate-100">
+      {/* 2. Stats Bar */}
+      <section className="py-12 bg-white border-b border-gray-150">
+        <div className="container-custom">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 divide-x divide-gray-100">
             {stats.map((stat, idx) => (
               <div key={idx} className="text-center px-4">
-                <div className="text-3xl md:text-5xl font-black text-slate-900 font-inter mb-2 bg-clip-text text-transparent bg-gradient-to-br from-slate-900 to-slate-600">
+                <div className="text-3xl md:text-4xl font-bold text-[#0C3E2B] font-baskerville mb-1">
                   <CountUp end={stat.value} suffix={stat.suffix} />
                 </div>
-                <div className="text-xs md:text-sm font-semibold text-slate-500 uppercase tracking-wider">
+                <div className="text-xs md:text-sm font-semibold text-[#666666] uppercase tracking-wider">
                   {stat.label}
                 </div>
               </div>
@@ -189,135 +203,144 @@ export function AboutUs() {
         </div>
       </section>
 
-      {/* 3. Interactive Sticky Mission Statement */}
-      <section id="mission" className="py-24 bg-white relative">
-        <div className="max-w-4xl mx-auto px-4 md:px-8 text-center" ref={missionRef}>
-          <div className={`transition-all duration-1000 transform ${missionVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-            <h2 className="text-xl md:text-2xl text-isf-orange font-bold uppercase tracking-widest mb-6">Our Mission</h2>
-            <p className="text-3xl md:text-5xl font-baskerville font-medium text-slate-900 leading-tight">
-              Building a brighter future to <span className="text-isf-orange relative inline-block group cursor-default">Empower<span className="absolute bottom-0 left-0 w-full h-1 bg-isf-orange/30 transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left"></span></span>, <span className="text-blue-600 relative inline-block group cursor-default">Connect<span className="absolute bottom-0 left-0 w-full h-1 bg-blue-600/30 transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left"></span></span> and <span className="text-teal-600 relative inline-block group cursor-default">Thrive<span className="absolute bottom-0 left-0 w-full h-1 bg-teal-600/30 transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left"></span></span>.
-            </p>
-            <p className="mt-8 text-lg md:text-xl text-slate-500 font-light max-w-3xl mx-auto leading-relaxed">
-              Evolving triumph from Seed to Sky, establishing pathways for rural development and global technical capabilities aligned with Atmanirbhar Bharat.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* 4. Bento Grid: Signature Features */}
-      <section className="py-24 bg-slate-50 border-y border-slate-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-5xl font-bold font-baskerville text-slate-900 mb-4">
-              Signature Features
+      {/* 3. ISF INDIA CORE VALUES */}
+      <section className="py-16 bg-[#6B9D8F] border-b border-gray-150">
+        <div className="container-custom space-y-12">
+          <div className="text-center space-y-3">
+            <h2 className="text-2xl md:text-3xl font-bold font-baskerville text-white">
+              ISF INDIA CORE VALUES
             </h2>
-            <p className="text-slate-500 text-lg">The core pillars of the ISF India support ecosystem.</p>
+            <p className="text-xs text-white/80 font-semibold uppercase tracking-wider">
+              Ambitious Values Shaping the Nation's Future Success
+            </p>
+            <div className="w-12 h-1 bg-white mx-auto rounded"></div>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-[250px]">
-            {features.map((feat, idx) => (
-              <div 
-                key={idx} 
-                className={`${feat.color} ${feat.colSpan} group rounded-3xl p-8 relative overflow-hidden flex flex-col justify-end transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl cursor-default`}
-              >
-                {/* Background Decor */}
-                <div className="absolute top-0 right-0 w-64 h-64 bg-white opacity-5 rounded-full -mr-16 -mt-16 transition-transform duration-700 group-hover:scale-150"></div>
-                
-                <div className="relative z-10">
-                  {feat.icon}
-                  <h3 className="text-xl md:text-2xl font-bold text-white mb-2 font-baskerville">
-                    {feat.title}
-                  </h3>
-                  <p className="text-white/80 text-sm md:text-base leading-relaxed opacity-0 max-h-0 group-hover:max-h-32 group-hover:opacity-100 transition-all duration-500 ease-in-out overflow-hidden">
-                    {feat.desc}
-                  </p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {coreValues.map((val, idx) => (
+              <div key={idx} className="bg-white rounded-xl p-6 flex flex-col items-start text-left space-y-4 shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+                <div className="w-12 h-12 rounded-full flex items-center justify-center bg-[#E8F5E9]">
+                  {val.icon}
                 </div>
+                <h3 className="text-lg font-bold font-inter text-[#0C3E2B]">{val.title}</h3>
+                <p className="text-sm text-[#666666] leading-relaxed font-light">{val.desc}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* 5. Vertical Timeline: Past Achievements */}
-      <section className="py-24 bg-white relative overflow-hidden">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-5xl font-bold font-baskerville text-slate-900 mb-4">
-              Echoes of Success
+      {/* 4. Signature Features */}
+      <section className="py-16 bg-[#f9f9f9] border-b border-gray-200">
+        <div className="container-custom space-y-12">
+          <div className="text-center space-y-3">
+            <h2 className="text-2xl md:text-3xl font-bold font-baskerville text-[#111111]">
+              Signature Features
             </h2>
-            <p className="text-slate-500 text-lg">ISF India's Remarkable Chronicles</p>
+            <p className="text-xs text-[#666666] font-semibold uppercase tracking-wider">
+              The core pillars of the ISF India support ecosystem
+            </p>
+            <div className="w-12 h-1 bg-isf-orange mx-auto rounded"></div>
           </div>
-
-          <div className="relative">
-            {/* Center Line */}
-            <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-isf-orange via-purple-500 to-transparent -translate-x-1/2 opacity-30"></div>
-            
-            <div className="space-y-12">
-              {achievements.map((achieve, idx) => {
-                const isEven = idx % 2 === 0;
-                return (
-                  <div key={idx} className={`flex flex-col md:flex-row items-center justify-between w-full group ${isEven ? 'md:flex-row-reverse' : ''}`}>
-                    <div className="w-full md:w-[45%]"></div>
-                    
-                    {/* Node Dot */}
-                    <div className="hidden md:flex w-12 h-12 absolute left-1/2 -translate-x-1/2 bg-white border-4 border-isf-orange rounded-full items-center justify-center shadow-lg z-10 transition-transform duration-500 group-hover:scale-125 group-hover:bg-isf-orange">
-                      <Activity size={20} className="text-isf-orange group-hover:text-white transition-colors" />
-                    </div>
-                    
-                    {/* Content Card */}
-                    <div className={`w-full md:w-[45%] bg-slate-50 p-6 md:p-8 rounded-2xl border border-slate-100 shadow-sm transition-all duration-500 hover:shadow-xl hover:-translate-y-1 ${isEven ? 'md:text-left' : 'md:text-right'}`}>
-                      <span className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-widest text-isf-orange mb-3">
-                        <Calendar size={14} /> {achieve.date}
-                      </span>
-                      <h3 className="text-xl md:text-2xl font-bold text-slate-900 font-baskerville mb-3">
-                        {achieve.title}
-                      </h3>
-                      <p className="text-slate-600 leading-relaxed text-sm">
-                        {achieve.desc}
-                      </p>
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+            {features.map((feat, idx) => (
+              <div 
+                key={idx} 
+                className="bg-white border border-[#e6e6e6] rounded-xl p-8 hover:shadow-lg hover:border-isf-orange transition-all space-y-5 shadow-sm flex flex-col"
+              >
+                <div className={`w-14 h-14 rounded-full flex items-center justify-center ${feat.bg}`}>
+                  {feat.icon === 'globe' && <Target size={24} className={feat.text} />}
+                  {feat.icon === 'users' && <Users size={24} className={feat.text} />}
+                  {feat.icon === 'shield' && <Shield size={24} className={feat.text} />}
+                  {feat.icon === 'target' && <Activity size={24} className={feat.text} />}
+                </div>
+                <h3 className="text-lg font-bold font-baskerville text-[#0C3E2B]">
+                  {feat.title}
+                </h3>
+                <p className="text-sm text-[#666666] leading-relaxed font-light grow">
+                  {feat.desc}
+                </p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* 6. Dynamic Awardees Carousel/Grid */}
-      <section className="py-24 bg-slate-900 text-white overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16 text-center">
-          <h2 className="text-3xl md:text-5xl font-bold font-baskerville text-white mb-4">
-            Lifetime Achievement Awardees
-          </h2>
-          <p className="text-slate-400 text-lg max-w-2xl mx-auto">
-            Honoring excellence. Meet the stalwarts whose visionary leadership shaped the nation's technological foundation.
-          </p>
-        </div>
+      {/* 5. Echoes of Success (Achievements Grid instead of timeline) */}
+      <section className="py-16 bg-white border-b border-gray-150">
+        <div className="container-custom space-y-12">
+          <div className="text-center space-y-3">
+            <h2 className="text-2xl md:text-3xl font-bold font-baskerville text-[#111111] uppercase">
+              Echoes of Success
+            </h2>
+            <p className="text-xs text-[#666666] font-semibold uppercase tracking-wider">
+              ISF India's Remarkable Chronicles
+            </p>
+            <div className="w-12 h-1 bg-isf-orange mx-auto rounded"></div>
+          </div>
 
-        {/* Marquee Container */}
-        <div className="relative w-full overflow-x-hidden pb-8">
-          <div className="flex gap-6 animate-scroll-marquee w-max px-4 hover:[animation-play-state:paused]">
-            {/* Double the array for smooth infinite scrolling */}
-            {[...awards, ...awards].map((award, idx) => (
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {achievements.map((achieve, idx) => (
+               <div key={idx} className="bg-white p-6 rounded-xl border border-[#e6e6e6] shadow-sm hover:shadow-md hover:border-isf-orange transition-all flex flex-col">
+                 {achieve.image && (
+                   <div className="w-full h-48 rounded-lg overflow-hidden mb-6 bg-gray-100">
+                     <img 
+                       src={achieve.image} 
+                       alt={achieve.title} 
+                       className="w-full h-full object-cover"
+                       onError={(e) => { e.currentTarget.src = "/assets/images/placeholder.jpg"; }}
+                     />
+                   </div>
+                 )}
+                 <span className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-widest text-isf-orange mb-3">
+                    <Calendar size={14} /> {achieve.date}
+                 </span>
+                 <h3 className="text-lg font-bold text-[#111111] font-baskerville mb-2">
+                   {achieve.title}
+                 </h3>
+                 <p className="text-sm text-[#666666] font-light leading-relaxed">
+                   {achieve.desc}
+                 </p>
+               </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 6. Lifetime Awardees */}
+      <section className="py-16 bg-[#f9f9f9] border-b border-gray-200">
+        <div className="container-custom space-y-12">
+          <div className="text-center space-y-3">
+            <h2 className="text-2xl md:text-3xl font-bold font-baskerville text-[#111111]">
+              Lifetime Achievement Awardees
+            </h2>
+            <p className="text-xs text-[#666666] font-semibold uppercase tracking-wider">
+              Honoring excellence and visionary leadership
+            </p>
+            <div className="w-12 h-1 bg-isf-orange mx-auto rounded"></div>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            {awards.map((award, idx) => (
               <div 
                 key={idx} 
-                className="w-[280px] md:w-[320px] bg-slate-800 rounded-2xl p-6 border border-slate-700 hover:border-isf-orange transition-all duration-300 group flex flex-col items-center text-center flex-shrink-0"
+                className="bg-white rounded-xl p-6 border border-[#e6e6e6] shadow-sm hover:shadow-md hover:border-isf-orange transition-all flex flex-col items-center text-center"
               >
-                <div className="w-24 h-24 rounded-full overflow-hidden mb-5 border-2 border-slate-600 group-hover:border-isf-orange transition-colors">
+                <div className="w-20 h-20 rounded-full overflow-hidden mb-4 border-2 border-gray-100">
                   <img 
                     src={award.image} 
                     alt={award.name} 
-                    className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500"
+                    className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500"
                     onError={(e) => {
                       e.currentTarget.src = "/assets/images/user-placeholder.png";
                     }}
                   />
                 </div>
-                <h4 className="text-lg font-bold font-baskerville text-white mb-2">
+                <h4 className="text-base font-bold font-baskerville text-[#111111] mb-1">
                   {award.name}
                 </h4>
-                <p className="text-xs text-slate-400 leading-relaxed">
+                <p className="text-xs text-[#666666] font-light leading-relaxed">
                   {award.role}
                 </p>
               </div>
@@ -326,22 +349,40 @@ export function AboutUs() {
         </div>
       </section>
 
-      <style>{`
-        @keyframes fade-in-up {
-          from { opacity: 0; transform: translateY(30px); }
-          to { opacity: 1; transform: translateY(0); }
-        }
-        .animate-fade-in-up {
-          animation: fade-in-up 1s ease-out forwards;
-        }
-        @keyframes scroll-marquee {
-          0% { transform: translateX(0); }
-          100% { transform: translateX(-50%); }
-        }
-        .animate-scroll-marquee {
-          animation: scroll-marquee 40s linear infinite;
-        }
-      `}</style>
+      {/* 7. ISF Team */}
+      <section className="py-16 bg-white border-b border-gray-150">
+        <div className="container-custom space-y-12">
+          <div className="text-center space-y-3">
+            <h2 className="text-2xl md:text-3xl font-bold font-baskerville text-[#111111]">
+              ISF Team
+            </h2>
+            <p className="text-xs text-[#666666] font-semibold uppercase tracking-wider">
+              The visionary architects behind the India Startup Foundation
+            </p>
+            <div className="w-12 h-1 bg-isf-orange mx-auto rounded"></div>
+          </div>
+          
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            {team.map((member, idx) => (
+              <div key={idx} className="bg-white rounded-xl p-6 border border-[#e6e6e6] shadow-sm hover:shadow-md hover:border-isf-orange transition-all flex flex-col items-center text-center">
+                <div className="w-24 h-24 mx-auto rounded-full overflow-hidden mb-4 border-2 border-gray-100">
+                  <img 
+                    src={member.image} 
+                    alt={member.name} 
+                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                    onError={(e) => {
+                      e.currentTarget.src = "/assets/images/user-placeholder.png";
+                    }}
+                  />
+                </div>
+                <h4 className="text-base font-bold font-baskerville text-[#111111] mb-1">{member.name}</h4>
+                <p className="text-xs text-[#666666] font-light leading-relaxed">{member.role}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
     </div>
   );
 }
