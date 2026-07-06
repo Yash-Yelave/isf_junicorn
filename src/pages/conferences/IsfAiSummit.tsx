@@ -116,11 +116,11 @@ export function IsfAiSummit() {
       <section className="relative min-h-[85vh] flex items-center justify-start overflow-hidden px-4 md:px-8 py-24">
         <div className="absolute inset-0">
           <img 
-            src="/assets/images/isf-global.jpg" 
+            src="/assets/images/pexels-introspectivedsgn-18441165.jpg" 
             alt="ISF Global Background" 
-            className="w-full h-full object-cover object-center md:object-right" 
+            className="w-full h-full object-cover object-center" 
           />
-          <div className="absolute inset-0 bg-slate-900/40 backdrop-blur-[1px]"></div>
+          <div className="absolute inset-0 bg-slate-950/15 backdrop-blur-[1px]"></div>
           <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-slate-50 to-transparent"></div>
         </div>
         
@@ -198,24 +198,31 @@ export function IsfAiSummit() {
 
           {/* Highlights Display */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {(activeHighlightTab === "junicorn" ? junicornHighlights : aiHighlights).map((item, idx) => (
-              <div 
-                key={idx}
-                className="bg-slate-50 border border-slate-200/80 p-6 rounded-2xl shadow-sm hover:shadow-md hover:border-slate-300 transition-all duration-300 flex flex-col justify-between"
-              >
-                <div>
-                  <div className="w-12 h-12 flex items-center justify-center bg-isf-orange/10 rounded-xl text-isf-orange mb-4">
-                    <CheckCircle2 size={22} />
+            {(activeHighlightTab === "junicorn" ? junicornHighlights : aiHighlights).map((item, idx) => {
+              const isJunicorn = activeHighlightTab === "junicorn";
+              const cardBg = isJunicorn ? "bg-gradient-to-br from-white to-amber-50/30" : "bg-gradient-to-br from-white to-blue-50/30";
+              const borderCol = isJunicorn ? "border-amber-200/60 hover:border-amber-400" : "border-blue-200/60 hover:border-blue-400";
+              const shadowCol = isJunicorn ? "hover:shadow-[0_8px_30px_rgba(245,158,11,0.08)]" : "hover:shadow-[0_8px_30px_rgba(59,130,246,0.08)]";
+              const iconBg = isJunicorn ? "bg-amber-100 text-amber-600" : "bg-blue-100 text-blue-600";
+              return (
+                <div 
+                  key={idx}
+                  className={`border p-6 rounded-2xl shadow-sm transition-all duration-300 flex flex-col justify-between ${cardBg} ${borderCol} ${shadowCol}`}
+                >
+                  <div>
+                    <div className={`w-12 h-12 flex items-center justify-center rounded-xl mb-4 ${iconBg}`}>
+                      <CheckCircle2 size={22} />
+                    </div>
+                    <h3 className="text-base font-bold text-slate-900 mb-2 font-inter">
+                      {item.title}
+                    </h3>
+                    <p className="text-slate-500 text-xs leading-relaxed">
+                      {item.description}
+                    </p>
                   </div>
-                  <h3 className="text-base font-bold text-slate-900 mb-2 font-inter">
-                    {item.title}
-                  </h3>
-                  <p className="text-slate-500 text-xs leading-relaxed">
-                    {item.description}
-                  </p>
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>
@@ -223,9 +230,9 @@ export function IsfAiSummit() {
       {/* Livestream Details */}
       <section className="py-16 md:py-20 bg-slate-50 border-t border-b border-slate-200/80" id="livestream">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl mx-auto bg-white border border-slate-200 rounded-3xl p-8 md:p-10 shadow-md">
+          <div className="max-w-3xl mx-auto bg-gradient-to-br from-indigo-50/30 via-white to-blue-50/20 border border-indigo-100 rounded-3xl p-8 md:p-10 shadow-md">
             <div className="flex items-center gap-4 mb-6">
-              <div className="w-12 h-12 flex items-center justify-center bg-blue-50 text-blue-600 rounded-2xl">
+              <div className="w-12 h-12 flex items-center justify-center bg-blue-100 text-blue-600 rounded-2xl">
                 <Video size={24} />
               </div>
               <div>
@@ -239,8 +246,8 @@ export function IsfAiSummit() {
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-8">
-              <div className="p-5 rounded-2xl bg-slate-50 border border-slate-200">
-                <span className="text-xs font-bold text-slate-400 uppercase tracking-widest block mb-1">
+              <div className="p-5 rounded-2xl bg-white border border-amber-200/60 hover:border-amber-300 hover:shadow-sm transition-all duration-300">
+                <span className="text-xs font-bold text-amber-500 uppercase tracking-widest block mb-1">
                   DAY 1
                 </span>
                 <h3 className="text-base font-bold text-slate-900 mb-3 font-baskerville">
@@ -260,14 +267,14 @@ export function IsfAiSummit() {
                   href="https://zoom.us" 
                   target="_blank" 
                   rel="noopener noreferrer" 
-                  className="mt-4 w-full inline-flex items-center justify-center px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-lg text-xs transition-colors"
+                  className="mt-4 w-full inline-flex items-center justify-center px-4 py-2 bg-amber-500 hover:bg-amber-600 text-white font-bold rounded-lg text-xs transition-colors"
                 >
                   Join Day 1 Webinar <ExternalLink size={12} className="ml-1.5" />
                 </a>
               </div>
 
-              <div className="p-5 rounded-2xl bg-slate-50 border border-slate-200">
-                <span className="text-xs font-bold text-slate-400 uppercase tracking-widest block mb-1">
+              <div className="p-5 rounded-2xl bg-white border border-blue-200/60 hover:border-blue-300 hover:shadow-sm transition-all duration-300">
+                <span className="text-xs font-bold text-blue-500 uppercase tracking-widest block mb-1">
                   DAY 2
                 </span>
                 <h3 className="text-base font-bold text-slate-900 mb-3 font-baskerville">
@@ -539,6 +546,31 @@ export function IsfAiSummit() {
           <div className="relative border-l border-slate-200 pl-6 ml-3 space-y-6">
             {schedule[activeScheduleDay].events.map((ev, idx) => {
               const EventIcon = IconMap[ev.icon] || Clock;
+              
+              // Determine card style based on type
+              const titleL = ev.title.toLowerCase();
+              let cardBg = "bg-white";
+              let cardBorder = "border-slate-200/80 hover:border-slate-300";
+              let iconStyle = "bg-slate-50 text-slate-500 border-slate-200 group-hover:bg-isf-hover-bg group-hover:text-isf-orange";
+              let badgeStyle = "bg-slate-50 border-slate-200 text-slate-500";
+              
+              if (titleL.includes("coffee") || titleL.includes("tea") || titleL.includes("lunch") || titleL.includes("break")) {
+                cardBg = "bg-amber-50/40 hover:bg-amber-50/60";
+                cardBorder = "border-amber-100 hover:border-amber-300";
+                iconStyle = "bg-amber-100 text-amber-600 border-amber-200";
+                badgeStyle = "bg-amber-100/50 border-amber-200 text-amber-700";
+              } else if (titleL.includes("inaugural") || titleL.includes("award") || titleL.includes("ceremony") || titleL.includes("cultural")) {
+                cardBg = "bg-purple-50/30 hover:bg-purple-50/50";
+                cardBorder = "border-purple-100 hover:border-purple-300";
+                iconStyle = "bg-purple-100 text-purple-600 border-purple-200";
+                badgeStyle = "bg-purple-100/50 border-purple-200 text-purple-700";
+              } else if (titleL.includes("roundtable") || titleL.includes("pitch")) {
+                cardBg = "bg-blue-50/20 hover:bg-blue-50/40";
+                cardBorder = "border-blue-100 hover:border-blue-300";
+                iconStyle = "bg-blue-100 text-blue-600 border-blue-200";
+                badgeStyle = "bg-blue-100/50 border-blue-200 text-blue-700";
+              }
+
               return (
                 <div key={idx} className="relative group">
                   {/* Dot */}
@@ -546,9 +578,9 @@ export function IsfAiSummit() {
                     <div className="w-1.5 h-1.5 bg-isf-orange rounded-full"></div>
                   </div>
 
-                  <div className="bg-white border border-slate-200/80 rounded-2xl p-5 shadow-sm hover:shadow-md transition-all duration-300 flex flex-col sm:flex-row justify-between sm:items-center gap-4">
+                  <div className={`border rounded-2xl p-5 shadow-sm hover:shadow-md transition-all duration-300 flex flex-col sm:flex-row justify-between sm:items-center gap-4 ${cardBg} ${cardBorder}`}>
                     <div className="flex items-center gap-4">
-                      <div className="w-10 h-10 flex items-center justify-center bg-slate-50 text-slate-500 border border-slate-200 rounded-xl group-hover:bg-isf-hover-bg group-hover:text-isf-orange transition-colors">
+                      <div className={`w-10 h-10 flex items-center justify-center border rounded-xl transition-colors ${iconStyle}`}>
                         <EventIcon size={18} />
                       </div>
                       <h4 className="text-sm font-bold text-slate-800 leading-tight">
@@ -556,7 +588,7 @@ export function IsfAiSummit() {
                       </h4>
                     </div>
                     
-                    <div className="flex items-center gap-1.5 text-xs text-slate-500 font-semibold bg-slate-50 border border-slate-200 rounded-lg px-3 py-1.5 self-start sm:self-auto">
+                    <div className={`flex items-center gap-1.5 text-xs font-semibold border rounded-lg px-3 py-1.5 self-start sm:self-auto ${badgeStyle}`}>
                       <Clock size={12} />
                       <span>{ev.time}</span>
                     </div>
@@ -1045,18 +1077,18 @@ export function IsfAiSummit() {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {[
-              { title: "Expert-Led Insights", desc: "Gain cutting-edge insights from business, technology, and responsible AI leaders." },
-              { title: "Global Collaboration", desc: "Connect with experts, academics, and entrepreneurs to drive ethical AI innovations." },
-              { title: "Startup & Innovation Growth", desc: "Pitch AI solutions to VCs and mentors, fueling scalable ventures." },
-              { title: "Future-Focused Environment", desc: "Join in-person for interactive discussions and hands-on masterclasses." },
-              { title: "Talent & Career Opportunities", desc: "Explore AI career pathways, plus specialized tracks for student Junicorns." },
-              { title: "Recognition & Impact", desc: "Celebrate standout innovations at the ISF Innovation Awards and shape sustainable tech." }
+              { title: "Expert-Led Insights", desc: "Gain cutting-edge insights from business, technology, and responsible AI leaders.", color: "bg-orange-50/60 text-orange-600 border-orange-100/60" },
+              { title: "Global Collaboration", desc: "Connect with experts, academics, and entrepreneurs to drive ethical AI innovations.", color: "bg-blue-50/60 text-blue-600 border-blue-100/60" },
+              { title: "Startup & Innovation Growth", desc: "Pitch AI solutions to VCs and mentors, fueling scalable ventures.", color: "bg-emerald-50/60 text-emerald-600 border-emerald-100/60" },
+              { title: "Future-Focused Environment", desc: "Join in-person for interactive discussions and hands-on masterclasses.", color: "bg-purple-50/60 text-purple-600 border-purple-100/60" },
+              { title: "Talent & Career Opportunities", desc: "Explore AI career pathways, plus specialized tracks for student Junicorns.", color: "bg-amber-50/60 text-amber-600 border-amber-100/60" },
+              { title: "Recognition & Impact", desc: "Celebrate standout innovations at the ISF Innovation Awards and shape sustainable tech.", color: "bg-sky-50/60 text-sky-600 border-sky-100/60" }
             ].map((benefit, idx) => (
               <div 
                 key={idx}
-                className="bg-slate-50 border border-slate-200/80 rounded-2xl p-6 shadow-sm hover:shadow-md hover:border-slate-300 transition-all duration-300 flex items-start gap-4"
+                className="bg-white border border-slate-200/80 rounded-2xl p-6 shadow-sm hover:shadow-md hover:border-slate-300 transition-all duration-300 flex items-start gap-4"
               >
-                <div className="w-10 h-10 flex items-center justify-center bg-isf-orange/10 text-isf-orange rounded-xl shrink-0 mt-0.5">
+                <div className={`w-10 h-10 flex items-center justify-center rounded-xl shrink-0 mt-0.5 ${benefit.color}`}>
                   <Award size={18} />
                 </div>
                 <div className="space-y-1.5">
