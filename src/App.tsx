@@ -25,6 +25,7 @@ import { IsfHyderabad2024 } from "./pages/conferences/IsfHyderabad2024";
 import { IsfPune2024 } from "./pages/conferences/IsfPune2024";
 import { IsfJamaica2024 } from "./pages/conferences/IsfJamaica2024";
 import { IsfNewJersey2024 } from "./pages/conferences/IsfNewJersey2024";
+import { IsfAiSummit } from "./pages/conferences/IsfAiSummit";
 
 function App() {
   return (
@@ -45,6 +46,7 @@ function App() {
             <Route path="/distinguished-guests" element={<DistinguishedGuests />} />
             
             {/* Conferences Pages */}
+            <Route path="/isf-ai-summit" element={<IsfAiSummit />} />
             <Route path="/isf-hyderabad-2024-main" element={<IsfHyderabad2024 />} />
             <Route path="/isf-2024-pune" element={<IsfPune2024 />} />
             <Route path="/isf-jamaica-isf-global-cxo-summit" element={<IsfJamaica2024 />} />

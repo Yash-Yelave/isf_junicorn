@@ -29,6 +29,7 @@ export function Navbar() {
       name: "Conferences",
       path: "#",
       submenu: [
+        { name: "ISF AI Summit 2025", path: "/isf-ai-summit" },
         { name: "ISF 2024 Hyderabad", path: "/isf-hyderabad-2024-main" },
         { name: "ISF 2024 Pune", path: "/isf-2024-pune" },
         { name: "ISF 2024 Jamaica", path: "/isf-jamaica-isf-global-cxo-summit" },
