@@ -51,18 +51,6 @@ export function Navbar() {
     {
       name: "Junicorns",
       path: "/junicornshub"
-    },
-    {
-      name: "Registrations",
-      path: "/registration",
-      submenu: [
-        { name: "Conference Delegates", path: "/registration/delegate" },
-        { name: "Pitch Sessions", path: "/registration/pitch" },
-        { name: "Exhibitors", path: "/registration/exhibitor" },
-        { name: "Expo Visitors", path: "/registration/expo" },
-        { name: "Student Registration", path: "/registration/student" },
-        { name: "Ankura Bus Yatra", path: "/registration/bus-yatra" }
-      ]
     }
   ];
 
