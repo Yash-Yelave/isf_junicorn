@@ -361,10 +361,10 @@ export function LandingPage() {
                 Unlock potential networks, exchange strategic visions, and participate in high-level discussions with global startup delegates.
               </p>
               <Link
-                to="/registration/delegate"
-                className="inline-block text-xs font-bold text-isf-orange hover:text-isf-orange-hover uppercase tracking-wider pt-2 group-hover:underline"
+                to="#"
+                className="inline-block text-xs font-bold text-slate-400 cursor-not-allowed uppercase tracking-wider pt-2"
               >
-                Take Part Now →
+                Registration Closed
               </Link>
             </div>
 
@@ -380,10 +380,10 @@ export function LandingPage() {
                 Showcase your disruptive products, configure interactive stalls, and interact directly with target investors and CXOs.
               </p>
               <Link
-                to="/registration/exhibitor"
-                className="inline-block text-xs font-bold text-isf-orange hover:text-isf-orange-hover uppercase tracking-wider pt-2 group-hover:underline"
+                to="#"
+                className="inline-block text-xs font-bold text-slate-400 cursor-not-allowed uppercase tracking-wider pt-2"
               >
-                Book a Stall →
+                Registration Closed
               </Link>
             </div>
 
@@ -399,10 +399,10 @@ export function LandingPage() {
                 Elevator pitch in front of leading global venture capitals, business matchmakers, and receive startup evaluations.
               </p>
               <Link
-                to="/registration/pitch"
-                className="inline-block text-xs font-bold text-isf-orange hover:text-isf-orange-hover uppercase tracking-wider pt-2 group-hover:underline"
+                to="#"
+                className="inline-block text-xs font-bold text-slate-400 cursor-not-allowed uppercase tracking-wider pt-2"
               >
-                Enroll Now →
+                Registration Closed
               </Link>
             </div>
 
