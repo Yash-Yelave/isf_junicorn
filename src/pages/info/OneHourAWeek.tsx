@@ -39,13 +39,13 @@ export function OneHourAWeek() {
             <div className="flex gap-4">
               <Link
                 to="/mentor-form"
-                className="bg-isf-orange hover:bg-isf-orange-hover text-white text-xs font-bold uppercase tracking-wider px-6 py-3.5 rounded shadow transition-all"
+                className="bg-white text-[#0C3E2B] font-semibold px-6 py-2 rounded-lg text-sm transition-all hover:bg-white/95 text-center shadow-md cursor-pointer block border border-[#fedb8d]"
               >
                 Mentor Registration
               </Link>
-              <Link
-                to="/registration/student"
-                className="bg-white border border-gray-300 text-slate-800 text-xs font-bold uppercase tracking-wider px-6 py-3.5 rounded hover:bg-gray-50 transition-all"
+              <Link 
+                to="/mentee-form"
+                className="bg-transparent text-white font-semibold px-6 py-2 rounded-lg text-sm transition-all hover:bg-white/10 text-center border border-white/30 cursor-pointer block"
               >
                 Mentee Registration
               </Link>
@@ -164,7 +164,7 @@ export function OneHourAWeek() {
               </p>
             </div>
             <Link
-              to="/registration/student"
+              to="/mentee-form"
               className="block text-center text-xs font-bold uppercase tracking-wider text-slate-800 border border-gray-300 hover:bg-gray-50 py-3 rounded"
             >
               Mentee Registration
