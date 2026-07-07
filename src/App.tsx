@@ -3,15 +3,6 @@ import { Toaster } from "sonner";
 import { Navbar } from "./components/layout/Navbar";
 import { Footer } from "./components/layout/Footer";
 import { LandingPage } from "./pages/LandingPage";
-import { RegistrationHub } from "./pages/registration/RegistrationHub";
-import { DelegateForm } from "./pages/registration/DelegateForm";
-import { ExhibitorForm } from "./pages/registration/ExhibitorForm";
-import {
-  ExpoPassForm,
-  PitchForm,
-  DignitaryForm,
-  BusYatraForm
-} from "./pages/registration/OtherForms";
 import { MentorForm } from "./pages/registration/MentorForm";
 import { MenteeForm } from "./pages/registration/MenteeForm";
 import { PortalHub } from "./pages/mentorship/PortalHub";
@@ -52,15 +43,8 @@ function App() {
             <Route path="/isf-jamaica-isf-global-cxo-summit" element={<IsfJamaica2024 />} />
             <Route path="/conference-delegate-registration-isf-usa-2024" element={<IsfNewJersey2024 />} />
 
-            {/* Registration routes */}
-            <Route path="/registration" element={<RegistrationHub />} />
-            <Route path="/registration/delegate" element={<DelegateForm />} />
-            <Route path="/registration/exhibitor" element={<ExhibitorForm />} />
-            <Route path="/registration/expo" element={<ExpoPassForm />} />
-            <Route path="/registration/student" element={<MenteeForm />} />
-            <Route path="/registration/pitch" element={<PitchForm />} />
-            <Route path="/registration/dignitary" element={<DignitaryForm />} />
-            <Route path="/registration/bus-yatra" element={<BusYatraForm />} />
+            {/* Mentorship & Form routes */}
+            <Route path="/mentee-form" element={<MenteeForm />} />
             <Route path="/mentor-form" element={<MentorForm />} />
 
             {/* Mentorship portal */}

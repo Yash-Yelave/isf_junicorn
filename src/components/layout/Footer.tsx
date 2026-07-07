@@ -56,35 +56,30 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Column 3: Registration Tracks */}
+          {/* Column 3: Mentorship */}
           <div className="space-y-4">
             <h4 className="text-xs font-bold text-white uppercase tracking-wider">
-              Registrations
+              Mentorship Program
             </h4>
             <ul className="space-y-2.5 text-xs text-slate-400">
               <li>
-                <Link to="/registration/delegate" className="hover:text-isf-orange transition-colors">
-                  Conference Delegate
+                <Link to="/1hour-per-week" className="hover:text-isf-orange transition-colors">
+                  1 Hour a Week
                 </Link>
               </li>
               <li>
-                <Link to="/registration/exhibitor" className="hover:text-isf-orange transition-colors">
-                  Exhibitors & Stalls
+                <Link to="/mentor-form" className="hover:text-isf-orange transition-colors">
+                  Become a Mentor
                 </Link>
               </li>
               <li>
-                <Link to="/registration/pitch" className="hover:text-isf-orange transition-colors">
-                  Pitch Contest Entry
+                <Link to="/mentee-form" className="hover:text-isf-orange transition-colors">
+                  Apply as a Mentee
                 </Link>
               </li>
               <li>
-                <Link to="/registration/student" className="hover:text-isf-orange transition-colors">
-                  Student Pass
-                </Link>
-              </li>
-              <li>
-                <Link to="/registration/bus-yatra" className="hover:text-isf-orange transition-colors">
-                  Ankura Bus Yatra
+                <Link to="/investors" className="hover:text-isf-orange transition-colors">
+                  Portal Dashboard
                 </Link>
               </li>
             </ul>
