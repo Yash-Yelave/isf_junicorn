@@ -16,6 +16,7 @@ export function MentorForm() {
     feedback: "",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -40,16 +41,35 @@ export function MentorForm() {
     e.preventDefault();
     setIsSubmitting(true);
     
-    // Simulate API request
-    setTimeout(() => {
+    const payload = {
+      FullName: formData.fullName,
+      ContactInfo: formData.contact,
+      ProfileURL: formData.linkedin,
+      Industry: formData.industry,
+      Expertise: formData.expertise,
+      Experience: formData.experience,
+      ContributionType: formData.contribute,
+      TimeCommitment: formData.timeCommit,
+      Source: formData.hearAbout,
+      Feedback: formData.feedback
+    };
+
+    fetch(import.meta.env.VITE_MENTOR_SCRIPT_URL, {
+      method: 'POST',
+      mode: 'no-cors',
+      body: JSON.stringify(payload)
+    })
+    .then(() => {
+      setIsSuccess(true);
       setIsSubmitting(false);
-      console.log("=== MENTOR SUBMISSION ===", formData);
-      toast.success("Thank You for Your Interest! We've received your application and are thrilled to welcome you to the Junicorns mentor community.");
-      
-      // Clear form after successful submission
       handleClear();
       window.scrollTo({ top: 0, behavior: 'smooth' });
-    }, 1500);
+    })
+    .catch((error) => {
+      console.error("Submission error:", error);
+      setIsSubmitting(false);
+      toast.error("An error occurred during submission. Please try again.");
+    });
   };
 
   return (
@@ -71,9 +91,21 @@ export function MentorForm() {
 
       {/* Form Container */}
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-        <p className="text-sm text-red-500 font-medium mb-4">* Indicates required question</p>
+        {isSuccess ? (
+          <div className="bg-white rounded-lg shadow-sm border-t-4 border-t-[#0c3e2b] p-12 text-center my-12 animate-fade-in">
+            <div className="w-16 h-16 bg-[#0c3e2b] rounded-full flex items-center justify-center mx-auto mb-6">
+              <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>
+            </div>
+            <h2 className="text-2xl md:text-3xl font-bold font-baskerville text-[#0c3e2b] mb-4">Application Submitted Successfully</h2>
+            <p className="text-gray-600 leading-relaxed max-w-lg mx-auto">
+              Thank you for your interest! We've received your application and are thrilled to welcome you to the Junicorns mentor community. We will be in touch with you shortly.
+            </p>
+          </div>
+        ) : (
+          <>
+            <p className="text-sm text-red-500 font-medium mb-4">* Indicates required question</p>
 
-        <form onSubmit={handleSubmit} className="space-y-6">
+            <form onSubmit={handleSubmit} className="space-y-6">
           
           {/* Section 1: Personal Info */}
           <div className="bg-white rounded-lg shadow-sm border-t-4 border-t-[#0c3e2b] border-gray-200 p-6 md:p-8">
@@ -311,6 +343,8 @@ export function MentorForm() {
           </div>
 
         </form>
+          </>
+        )}
       </div>
     </div>
   );
