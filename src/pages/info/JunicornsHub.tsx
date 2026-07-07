@@ -212,7 +212,7 @@ export function JunicornsHub() {
                 </p>
                 <div className="pt-2">
                   <Link
-                    to="/registration/student"
+                    to="/mentee-form"
                     className="bg-[#D24D7F] hover:bg-[#C73E6E] text-white text-sm font-bold tracking-wide px-8 py-4 rounded-full shadow-md transition-colors inline-block"
                   >
                     Join the movement
@@ -350,7 +350,7 @@ export function JunicornsHub() {
 
           <div className="text-center pt-4">
             <Link
-              to="/registration/student"
+              to="/mentee-form"
               className="bg-[#D24D7F] hover:bg-[#C73E6E] text-white text-sm font-bold tracking-wide px-8 py-4 rounded-full shadow-md transition-colors inline-block"
             >
               Join the movement
