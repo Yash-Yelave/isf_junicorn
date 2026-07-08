@@ -39,8 +39,14 @@ const Cohort3: React.FC = () => {
             <span className="text-sm font-semibold tracking-wide text-white">Junicorns Movement</span>
           </div>
           
-          <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight mb-6 leading-tight max-w-4xl animate-fade-in-up" style={{animationDelay: '100ms'}}>
-            Rural Innovation Challenge <span className="text-transparent bg-clip-text bg-gradient-to-r from-isf-orange to-yellow-400">Cohort 3.0</span>
+          <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight mb-6 leading-tight max-w-4xl animate-fade-in-up font-inter" style={{animationDelay: '100ms'}}>
+            <span className="bg-clip-text text-transparent bg-gradient-to-r from-emerald-400 to-yellow-300">
+              Rural Innovation Challenge
+            </span>
+            <br />
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-isf-orange to-yellow-400">
+              Cohort 3.0
+            </span>
           </h1>
           
           <p className="text-xl md:text-2xl text-slate-300 mb-10 max-w-2xl animate-fade-in-up" style={{animationDelay: '200ms'}}>
