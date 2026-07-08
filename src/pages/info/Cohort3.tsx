@@ -97,9 +97,6 @@ const Cohort3: React.FC = () => {
                 <h2 className="text-sm font-extrabold text-white tracking-widest uppercase mb-3 font-inter">Ten domains, one mission</h2>
                 <h3 className="text-3xl md:text-4xl font-black mb-6 font-inter text-white">Focus areas for innovation</h3>
                 <p className="text-slate-400 text-lg mb-8">Not limited to these — but here's where we're looking hardest.</p>
-                <Link to="/registration" className="inline-flex px-6 py-3 bg-white/10 hover:bg-white/20 border border-white/20 rounded-full font-medium transition-all duration-300 hover:scale-105">
-                  Start Building
-                </Link>
               </div>
               
               <div className="md:w-2/3 grid grid-cols-1 sm:grid-cols-2 gap-4">
