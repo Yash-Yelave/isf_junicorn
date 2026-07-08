@@ -199,44 +199,44 @@ const Cohort3: React.FC = () => {
           </div>
 
           {/* Leadership Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-3xl mx-auto mb-16">
+          <div className="flex flex-wrap justify-center gap-6 mb-12">
             {teamMembers.slice(0, 2).map((member, idx) => (
-              <div key={idx} className="group bg-white rounded-3xl p-6 shadow-md border border-slate-100 hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
-                <div className="aspect-square overflow-hidden rounded-2xl mb-6 bg-slate-100">
+              <div key={idx} className="bg-white rounded-xl shadow-sm border border-[#e6e6e6] overflow-hidden hover:shadow-md transition-shadow group flex flex-col items-center text-center p-4 w-44">
+                <div className="w-24 h-24 mb-4 rounded-full overflow-hidden border-2 border-gray-100 mx-auto">
                   <img 
                     src={member.image} 
                     alt={member.name}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
                     onError={(e) => {
                       e.currentTarget.src = 'https://ui-avatars.com/api/?name=' + encodeURIComponent(member.name) + '&background=f97316&color=fff&size=256';
                     }}
                   />
                 </div>
                 <div className="text-center">
-                  <h4 className="text-xl font-bold text-slate-900 mb-1">{member.name}</h4>
-                  <p className="text-isf-orange font-semibold text-sm">{member.role}</p>
+                  <h4 className="font-bold text-sm text-[#111111] mb-1 leading-tight">{member.name}</h4>
+                  <p className="text-xs text-isf-orange font-semibold leading-snug">{member.role}</p>
                 </div>
               </div>
             ))}
           </div>
 
           {/* Core Team Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-6 max-w-5xl mx-auto">
             {teamMembers.slice(2).map((member, idx) => (
-              <div key={idx} className="group bg-white rounded-3xl p-6 shadow-sm border border-slate-100 hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
-                <div className="aspect-square overflow-hidden rounded-2xl mb-6 bg-slate-100">
+              <div key={idx} className="bg-white rounded-xl shadow-sm border border-[#e6e6e6] overflow-hidden hover:shadow-md transition-shadow group flex flex-col items-center text-center p-4">
+                <div className="w-24 h-24 mb-4 rounded-full overflow-hidden border-2 border-gray-100 mx-auto">
                   <img 
                     src={member.image} 
                     alt={member.name}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
                     onError={(e) => {
                       e.currentTarget.src = 'https://ui-avatars.com/api/?name=' + encodeURIComponent(member.name) + '&background=f97316&color=fff&size=256';
                     }}
                   />
                 </div>
                 <div className="text-center">
-                  <h4 className="text-xl font-bold text-slate-900 mb-1">{member.name}</h4>
-                  <p className="text-isf-orange font-semibold text-sm">{member.role}</p>
+                  <h4 className="font-bold text-sm text-[#111111] mb-1 leading-tight">{member.name}</h4>
+                  <p className="text-xs text-isf-orange font-semibold leading-snug">{member.role}</p>
                 </div>
               </div>
             ))}
