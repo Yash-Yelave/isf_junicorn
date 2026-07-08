@@ -653,7 +653,7 @@ export function LandingPage() {
                       <span className="text-xs font-semibold text-slate-500 uppercase tracking-wider block font-inter">
                         {ev.tag}
                       </span>
-                      <h3 className="text-2xl md:text-3xl font-bold font-baskerville text-slate-900 leading-snug">
+                      <h3 className="text-xl sm:text-2xl md:text-3xl font-bold font-baskerville text-slate-900 leading-snug">
                         {ev.title}
                       </h3>
                       <div className="space-y-2">
@@ -674,14 +674,14 @@ export function LandingPage() {
                             href={ev.link}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="inline-block bg-[#D45625] hover:bg-[#B8451B] text-white text-xs font-extrabold uppercase tracking-wider px-6 py-3.5 rounded shadow transition-colors cursor-pointer"
+                            className="inline-block bg-[#D45625] hover:bg-[#B8451B] text-white text-xs sm:text-sm font-extrabold uppercase tracking-wider px-5 sm:px-6 py-3 sm:py-3.5 rounded shadow transition-colors cursor-pointer"
                           >
                             KNOW MORE
                           </a>
                         ) : (
                           <Link
                             to={ev.link}
-                            className="inline-block bg-[#D45625] hover:bg-[#B8451B] text-white text-xs font-extrabold uppercase tracking-wider px-6 py-3.5 rounded shadow transition-colors cursor-pointer"
+                            className="inline-block bg-[#D45625] hover:bg-[#B8451B] text-white text-xs sm:text-sm font-extrabold uppercase tracking-wider px-5 sm:px-6 py-3 sm:py-3.5 rounded shadow transition-colors cursor-pointer"
                           >
                             KNOW MORE
                           </Link>
