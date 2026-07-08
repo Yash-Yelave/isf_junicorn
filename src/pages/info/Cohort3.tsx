@@ -25,7 +25,7 @@ const Cohort3: React.FC = () => {
   ];
 
   return (
-    <div className="font-inter bg-slate-50 min-h-screen pt-20 overflow-hidden">
+    <div className="font-inter bg-slate-50 min-h-screen pt-20 overflow-x-hidden">
       
       {/* Hero Section */}
       <section className="relative w-full py-24 md:py-32 bg-gradient-to-br from-indigo-950 via-slate-900 to-indigo-900 text-white overflow-hidden flex items-center justify-center">
@@ -94,8 +94,8 @@ const Cohort3: React.FC = () => {
             
             <div className="relative z-10 flex flex-col md:flex-row gap-12 items-center">
               <div className="md:w-1/3 text-center md:text-left">
-                <h2 className="text-sm font-bold text-isf-orange tracking-widest uppercase mb-3">Ten domains, one mission</h2>
-                <h3 className="text-3xl md:text-4xl font-bold mb-6">Focus areas for innovation</h3>
+                <h2 className="text-sm font-extrabold text-isf-orange tracking-widest uppercase mb-3 font-inter">Ten domains, one mission</h2>
+                <h3 className="text-3xl md:text-4xl font-black mb-6 font-inter bg-clip-text text-transparent bg-gradient-to-r from-emerald-400 to-yellow-300">Focus areas for innovation</h3>
                 <p className="text-slate-400 text-lg mb-8">Not limited to these — but here's where we're looking hardest.</p>
                 <Link to="/registration" className="inline-flex px-6 py-3 bg-white/10 hover:bg-white/20 border border-white/20 rounded-full font-medium transition-all duration-300 hover:scale-105">
                   Start Building
@@ -190,7 +190,7 @@ const Cohort3: React.FC = () => {
       </section>
 
       {/* Team Section */}
-      <section className="py-24 bg-slate-50 border-t border-slate-200">
+      <section className="py-24 bg-slate-50 border-t border-slate-200" id="team">
         <div className="max-w-7xl mx-auto px-6 md:px-12">
           <div className="text-center mb-16">
             <h2 className="text-sm font-bold text-isf-orange tracking-widest uppercase mb-3">The Visionaries</h2>
@@ -198,9 +198,10 @@ const Cohort3: React.FC = () => {
             <p className="mt-4 text-lg text-slate-600 max-w-2xl mx-auto">Meet the leaders driving the Junicorns movement forward.</p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-            {teamMembers.map((member, idx) => (
-              <div key={idx} className={`group bg-white rounded-3xl p-6 shadow-sm border border-slate-100 hover:shadow-xl hover:-translate-y-2 transition-all duration-300 ${idx === 0 ? 'lg:col-span-2 lg:w-1/2 lg:mx-auto' : ''} ${idx === 1 ? 'lg:col-span-2 lg:w-1/2 lg:mx-auto' : ''}`}>
+          {/* Leadership Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-3xl mx-auto mb-16">
+            {teamMembers.slice(0, 2).map((member, idx) => (
+              <div key={idx} className="group bg-white rounded-3xl p-6 shadow-md border border-slate-100 hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
                 <div className="aspect-square overflow-hidden rounded-2xl mb-6 bg-slate-100">
                   <img 
                     src={member.image} 
@@ -213,7 +214,29 @@ const Cohort3: React.FC = () => {
                 </div>
                 <div className="text-center">
                   <h4 className="text-xl font-bold text-slate-900 mb-1">{member.name}</h4>
-                  <p className="text-isf-orange font-medium text-sm">{member.role}</p>
+                  <p className="text-isf-orange font-semibold text-sm">{member.role}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Core Team Grid */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            {teamMembers.slice(2).map((member, idx) => (
+              <div key={idx} className="group bg-white rounded-3xl p-6 shadow-sm border border-slate-100 hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
+                <div className="aspect-square overflow-hidden rounded-2xl mb-6 bg-slate-100">
+                  <img 
+                    src={member.image} 
+                    alt={member.name}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    onError={(e) => {
+                      e.currentTarget.src = 'https://ui-avatars.com/api/?name=' + encodeURIComponent(member.name) + '&background=f97316&color=fff&size=256';
+                    }}
+                  />
+                </div>
+                <div className="text-center">
+                  <h4 className="text-xl font-bold text-slate-900 mb-1">{member.name}</h4>
+                  <p className="text-isf-orange font-semibold text-sm">{member.role}</p>
                 </div>
               </div>
             ))}
