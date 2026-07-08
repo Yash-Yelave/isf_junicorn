@@ -1,9 +1,9 @@
 import React from "react";
-import { 
-  Calendar, 
-  MapPin, 
-  Award, 
-  Clock, 
+import {
+  Calendar,
+  MapPin,
+  Award,
+  Clock,
   ExternalLink,
   Info,
   CheckCircle2,
@@ -37,7 +37,7 @@ export function IsfNewJersey2024() {
 
   return (
     <div className="font-inter pb-20 pt-20 bg-slate-50 text-slate-800 antialiased">
-      
+
       {/* Smooth Scroll Navigation Sub-Header */}
       <div className="sticky top-20 z-40 bg-white/90 backdrop-blur-md border-b border-slate-200 shadow-sm transition-all duration-300">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5 overflow-x-auto flex gap-6 md:gap-8 scrollbar-none justify-start md:justify-center text-xs md:text-sm font-semibold text-slate-600">
@@ -52,15 +52,15 @@ export function IsfNewJersey2024() {
       {/* Hero Section */}
       <section className="relative min-h-[75vh] flex items-center justify-start overflow-hidden px-4 md:px-8 py-20" id="overview">
         <div className="absolute inset-0">
-          <img 
-            src="/assets/images/pexels-introspectivedsgn-18441165.jpg" 
-            alt="ISF USA Background" 
-            className="w-full h-full object-cover object-center" 
+          <img
+            src="/assets/images/pexels-introspectivedsgn-18441165.jpg"
+            alt="ISF USA Background"
+            className="w-full h-full object-cover object-center"
           />
           <div className="absolute inset-0 bg-slate-950/25 backdrop-blur-[1px]"></div>
           <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-slate-50 to-transparent"></div>
         </div>
-        
+
         <div className="max-w-7xl mx-auto w-full relative z-10">
           <div className="bg-white/95 backdrop-blur-md border border-slate-200/60 p-8 md:p-12 rounded-3xl shadow-xl max-w-2xl text-slate-800 animate-fade-in-up">
             <span className="px-3.5 py-1 text-xs md:text-sm font-semibold bg-blue-100 text-blue-700 rounded-full inline-flex items-center gap-1.5 mb-5">
@@ -74,14 +74,14 @@ export function IsfNewJersey2024() {
               Welcome and thank you for showing interest to be a part of the ISF 2024 Conference. Participate in high-value CXO connect events, investor pitching, and panels at Bell Works, Holmdel.
             </p>
             <div className="flex flex-col sm:flex-row gap-3">
-              <Link 
-                to="/registration/delegate" 
+              <Link
+                to="/registration/delegate"
                 className="inline-flex items-center justify-center text-xs md:text-sm font-bold uppercase tracking-wider bg-blue-600 hover:bg-blue-700 text-white px-6 py-3.5 rounded shadow-md transition-all duration-300"
               >
                 Register as Delegate
               </Link>
-              <a 
-                href="#pricing" 
+              <a
+                href="#pricing"
                 className="inline-flex items-center justify-center text-xs md:text-sm font-bold uppercase tracking-wider border border-slate-300 text-slate-700 hover:bg-slate-100 px-6 py-3.5 rounded transition-all duration-300"
               >
                 Pricing &amp; Payment
@@ -120,8 +120,8 @@ export function IsfNewJersey2024() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {expects.map((item, idx) => (
-              <div 
-                key={idx} 
+              <div
+                key={idx}
                 className="bg-white border border-slate-200 rounded-3xl p-6 md:p-8 hover:border-blue-500 transition-all duration-300 shadow-sm"
               >
                 <div className="w-12 h-12 rounded-2xl bg-blue-100 flex items-center justify-center text-blue-600 mb-6">
@@ -160,7 +160,7 @@ export function IsfNewJersey2024() {
                 <div key={idx} className="relative group">
                   {/* Timeline dot */}
                   <div className="absolute -left-[31px] top-1.5 bg-white border-2 border-blue-600 w-4 h-4 rounded-full group-hover:bg-blue-600 transition-colors"></div>
-                  
+
                   <div className="space-y-1">
                     <span className="inline-flex items-center gap-1 text-xs font-bold text-blue-600 uppercase tracking-wider">
                       <Clock size={12} />
@@ -189,7 +189,7 @@ export function IsfNewJersey2024() {
               <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
                 Please scan the payment QR code and pay the delegate registration fee. Enter the Transaction reference ID in the registration form to finalize your admission.
               </p>
-              
+
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div className="bg-white border border-slate-200 rounded-2xl p-5 hover:border-blue-500 transition-colors">
                   <span className="text-xxs font-bold text-slate-400 uppercase tracking-widest block mb-1">
@@ -201,7 +201,7 @@ export function IsfNewJersey2024() {
                   </h4>
                   <p className="text-xxs text-slate-500 mt-2">Dallas Chapter Access • Vouchers at ₹10,000</p>
                 </div>
-                
+
                 <div className="bg-white border border-slate-200 rounded-2xl p-5 hover:border-blue-500 transition-colors">
                   <span className="text-xxs font-bold text-slate-400 uppercase tracking-widest block mb-1">
                     New Jersey Vouchers
@@ -219,9 +219,9 @@ export function IsfNewJersey2024() {
               <QrCode size={48} className="text-blue-600 mb-4" />
               <h3 className="font-bold text-slate-800 text-base mb-2 font-inter">Scan &amp; Pay Vouchers</h3>
               <div className="w-48 h-48 border border-slate-200 rounded-2xl p-3 mb-4">
-                <img 
-                  src="/assets/images/isf-qr-code.png" 
-                  alt="ISF Payment QR Code" 
+                <img
+                  src="/assets/images/isf-qr-code.png"
+                  alt="ISF Payment QR Code"
                   className="w-full h-full object-contain"
                   onError={(e) => {
                     e.currentTarget.src = "/assets/images/qr-placeholder.png";
@@ -281,15 +281,15 @@ export function IsfNewJersey2024() {
                 </Link>
               </div>
             </div>
-            
+
             {/* Google Map */}
             <div className="relative rounded-3xl overflow-hidden shadow-lg border border-slate-200 min-h-[300px]">
-              <iframe 
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3039.3789457853683!2d-74.1704207241852!3d40.378333158652494!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c231ffc2f6d0f1%3A0xc3d15c7e19f96404!2sBell%20Works!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin" 
-                width="100%" 
-                height="450" 
-                style={{ border: 0 }} 
-                allowFullScreen={true} 
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3039.3789457853683!2d-74.1704207241852!3d40.378333158652494!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c231ffc2f6d0f1%3A0xc3d15c7e19f96404!2sBell%20Works!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin"
+                width="100%"
+                height="450"
+                style={{ border: 0 }}
+                allowFullScreen={true}
                 loading="lazy"
                 title="Bell Works Holmdel NJ Google Maps Location"
               ></iframe>
@@ -297,7 +297,7 @@ export function IsfNewJersey2024() {
           </div>
         </div>
       </section>
-      
+
     </div>
   );
 }

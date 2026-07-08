@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import { 
-  Calendar, 
-  MapPin, 
-  Award, 
-  CheckCircle2, 
-  Clock, 
+import {
+  Calendar,
+  MapPin,
+  Award,
+  CheckCircle2,
+  Clock,
   ExternalLink,
   ChevronDown,
   ChevronUp,
@@ -12,10 +12,10 @@ import {
   Info
 } from "lucide-react";
 import { Link } from "react-router-dom";
-import { 
-  hyderabadSpeakers, 
-  hyderabadRoundtables, 
-  hyderabadSchedule 
+import {
+  hyderabadSpeakers,
+  hyderabadRoundtables,
+  hyderabadSchedule
 } from "./eventsData";
 
 export function IsfHyderabad2024() {
@@ -32,7 +32,7 @@ export function IsfHyderabad2024() {
 
   return (
     <div className="font-inter pb-20 pt-20 bg-slate-50 text-slate-800 antialiased">
-      
+
       {/* Smooth Scroll Navigation Sub-Header */}
       <div className="sticky top-20 z-40 bg-white/90 backdrop-blur-md border-b border-slate-200 shadow-sm transition-all duration-300">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5 overflow-x-auto flex gap-6 md:gap-8 scrollbar-none justify-start md:justify-center text-xs md:text-sm font-semibold text-slate-600">
@@ -47,15 +47,15 @@ export function IsfHyderabad2024() {
       {/* Hero Section */}
       <section className="relative min-h-[75vh] flex items-center justify-start overflow-hidden px-4 md:px-8 py-20" id="overview">
         <div className="absolute inset-0">
-          <img 
-            src="/assets/images/pexels-introspectivedsgn-18441165.jpg" 
-            alt="ISF Hyderabad Background" 
-            className="w-full h-full object-cover object-center" 
+          <img
+            src="/assets/images/pexels-introspectivedsgn-18441165.jpg"
+            alt="ISF Hyderabad Background"
+            className="w-full h-full object-cover object-center"
           />
           <div className="absolute inset-0 bg-slate-950/20 backdrop-blur-[1px]"></div>
           <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-slate-50 to-transparent"></div>
         </div>
-        
+
         <div className="max-w-7xl mx-auto w-full relative z-10">
           <div className="bg-white/95 backdrop-blur-md border border-slate-200/60 p-8 md:p-12 rounded-3xl shadow-xl max-w-2xl text-slate-800 animate-fade-in-up">
             <span className="px-3.5 py-1 text-xs md:text-sm font-semibold bg-isf-orange/10 text-isf-orange rounded-full inline-flex items-center gap-1.5 mb-5">
@@ -69,14 +69,14 @@ export function IsfHyderabad2024() {
               An Event to Celebrate Your Visions and Ventures. Network with the most brilliant and influential minds, pitch your ideas to top investors, and learn from industry pioneers who have paved the way.
             </p>
             <div className="flex flex-col sm:flex-row gap-3">
-              <Link 
-                to="/registration/delegate" 
+              <Link
+                to="/registration/delegate"
                 className="inline-flex items-center justify-center text-xs md:text-sm font-bold uppercase tracking-wider bg-isf-orange hover:bg-isf-orange-hover text-white px-6 py-3.5 rounded shadow-md transition-all duration-300"
               >
                 Register as Delegate <ArrowRight size={14} className="ml-2" />
               </Link>
-              <a 
-                href="#schedule" 
+              <a
+                href="#schedule"
                 className="inline-flex items-center justify-center text-xs md:text-sm font-bold uppercase tracking-wider border border-slate-300 text-slate-700 hover:bg-slate-100 px-6 py-3.5 rounded transition-all duration-300"
               >
                 Explore Agenda
@@ -115,14 +115,14 @@ export function IsfHyderabad2024() {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
             {hyderabadSpeakers.slice(0, speakerCount).map((speaker, idx) => (
-              <div 
-                key={idx} 
+              <div
+                key={idx}
                 className="bg-white rounded-2xl border border-slate-200/60 p-6 flex flex-col items-center text-center hover:shadow-md transition-shadow duration-300"
               >
                 <div className="w-24 h-24 rounded-full overflow-hidden mb-4 border-2 border-isf-orange/20">
-                  <img 
-                    src={speaker.image} 
-                    alt={speaker.name} 
+                  <img
+                    src={speaker.image}
+                    alt={speaker.name}
                     className="w-full h-full object-cover object-top"
                     onError={(e) => {
                       e.currentTarget.src = "/assets/images/user-placeholder.png";
@@ -141,7 +141,7 @@ export function IsfHyderabad2024() {
 
           {hyderabadSpeakers.length > 8 && (
             <div className="flex justify-center mt-12">
-              <button 
+              <button
                 onClick={toggleSpeakers}
                 className="inline-flex items-center gap-1.5 px-6 py-3 border border-slate-300 rounded-xl text-xs md:text-sm font-bold text-slate-700 hover:bg-slate-100 transition-colors"
               >
@@ -177,15 +177,15 @@ export function IsfHyderabad2024() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {hyderabadRoundtables.map((rt, idx) => (
-              <div 
-                key={idx} 
+              <div
+                key={idx}
                 className="bg-gradient-to-br from-white to-slate-50/50 border border-slate-200 rounded-3xl p-6 md:p-8 hover:border-isf-orange transition-all duration-300"
               >
                 <h3 className="text-lg font-bold text-slate-900 border-b border-slate-100 pb-3 flex items-center gap-2 mb-4">
                   <CheckCircle2 className="w-5 h-5 text-isf-orange" />
                   {rt.title}
                 </h3>
-                
+
                 {rt.members && rt.members.length > 0 && (
                   <div className="space-y-3">
                     <p className="text-xs font-semibold text-slate-400 uppercase tracking-widest">Participants &amp; Leadership:</p>
@@ -225,7 +225,7 @@ export function IsfHyderabad2024() {
                 <div key={idx} className="relative group">
                   {/* Timeline dot */}
                   <div className="absolute -left-[31px] top-1.5 bg-white border-2 border-isf-orange w-4 h-4 rounded-full group-hover:bg-isf-orange transition-colors"></div>
-                  
+
                   <div className="space-y-1">
                     <span className="inline-flex items-center gap-1 text-xs font-bold text-isf-orange uppercase tracking-wider">
                       <Clock size={12} />
@@ -286,15 +286,15 @@ export function IsfHyderabad2024() {
                 </Link>
               </div>
             </div>
-            
+
             {/* Mock Map Image or Beautiful Graphic */}
             <div className="relative rounded-3xl overflow-hidden shadow-lg border border-slate-200 min-h-[300px]">
-              <iframe 
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3806.6346252102073!2d78.35824987597143!3d17.429312001596767!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb93f5b7cb3ab3%3A0xe7a5cfa7907feea!2sEngineering%20Staff%20College%20of%20India%20(ESCI)!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin" 
-                width="100%" 
-                height="450" 
-                style={{ border: 0 }} 
-                allowFullScreen={true} 
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3806.6346252102073!2d78.35824987597143!3d17.429312001596767!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb93f5b7cb3ab3%3A0xe7a5cfa7907feea!2sEngineering%20Staff%20College%20of%20India%20(ESCI)!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin"
+                width="100%"
+                height="450"
+                style={{ border: 0 }}
+                allowFullScreen={true}
                 loading="lazy"
                 title="Google Maps Location"
               ></iframe>
@@ -302,7 +302,7 @@ export function IsfHyderabad2024() {
           </div>
         </div>
       </section>
-      
+
     </div>
   );
 }

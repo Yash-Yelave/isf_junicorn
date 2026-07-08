@@ -38,11 +38,7 @@ export function Navbar() {
     },
     {
       name: "Dignitaries",
-      path: "#",
-      submenu: [
-        { name: "Distinguished Guests", path: "/distinguished-guests" },
-        { name: "Dignitaries & CXOs", path: "/distinguished-guests" }
-      ]
+      path: "/distinguished-guests"
     },
     {
       name: "About Us",
