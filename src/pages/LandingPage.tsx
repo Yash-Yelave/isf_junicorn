@@ -307,13 +307,13 @@ export function LandingPage() {
     <div className="font-inter pt-20">
       
       {/* 1. Global Mentorship Program Hero Section */}
-      <section className="bg-gradient-to-r from-orange-50 to-orange-100 py-16 md:py-24 border-b border-gray-200">
+      <section className="bg-gradient-to-r from-orange-50 to-orange-100 py-10 md:py-14 border-b border-gray-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           <div className="space-y-6">
             <span className="text-isf-orange font-bold uppercase tracking-wider text-xs block">
               Global Mentorship Program
             </span>
-            <h1 className="text-3xl md:text-5xl font-extrabold text-slate-900 leading-tight font-baskerville">
+            <h1 className="text-3xl md:text-5xl font-extrabold text-slate-900 leading-tight">
               Join the International Startup Foundation’s Global Mentorship Program – One Hour a Week
             </h1>
             <p className="text-sm text-slate-600 leading-relaxed">
@@ -341,69 +341,14 @@ export function LandingPage() {
             <img
               src="/assets/images/1hour-1week.png"
               alt="One Hour a Week"
-              className="w-full max-w-md mx-auto object-contain"
+              className="w-full max-h-[300px] md:max-h-[340px] mx-auto object-contain"
             />
           </div>
         </div>
       </section>
 
-      {/* 2. Success Stories Testimonials */}
-      <section className="py-16 bg-white border-b border-gray-100">
-        <div className="max-w-4xl mx-auto px-4 text-center space-y-6">
-          <h2 className="text-xs font-bold tracking-widest text-slate-400 uppercase font-inter">
-            STARTUP SUCCESS STORIES
-          </h2>
-          
-          <div className="relative px-8 md:px-12">
-            {/* The Main Card */}
-            <div className="bg-[#f9f9f9] p-8 md:p-12 rounded-xl shadow-xs border border-gray-200 text-center flex flex-col items-center justify-center min-h-[260px] space-y-4">
-              
-              {/* Profile Image */}
-              {successStories[storyIndex].image && (
-                <div className="w-16 h-16 rounded-full overflow-hidden border border-gray-200 shadow-xxs">
-                  <img
-                    src={successStories[storyIndex].image}
-                    alt={successStories[storyIndex].author}
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-              )}
-              
-              {/* Quote Text */}
-              <p className="text-xs md:text-sm text-slate-600 leading-relaxed italic max-w-2xl mx-auto font-inter">
-                "{successStories[storyIndex].text}"
-              </p>
-              
-              {/* Author & Designation Info */}
-              <div className="pt-2">
-                <h3 className="text-slate-800 font-bold text-sm tracking-wide">
-                  {successStories[storyIndex].author}
-                </h3>
-                <p className="text-[10px] text-slate-500 font-medium mt-0.5">
-                  {successStories[storyIndex].role}
-                </p>
-              </div>
-            </div>
-            
-            {/* Carousel Buttons - Positioned Centered & Outside Card */}
-            <button
-              onClick={handlePrevStory}
-              className="absolute left-0 top-1/2 -translate-y-1/2 bg-white border border-gray-200 text-slate-400 hover:text-isf-orange p-2.5 rounded-full shadow-sm hover:shadow transition-all focus:outline-none cursor-pointer flex items-center justify-center"
-            >
-              <ChevronLeft size={16} strokeWidth={1.5} />
-            </button>
-            <button
-              onClick={handleNextStory}
-              className="absolute right-0 top-1/2 -translate-y-1/2 bg-white border border-gray-200 text-slate-400 hover:text-isf-orange p-2.5 rounded-full shadow-sm hover:shadow transition-all focus:outline-none cursor-pointer flex items-center justify-center"
-            >
-              <ChevronRight size={16} strokeWidth={1.5} />
-            </button>
-          </div>
-        </div>
-      </section>
-
       {/* 3. Three Core Pillars (Conference, Exhibition, Pitch Competition) */}
-      <section className="py-16 bg-slate-50 border-b border-gray-200">
+      <section className="py-16 bg-gradient-to-tr from-[#FFF7E3]/60 via-slate-50 to-[#FFE7AB]/25 border-b border-gray-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             
@@ -412,7 +357,7 @@ export function LandingPage() {
               <span className="text-xs font-bold text-isf-orange tracking-widest uppercase block">
                 Conference
               </span>
-              <h3 className="text-xl font-bold font-baskerville">
+              <h3 className="text-xl font-bold">
                 ISF 2024 Hyderabad
               </h3>
               <p className="text-xs text-slate-500 leading-relaxed">
@@ -431,7 +376,7 @@ export function LandingPage() {
               <span className="text-xs font-bold text-isf-orange tracking-widest uppercase block">
                 Exhibition
               </span>
-              <h3 className="text-xl font-bold font-baskerville">
+              <h3 className="text-xl font-bold">
                 ISF 2024 Hyderabad
               </h3>
               <p className="text-xs text-slate-500 leading-relaxed">
@@ -450,7 +395,7 @@ export function LandingPage() {
               <span className="text-xs font-bold text-isf-orange tracking-widest uppercase block">
                 Pitch Competition
               </span>
-              <h3 className="text-xl font-bold font-baskerville">
+              <h3 className="text-xl font-bold">
                 ISF 2024 Hyderabad
               </h3>
               <p className="text-xs text-slate-500 leading-relaxed">
