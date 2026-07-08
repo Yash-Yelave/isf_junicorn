@@ -325,23 +325,23 @@ export function LandingPage() {
                     <span className="text-isf-orange font-bold uppercase tracking-wider text-xs block font-inter">
                       {slide.tag}
                     </span>
-                    <h1 className="text-3xl md:text-5xl font-extrabold text-slate-900 leading-tight">
+                    <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold text-slate-900 leading-tight">
                       {slide.title}
                     </h1>
-                    <p className="text-sm text-slate-600 leading-relaxed max-w-2xl font-inter min-h-[60px]">
+                    <p className="text-sm md:text-base text-slate-600 leading-relaxed max-w-2xl font-inter min-h-[60px]">
                       {slide.desc}
                     </p>
                     
                     <div className="flex flex-wrap gap-4 pt-2">
                       <Link
                         to={slide.primaryBtnLink}
-                        className="bg-isf-orange hover:bg-isf-orange-hover text-white text-xs font-bold uppercase tracking-wider px-6 py-3.5 rounded shadow transition-all cursor-pointer"
+                        className="bg-isf-orange hover:bg-isf-orange-hover text-white text-xs sm:text-sm font-semibold uppercase tracking-wider px-5 sm:px-6 py-3 sm:py-3.5 rounded shadow transition-all cursor-pointer"
                       >
                         {slide.primaryBtnText}
                       </Link>
                       <Link
                         to={slide.secondaryBtnLink}
-                        className="bg-white border border-gray-300 text-slate-800 text-xs font-bold uppercase tracking-wider px-6 py-3.5 rounded hover:bg-gray-50 transition-all cursor-pointer"
+                        className="bg-white border border-gray-300 text-slate-800 text-xs sm:text-sm font-semibold uppercase tracking-wider px-5 sm:px-6 py-3 sm:py-3.5 rounded hover:bg-gray-50 transition-all cursor-pointer"
                       >
                         {slide.secondaryBtnText}
                       </Link>
