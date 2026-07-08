@@ -94,8 +94,8 @@ const Cohort3: React.FC = () => {
             
             <div className="relative z-10 flex flex-col md:flex-row gap-12 items-center">
               <div className="md:w-1/3 text-center md:text-left">
-                <h2 className="text-sm font-extrabold text-white tracking-widest uppercase mb-3 font-inter">Ten domains, one mission</h2>
-                <h3 className="text-3xl md:text-4xl font-black mb-6 font-inter text-white">Focus areas for innovation</h3>
+                <h2 className="text-sm font-extrabold !text-white tracking-widest uppercase mb-3 font-inter">Ten domains, one mission</h2>
+                <h3 className="text-3xl md:text-4xl font-black mb-6 font-inter !text-white">Focus areas for innovation</h3>
                 <p className="text-slate-400 text-lg mb-8">Not limited to these — but here's where we're looking hardest.</p>
               </div>
               
