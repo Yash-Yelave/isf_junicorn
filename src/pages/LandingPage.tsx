@@ -399,57 +399,63 @@ export function LandingPage() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             
             {/* Pillar 1: Conference */}
-            <div className="bg-white p-8 rounded-lg border border-gray-200 shadow-sm space-y-4 hover:border-isf-orange transition-colors group">
-              <span className="text-xs font-bold text-isf-orange tracking-widest uppercase block">
-                Conference
-              </span>
-              <h3 className="text-xl font-bold">
-                ISF 2024 Hyderabad
-              </h3>
-              <p className="text-xs text-slate-500 leading-relaxed">
-                Unlock potential networks, exchange strategic visions, and participate in high-level discussions with global startup delegates.
-              </p>
+            <div className="bg-white p-8 rounded-lg border border-gray-200 shadow-sm space-y-4 hover:border-isf-orange transition-colors group flex flex-col justify-between">
+              <div className="space-y-4">
+                <span className="text-xs font-bold text-isf-orange tracking-widest uppercase block">
+                  Conference
+                </span>
+                <h3 className="text-lg sm:text-xl font-bold">
+                  ISF 2024 Hyderabad
+                </h3>
+                <p className="text-sm text-slate-600 leading-relaxed">
+                  Unlock potential networks, exchange strategic visions, and participate in high-level discussions with global startup delegates.
+                </p>
+              </div>
               <Link
                 to="/registration/delegate"
-                className="inline-block text-xs font-bold text-isf-orange hover:text-isf-orange-hover uppercase tracking-wider pt-2 group-hover:underline"
+                className="inline-block text-xs sm:text-sm font-bold text-isf-orange hover:text-isf-orange-hover uppercase tracking-wider pt-4 group-hover:underline"
               >
                 Take Part Now →
               </Link>
             </div>
 
             {/* Pillar 2: Exhibition */}
-            <div className="bg-white p-8 rounded-lg border border-gray-200 shadow-sm space-y-4 hover:border-isf-orange transition-colors group">
-              <span className="text-xs font-bold text-isf-orange tracking-widest uppercase block">
-                Exhibition
-              </span>
-              <h3 className="text-xl font-bold">
-                ISF 2024 Hyderabad
-              </h3>
-              <p className="text-xs text-slate-500 leading-relaxed">
-                Showcase your disruptive products, configure interactive stalls, and interact directly with target investors and CXOs.
-              </p>
+            <div className="bg-white p-8 rounded-lg border border-gray-200 shadow-sm space-y-4 hover:border-isf-orange transition-colors group flex flex-col justify-between">
+              <div className="space-y-4">
+                <span className="text-xs font-bold text-isf-orange tracking-widest uppercase block">
+                  Exhibition
+                </span>
+                <h3 className="text-lg sm:text-xl font-bold">
+                  ISF 2024 Hyderabad
+                </h3>
+                <p className="text-sm text-slate-600 leading-relaxed">
+                  Showcase your disruptive products, configure interactive stalls, and interact directly with target investors and CXOs.
+                </p>
+              </div>
               <Link
                 to="/registration/exhibitor"
-                className="inline-block text-xs font-bold text-isf-orange hover:text-isf-orange-hover uppercase tracking-wider pt-2 group-hover:underline"
+                className="inline-block text-xs sm:text-sm font-bold text-isf-orange hover:text-isf-orange-hover uppercase tracking-wider pt-4 group-hover:underline"
               >
                 Book a Stall →
               </Link>
             </div>
 
             {/* Pillar 3: Pitch Competition */}
-            <div className="bg-white p-8 rounded-lg border border-gray-200 shadow-sm space-y-4 hover:border-isf-orange transition-colors group">
-              <span className="text-xs font-bold text-isf-orange tracking-widest uppercase block">
-                Pitch Competition
-              </span>
-              <h3 className="text-xl font-bold">
-                ISF 2024 Hyderabad
-              </h3>
-              <p className="text-xs text-slate-500 leading-relaxed">
-                Elevator pitch in front of leading global venture capitals, business matchmakers, and receive startup evaluations.
-              </p>
+            <div className="bg-white p-8 rounded-lg border border-gray-200 shadow-sm space-y-4 hover:border-isf-orange transition-colors group flex flex-col justify-between">
+              <div className="space-y-4">
+                <span className="text-xs font-bold text-isf-orange tracking-widest uppercase block">
+                  Pitch Competition
+                </span>
+                <h3 className="text-lg sm:text-xl font-bold">
+                  ISF 2024 Hyderabad
+                </h3>
+                <p className="text-sm text-slate-600 leading-relaxed">
+                  Elevator pitch in front of leading global venture capitals, business matchmakers, and receive startup evaluations.
+                </p>
+              </div>
               <Link
                 to="/registration/pitch"
-                className="inline-block text-xs font-bold text-isf-orange hover:text-isf-orange-hover uppercase tracking-wider pt-2 group-hover:underline"
+                className="inline-block text-xs sm:text-sm font-bold text-isf-orange hover:text-isf-orange-hover uppercase tracking-wider pt-4 group-hover:underline"
               >
                 Enroll Now →
               </Link>
