@@ -532,23 +532,23 @@ export function LandingPage() {
       <section className="py-20 bg-slate-50 border-b border-gray-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center space-y-2 mb-12">
-            <span className="text-[11px] font-bold text-gray-400 uppercase tracking-widest block font-inter">
+            <span className="text-xs font-bold text-gray-400 uppercase tracking-widest block font-inter">
               INTERNATIONAL STARTUP FESTIVALS
             </span>
-            <h2 className="text-4xl md:text-5xl font-bold font-baskerville text-slate-900 leading-tight">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold font-baskerville text-slate-900 leading-tight">
               ISF Events Timeline
             </h2>
           </div>
 
           {/* Tab buttons */}
-          <div className="flex justify-center gap-3 relative z-10 -mb-[1px]">
+          <div className="flex justify-center gap-2 sm:gap-3 relative z-10 -mb-[1px] flex-wrap sm:flex-nowrap">
             {Object.keys(events).map((year) => (
               <button
                 key={year}
                 onClick={() => setActiveTab(year)}
-                className={`px-8 py-3.5 text-xl font-bold rounded-t-xl transition-all focus:outline-none cursor-pointer ${
+                className={`px-4 sm:px-8 py-2 md:py-3.5 text-sm sm:text-lg md:text-xl font-bold rounded-t-xl transition-all focus:outline-none cursor-pointer ${
                   activeTab === year
-                    ? "bg-[#FFF7E3] text-[#D45625] border-t border-x border-[#FFE7C4]/30"
+                    ? "bg-[#FFF7E3] text-[#D45625] border-t border-x border-[#FFE7C4]/30 font-extrabold"
                     : "bg-[#ECEFF1] text-[#1E293B] hover:bg-[#E2E8F0]"
                 }`}
               >
