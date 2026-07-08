@@ -50,7 +50,11 @@ export function Navbar() {
     },
     {
       name: "Junicorns",
-      path: "/junicornshub"
+      path: "#",
+      submenu: [
+        { name: "Junicorns Hub", path: "/junicornshub" },
+        { name: "Cohort 3.0", path: "/cohort-3" }
+      ]
     }
   ];
 
