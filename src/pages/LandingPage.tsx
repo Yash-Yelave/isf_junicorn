@@ -393,68 +393,68 @@ export function LandingPage() {
         </div>
       </section>
 
-      {/* 3. Three Core Pillars (Conference, Exhibition, Pitch Competition) */}
+      {/* 3. Three Event Cards: Pune, USA, AI Summit */}
       <section className="py-16 bg-gradient-to-tr from-[#FFF7E3]/60 via-slate-50 to-[#FFE7AB]/25 border-b border-gray-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            
-            {/* Pillar 1: Conference */}
+
+            {/* Card 1: ISF 2024 Pune */}
             <div className="bg-white p-8 rounded-lg border border-gray-200 shadow-sm space-y-4 hover:border-isf-orange transition-colors group flex flex-col justify-between">
               <div className="space-y-4">
                 <span className="text-xs font-bold text-isf-orange tracking-widest uppercase block">
                   Conference
                 </span>
                 <h3 className="text-lg sm:text-xl font-bold">
-                  ISF 2024 Hyderabad
+                  ISF 2024 Pune
                 </h3>
                 <p className="text-sm text-slate-600 leading-relaxed">
-                  Unlock potential networks, exchange strategic visions, and participate in high-level discussions with global startup delegates.
+                  Connect with Pune's vibrant startup ecosystem, engage in strategic conversations, and explore collaboration opportunities with emerging innovators.
                 </p>
               </div>
               <Link
-                to="/isf-hyderabad-2024-main"
+                to="/isf-2024-pune"
                 className="inline-block text-xs sm:text-sm font-bold text-isf-orange hover:text-isf-orange-hover uppercase tracking-wider pt-4 group-hover:underline"
               >
                 Take Part Now →
               </Link>
             </div>
 
-            {/* Pillar 2: Exhibition */}
+            {/* Card 2: ISF 2024 USA */}
             <div className="bg-white p-8 rounded-lg border border-gray-200 shadow-sm space-y-4 hover:border-isf-orange transition-colors group flex flex-col justify-between">
               <div className="space-y-4">
                 <span className="text-xs font-bold text-isf-orange tracking-widest uppercase block">
-                  Exhibition
+                  Global Summit
                 </span>
                 <h3 className="text-lg sm:text-xl font-bold">
-                  ISF 2024 Hyderabad
+                  ISF 2024 USA
                 </h3>
                 <p className="text-sm text-slate-600 leading-relaxed">
-                  Showcase your disruptive products, configure interactive stalls, and interact directly with target investors and CXOs.
+                  Join global delegates in New Jersey for high-impact networking, investor matchmaking, and cross-border startup collaboration at ISF's USA chapter.
                 </p>
               </div>
               <Link
-                to="/isf-hyderabad-2024-main"
+                to="/conference-delegate-registration-isf-usa-2024"
                 className="inline-block text-xs sm:text-sm font-bold text-isf-orange hover:text-isf-orange-hover uppercase tracking-wider pt-4 group-hover:underline"
               >
                 Take Part Now →
               </Link>
             </div>
 
-            {/* Pillar 3: Pitch Competition */}
+            {/* Card 3: ISF AI Summit 2025 */}
             <div className="bg-white p-8 rounded-lg border border-gray-200 shadow-sm space-y-4 hover:border-isf-orange transition-colors group flex flex-col justify-between">
               <div className="space-y-4">
                 <span className="text-xs font-bold text-isf-orange tracking-widest uppercase block">
-                  Pitch Competition
+                  AI Summit
                 </span>
                 <h3 className="text-lg sm:text-xl font-bold">
-                  ISF 2024 Hyderabad
+                  ISF AI Summit 2025
                 </h3>
                 <p className="text-sm text-slate-600 leading-relaxed">
-                  Elevator pitch in front of leading global venture capitals, business matchmakers, and receive startup evaluations.
+                  Explore the frontier of artificial intelligence with top researchers, founders, and investors. Shape the future of tech at ISF's premier AI conference.
                 </p>
               </div>
               <Link
-                to="/isf-hyderabad-2024-main"
+                to="/isf-ai-summit"
                 className="inline-block text-xs sm:text-sm font-bold text-isf-orange hover:text-isf-orange-hover uppercase tracking-wider pt-4 group-hover:underline"
               >
                 Take Part Now →
