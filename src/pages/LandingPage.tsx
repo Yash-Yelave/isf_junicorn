@@ -412,7 +412,7 @@ export function LandingPage() {
                 </p>
               </div>
               <Link
-                to="/registration/delegate"
+                to="/isf-hyderabad-2024-main"
                 className="inline-block text-xs sm:text-sm font-bold text-isf-orange hover:text-isf-orange-hover uppercase tracking-wider pt-4 group-hover:underline"
               >
                 Take Part Now →
@@ -433,10 +433,10 @@ export function LandingPage() {
                 </p>
               </div>
               <Link
-                to="/registration/exhibitor"
+                to="/isf-hyderabad-2024-main"
                 className="inline-block text-xs sm:text-sm font-bold text-isf-orange hover:text-isf-orange-hover uppercase tracking-wider pt-4 group-hover:underline"
               >
-                Book a Stall →
+                Take Part Now →
               </Link>
             </div>
 
@@ -454,10 +454,10 @@ export function LandingPage() {
                 </p>
               </div>
               <Link
-                to="/registration/pitch"
+                to="/isf-hyderabad-2024-main"
                 className="inline-block text-xs sm:text-sm font-bold text-isf-orange hover:text-isf-orange-hover uppercase tracking-wider pt-4 group-hover:underline"
               >
-                Enroll Now →
+                Take Part Now →
               </Link>
             </div>
 
