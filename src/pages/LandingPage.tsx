@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { Calendar, MapPin, ChevronLeft, ChevronRight, Play } from "lucide-react";
+import { Calendar, MapPin, ChevronLeft, ChevronRight, Play, Clock, Building, Map } from "lucide-react";
 
 export function LandingPage() {
   const [activeTab, setActiveTab] = useState("2025");
@@ -102,7 +102,19 @@ export function LandingPage() {
     setStoryIndex((prev) => (prev - 1 + successStories.length) % successStories.length);
   };
 
-  const events = {
+  interface EventDetail {
+    tag: string;
+    title: string;
+    date?: string;
+    time?: string;
+    location?: string;
+    city?: string;
+    desc?: string;
+    isHighlight?: boolean;
+    link: string;
+  }
+
+  const events: Record<string, EventDetail[]> = {
     "2025": [
       {
         tag: "ISF 2025 USA",
@@ -151,20 +163,38 @@ export function LandingPage() {
     ],
     "2023": [
       {
-        tag: "ISF 2023 INDIA",
-        title: "ISF 2023",
-        date: "Aug 10-12",
-        location: "Hyderabad",
+        tag: "About ISF 2023 Mumbai",
+        title: "An Introduction",
+        desc: "Join us at India's Startup Fest, a hub for innovators and entrepreneurs. Witness the future of business unfold in a celebration of ideas, technology, and enterprise. Ignite your startup passion!",
         link: "/isf-2023"
+      },
+      {
+        tag: "ISF INDIA STARTUP FESTIVAL, 2023",
+        title: "Mark Unmissable Days",
+        date: "September 27 - 28, 2023",
+        time: "09:00 AM - 05:00 PM (Asia/Kolkata)",
+        location: "Bombay Exhibition Centre (BEC)",
+        city: "Mumbai, India",
+        isHighlight: true,
+        link: ""
       }
     ],
     "2022": [
       {
-        tag: "ISF 2022 INDIA",
-        title: "ISF 2022",
-        date: "Dec 01-03",
-        location: "Bangalore",
-        link: "/isf-2022"
+        tag: "About ISF 2022 Bangalore",
+        title: "An Introduction",
+        desc: "The largest network of best minds from the startup ecosystem of India is coming together to redefine the future of the StartUp Revolution. The Best Space to CONNECT, COLLABORATE and CELEBRATE India Today & India Tomorrow! CEO Connect, Investor Connect, Enabler Connect, StartUp Expo, Panel Discussions and Awards are the key highlights of ISF-2022 Bengaluru",
+        link: ""
+      },
+      {
+        tag: "ISF INDIA STARTUP FESTIVAL, 2022",
+        title: "Redefining The Startup",
+        date: "October 1 - 2, 2022",
+        time: "09:00 AM - 05:00 PM (Asia/Kolkata)",
+        location: "Sathya Sai Grama, Muddenahalli",
+        city: "Bangalore, India",
+        isHighlight: true,
+        link: ""
       }
     ]
   };
@@ -532,51 +562,138 @@ export function LandingPage() {
 
           {/* Tab content card */}
           <div className="bg-[#FFF7E3] p-8 md:p-14 rounded-3xl md:rounded-[2rem] shadow-sm border border-[#FFE7C4]/30">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-              {events[activeTab as keyof typeof events].map((ev, idx) => (
-                <div
-                  key={idx}
-                  className="flex flex-col justify-between items-start space-y-6"
-                >
-                  <div className="space-y-4">
-                    <span className="text-xs font-semibold text-slate-500 uppercase tracking-wider block font-inter">
-                      {ev.tag}
-                    </span>
-                    <h3 className="text-2xl md:text-3xl font-bold font-baskerville text-slate-900 leading-snug">
-                      {ev.title}
-                    </h3>
-                    <div className="space-y-2">
-                      <div className="flex items-center gap-2.5 text-sm text-slate-600">
-                        <Calendar size={16} className="text-[#D45625] shrink-0" />
-                        <span>{ev.date}</span>
-                      </div>
-                      <div className="flex items-center gap-2.5 text-sm text-slate-600">
-                        <MapPin size={16} className="text-[#D45625] shrink-0" />
-                        <span>{ev.location}</span>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-stretch">
+              {events[activeTab as keyof typeof events].map((ev, idx) => {
+                if (ev.isHighlight) {
+                  return (
+                    <div
+                      key={idx}
+                      className="bg-[#FFE7AB] p-8 md:p-10 rounded-3xl border border-[#FFDE95] flex flex-col justify-between"
+                    >
+                      <div className="space-y-4">
+                        <span className="text-xs font-semibold text-slate-600 uppercase tracking-wider block font-inter">
+                          {ev.tag}
+                        </span>
+                        <h3 className="text-2xl md:text-3xl font-bold font-baskerville text-slate-900 leading-snug">
+                          {ev.title}
+                        </h3>
+                        <div className="space-y-3 pt-2">
+                          <div className="flex items-center gap-2.5 text-sm text-slate-800 font-medium">
+                            <Calendar size={16} className="text-slate-900 shrink-0" />
+                            <span>{ev.date}</span>
+                          </div>
+                          {ev.time && (
+                            <div className="flex items-center gap-2.5 text-sm text-slate-800 font-medium">
+                              <Clock size={16} className="text-slate-900 shrink-0" />
+                              <span>{ev.time}</span>
+                            </div>
+                          )}
+                          <div className="flex items-center gap-2.5 text-sm text-slate-800 font-medium">
+                            <Building size={16} className="text-slate-900 shrink-0" />
+                            <span>{ev.location}</span>
+                          </div>
+                          {ev.city && (
+                            <div className="flex items-center gap-2.5 text-sm text-slate-800 font-medium">
+                              <Map size={16} className="text-slate-900 shrink-0" />
+                              <span>{ev.city}</span>
+                            </div>
+                          )}
+                        </div>
                       </div>
                     </div>
+                  );
+                }
+
+                if (ev.desc) {
+                  return (
+                    <div
+                      key={idx}
+                      className="flex flex-col justify-between items-start space-y-6"
+                    >
+                      <div className="space-y-4">
+                        <span className="text-xs font-semibold text-slate-500 uppercase tracking-wider block font-inter">
+                          {ev.tag}
+                        </span>
+                        <h3 className="text-3xl md:text-4xl font-bold font-baskerville text-slate-900 leading-snug">
+                          {ev.title}
+                        </h3>
+                        <p className="text-slate-600 leading-relaxed text-sm md:text-base">
+                          {ev.desc}
+                        </p>
+                      </div>
+                      {ev.link && (
+                        <div>
+                          {ev.link.startsWith("http") ? (
+                            <a
+                              href={ev.link}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="inline-block bg-[#D45625] hover:bg-[#B8451B] text-white text-xs font-extrabold uppercase tracking-wider px-6 py-3.5 rounded shadow transition-colors cursor-pointer"
+                            >
+                              KNOW MORE
+                            </a>
+                          ) : (
+                            <Link
+                              to={ev.link}
+                              className="inline-block bg-[#D45625] hover:bg-[#B8451B] text-white text-xs font-extrabold uppercase tracking-wider px-6 py-3.5 rounded shadow transition-colors cursor-pointer"
+                            >
+                              KNOW MORE
+                            </Link>
+                          )}
+                        </div>
+                      )}
+                    </div>
+                  );
+                }
+
+                // Standard fallback card
+                return (
+                  <div
+                    key={idx}
+                    className="flex flex-col justify-between items-start space-y-6"
+                  >
+                    <div className="space-y-4">
+                      <span className="text-xs font-semibold text-slate-500 uppercase tracking-wider block font-inter">
+                        {ev.tag}
+                      </span>
+                      <h3 className="text-2xl md:text-3xl font-bold font-baskerville text-slate-900 leading-snug">
+                        {ev.title}
+                      </h3>
+                      <div className="space-y-2">
+                        <div className="flex items-center gap-2.5 text-sm text-slate-600">
+                          <Calendar size={16} className="text-[#D45625] shrink-0" />
+                          <span>{ev.date}</span>
+                        </div>
+                        <div className="flex items-center gap-2.5 text-sm text-slate-600">
+                          <MapPin size={16} className="text-[#D45625] shrink-0" />
+                          <span>{ev.location}</span>
+                        </div>
+                      </div>
+                    </div>
+                    <div>
+                      {ev.link && (
+                        ev.link.startsWith("http") ? (
+                          <a
+                            href={ev.link}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-block bg-[#D45625] hover:bg-[#B8451B] text-white text-xs font-extrabold uppercase tracking-wider px-6 py-3.5 rounded shadow transition-colors cursor-pointer"
+                          >
+                            KNOW MORE
+                          </a>
+                        ) : (
+                          <Link
+                            to={ev.link}
+                            className="inline-block bg-[#D45625] hover:bg-[#B8451B] text-white text-xs font-extrabold uppercase tracking-wider px-6 py-3.5 rounded shadow transition-colors cursor-pointer"
+                          >
+                            KNOW MORE
+                          </Link>
+                        )
+                      )}
+                    </div>
                   </div>
-                  <div>
-                    {ev.link.startsWith("http") ? (
-                      <a
-                        href={ev.link}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-block bg-[#D45625] hover:bg-[#B8451B] text-white text-xs font-extrabold uppercase tracking-wider px-6 py-3.5 rounded shadow transition-colors cursor-pointer"
-                      >
-                        KNOW MORE
-                      </a>
-                    ) : (
-                      <Link
-                        to={ev.link}
-                        className="inline-block bg-[#D45625] hover:bg-[#B8451B] text-white text-xs font-extrabold uppercase tracking-wider px-6 py-3.5 rounded shadow transition-colors cursor-pointer"
-                      >
-                        KNOW MORE
-                      </Link>
-                    )}
-                  </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
           </div>
         </div>
