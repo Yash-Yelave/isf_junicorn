@@ -1,37 +1,43 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Calendar, MapPin, ChevronLeft, ChevronRight, Play, Clock, Building, Map } from "lucide-react";
 
 export function LandingPage() {
   const [activeTab, setActiveTab] = useState("2025");
-  const [storyIndex, setStoryIndex] = useState(0);
+  const [heroIndex, setHeroIndex] = useState(0);
 
-  const successStories = [
+  const heroSlides = [
     {
-      text: "Our gratitude to ISF knows no bounds. They are not just fundraisers; they are partners in success. From crafting a compelling pitch to securing funds, ISF's dedication was evident. We couldn't have achieved this milestone without them. Thank you for being the backbone of our success!",
-      author: "Sarath",
-      role: "Founder, Hiring Hood",
-      image: "/assets/2024/03/sarath.jpg"
+      tag: "Global Mentorship Program",
+      title: "Join the International Startup Foundation’s Global Mentorship Program – One Hour a Week",
+      desc: "Empower the next generation of innovators! This program connects mentors (experienced professionals, industry leaders) with mentees (startups, students, and aspiring entrepreneurs) worldwide. Share your expertise, inspire growth, and make a global impact—all in just one hour a week.",
+      primaryBtnText: "Mentor Registration",
+      primaryBtnLink: "/mentor-form",
+      secondaryBtnText: "Mentee Registration",
+      secondaryBtnLink: "/registration/student",
+      image: "/assets/images/1hour-1week.png",
+      bgGradient: "from-orange-50 to-orange-100"
     },
     {
-      text: "I can't thank ISF enough for their unwavering commitment. They stood by us at every turn, ensuring we had the right strategies in place. With their expertise, we secured the funding needed to propel our vision. ISF is the true partner every startup dreams of having!",
-      author: "Ram Kumar Varma",
-      role: "Founder, Native Araku Coffee",
-      image: "/assets/2024/03/Ram-Kumar-Verma.jpg"
-    },
-    {
-      text: "I can't thank ISF enough! How the platform empowers entrepreneurs at every turn is incredible! Those expert 'evaluations' are exactly what we needed to secure our funding!",
-      author: "Shaker Dixit",
-      role: "Founder, Amealio",
-      image: "/assets/2024/03/Shaker-Dixit.jpg"
-    },
-    {
-      text: "ISF has been our guiding light in our fundraising journey. From the first meeting to the 'funds in the bank', their support has been unparalleled. Kudos to ISF for making our dream a reality!",
-      author: "Venkata Subramanyam",
-      role: "Founder, Atomstate Technologies Private Limited",
-      image: "/assets/2024/03/Venkata-Subramanyam.jpg"
+      tag: "ISF Events & Summits",
+      title: "ISF Global Junicorn & AI Summit 2025",
+      desc: "Empowering 100,000 innovators! Join us at the world's leading summit bridging artificial intelligence and startup ventures, connecting young innovators from college incubators directly to global investors and leaders.",
+      primaryBtnText: "Summit Details",
+      primaryBtnLink: "/isf-ai-summit",
+      secondaryBtnText: "Explore Junicorns",
+      secondaryBtnLink: "/junicornshub",
+      image: "/assets/cohort3/junicorns-logo.png",
+      bgGradient: "from-blue-50 to-indigo-105"
     }
   ];
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setHeroIndex((prev) => (prev + 1) % heroSlides.length);
+    }, 5000);
+    return () => clearInterval(timer);
+  }, [heroSlides.length]);
+
 
   const carouselSlides = [
     {
@@ -94,13 +100,7 @@ export function LandingPage() {
     setCarouselIndex((prev) => (prev - 1 + carouselSlides.length) % carouselSlides.length);
   };
 
-  const handleNextStory = () => {
-    setStoryIndex((prev) => (prev + 1) % successStories.length);
-  };
 
-  const handlePrevStory = () => {
-    setStoryIndex((prev) => (prev - 1 + successStories.length) % successStories.length);
-  };
 
   interface EventDetail {
     tag: string;
@@ -305,45 +305,91 @@ export function LandingPage() {
 
   return (
     <div className="font-inter pt-20">
-      
-      {/* 1. Global Mentorship Program Hero Section */}
-      <section className="bg-gradient-to-r from-orange-50 to-orange-100 py-10 md:py-14 border-b border-gray-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-          <div className="space-y-6">
-            <span className="text-isf-orange font-bold uppercase tracking-wider text-xs block">
-              Global Mentorship Program
-            </span>
-            <h1 className="text-3xl md:text-5xl font-extrabold text-slate-900 leading-tight">
-              Join the International Startup Foundation’s Global Mentorship Program – One Hour a Week
-            </h1>
-            <p className="text-sm text-slate-600 leading-relaxed">
-              Empower the next generation of innovators! This program connects mentors (experienced professionals, industry leaders) with mentees (startups, students, and aspiring entrepreneurs) worldwide. Share your expertise, inspire growth, and make a global impact—all in just one hour a week.
-            </p>
-            <p className="text-xs text-slate-500 italic">
-              This information is highly secured through password-protected mentor data and an AI-driven algorithm that ensures privacy and security, while effectively connecting mentees with suitable mentors.
-            </p>
-            <div className="flex gap-4 pt-2">
-              <Link
-                to="/1hour-per-week#form"
-                className="bg-isf-orange hover:bg-isf-orange-hover text-white text-xs font-bold uppercase tracking-wider px-6 py-3.5 rounded shadow transition-all"
-              >
-                Register Now
-              </Link>
-              <Link
-                to="/investors"
-                className="bg-white border border-gray-300 text-slate-800 text-xs font-bold uppercase tracking-wider px-6 py-3.5 rounded hover:bg-gray-50 transition-all"
-              >
-                Login
-              </Link>
+      {/* 1. Hero Sliding Banner Section */}
+      <section className="relative w-full border-b border-gray-200 overflow-hidden h-[680px] md:h-[520px]">
+        {/* Carousel Container */}
+        <div 
+          className="flex w-full h-full transition-transform duration-700 ease-in-out"
+          style={{ transform: `translateX(-${heroIndex * 100}%)` }}
+        >
+          {heroSlides.map((slide, idx) => (
+            <div 
+              key={idx} 
+              className={`w-full h-full shrink-0 flex items-center justify-center bg-gradient-to-r ${slide.bgGradient} py-12 md:py-16`}
+            >
+              <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+                <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-center h-full">
+                  
+                  {/* Left Column Text */}
+                  <div className="md:col-span-7 space-y-5 text-left flex flex-col justify-center min-h-[260px]">
+                    <span className="text-isf-orange font-bold uppercase tracking-wider text-xs block font-inter">
+                      {slide.tag}
+                    </span>
+                    <h1 className="text-3xl md:text-5xl font-extrabold text-slate-900 leading-tight">
+                      {slide.title}
+                    </h1>
+                    <p className="text-sm text-slate-600 leading-relaxed max-w-2xl font-inter min-h-[60px]">
+                      {slide.desc}
+                    </p>
+                    
+                    <div className="flex flex-wrap gap-4 pt-2">
+                      <Link
+                        to={slide.primaryBtnLink}
+                        className="bg-isf-orange hover:bg-isf-orange-hover text-white text-xs font-bold uppercase tracking-wider px-6 py-3.5 rounded shadow transition-all cursor-pointer"
+                      >
+                        {slide.primaryBtnText}
+                      </Link>
+                      <Link
+                        to={slide.secondaryBtnLink}
+                        className="bg-white border border-gray-300 text-slate-800 text-xs font-bold uppercase tracking-wider px-6 py-3.5 rounded hover:bg-gray-50 transition-all cursor-pointer"
+                      >
+                        {slide.secondaryBtnText}
+                      </Link>
+                    </div>
+                  </div>
+
+                  {/* Right Column Graphic */}
+                  <div className="md:col-span-5 relative flex items-center justify-center">
+                    <img
+                      src={slide.image}
+                      alt={slide.title}
+                      className="w-full max-h-[240px] md:max-h-[300px] object-contain"
+                      onError={(e) => {
+                        e.currentTarget.src = "/assets/isf-logo.webp";
+                      }}
+                    />
+                  </div>
+                </div>
+              </div>
             </div>
-          </div>
-          <div className="relative">
-            <img
-              src="/assets/images/1hour-1week.png"
-              alt="One Hour a Week"
-              className="w-full max-h-[300px] md:max-h-[340px] mx-auto object-contain"
+          ))}
+        </div>
+
+        {/* Carousel Arrow Controls */}
+        <button
+          onClick={() => setHeroIndex((prev) => (prev - 1 + heroSlides.length) % heroSlides.length)}
+          className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white text-slate-800 hover:text-isf-orange p-3 rounded-full shadow border border-gray-200 z-20 focus:outline-none transition-all cursor-pointer flex items-center justify-center"
+        >
+          <ChevronLeft size={20} strokeWidth={2.5} />
+        </button>
+        <button
+          onClick={() => setHeroIndex((prev) => (prev + 1) % heroSlides.length)}
+          className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white text-slate-800 hover:text-isf-orange p-3 rounded-full shadow border border-gray-200 z-20 focus:outline-none transition-all cursor-pointer flex items-center justify-center"
+        >
+          <ChevronRight size={20} strokeWidth={2.5} />
+        </button>
+
+        {/* Indicator Dots */}
+        <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex space-x-2 z-20">
+          {heroSlides.map((_, idx) => (
+            <button
+              key={idx}
+              onClick={() => setHeroIndex(idx)}
+              className={`w-2.5 h-2.5 rounded-full transition-all cursor-pointer ${
+                heroIndex === idx ? "bg-isf-orange scale-110" : "bg-slate-300 hover:bg-slate-400"
+              }`}
             />
-          </div>
+          ))}
         </div>
       </section>
 
