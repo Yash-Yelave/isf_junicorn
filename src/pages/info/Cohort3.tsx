@@ -244,17 +244,6 @@ const Cohort3: React.FC = () => {
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-24 bg-isf-orange relative overflow-hidden">
-        <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%23ffffff\' fill-opacity=\'0.1\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')] opacity-30"></div>
-        <div className="max-w-4xl mx-auto px-6 text-center relative z-10 text-white">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">Ready to Build the Future?</h2>
-          <p className="text-xl text-white/90 mb-10">Join Cohort 3.0 today and transform your ideas into reality.</p>
-          <Link to="/registration" className="inline-flex items-center gap-2 px-8 py-4 bg-white text-isf-orange rounded-full font-bold text-lg transition-all duration-300 hover:scale-105 hover:shadow-xl">
-            Register for Cohort 3.0 <ArrowRight className="w-5 h-5" />
-          </Link>
-        </div>
-      </section>
 
     </div>
   );
