@@ -105,12 +105,14 @@ export function LandingPage() {
   const events = {
     "2025": [
       {
+        tag: "ISF 2025 USA",
         title: "ISF Global AI Summit 2025",
         date: "29th and 30th May 2025",
         location: "Austin, USA",
         link: "https://globalaisummit.www.isfnetwork.org/"
       },
       {
+        tag: "ISF 2025 USA",
         title: "Junicorn Taking Ideas to Global Platform",
         date: "29 MAY, 2025",
         location: "Dallas, United States of America",
@@ -119,25 +121,51 @@ export function LandingPage() {
     ],
     "2024": [
       {
+        tag: "ISF 2024 INDIA",
         title: "ISF 2024 Hyderabad (Main Event)",
         date: "September 26 - 28, 2024",
         location: "Engineering Staff College of India (ESCI)",
         link: "/isf-hyderabad-2024-main"
       },
       {
+        tag: "ISF 2024 INDIA",
         title: "Investor Connect & Curtain Raiser",
         date: "April 15, 2024",
         location: "MIT - ADT University, Pune",
         link: "/isf-2024-pune"
       },
-      { title: "ISF Global CXO Summit", date: "June 5 - 9, 2024", location: "Montego Bay, Jamaica", link: "/isf-jamaica-isf-global-cxo-summit" },
-      { title: "CXO Summit & Curtain Raiser", date: "June 2, 2024", location: "Bell Works, Holmdel, New Jersey", link: "/conference-delegate-registration-isf-usa-2024" }
+      {
+        tag: "ISF 2024 JAMAICA",
+        title: "ISF Global CXO Summit",
+        date: "June 5 - 9, 2024",
+        location: "Montego Bay, Jamaica",
+        link: "/isf-jamaica-isf-global-cxo-summit"
+      },
+      {
+        tag: "ISF 2024 USA",
+        title: "CXO Summit & Curtain Raiser",
+        date: "June 2, 2024",
+        location: "Bell Works, Holmdel, New Jersey",
+        link: "/conference-delegate-registration-isf-usa-2024"
+      }
     ],
     "2023": [
-      { title: "ISF 2023", date: "Aug 10-12", location: "Hyderabad", link: "/isf-2023" }
+      {
+        tag: "ISF 2023 INDIA",
+        title: "ISF 2023",
+        date: "Aug 10-12",
+        location: "Hyderabad",
+        link: "/isf-2023"
+      }
     ],
     "2022": [
-      { title: "ISF 2022", date: "Dec 01-03", location: "Bangalore", link: "/isf-2022" }
+      {
+        tag: "ISF 2022 INDIA",
+        title: "ISF 2022",
+        date: "Dec 01-03",
+        location: "Bangalore",
+        link: "/isf-2022"
+      }
     ]
   };
 
@@ -474,25 +502,27 @@ export function LandingPage() {
       </section>
 
       {/* 4. Events Timeline Tabs */}
-      <section className="py-16 bg-white border-b border-gray-100">
+      <section className="py-20 bg-slate-50 border-b border-gray-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center space-y-3 mb-10">
-            <h2 className="text-2xl font-bold font-baskerville">
+          <div className="text-center space-y-2 mb-12">
+            <span className="text-[11px] font-bold text-gray-400 uppercase tracking-widest block font-inter">
+              INTERNATIONAL STARTUP FESTIVALS
+            </span>
+            <h2 className="text-4xl md:text-5xl font-bold font-baskerville text-slate-900 leading-tight">
               ISF Events Timeline
             </h2>
-            <div className="w-12 h-1 bg-isf-orange mx-auto rounded"></div>
           </div>
 
           {/* Tab buttons */}
-          <div className="flex justify-center space-x-2 md:space-x-4 border-b border-gray-200 pb-4 mb-8">
+          <div className="flex justify-center gap-3 relative z-10 -mb-[1px]">
             {Object.keys(events).map((year) => (
               <button
                 key={year}
                 onClick={() => setActiveTab(year)}
-                className={`px-6 py-2.5 text-xs font-bold uppercase tracking-wider rounded transition-all focus:outline-none ${
+                className={`px-8 py-3.5 text-xl font-bold rounded-t-xl transition-all focus:outline-none cursor-pointer ${
                   activeTab === year
-                    ? "bg-isf-orange text-white"
-                    : "text-slate-600 hover:text-isf-orange hover:bg-gray-50"
+                    ? "bg-[#FFF7E3] text-[#D45625] border-t border-x border-[#FFE7C4]/30"
+                    : "bg-[#ECEFF1] text-[#1E293B] hover:bg-[#E2E8F0]"
                 }`}
               >
                 {year}
@@ -500,49 +530,54 @@ export function LandingPage() {
             ))}
           </div>
 
-          {/* Tab content */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {events[activeTab as keyof typeof events].map((ev, idx) => (
-              <div
-                key={idx}
-                className="p-6 rounded-lg border border-gray-100 bg-slate-50 flex flex-col justify-between"
-              >
-                <div className="space-y-3">
-                  <h3 className="text-lg font-bold text-slate-900 font-baskerville">
-                    {ev.title}
-                  </h3>
-                  <div className="flex flex-col sm:flex-row gap-2 sm:gap-6 text-xs text-slate-500">
-                    <span className="flex items-center gap-1.5">
-                      <Calendar size={14} className="text-isf-orange" />
-                      {ev.date}
+          {/* Tab content card */}
+          <div className="bg-[#FFF7E3] p-8 md:p-14 rounded-3xl md:rounded-[2rem] shadow-sm border border-[#FFE7C4]/30">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+              {events[activeTab as keyof typeof events].map((ev, idx) => (
+                <div
+                  key={idx}
+                  className="flex flex-col justify-between items-start space-y-6"
+                >
+                  <div className="space-y-4">
+                    <span className="text-xs font-semibold text-slate-500 uppercase tracking-wider block font-inter">
+                      {ev.tag}
                     </span>
-                    <span className="flex items-center gap-1.5">
-                      <MapPin size={14} className="text-isf-orange" />
-                      {ev.location}
-                    </span>
+                    <h3 className="text-2xl md:text-3xl font-bold font-baskerville text-slate-900 leading-snug">
+                      {ev.title}
+                    </h3>
+                    <div className="space-y-2">
+                      <div className="flex items-center gap-2.5 text-sm text-slate-600">
+                        <Calendar size={16} className="text-[#D45625] shrink-0" />
+                        <span>{ev.date}</span>
+                      </div>
+                      <div className="flex items-center gap-2.5 text-sm text-slate-600">
+                        <MapPin size={16} className="text-[#D45625] shrink-0" />
+                        <span>{ev.location}</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div>
+                    {ev.link.startsWith("http") ? (
+                      <a
+                        href={ev.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-block bg-[#D45625] hover:bg-[#B8451B] text-white text-xs font-extrabold uppercase tracking-wider px-6 py-3.5 rounded shadow transition-colors cursor-pointer"
+                      >
+                        KNOW MORE
+                      </a>
+                    ) : (
+                      <Link
+                        to={ev.link}
+                        className="inline-block bg-[#D45625] hover:bg-[#B8451B] text-white text-xs font-extrabold uppercase tracking-wider px-6 py-3.5 rounded shadow transition-colors cursor-pointer"
+                      >
+                        KNOW MORE
+                      </Link>
+                    )}
                   </div>
                 </div>
-                <div className="pt-6">
-                  {ev.link.startsWith("http") ? (
-                    <a
-                      href={ev.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-xs font-bold text-isf-orange hover:underline uppercase tracking-wider"
-                    >
-                      Know More →
-                    </a>
-                  ) : (
-                    <Link
-                      to={ev.link}
-                      className="text-xs font-bold text-isf-orange hover:underline uppercase tracking-wider"
-                    >
-                      Know More →
-                    </Link>
-                  )}
-                </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
       </section>
