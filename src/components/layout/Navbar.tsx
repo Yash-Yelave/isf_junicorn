@@ -130,13 +130,7 @@ export function Navbar() {
               </div>
             ))}
 
-            {/* Mentorship Dashboard CTA */}
-            <Link
-              to="/investors"
-              className="text-sm font-semibold text-white bg-isf-orange hover:bg-isf-orange-hover px-5 py-2.5 rounded transition-all"
-            >
-              Login / Dashboard
-            </Link>
+
           </div>
 
           {/* Mobile hamburger menu */}
@@ -195,15 +189,7 @@ export function Navbar() {
               </div>
             ))}
 
-            <div className="pt-4">
-              <Link
-                to="/investors"
-                className="block text-center text-sm font-semibold text-white bg-isf-orange py-3 rounded"
-                onClick={closeMenu}
-              >
-                Login / Dashboard
-              </Link>
-            </div>
+
           </div>
         </div>
       )}
