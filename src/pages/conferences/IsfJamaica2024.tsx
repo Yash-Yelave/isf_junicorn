@@ -1,28 +1,68 @@
 import { useState } from "react";
-import { Calendar, MapPin, CheckCircle, ChevronLeft, ChevronRight, Quote, FileText, Download } from "lucide-react";
+import { Calendar, MapPin, CheckCircle, ChevronLeft, ChevronRight, Quote, FileText, Download, Clock } from "lucide-react";
 import { Link } from "react-router-dom";
 import { jamaicaEventData } from "./jamaicaData";
 
 export function IsfJamaica2024() {
   const [activeSlide, setActiveSlide] = useState(0);
+  const [activeTab, setActiveTab] = useState<"AM" | "PM">("AM");
 
-  const agenda = [
-    {
-      time: "6th June 2024 - AM",
-      title: "Inaugural & Welcome Addresses",
-      desc: "Featuring Senator the Hon. Aubyn Hill, Councillor Dwight Crawford, Jason Hall (High Commissioner of Jamaica to India), Sanjay Gupta (Charge d'Affaires, India), and Dr. JA Chowdary."
-    },
-    {
-      time: "6th June 2024 - PM (Session 1)",
-      title: "Keynotes on Health & Agribusiness",
-      desc: "Medical Service keynotes by Western Health Authority, Caribbean Tech Hub integrations by Conrad Robinson, and Sustainable Agribusiness partnering options by Marlene Porter."
-    },
-    {
-      time: "6th June 2024 - PM (Session 2)",
-      title: "Panel: Jamaica - Tech Hub of the Caribbean",
-      desc: "Panelists: Sri Atluri, Dr. Prasad, Jason Hall, Oral Heaven, Metry Seaga, Krishna Bendapudi, Deenanath Harapanahalli, Dr. Siva Mahesh Tangutooru."
+  // De-duplicate items at raw level
+  const uniqueAgenda = jamaicaEventData.agenda.filter((item, idx, self) => {
+    const descStr = item.desc.join(" ").trim().toLowerCase();
+    return self.findIndex(t => 
+      t.time.trim().toLowerCase() === item.time.trim().toLowerCase() && 
+      t.desc.join(" ").trim().toLowerCase() === descStr
+    ) === idx;
+  });
+
+  // Group unique agenda items by time
+  const groupedAgenda: { time: string; title: string; items: string[]; isBreak: boolean }[] = [];
+  
+  uniqueAgenda.forEach(item => {
+    const existing = groupedAgenda.find(g => g.time.toLowerCase() === item.time.toLowerCase());
+    if (existing) {
+      item.desc.forEach(d => {
+        if (!existing.items.includes(d)) {
+          existing.items.push(d);
+        }
+      });
+    } else {
+      groupedAgenda.push({
+        time: item.time,
+        title: item.title,
+        items: [...item.desc],
+        isBreak: item.isBreak
+      });
     }
-  ];
+  });
+
+  const getCleanItems = (items: string[]) => {
+    const clean: string[] = [];
+    items.forEach(item => {
+      if (clean.some(c => c.includes(item))) return;
+      const subIdx = clean.findIndex(c => item.includes(c));
+      if (subIdx !== -1) {
+        clean[subIdx] = item;
+      } else {
+        clean.push(item);
+      }
+    });
+    return clean;
+  };
+
+  // Filter AM (9:30 am to 12:00 pm) and PM (12:30 pm onwards)
+  const amAgenda = groupedAgenda.filter(item => {
+    const t = item.time.toLowerCase();
+    return t.includes("am") || t.startsWith("12:00");
+  });
+
+  const pmAgenda = groupedAgenda.filter(item => {
+    const t = item.time.toLowerCase();
+    return !t.includes("am") && !t.startsWith("12:00");
+  });
+
+  const currentAgenda = activeTab === "AM" ? amAgenda : pmAgenda;
 
   const getDignitaryImage = (name: string) => {
     const match = jamaicaEventData.dignitaries.find(d => d.name === name);
@@ -42,26 +82,32 @@ export function IsfJamaica2024() {
 
       {/* 1. Header Banner */}
       <section 
-        className="text-white py-20 md:py-28 relative bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: "url('/assets/images/global-cxo-summit.png')" }}
+        className="text-white pt-24 pb-32 md:pt-32 md:pb-40 relative bg-cover bg-center bg-no-repeat overflow-hidden"
+        style={{ backgroundImage: "url('/assets/images/jamaica-beach.jpg')" }}
       >
-        <div className="absolute inset-0 bg-slate-950/75 z-0"></div>
+        <div className="absolute inset-0 bg-slate-950/60 z-0"></div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6 relative z-10">
           <span className="text-isf-orange font-bold uppercase tracking-widest text-xs block">
             ISF GLOBAL CXO SUMMIT
           </span>
-          <h1 className="text-3xl md:text-5xl font-extrabold font-baskerville text-white tracking-tight">
-            ISF 2024 Jamaica
+          <h1 className="text-4xl md:text-6xl font-extrabold font-baskerville text-white leading-tight tracking-tight">
+            ISF 2024{" "}
+            <span className="whitespace-nowrap italic">
+              <span className="text-white">Jam</span>
+              <span className="text-amber-300">ai</span>
+              <span className="text-white">ca</span>
+            </span>
           </h1>
-          <p className="text-base text-slate-250 max-w-2xl mx-auto font-light">
-            Montego Bay, Jamaica — June 5th to June 9th, 2024
+          <p className="text-base md:text-lg text-slate-200 max-w-2xl mx-auto font-light leading-relaxed">
+            Montego Bay — June 5th to 9th, 2024<br />
+            <span className="text-amber-100/80 font-baskerville italic font-medium">Empowering the Next Wave of Caribbean Innovation & Global Capital</span>
           </p>
           <div className="flex flex-wrap justify-center gap-6 pt-2 text-xs">
-            <span className="flex items-center gap-1.5 text-slate-350 font-medium">
+            <span className="flex items-center gap-1.5 text-slate-300 font-medium">
               <Calendar size={16} className="text-isf-orange" />
               June 5 - 9, 2024
             </span>
-            <span className="flex items-center gap-1.5 text-slate-350 font-medium">
+            <span className="flex items-center gap-1.5 text-slate-300 font-medium">
               <MapPin size={16} className="text-isf-orange" />
               BIMS Medical School, Montego Bay, Jamaica
             </span>
@@ -74,6 +120,15 @@ export function IsfJamaica2024() {
               Register Now
             </Link>
           </div>
+        </div>
+
+        {/* Shape Divider - Wave effect at the bottom */}
+        <div className="absolute bottom-0 left-0 w-full overflow-hidden leading-[0] z-10">
+          <svg className="relative block w-[calc(100%+1.3px)] h-[50px] md:h-[75px]" viewBox="0 0 1200 120" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M0,0 C150,90 350,120 600,120 C850,120 1050,90 1200,0 L1200,120 L0,120 Z" className="fill-orange-50/20"></path>
+            <path d="M0,30 C300,120 600,120 900,30 C1050,0 1150,0 1200,30 L1200,120 L0,120 Z" className="fill-white/70 opacity-40"></path>
+            <path d="M0,50 C300,140 900,40 1200,80 L1200,120 L0,120 Z" className="fill-white"></path>
+          </svg>
         </div>
       </section>
 
@@ -129,26 +184,89 @@ export function IsfJamaica2024() {
       {/* 4. Agenda */}
       <section className="py-16 max-w-5xl mx-auto px-4 space-y-12">
         <div className="text-center space-y-3">
-          <h2 className="text-2xl font-bold font-baskerville">
+          <span className="text-isf-orange font-bold uppercase tracking-widest text-xs">
+            CONFERENCE SCHEDULE
+          </span>
+          <h2 className="text-2xl sm:text-3xl font-bold font-baskerville">
             Global CXO Summit Agenda
           </h2>
           <div className="w-12 h-1 bg-isf-orange mx-auto rounded"></div>
         </div>
 
-        <div className="grid grid-cols-1 gap-6">
-          {agenda.map((item, idx) => (
-            <div key={idx} className="bg-white border border-gray-100 p-6 rounded-xl shadow-xs">
-              <span className="text-xxs font-bold text-isf-orange uppercase tracking-wider block mb-1">
-                {item.time}
-              </span>
-              <h3 className="text-sm font-bold text-slate-800 font-baskerville">
-                {item.title}
-              </h3>
-              <p className="text-xs text-slate-500 mt-2 leading-relaxed">
-                {item.desc}
-              </p>
-            </div>
-          ))}
+        {/* AM / PM Toggle Tabs */}
+        <div className="flex justify-center gap-4">
+          <button
+            onClick={() => setActiveTab("AM")}
+            className={`px-6 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider transition-all cursor-pointer ${
+              activeTab === "AM" 
+                ? "bg-isf-orange text-white shadow-sm" 
+                : "bg-white border border-slate-200 text-slate-600 hover:bg-slate-50"
+            }`}
+          >
+            Morning Session (AM)
+          </button>
+          <button
+            onClick={() => setActiveTab("PM")}
+            className={`px-6 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider transition-all cursor-pointer ${
+              activeTab === "PM" 
+                ? "bg-isf-orange text-white shadow-sm" 
+                : "bg-white border border-slate-200 text-slate-600 hover:bg-slate-50"
+            }`}
+          >
+            Afternoon Session (PM)
+          </button>
+        </div>
+
+        {/* Timeline Layout */}
+        <div className="relative border-l-2 border-orange-100 ml-4 md:ml-6 space-y-8 py-4 transition-all duration-500">
+          {currentAgenda.map((item, idx) => {
+            const cleanItems = getCleanItems(item.items);
+            return (
+              <div key={idx} className="relative pl-6 md:pl-8 group">
+                {/* Timeline dot */}
+                <div className="absolute -left-[9px] top-2 w-4 h-4 rounded-full border-2 border-isf-orange bg-white group-hover:scale-125 transition-transform duration-300 flex items-center justify-center">
+                  <div className="w-1.5 h-1.5 rounded-full bg-isf-orange group-hover:bg-isf-orange-hover animate-pulse"></div>
+                </div>
+
+                {/* Agenda Card */}
+                <div 
+                  className={`border rounded-xl p-5 md:p-6 shadow-xxs hover:shadow-sm transition-all duration-300 border-l-4 ${
+                    item.isBreak 
+                      ? "bg-orange-50/50 border-orange-200 border-l-isf-orange" 
+                      : "bg-white border-slate-150 border-l-orange-300 hover:border-l-isf-orange hover:border-isf-orange"
+                  }`}
+                >
+                  <div className="flex flex-wrap items-center justify-between gap-2 mb-3">
+                    <span className="flex items-center gap-1.5 text-xs font-bold text-isf-orange uppercase tracking-wider">
+                      <Clock size={14} />
+                      {item.time}
+                    </span>
+                    {item.title && item.title !== item.time && !item.isBreak && (
+                      <span className="text-xxs font-bold text-slate-500 uppercase tracking-widest bg-slate-100 px-2.5 py-1 rounded">
+                        {item.title}
+                      </span>
+                    )}
+                  </div>
+                  {item.title && item.title !== item.time && item.isBreak && (
+                    <h4 className="text-sm font-bold text-isf-orange font-baskerville mb-1">
+                      {item.title}
+                    </h4>
+                  )}
+                  <div className="mt-2 text-xs md:text-sm text-slate-700 font-medium leading-relaxed">
+                    {cleanItems.length === 1 ? (
+                      <p>{cleanItems[0]}</p>
+                    ) : (
+                      <ul className="list-disc pl-4 space-y-1.5">
+                        {cleanItems.map((sub, sIdx) => (
+                          <li key={sIdx}>{sub}</li>
+                        ))}
+                      </ul>
+                    )}
+                  </div>
+                </div>
+              </div>
+            );
+          })}
         </div>
       </section>
 

@@ -192,5 +192,311 @@ export const jamaicaEventData = {
       "name": "Visa Related Information",
       "url": "https://www.isfnetwork.org/wp-content/uploads/2024/04/Transit-Free-Routes-for-Holders-of-Indian-Passports.docx"
     }
+  ],
+  "agenda": [
+    {
+      "time": "9:30 am",
+      "title": "Registration",
+      "desc": [
+        "Registration of Delegates"
+      ],
+      "isBreak": true
+    },
+    {
+      "time": "10:00 am",
+      "title": "10:00 am",
+      "desc": [
+        "Opening Remarks \u2013 Moderator Rashmi Kumar CEO d'Code Consulting Services USA"
+      ],
+      "isBreak": false
+    },
+    {
+      "time": "10:00 am",
+      "title": "10:00 am",
+      "desc": [
+        "Rashmi Kumar CEO d'Code Consulting Services USA"
+      ],
+      "isBreak": false
+    },
+    {
+      "time": "10:05 am",
+      "title": "10:05 am",
+      "desc": [
+        "National Anthems of Jamaica and India"
+      ],
+      "isBreak": false
+    },
+    {
+      "time": "10:10 AM",
+      "title": "10:10 AM",
+      "desc": [
+        "Welcome Remarks: Dr. Guna Muppuri Founder, President & CEO Bioprist & Indies Group Jason Hall High Commissioner of Jamaica to India Sanjay Gupta The Charge d'Affaires, High Commission of India"
+      ],
+      "isBreak": false
+    },
+    {
+      "time": "10:10 AM",
+      "title": "10:10 AM",
+      "desc": [
+        "Dr. Guna Muppuri Founder, President & CEO Bioprist & Indies Group Jason Hall High Commissioner of Jamaica to India Sanjay Gupta The Charge d'Affaires, High Commission of India"
+      ],
+      "isBreak": false
+    },
+    {
+      "time": "10:25 AM",
+      "title": "10:25 AM",
+      "desc": [
+        "Opening Remarks: JA Chowdary Founder & Chairman, ISF Sri Atluri MD, Global Head of Enterprise Quality, BNY Mellon, USA Councillor Dwight Crawford Deputy Mayor Montego Bay, Jamaica"
+      ],
+      "isBreak": false
+    },
+    {
+      "time": "10:25 AM",
+      "title": "10:25 AM",
+      "desc": [
+        "JA Chowdary Founder & Chairman, ISF Sri Atluri MD, Global Head of Enterprise Quality, BNY Mellon, USA Councillor Dwight Crawford Deputy Mayor Montego Bay, Jamaica"
+      ],
+      "isBreak": false
+    },
+    {
+      "time": "10:50 AM",
+      "title": "10:50 AM",
+      "desc": [
+        "Ministerial Remarks: Sen. the Hon. Aubyn Hill Minister of Industry, Investment and Commerce"
+      ],
+      "isBreak": false
+    },
+    {
+      "time": "10:50 AM",
+      "title": "10:50 AM",
+      "desc": [
+        "Sen. the Hon. Aubyn Hill Minister of Industry, Investment and Commerce"
+      ],
+      "isBreak": false
+    },
+    {
+      "time": "",
+      "title": "",
+      "desc": [
+        "Sen. the Hon. Aubyn Hill"
+      ],
+      "isBreak": false
+    },
+    {
+      "time": "11:00 AM",
+      "title": "11:00 AM",
+      "desc": [
+        "Keynote Address Hon. Dr. Horace Chang Deputy Prime Minister and Minister of National Security, Jamaica"
+      ],
+      "isBreak": false
+    },
+    {
+      "time": "11:00 AM",
+      "title": "11:00 AM",
+      "desc": [
+        "Hon. Dr. Horace Chang Deputy Prime Minister and Minister of National Security, Jamaica"
+      ],
+      "isBreak": false
+    },
+    {
+      "time": "",
+      "title": "",
+      "desc": [
+        "Hon. Dr. Horace Chang Deputy Prime Minister and Minister of National Security, Jamaica"
+      ],
+      "isBreak": false
+    },
+    {
+      "time": "11:20 AM",
+      "title": "Coffee Break",
+      "desc": [
+        "Coffee & Networking Break"
+      ],
+      "isBreak": true
+    },
+    {
+      "time": "11:40 AM",
+      "title": "11:40 AM",
+      "desc": [
+        "Plenary: Jamaica\u2019s Economic Performance Shullette Cox, President, JAMPRO"
+      ],
+      "isBreak": false
+    },
+    {
+      "time": "11:40 AM",
+      "title": "11:40 AM",
+      "desc": [
+        "Shullette Cox, President, JAMPRO"
+      ],
+      "isBreak": false
+    },
+    {
+      "time": "",
+      "title": "",
+      "desc": [
+        "Shullette Cox, President, JAMPRO"
+      ],
+      "isBreak": false
+    },
+    {
+      "time": "12:00 PM",
+      "title": "12:00 PM",
+      "desc": [
+        "Fireside Chat: Establishing a Business in Jamaica Moderator JA Chowdary Guest Sen. the Hon. Aubyn Hill"
+      ],
+      "isBreak": false
+    },
+    {
+      "time": "12:00 PM",
+      "title": "12:00 PM",
+      "desc": [
+        "Moderator JA Chowdary Guest Sen. the Hon. Aubyn Hill"
+      ],
+      "isBreak": false
+    },
+    {
+      "time": "12:30 PM",
+      "title": "Networking Lunch",
+      "desc": [
+        "Lunch & Professional Networking"
+      ],
+      "isBreak": true
+    },
+    {
+      "time": "01:30 PM",
+      "title": "01:30 PM",
+      "desc": [
+        "Specific Sector Investment Opportunities Moderator Rashmi Kumar"
+      ],
+      "isBreak": false
+    },
+    {
+      "time": "01:30 PM",
+      "title": "01:30 PM",
+      "desc": [
+        "Moderator Rashmi Kumar"
+      ],
+      "isBreak": false
+    },
+    {
+      "time": "1:35 pm",
+      "title": "1:35 pm",
+      "desc": [
+        "Keynote (Medical Service) - Western Health Authority, St. Andrade Sinclair",
+        "Keynote (GDS/KPO): Jamaica: The Technology Hub of the Caribbean, Conrad Robinson, JAMPRO",
+        "Keynote (Tourism & Real Estate): Jamaica: the Global Tourism Destination of the Year, Carol Straw, JAMPRO",
+        "Keynote (Agribusiness): Partnering for Sustainable Agribusiness: Jamaica and India, Marlene Porter, JAMPRO",
+        "Q&A"
+      ],
+      "isBreak": false
+    },
+    {
+      "time": "1:35 pm",
+      "title": "1:35 pm",
+      "desc": [
+        "Keynote (Medical Service) - Western Health Authority, St. Andrade Sinclair",
+        "Keynote (GDS/KPO): Jamaica: The Technology Hub of the Caribbean, Conrad Robinson, JAMPRO",
+        "Keynote (Tourism & Real Estate): Jamaica: the Global Tourism Destination of the Year, Carol Straw, JAMPRO",
+        "Keynote (Agribusiness): Partnering for Sustainable Agribusiness: Jamaica and India, Marlene Porter, JAMPRO",
+        "Q&A"
+      ],
+      "isBreak": false
+    },
+    {
+      "time": "02:30 pm",
+      "title": "Coffee Break",
+      "desc": [
+        "Coffee & Networking Break"
+      ],
+      "isBreak": true
+    },
+    {
+      "time": "02:50 pm",
+      "title": "02:50 pm",
+      "desc": [
+        "Panel Discussion: Business opportunities and collaboration between India and Jamaica Moderator Kelli -Dawn Hamilton JSEZA Panelists Sri Atluri MD, Global Head of Enterprise Quality, BNY Melon, USA Dr. Prasad BIMS Jason Hall High Commissioner of Jamaica to India Oral Heaven President, Montego Bay Chamber of Commerce Metry Seaga, Presdient, Montego Bay Camber of Commerce and Industry, Jamaica Krishna Bendapudi, CEO, Rite Software"
+      ],
+      "isBreak": false
+    },
+    {
+      "time": "02:50 pm",
+      "title": "02:50 pm",
+      "desc": [
+        "Moderator Kelli -Dawn Hamilton JSEZA Panelists Sri Atluri MD, Global Head of Enterprise Quality, BNY Melon, USA Dr. Prasad BIMS Jason Hall High Commissioner of Jamaica to India Oral Heaven President, Montego Bay Chamber of Commerce Metry Seaga, Presdient, Montego Bay Camber of Commerce and Industry, Jamaica Krishna Bendapudi, CEO, Rite Software"
+      ],
+      "isBreak": false
+    },
+    {
+      "time": "",
+      "title": "",
+      "desc": [
+        "Moderator"
+      ],
+      "isBreak": false
+    },
+    {
+      "time": "03:30 PM",
+      "title": "03:30 PM",
+      "desc": [
+        "ISF Presentation Deenanath Harapanahalli, Co-Founder, ISF"
+      ],
+      "isBreak": false
+    },
+    {
+      "time": "03:30 PM",
+      "title": "03:30 PM",
+      "desc": [
+        "Deenanath Harapanahalli, Co-Founder, ISF"
+      ],
+      "isBreak": false
+    },
+    {
+      "time": "03:50 PM",
+      "title": "03:50 PM",
+      "desc": [
+        "Sri Sathya Sai University for Human Excellence Vivek Kumar"
+      ],
+      "isBreak": false
+    },
+    {
+      "time": "03:50 PM",
+      "title": "03:50 PM",
+      "desc": [
+        "Vivek Kumar"
+      ],
+      "isBreak": false
+    },
+    {
+      "time": "04:00 PM",
+      "title": "04:00 PM",
+      "desc": [
+        "Inauguration of Rite Software"
+      ],
+      "isBreak": false
+    },
+    {
+      "time": "04:10 PM",
+      "title": "04:10 PM",
+      "desc": [
+        "Closing Remarks Dr. Siva Mahesh Tangutooru, Co-Founder, ISF"
+      ],
+      "isBreak": false
+    },
+    {
+      "time": "04:10 PM",
+      "title": "04:10 PM",
+      "desc": [
+        "Dr. Siva Mahesh Tangutooru, Co-Founder, ISF"
+      ],
+      "isBreak": false
+    },
+    {
+      "time": "05:00 PM",
+      "title": "05:00 PM",
+      "desc": [
+        "Closing Cocktail Reception"
+      ],
+      "isBreak": false
+    }
   ]
 };
