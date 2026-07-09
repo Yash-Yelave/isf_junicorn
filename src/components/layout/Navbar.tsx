@@ -37,20 +37,20 @@ export function Navbar() {
       ]
     },
     {
-      name: "Dignitaries",
-      path: "/distinguished-guests"
-    },
-    {
-      name: "About Us",
-      path: "/about-us"
-    },
-    {
       name: "Junicorns",
       path: "#",
       submenu: [
         { name: "Junicorns Hub", path: "/junicornshub" },
         { name: "Cohort 3.0", path: "/cohort-3" }
       ]
+    },
+    {
+      name: "Dignitaries",
+      path: "/distinguished-guests"
+    },
+    {
+      name: "About Us",
+      path: "/about-us"
     }
   ];
 

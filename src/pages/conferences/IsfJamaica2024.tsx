@@ -1,5 +1,6 @@
-import { Calendar, MapPin, CheckCircle, ShieldCheck } from "lucide-react";
+import { Calendar, MapPin, CheckCircle } from "lucide-react";
 import { Link } from "react-router-dom";
+import { jamaicaEventData } from "./jamaicaData";
 
 export function IsfJamaica2024() {
   const agenda = [
@@ -20,50 +21,27 @@ export function IsfJamaica2024() {
     }
   ];
 
-  const opportunities = [
-    "Near-Shore Operations for KPOs and Tech Centers for US",
-    "Special Economic Zone Benefits",
-    "Investment Opportunities & High-Yield Development Projects",
-    "Tax Breaks & Governmental Special Support Channels"
-  ];
-
-  const dignitaries = [
-    { name: "Senator the Hon. Aubyn Hill", role: "Minister of Industry, Investment and Commerce, Jamaica" },
-    { name: "His Excellency Mr. Jason Hall", role: "High Commissioner of Jamaica to India" },
-    { name: "His Excellency Mr. Rungsung Masakui", role: "High Commissioner" },
-    { name: "Ms. Kellie-Dawn Hamilton", role: "MD, JAMPRO" },
-    { name: "Ms. Shullette Cox", role: "President, JAMPRO" },
-    { name: "Dr. J.A. Chowdary", role: "Founder & Chairman, ISF" },
-    { name: "Sri Atluri", role: "MD, Global Head of Enterprise Quality, BNY Mellon" },
-    { name: "Dr. Siva Mahesh Tangutooru", role: "Co-Founder and Director, ISF" },
-    { name: "Deenanath Harapanahalli", role: "Co-Founder and Director, ISF" },
-    { name: "Dr. Shanker Yalamanchali", role: "Founder & Technical Advisory Chairman" },
-    { name: "Dr. Guna Muppuri OD", role: "Founder, President & CEO, Bioprist & Indies Group" },
-    { name: "Santosh Kumar Yamsani", role: "Head of EQE Core Engineering, BNY Mellon" },
-    { name: "Major Sunil Shetty", role: "Founder, Security Analyst" }
-  ];
-
   return (
-    <div className="font-inter pb-16 pt-24 bg-white">
+    <div className="font-inter pb-16 pt-24 bg-gradient-to-br from-orange-50/30 via-white to-amber-50/20 min-h-screen">
 
       {/* 1. Header Banner */}
-      <section className="bg-[#111111] text-white py-16 md:py-20 relative overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6 relative z-10">
+      <section className="bg-transparent border-b border-gray-100 py-16 md:py-20 relative overflow-hidden text-center">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6 relative z-10">
           <span className="text-isf-orange font-bold uppercase tracking-widest text-xs block">
             ISF GLOBAL CXO SUMMIT
           </span>
-          <h1 className="text-3xl md:text-5xl font-extrabold font-baskerville tracking-tight">
+          <h1 className="text-3xl md:text-5xl font-extrabold font-baskerville text-slate-900 tracking-tight">
             ISF 2024 Jamaica
           </h1>
-          <p className="text-base text-slate-300 max-w-2xl mx-auto font-light">
+          <p className="text-base text-slate-600 max-w-2xl mx-auto font-light">
             Montego Bay, Jamaica — June 5th to June 9th, 2024
           </p>
           <div className="flex flex-wrap justify-center gap-6 pt-2 text-xs">
-            <span className="flex items-center gap-1.5 text-slate-300">
+            <span className="flex items-center gap-1.5 text-slate-500 font-medium">
               <Calendar size={16} className="text-isf-orange" />
               June 5 - 9, 2024
             </span>
-            <span className="flex items-center gap-1.5 text-slate-300">
+            <span className="flex items-center gap-1.5 text-slate-500 font-medium">
               <MapPin size={16} className="text-isf-orange" />
               BIMS Medical School, Montego Bay, Jamaica
             </span>
@@ -77,7 +55,6 @@ export function IsfJamaica2024() {
             </Link>
           </div>
         </div>
-        <div className="absolute inset-0 bg-slate-950/70 z-0"></div>
       </section>
 
       {/* 2. Intro */}
@@ -85,13 +62,13 @@ export function IsfJamaica2024() {
         <h2 className="text-2xl font-bold font-baskerville text-slate-800">
           Unlock Caribbean Tech and Investment Access
         </h2>
-        <p className="text-sm text-slate-600 leading-relaxed">
+        <p className="text-sm text-slate-600 leading-relaxed font-medium">
           Join us for exciting networking with Global CEOs, Top Investors & Mentors and Brilliant Startups. This is your premium chance to invest in Jamaica and build near-shore KPO/tech capabilities for the US market.
         </p>
       </section>
 
       {/* 3. Opportunities */}
-      <section className="py-16 bg-slate-50 border-t border-b border-gray-100">
+      <section className="py-16 bg-white/40 backdrop-blur-xs border-t border-b border-gray-100">
         <div className="max-w-5xl mx-auto px-4 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           <div className="space-y-6">
             <h2 className="text-2xl font-bold font-baskerville text-slate-800">
@@ -99,7 +76,7 @@ export function IsfJamaica2024() {
             </h2>
             <div className="w-12 h-1 bg-isf-orange rounded"></div>
             <div className="space-y-4">
-              {opportunities.map((opp, idx) => (
+              {jamaicaEventData.opportunities.map((opp, idx) => (
                 <div key={idx} className="flex items-start gap-2.5">
                   <CheckCircle className="w-5 h-5 text-isf-orange flex-shrink-0 mt-0.5" />
                   <p className="text-xs text-slate-600 font-semibold">{opp}</p>
@@ -113,7 +90,7 @@ export function IsfJamaica2024() {
             </h3>
             <p className="text-xs text-slate-500 leading-relaxed">
               BIMS Medical School<br />
-              1211 Providence Drive, Ironshore Highway, Montego Bay, Jamaica
+              Providence Drive, Ironshore Highway, Montego Bay, Jamaica
             </p>
             <div className="pt-2">
               <a
@@ -138,9 +115,9 @@ export function IsfJamaica2024() {
           <div className="w-12 h-1 bg-isf-orange mx-auto rounded"></div>
         </div>
 
-        <div className="space-y-6">
+        <div className="grid grid-cols-1 gap-6">
           {agenda.map((item, idx) => (
-            <div key={idx} className="bg-slate-50 border border-gray-100 p-6 rounded-lg">
+            <div key={idx} className="bg-white border border-gray-100 p-6 rounded-xl shadow-xs">
               <span className="text-xxs font-bold text-isf-orange uppercase tracking-wider block mb-1">
                 {item.time}
               </span>
@@ -156,25 +133,65 @@ export function IsfJamaica2024() {
       </section>
 
       {/* 5. Dignitaries */}
-      <section className="py-16 bg-slate-50 border-t border-gray-100">
+      <section className="py-16 bg-white/40 backdrop-blur-xs border-t border-b border-gray-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
           <div className="text-center space-y-3">
-            <h2 className="text-2xl font-bold font-baskerville">
+            <span className="text-isf-orange font-bold uppercase tracking-widest text-xs">
+              INTERNATIONAL STARTUP FESTIVAL 2024
+            </span>
+            <h2 className="text-2xl font-bold font-baskerville text-slate-900">
               Dignitaries at the Summit
             </h2>
             <div className="w-12 h-1 bg-isf-orange mx-auto rounded"></div>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
-            {dignitaries.map((member, idx) => (
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+            {jamaicaEventData.dignitaries.map((member, idx) => (
               <div
                 key={idx}
-                className="bg-white border border-gray-200 rounded-lg p-5 hover:border-isf-orange transition-colors flex flex-col justify-between"
+                className="bg-white border border-gray-200 rounded-xl p-4 shadow-sm hover:shadow-md hover:border-isf-orange transition-all duration-300 group flex flex-col items-center text-center"
               >
-                <h4 className="text-xs font-bold text-slate-800 font-baskerville">
+                <div className="w-24 h-24 mb-4 rounded-full overflow-hidden border-2 border-orange-100 shadow-sm">
+                  <img src={member.img} alt={member.name} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300" />
+                </div>
+                <h4 className="font-bold text-sm text-slate-800 font-baskerville leading-tight">
                   {member.name}
                 </h4>
-                <p className="text-xxs text-slate-500 mt-2 font-medium">
+                <p className="text-xs text-slate-500 mt-2 font-medium leading-snug">
+                  {member.role}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 6. Conference Team */}
+      <section className="py-16 bg-white/60 backdrop-blur-sm border-b border-gray-100">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+          <div className="text-center space-y-3">
+            <span className="text-isf-orange font-bold uppercase tracking-widest text-xs">
+              INTERNATIONAL STARTUP FESTIVAL 2024
+            </span>
+            <h2 className="text-2xl font-bold font-baskerville text-slate-900">
+              ISF Conference Team
+            </h2>
+            <div className="w-12 h-1 bg-isf-orange mx-auto rounded"></div>
+          </div>
+
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+            {jamaicaEventData.team.map((member, idx) => (
+              <div
+                key={idx}
+                className="bg-white border border-gray-200 rounded-xl p-4 shadow-sm hover:shadow-md hover:border-isf-orange transition-all duration-300 group flex flex-col items-center text-center"
+              >
+                <div className="w-24 h-24 mb-4 rounded-full overflow-hidden border-2 border-orange-100 shadow-sm">
+                  <img src={member.img} alt={member.name} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300" />
+                </div>
+                <h4 className="font-bold text-sm text-slate-800 font-baskerville leading-tight">
+                  {member.name}
+                </h4>
+                <p className="text-xs text-slate-500 mt-2 font-medium leading-snug">
                   {member.role}
                 </p>
               </div>
