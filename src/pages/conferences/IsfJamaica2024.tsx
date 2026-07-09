@@ -133,18 +133,20 @@ export function IsfJamaica2024() {
       </section>
 
       {/* 2. Intro */}
-      <section className="py-16 max-w-4xl mx-auto px-4 text-center space-y-6">
-        <h2 className="text-2xl font-bold font-baskerville text-slate-800">
-          Unlock Caribbean Tech and Investment Access
-        </h2>
-        <p className="text-sm text-slate-600 leading-relaxed font-medium">
-          Join us for exciting networking with Global CEOs, Top Investors & Mentors and Brilliant Startups. This is your premium chance to invest in Jamaica and build near-shore KPO/tech capabilities for the US market.
-        </p>
+      <section className="py-12 max-w-4xl mx-auto px-4">
+        <div className="bg-white border border-slate-150 rounded-2xl p-8 md:p-12 shadow-sm text-center space-y-6">
+          <h2 className="text-2xl font-bold font-baskerville text-slate-800">
+            Unlock Caribbean Tech and Investment Access
+          </h2>
+          <p className="text-sm text-slate-600 leading-relaxed font-medium">
+            Join us for exciting networking with Global CEOs, Top Investors & Mentors and Brilliant Startups. This is your premium chance to invest in Jamaica and build near-shore KPO/tech capabilities for the US market.
+          </p>
+        </div>
       </section>
 
       {/* 3. Opportunities */}
-      <section className="py-16 bg-white/40 backdrop-blur-xs border-t border-b border-gray-100">
-        <div className="max-w-5xl mx-auto px-4 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+      <section className="py-12 max-w-5xl mx-auto px-4">
+        <div className="bg-white/80 backdrop-blur-md border border-slate-150 rounded-2xl p-8 md:p-12 shadow-sm grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           <div className="space-y-6">
             <h2 className="text-2xl font-bold font-baskerville text-slate-800">
               ISF Jamaica Opportunities
@@ -159,7 +161,7 @@ export function IsfJamaica2024() {
               ))}
             </div>
           </div>
-          <div className="bg-white border border-gray-200 p-8 rounded-lg space-y-4 shadow-xxs">
+          <div className="bg-orange-50/30 border border-orange-100 p-8 rounded-xl space-y-4 shadow-xxs">
             <h3 className="text-base font-bold font-baskerville text-slate-800">
               Venue Location
             </h3>
@@ -271,7 +273,7 @@ export function IsfJamaica2024() {
       </section>
 
       {/* 5. Dignitaries */}
-      <section className="py-16 bg-white/40 backdrop-blur-xs border-t border-b border-gray-100">
+      <section className="py-20 bg-gradient-to-tr from-amber-50/45 via-orange-50/30 to-rose-50/25 border-t border-b border-orange-100/30">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
           <div className="text-center space-y-3">
             <span className="text-isf-orange font-bold uppercase tracking-widest text-xs">
@@ -305,7 +307,7 @@ export function IsfJamaica2024() {
       </section>
 
       {/* 5.5. Testimonial Slider ("Dignitary Speak") */}
-      <section className="py-20 bg-white/60 backdrop-blur-sm border-b border-gray-100">
+      <section className="py-20 bg-gradient-to-b from-white/40 via-orange-50/15 to-transparent">
         <div className="max-w-4xl mx-auto px-4 space-y-10">
           <div className="text-center space-y-3">
             <span className="text-isf-orange font-bold uppercase tracking-widest text-xs">
@@ -382,7 +384,7 @@ export function IsfJamaica2024() {
       </section>
 
       {/* 6. Conference Team */}
-      <section className="py-16 bg-white/40 backdrop-blur-xs border-b border-gray-100">
+      <section className="py-20 bg-gradient-to-br from-orange-50/50 via-amber-50/40 to-yellow-50/25 border-t border-b border-amber-100/20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
           <div className="text-center space-y-3">
             <span className="text-isf-orange font-bold uppercase tracking-widest text-xs">
@@ -416,7 +418,7 @@ export function IsfJamaica2024() {
       </section>
 
       {/* 7. Essential Document Downloads */}
-      <section className="py-20 bg-white/60 backdrop-blur-sm">
+      <section className="py-20 bg-gradient-to-t from-orange-50/30 via-white to-transparent">
         <div className="max-w-5xl mx-auto px-4 space-y-12">
           <div className="text-center space-y-3">
             <span className="text-isf-orange font-bold uppercase tracking-widest text-xs">
