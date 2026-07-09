@@ -144,5 +144,53 @@ export const jamaicaEventData = {
     "Special Economic Zone Benefits",
     "Investment Opportunities & High-Yield Development Projects",
     "Tax Breaks & Governmental Special Support Channels"
+  ],
+  "testimonials": [
+    {
+      "quote": "The International Startup Festival (ISF) CXO Global Summit and Retreat is an excellent opportunity to for companies to get a first-hand view of the investment opportunities that abound in Jamaica, particularly within the Global Digital Services Sector, which is a key priority for the country, experiencing exponential growth over the last decade. The ISF is also an excellent opportunity to grow Jamaica\u2019s tech industry by connecting startups with mentors and providing them with and ecosystem to grow their business and thrive. Ms. Kellie-Dawn Hamilton CEO, The Jamaica Special Economic Zone Authority",
+      "author": "Ms. Kellie-Dawn Hamilton",
+      "role": "CEO, The Jamaica Special Economic Zone Authority"
+    },
+    {
+      "quote": "The Ministry of Industry, Investment and Commerce (MIIC) welcomes the Indian delegation to the ISF Global CXO Summit in Montego Bay, Jamaica from June 5 to 7, 2024. This summit provides a prime platform for startups and entrepreneurs, fostering growth and development in Jamaica's dynamic business landscape. It aims to empower entrepreneurs to leverage their innovative and managerial skills, fostering opportunities and economic growth. Participating in the ISF Global CXO Summit will enable entrepreneurs to engage in vital business interactions, fostering strategic partnerships, innovative collaborations, and network expansion, thereby enhancing opportunities for linkages in Jamaica. This summit signifies significant progress in enhancing Jamaica-India ties, facilitating knowledge transfer, technological advancements, and expertise exchange. Such opportunities will bolster MSMEs' competitiveness by granting access to international markets, finance, technology, and specialized knowledge essential for sustainable development. Let's seize this chance to nurture a strong partnership fostering growth, innovation, and prosperity for both nations. Senator the Hon. Aubyn Hill Minister of Industry, Investment and Commerce, The Office of Prime Minister, Jamaica",
+      "author": "Senator the Hon. Aubyn Hill",
+      "role": "Minister of Industry, Investment and Commerce, The Office of Prime Minister, Jamaica"
+    },
+    {
+      "quote": "I'm delighted about the ISF Global CXO Summit in Montego Bay, Jamaica, June 5-7, 2024. Congratulations to Dr. Mahesh Tangutooru, Co-Founder and Director of ISF, for choosing Jamaica as the summit's location. Commendations to Dr. Guna Muppuri, Founder, President & CEO of Bioprist, for bridging stakeholders from his home country with his adopted one for this event. While abundant information on Jamaica's investment environment exists, here's a brief summary for summit participants. Jamaica, the largest English-speaking Island in the Caribbean and third largest English-speaking nation in the Western Hemisphere, maintains a stable democratic tradition with two major political parties, the Jamaica Labour Party (JLP) and the Peoples National Party (PNP), alternating in power. Kingston, Jamaica's capital, boasts global connectivity and is a thriving center for commerce and culture. Its Kingston Harbour, among the world's largest, handles significant maritime traffic, positioning Jamaica as a key multi-modal logistics hub. Montego Bay, the island's second city, excels in tourism and serves as a hub for technology and Business Process Outsourcing (BPO). Jamaica facilitates the exchange of knowledge and commerce, making it a pivotal player in global connectivity. Jamaica's stable political environment has driven its economic growth, with GDP exceeding USD 17 billion and per capita GDP reaching USD 7,000. The nation experienced 10 consecutive quarters of growth and swiftly rebounded from the COVID-19 pandemic. Strong macroeconomic fundamentals, including sustained growth, controlled inflation, a surplus in the current account, low unemployment, and declining debt-to-GDP ratio, make Jamaica increasingly appealing to investors. The service sector leads Jamaica's GDP (over 70%), followed by manufacturing (8%), Other industrial activities (13%), and agriculture (9%). Key sectors driving growth include tourism, agriculture, transport/logistics, manufacturing, global digital services, energy, mining, and creative industries. The Jamaica Stock Exchange ranks as the top-performing globally (Bloomberg 2015 and 2018). Recognized as a competitive investment destination in the Latin America and Caribbean (LAC) region, Jamaica ranks 71st out of 190 economies in the Doing Business Report 2020 and 4th in the Ease of Doing Business Index in the wider LAC region, offering a favorable opportunity for investors. His Excellency Mr. Rungsung Masakui High Commissioner, The High Commission of India in Jamaica",
+      "author": "His Excellency Mr. Rungsung Masakui",
+      "role": "High Commissioner, The High Commission of India in Jamaica"
+    },
+    {
+      "quote": "Greetings from Jamaica! On behalf of the Jamaica Promotions Corporation (JAMPRO), I'm thrilled to invite you to the ISF\u2019s CXO Global Summit & Retreat. As pioneers in fostering economic growth through exports, investment, and local linkages, we're excited to showcase Jamaica's investment prospects. With a robust economy, strategic nearshore location, and vibrant business environment, Jamaica is an enticing destination for investors. At JAMPRO, we're committed to facilitating your exploration of our dynamic market and helping you capitalize on abundant opportunities. We eagerly anticipate your participation in an exclusive investment seminar in Jamaica, where you'll: \u2022 Gain insights into Jamaica's thriving industries: global digital services, tourism, real estate, agriculture, and more. \u2022 Engage in discussions with government officials, industry experts, and local entrepreneurs. \u2022 Explore potential partnership opportunities with local businesses and stakeholders. \u2022 Experience Jamaica's rich culture, landscapes, and hospitality. Collaborating with ISF, our events aim to foster dialogue and partnerships between Indian investors and the Jamaican business community. We're excited to showcase investment opportunities in our beautiful island nation. Ms. Shullette Cox President, Jamaica Promotions Corporation (JAMPRO)",
+      "author": "Ms. Shullette Cox",
+      "role": "President, Jamaica Promotions Corporation (JAMPRO)"
+    }
+  ],
+  "downloads": [
+    {
+      "name": "FAQs Booklet",
+      "url": "https://www.isfnetwork.org/wp-content/uploads/2024/04/JSEZA-Booklet-FAQ-Horizontal.pdf"
+    },
+    {
+      "name": "Overview Document",
+      "url": "https://www.isfnetwork.org/wp-content/uploads/2024/04/JSEZA-Booklet-Overview.pdf"
+    },
+    {
+      "name": "Special Report",
+      "url": "https://www.isfnetwork.org/wp-content/uploads/2024/04/Jamaica-2023-2.pdf"
+    },
+    {
+      "name": "ISF 2024 Jamaica Brochure",
+      "url": "https://www.isfnetwork.org/wp-content/uploads/2024/04/ISF-JAMAICa-V2.pdf"
+    },
+    {
+      "name": "Comfort Letter Application Form",
+      "url": "https://www.isfnetwork.org/wp-content/uploads/2024/04/Comfort-Letter-Application-rev.-April2023.pdf"
+    },
+    {
+      "name": "Visa Related Information",
+      "url": "https://www.isfnetwork.org/wp-content/uploads/2024/04/Transit-Free-Routes-for-Holders-of-Indian-Passports.docx"
+    }
   ]
 };

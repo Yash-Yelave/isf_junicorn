@@ -1,8 +1,11 @@
-import { Calendar, MapPin, CheckCircle } from "lucide-react";
+import { useState } from "react";
+import { Calendar, MapPin, CheckCircle, ChevronLeft, ChevronRight, Quote, FileText, Download } from "lucide-react";
 import { Link } from "react-router-dom";
 import { jamaicaEventData } from "./jamaicaData";
 
 export function IsfJamaica2024() {
+  const [activeSlide, setActiveSlide] = useState(0);
+
   const agenda = [
     {
       time: "6th June 2024 - AM",
@@ -20,6 +23,19 @@ export function IsfJamaica2024() {
       desc: "Panelists: Sri Atluri, Dr. Prasad, Jason Hall, Oral Heaven, Metry Seaga, Krishna Bendapudi, Deenanath Harapanahalli, Dr. Siva Mahesh Tangutooru."
     }
   ];
+
+  const getDignitaryImage = (name: string) => {
+    const match = jamaicaEventData.dignitaries.find(d => d.name === name);
+    return match ? match.img : "/assets/images/user-placeholder.png";
+  };
+
+  const handleNextSlide = () => {
+    setActiveSlide((prev) => (prev + 1) % jamaicaEventData.testimonials.length);
+  };
+
+  const handlePrevSlide = () => {
+    setActiveSlide((prev) => (prev - 1 + jamaicaEventData.testimonials.length) % jamaicaEventData.testimonials.length);
+  };
 
   return (
     <div className="font-inter pb-16 pt-24 bg-gradient-to-br from-orange-50/30 via-white to-amber-50/20 min-h-screen">
@@ -166,8 +182,85 @@ export function IsfJamaica2024() {
         </div>
       </section>
 
+      {/* 5.5. Testimonial Slider ("Dignitary Speak") */}
+      <section className="py-20 bg-white/60 backdrop-blur-sm border-b border-gray-100">
+        <div className="max-w-4xl mx-auto px-4 space-y-10">
+          <div className="text-center space-y-3">
+            <span className="text-isf-orange font-bold uppercase tracking-widest text-xs">
+              INTERNATIONAL STARTUP FESTIVAL 2024
+            </span>
+            <h2 className="text-2xl sm:text-3xl font-bold font-baskerville text-slate-900">
+              Dignitary Speak
+            </h2>
+            <div className="w-12 h-1 bg-isf-orange mx-auto rounded"></div>
+          </div>
+
+          {/* Testimonial card slider */}
+          <div className="relative bg-white border border-gray-150 rounded-2xl p-8 md:p-12 shadow-sm min-h-[300px] flex flex-col justify-between overflow-hidden">
+            
+            <div className="absolute top-6 left-6 text-orange-100">
+              <Quote size={56} className="fill-orange-50 stroke-1" />
+            </div>
+
+            <div className="relative z-10 space-y-6">
+              <p className="text-sm md:text-base text-slate-700 italic leading-relaxed font-medium">
+                "{jamaicaEventData.testimonials[activeSlide].quote}"
+              </p>
+
+              <div className="flex items-center gap-4 pt-4 border-t border-slate-100">
+                <div className="w-12 h-12 rounded-full overflow-hidden border border-slate-200">
+                  <img
+                    src={getDignitaryImage(jamaicaEventData.testimonials[activeSlide].author)}
+                    alt={jamaicaEventData.testimonials[activeSlide].author}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                <div>
+                  <h4 className="text-sm font-bold text-slate-800 font-baskerville">
+                    {jamaicaEventData.testimonials[activeSlide].author}
+                  </h4>
+                  <p className="text-xs text-slate-500 font-medium">
+                    {jamaicaEventData.testimonials[activeSlide].role}
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* Slider Navigation */}
+            <div className="flex items-center justify-between mt-8 pt-4">
+              <div className="flex gap-1.5">
+                {jamaicaEventData.testimonials.map((_, idx) => (
+                  <button
+                    key={idx}
+                    onClick={() => setActiveSlide(idx)}
+                    className={`w-2 h-2 rounded-full transition-all cursor-pointer ${
+                      activeSlide === idx ? "bg-isf-orange w-4" : "bg-slate-200 hover:bg-slate-350"
+                    }`}
+                  />
+                ))}
+              </div>
+              <div className="flex gap-2">
+                <button
+                  onClick={handlePrevSlide}
+                  className="bg-white border border-slate-200 hover:bg-slate-50 text-slate-700 p-2.5 rounded-full shadow-xs cursor-pointer flex items-center justify-center transition-colors"
+                >
+                  <ChevronLeft size={16} strokeWidth={2.5} />
+                </button>
+                <button
+                  onClick={handleNextSlide}
+                  className="bg-white border border-slate-200 hover:bg-slate-50 text-slate-700 p-2.5 rounded-full shadow-xs cursor-pointer flex items-center justify-center transition-colors"
+                >
+                  <ChevronRight size={16} strokeWidth={2.5} />
+                </button>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
       {/* 6. Conference Team */}
-      <section className="py-16 bg-white/60 backdrop-blur-sm border-b border-gray-100">
+      <section className="py-16 bg-white/40 backdrop-blur-xs border-b border-gray-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
           <div className="text-center space-y-3">
             <span className="text-isf-orange font-bold uppercase tracking-widest text-xs">
@@ -195,6 +288,46 @@ export function IsfJamaica2024() {
                   {member.role}
                 </p>
               </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 7. Essential Document Downloads */}
+      <section className="py-20 bg-white/60 backdrop-blur-sm">
+        <div className="max-w-5xl mx-auto px-4 space-y-12">
+          <div className="text-center space-y-3">
+            <span className="text-isf-orange font-bold uppercase tracking-widest text-xs">
+              RESOURCES & HANDOUTS
+            </span>
+            <h2 className="text-2xl sm:text-3xl font-bold font-baskerville text-slate-900">
+              Essential Document Downloads
+            </h2>
+            <div className="w-12 h-1 bg-isf-orange mx-auto rounded"></div>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {jamaicaEventData.downloads.map((doc, idx) => (
+              <a
+                key={idx}
+                href={doc.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-white border border-slate-150 rounded-xl p-6 shadow-sm hover:shadow-md hover:border-isf-orange hover:translate-y-[-2px] transition-all duration-300 group flex flex-col justify-between min-h-[140px]"
+              >
+                <div className="flex gap-4">
+                  <div className="p-3 bg-orange-50 text-isf-orange rounded-lg shrink-0 flex items-center justify-center w-12 h-12">
+                    <FileText size={24} />
+                  </div>
+                  <h3 className="text-sm font-bold text-slate-800 font-baskerville leading-snug group-hover:text-isf-orange transition-colors">
+                    {doc.name}
+                  </h3>
+                </div>
+                <div className="flex items-center gap-1.5 text-xs font-bold text-slate-500 group-hover:text-isf-orange uppercase tracking-wider mt-4">
+                  <Download size={14} />
+                  Download File
+                </div>
+              </a>
             ))}
           </div>
         </div>
