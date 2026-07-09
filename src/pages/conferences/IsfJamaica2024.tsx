@@ -38,7 +38,16 @@ export function IsfJamaica2024() {
   };
 
   return (
-    <div className="font-inter pb-16 pt-24 bg-gradient-to-br from-orange-50/30 via-white to-amber-50/20 min-h-screen">
+    <div 
+      className="font-inter pb-16 pt-24 min-h-screen"
+      style={{
+        backgroundImage: "url('/assets/images/blurry-white-bg.jpg')",
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
+        backgroundAttachment: 'fixed'
+      }}
+    >
 
       {/* 1. Header Banner */}
       <section className="bg-transparent border-b border-gray-100 py-16 md:py-20 relative overflow-hidden text-center">
