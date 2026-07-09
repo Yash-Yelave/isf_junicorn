@@ -83,7 +83,7 @@ export function DistinguishedGuests() {
       </section>
 
       {/* 3. Dignitaries and CXOs */}
-      <section className="py-16 bg-slate-50 border-t border-b border-gray-100">
+      <section className="py-16 bg-white/40 backdrop-blur-xs border-t border-b border-gray-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
           <div className="text-center space-y-3">
             <h2 className="text-2xl font-bold font-baskerville flex items-center justify-center gap-2">
