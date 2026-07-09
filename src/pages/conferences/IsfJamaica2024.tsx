@@ -273,7 +273,7 @@ export function IsfJamaica2024() {
       </section>
 
       {/* 5. Dignitaries */}
-      <section className="py-20 bg-gradient-to-tr from-amber-50/45 via-orange-50/30 to-rose-50/25 border-t border-b border-orange-100/30">
+      <section className="py-20 bg-[#FFF3E8] border-t border-b border-orange-100/40">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
           <div className="text-center space-y-3">
             <span className="text-isf-orange font-bold uppercase tracking-widest text-xs">
