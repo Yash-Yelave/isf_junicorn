@@ -38,35 +38,30 @@ export function IsfJamaica2024() {
   };
 
   return (
-    <div 
-      className="font-inter pb-16 pt-24 min-h-screen"
-      style={{
-        backgroundImage: "url('/assets/images/blurry-white-bg.jpg')",
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        backgroundRepeat: 'no-repeat',
-        backgroundAttachment: 'fixed'
-      }}
-    >
+    <div className="font-inter pb-16 pt-20 bg-gradient-to-br from-orange-50/20 via-white to-amber-50/10 min-h-screen">
 
       {/* 1. Header Banner */}
-      <section className="bg-transparent border-b border-gray-100 py-16 md:py-20 relative overflow-hidden text-center">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6 relative z-10">
+      <section 
+        className="text-white py-20 md:py-28 relative bg-cover bg-center bg-no-repeat"
+        style={{ backgroundImage: "url('/assets/images/global-cxo-summit.png')" }}
+      >
+        <div className="absolute inset-0 bg-slate-950/75 z-0"></div>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6 relative z-10">
           <span className="text-isf-orange font-bold uppercase tracking-widest text-xs block">
             ISF GLOBAL CXO SUMMIT
           </span>
-          <h1 className="text-3xl md:text-5xl font-extrabold font-baskerville text-slate-900 tracking-tight">
+          <h1 className="text-3xl md:text-5xl font-extrabold font-baskerville text-white tracking-tight">
             ISF 2024 Jamaica
           </h1>
-          <p className="text-base text-slate-600 max-w-2xl mx-auto font-light">
+          <p className="text-base text-slate-250 max-w-2xl mx-auto font-light">
             Montego Bay, Jamaica — June 5th to June 9th, 2024
           </p>
           <div className="flex flex-wrap justify-center gap-6 pt-2 text-xs">
-            <span className="flex items-center gap-1.5 text-slate-500 font-medium">
+            <span className="flex items-center gap-1.5 text-slate-350 font-medium">
               <Calendar size={16} className="text-isf-orange" />
               June 5 - 9, 2024
             </span>
-            <span className="flex items-center gap-1.5 text-slate-500 font-medium">
+            <span className="flex items-center gap-1.5 text-slate-350 font-medium">
               <MapPin size={16} className="text-isf-orange" />
               BIMS Medical School, Montego Bay, Jamaica
             </span>
