@@ -1,0 +1,63 @@
+body{ font-family: "Inter", sans-serif !important; color:#444444;}
+h1, h2, h3, h4, h5, h6 { font-family: "Libre Baskerville", serif !important;}
+
+ul.navbar-nav.ms-auto.text-black.gap-lg-4 {gap: 0.5rem !important;}
+.navbar .navbar-nav .nav-item > a{ font-size:15px; font-weight:500;}
+.navbar .navbar-nav .nav-item > a:hover{ color:#de6118 !important;}
+.navbar .navbar-nav .nav-item > a i{ margin-left:0.25rem;}
+.card { border-radius: 15px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
+.btn-decoration { border-radius: 8px; padding: 10px 30px; font-weight: bold;}
+
+/* Custom styles for nested dropdown */
+.dropdown-submenu { position: relative;}
+.dropdown-submenu > .dropdown-menu { top: 0; left: 100%;  margin-top: -1px; }
+.dropdown:hover > .dropdown-menu, .dropdown-menu:hover { display: block; }
+
+/* Remove blue background on link click */
+.nav-link, .dropdown-item { color: #000;}
+.dropdown-item:hover { color:#fd7e14; background-color:#fff6f0;}
+.nav-link:focus, .dropdown-item:focus { color: #de6118;background-color: transparent;}
+.dropdown-submenu .dropdown-menu {display: none; top: 0;left : 100%; margin-top: 0;}
+.dropdown-submenu:hover .dropdown-menu {display: block;}
+.dropdown-toggle::after{ display:none;}
+
+.card-subtitle{font-family: "Inter", sans-serif !important;}
+.card-subtitle.mt-2{line-height:inherit;}
+.card-subtitle.my-2{font-size:0.7rem;}
+.card-hover-effect, .item, .uc_classic_carousel-b { transition: transform 0.3s ease, box-shadow 0.3s ease; }
+.card-hover-effect:hover,  .item:hover, .uc_classic_carousel-b:hover { transform: scale(1.05); box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); }
+.card-img-top, .uc_classic_carousel_placeholder .img-fluid, .uc_classic_carousel_placeholder{ border-radius:10px 10px 0 0;}
+.item, .uc_classic_carousel-b{border: 1px solid #ddd;transition: transform 0.3s ease, box-shadow 0.3s ease;border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);position: relative; display: flex; flex-direction: column; min-width: 0;word-wrap: break-word;}
+.uc_classic_carousel_content{flex: 1 1 auto; padding:1rem;}
+.card_carousel_title{ color:#01181f; font-weight:500;font-size:1rem;}
+.card_carousel_text{color:#808080; font-weight:500;font-size:0.7rem;}
+
+.hero-section { flex-direction: column; flex-wrap: nowrap; max-width: min(100%, var(--width)); min-height: 375px; background-position: bottom center; background-repeat: no-repeat; background-size: 70% auto;background-color:#ffaa00;display: flex; align-items: center; justify-content: center;}
+.hero-section h2 { font-family: "Inter", Sans-serif !important; font-size: 18px;}
+.section-title { padding-bottom: 30px;}
+.section-title p { margin: 15px 0 0 0; letter-spacing: 3px; font-size: 12px; color: #de6118; font-weight: 600;}
+.section-title h2 { font-size: 38px; font-weight: bold; position: relative;}
+.container { width: 100%; padding-right: 20px;  padding-left: 20px; margin-right: auto;  margin-left: auto;  max-width: 1300px;}
+
+footer.bg-black{ background-color: #1a1a1a !important;}
+footer h5{font-family: "Inter", sans-serif !important; text-transform:uppercase; letter-spacing:2px; font-size:0.8rem;}
+footer ul.list-unstyled li{ padding-bottom:5px;}
+footer ul.list-unstyled li a{ font-family: "Libre Baskerville", serif !important; color:#cccccc !important; font-size:0.9rem;}
+footer .social-icons i{font-size: 1.2rem;}
+footer .social-icons a{ margin-right:1rem;}
+footer p{ color:#cccccc !important;}
+.footer-bottom{ background-color: #000000; font-size:0.8rem !important}
+.footer-bottom .g-3{font-family: "Libre Baskerville", serif !important;}
+
+@media (min-width: 1200px) {
+.container, .container-lg, .container-md, .container-sm, .container-xl { max-width: 1300px;}
+}
+@media (max-width: 768px) {
+.hero-section{background-size: 771px auto; min-height: 240px;}
+.section-title h2{ font-size:28px;}
+.card_carousel_title, .card-subtitle{ font-size:0.8rem;}
+.navbar-brand img{ width:80px;}
+footer .row>*{  width: 100%;  max-width: 100%; margin-bottom:1.5rem; }
+.footer-bottom  .row>*{  width: 100%;  max-width: 100%;}
+footer .row> div:last-child{ margin-bottom:0 !important;}
+}

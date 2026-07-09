@@ -1,39 +1,6 @@
-import { UserCheck, Star, Users } from "lucide-react";
+import { distinguishedGuestsData, cxosData } from "./distinguishedGuestsData";
 
 export function DistinguishedGuests() {
-  const chiefGuests = [
-    {
-      name: "Sadguru Sri Madhusudan Sai",
-      role: "Founder, Sri Satya Sai University for Human Excellence, Karnataka"
-    },
-    {
-      name: "Meenakshi Lekhi",
-      role: "Minister of State for External Affairs and Culture, Government of India"
-    },
-    {
-      name: "Sunil Gavaskar",
-      role: "India's Cricket Legend | Chairman, Heart to Heart Foundation"
-    }
-  ];
-
-  const dignitaries = [
-    { name: "Minister of IT", role: "Government of Telangana" },
-    { name: "Minister of Irrigation, Food & Civil Supplies", role: "Government of Telangana" },
-    { name: "Sri Bharat Galla", role: "President, GITAM; Visakhapatnam TDP Lok Sabha MP" },
-    { name: "Dr. K. N. Satyanarayana", role: "Director & Professor of Civil Engineering, I.I.T. Tirupati" },
-    { name: "Dr. Ajit Rangnekar", role: "Director-General, Research and Innovation Circle of Hyderabad (RICH)" },
-    { name: "Murali Bukkapatnam", role: "Chairman, Global Board of Trustees, TiE" },
-    { name: "Sanjeev Deshpande", role: "EVP-APAC, MD-India NTT DATA Business Solutions" },
-    { name: "BVR Mohan Reddy", role: "Founder Chairman & Board Member, CYIENT" },
-    { name: "Dr. G.P.S. Prasad", role: "Padma Shri Awardee, Vice Chancellor - NFSU" },
-    { name: "Sangita Reddy", role: "Joint Managing Director, Apollo Hospitals Group; Chair - G20 Empower India" },
-    { name: "Srini Raju", role: "Founder, Chairman of iLabs Capital, Sri City" },
-    { name: "Dr. Gangadhar Reddy", role: "Founder CEO, MedPlus Health Services" },
-    { name: "Dr. M. Nageswara Rao", role: "MP, Bapatla, Andhra Pradesh" },
-    { name: "Dr. K. V. P. Ramachandra Rao", role: "Member of Parliament for Zahirabad" },
-    { name: "Dr. K. Subramanian", role: "Executive Director, IMF (earlier Chief Economic Advisor, GoI)" }
-  ];
-
   return (
     <div className="font-inter pb-16 pt-24 bg-gradient-to-br from-orange-50/30 via-white to-amber-50/20 min-h-screen">
       
@@ -52,59 +19,54 @@ export function DistinguishedGuests() {
         </div>
       </section>
 
-      {/* 2. Chief Guests */}
-      <section className="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
-        <div className="text-center space-y-3">
-          <h2 className="text-2xl font-bold font-baskerville flex items-center justify-center gap-2">
-            <Star className="text-isf-orange fill-isf-orange w-6 h-6" />
-            Honourable Chief Guests
-          </h2>
-          <div className="w-12 h-1 bg-isf-orange mx-auto rounded"></div>
-        </div>
+      {/* 2. Distinguished Guests Section */}
+      <section className="py-16 bg-white/40 backdrop-blur-xs border-b border-gray-100">
+        <div className="container-custom">
+          <div className="text-center space-y-3 mb-10">
+            <span className="text-isf-orange font-bold uppercase tracking-widest text-xs">
+              INTERNATIONAL STARTUP FESTIVAL
+            </span>
+            <h2 className="text-3xl md:text-4xl font-bold font-baskerville text-[#111111]">
+              Distinguished Guests at ISF Conference
+            </h2>
+            <div className="w-12 h-1 bg-isf-orange mx-auto rounded mt-4"></div>
+          </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {chiefGuests.map((guest, idx) => (
-            <div
-              key={idx}
-              className="bg-slate-50 border border-gray-200 rounded-lg p-8 space-y-4 hover:border-isf-orange transition-colors text-center"
-            >
-              <div className="w-16 h-16 rounded-full bg-orange-100 flex items-center justify-center mx-auto text-isf-orange">
-                <UserCheck className="w-8 h-8" />
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+            {distinguishedGuestsData.map((person, idx) => (
+              <div key={idx} className="bg-white rounded-xl shadow-sm border border-[#e6e6e6] overflow-hidden hover:shadow-md hover:border-isf-orange transition-all duration-300 group flex flex-col items-center text-center p-4">
+                <div className="w-24 h-24 mb-4 rounded-full overflow-hidden border-2 border-orange-100 shadow-sm">
+                  <img src={person.img} alt={person.name} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300" />
+                </div>
+                <h3 className="font-bold text-sm text-[#111111] mb-1 leading-tight">{person.name}</h3>
+                <p className="text-xs text-[#666666] font-medium leading-snug">{person.title}</p>
               </div>
-              <h3 className="text-base font-bold font-baskerville text-slate-900">
-                {guest.name}
-              </h3>
-              <p className="text-xs text-slate-500 leading-relaxed font-medium">
-                {guest.role}
-              </p>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </section>
 
-      {/* 3. Dignitaries and CXOs */}
-      <section className="py-16 bg-white/40 backdrop-blur-xs border-t border-b border-gray-100">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
-          <div className="text-center space-y-3">
-            <h2 className="text-2xl font-bold font-baskerville flex items-center justify-center gap-2">
-              <Users className="text-isf-orange w-6 h-6" />
-              Dignitaries & Key Presenters
+      {/* 3. CXOs Section */}
+      <section className="py-16 bg-white/60 backdrop-blur-sm border-b border-gray-100">
+        <div className="container-custom">
+          <div className="text-center space-y-3 mb-10">
+            <span className="text-isf-orange font-bold uppercase tracking-widest text-xs">
+              INTERNATIONAL STARTUP FESTIVAL
+            </span>
+            <h2 className="text-3xl md:text-4xl font-bold font-baskerville text-[#111111]">
+              CXOs (Investors, Mentors & Leaders) at ISF Conference
             </h2>
-            <div className="w-12 h-1 bg-isf-orange mx-auto rounded"></div>
+            <div className="w-12 h-1 bg-isf-orange mx-auto rounded mt-4"></div>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-            {dignitaries.map((member, idx) => (
-              <div
-                key={idx}
-                className="bg-white border border-gray-200 rounded-lg p-6 shadow-xxs hover:shadow-sm hover:border-isf-orange transition-all"
-              >
-                <h4 className="text-sm font-bold text-slate-900 font-baskerville mb-2">
-                  {member.name}
-                </h4>
-                <p className="text-xs text-slate-500 font-medium leading-relaxed">
-                  {member.role}
-                </p>
+          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-6">
+            {cxosData.map((person, idx) => (
+              <div key={idx} className="bg-white rounded-xl shadow-sm border border-[#e6e6e6] overflow-hidden hover:shadow-md hover:border-isf-orange transition-all duration-300 group flex flex-col items-center text-center p-6">
+                <div className="w-28 h-28 mb-4 rounded-full overflow-hidden border-4 border-orange-50 shadow-sm">
+                  <img src={person.img} alt={person.name} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300" />
+                </div>
+                <h3 className="font-bold text-base text-[#111111] mb-2 leading-tight">{person.name}</h3>
+                <p className="text-xs text-[#666666] font-medium leading-snug">{person.title}</p>
               </div>
             ))}
           </div>
