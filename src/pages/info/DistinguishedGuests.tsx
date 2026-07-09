@@ -35,10 +35,10 @@ export function DistinguishedGuests() {
   ];
 
   return (
-    <div className="font-inter pb-16 pt-24 bg-white">
+    <div className="font-inter pb-16 pt-24 bg-gradient-to-br from-orange-50/30 via-white to-amber-50/20 min-h-screen">
       
       {/* 1. Header Banner */}
-      <section className="bg-slate-50 border-b border-gray-100 py-12 md:py-16 text-center">
+      <section className="bg-transparent border-b border-gray-100 py-12 md:py-16 text-center">
         <div className="max-w-4xl mx-auto px-4 space-y-4">
           <span className="text-isf-orange font-bold uppercase tracking-widest text-xs block">
             Dignitaries Profile
