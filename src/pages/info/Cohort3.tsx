@@ -740,28 +740,24 @@ const Cohort3: React.FC = () => {
               <h3 className="text-lg font-bold text-slate-900">Faces Behind the Movement</h3>
             </div>
           </FadeUp>
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-6">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
             {enablers.map((person, i) => (
               <FadeUp key={person.name} delay={0.05 * i}>
                 <motion.div
-                  whileHover={{ y: -8 }}
+                  whileHover={{ y: -6 }}
                   transition={{ duration: 0.3, ease: 'easeOut' as const }}
-                  className="flex flex-col items-center text-center cursor-default"
+                  className="bg-white rounded-xl shadow-sm border border-[#e6e6e6] hover:shadow-md transition-shadow group flex flex-col items-center text-center p-4 cursor-default h-full"
                 >
-                  <motion.div
-                    animate={{ y: [0, -5, 0] }}
-                    transition={{ duration: 5 + i * 0.4, repeat: Infinity, ease: 'easeInOut' as const, delay: i * 0.5 }}
-                    className="w-16 h-16 rounded-full overflow-hidden border-2 border-isf-orange/30 shadow-lg mb-3"
-                  >
+                  <div className="w-24 h-24 mb-4 rounded-full overflow-hidden border-2 border-gray-100 shrink-0">
                     <img
                       src={person.img || ''}
                       alt={person.name}
-                      className="w-full h-full object-cover"
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
                       onError={e => { e.currentTarget.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(person.name)}&background=f97316&color=fff&size=256`; }}
                     />
-                  </motion.div>
-                  <h4 className="text-xs font-bold text-slate-900 leading-tight mb-1">{person.name}</h4>
-                  <p className="text-[10px] text-isf-orange font-semibold leading-snug">{person.role}</p>
+                  </div>
+                  <h3 className="font-bold text-sm text-[#111111] mb-1 leading-tight">{person.name}</h3>
+                  <p className="text-xs text-[#666666] font-light leading-snug">{person.role}</p>
                 </motion.div>
               </FadeUp>
             ))}
