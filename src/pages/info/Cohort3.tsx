@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
-import { motion, useInView, AnimatePresence } from 'framer-motion';
+import { motion, useInView, AnimatePresence, useScroll } from 'framer-motion';
 import {
   ArrowRight, Leaf, Heart, Factory, Droplets, Rocket, BookOpen,
   Zap, Monitor, Building, Users2, ChevronDown, Globe,
@@ -232,12 +232,60 @@ const enablers = [
   { name: 'Chinmay Kumar Dash', role: 'Program Director', img: '' }
 ];
 
+// ─── Animated Journey Line ───────────────────────────────────────────────────
+const AnimatedJourneyLine = ({ targetRef }: { targetRef: React.RefObject<HTMLDivElement | null> }) => {
+  const { scrollYProgress } = useScroll({
+    target: targetRef,
+    offset: ["start center", "end end"]
+  });
+
+  return (
+    <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
+      <svg
+        className="w-full h-full"
+        viewBox="0 0 100 100"
+        preserveAspectRatio="none"
+      >
+        <defs>
+          <linearGradient id="journeyGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" stopColor="#10b981" /> {/* emerald-500 */}
+            <stop offset="100%" stopColor="#ff7a00" /> {/* isf-orange */}
+          </linearGradient>
+          <filter id="neonGlow" x="-20%" y="-20%" width="140%" height="140%">
+            <feGaussianBlur stdDeviation="1.5" result="blur" />
+            <feComposite in="SourceGraphic" in2="blur" operator="over" />
+          </filter>
+        </defs>
+        {/*
+          Zig-zag path down the page (0 to 100 height):
+          M 90,0 - Starts top right
+          C 90,10 10,15 10,25 - Curves down to left
+          S 90,40 90,50 - Smooth curve down to right
+          S 10,65 10,75 - Smooth curve down to left
+          S 90,90 90,100 - Smooth curve down to right at the bottom
+        */}
+        <motion.path
+          d="M 90,0 C 90,10 10,15 10,25 S 90,40 90,50 S 10,65 10,75 S 90,90 90,100"
+          fill="none"
+          stroke="url(#journeyGrad)"
+          strokeWidth="3"
+          strokeLinecap="round"
+          vectorEffect="non-scaling-stroke"
+          filter="url(#neonGlow)"
+          style={{ pathLength: scrollYProgress }}
+        />
+      </svg>
+    </div>
+  );
+};
+
 // ─── Main Component ────────────────────────────────────────────────────────
 const Cohort3: React.FC = () => {
   const [hoveredArena, setHoveredArena] = useState<number | null>(null);
   const [introPhase, setIntroPhase] = useState<'video-only' | 'show-title' | 'show-all'>('video-only');
   const [activeCohort, setActiveCohort] = useState<'cohort-1' | 'cohort-2'>('cohort-2');
   const videoRef = useRef<HTMLVideoElement>(null);
+  const mainContentRef = useRef<HTMLDivElement>(null);
   const [isPlaying, setIsPlaying] = useState(true);
   const [isMuted, setIsMuted] = useState(false);
 
@@ -469,7 +517,11 @@ const Cohort3: React.FC = () => {
         </div>
       </section>
 
-      {/* ═══ Section 2: Core Philosophy — The 3Ms ════════════════════════════ */}
+      {/* Main Content Wrapper for Journey Line */}
+      <div className="relative w-full" ref={mainContentRef}>
+        <AnimatedJourneyLine targetRef={mainContentRef} />
+
+        {/* ═══ Section 2: Core Philosophy — The 3Ms ════════════════════════════ */}
       <section className="py-16 md:py-20 bg-gradient-to-b from-white to-amber-50/40 border-b border-amber-100/60">
         <div className="max-w-5xl mx-auto px-6">
           <FadeUp>
@@ -953,6 +1005,7 @@ const Cohort3: React.FC = () => {
         </div>
       </section>
 
+      </div>
     </div>
   );
 };
