@@ -1,10 +1,12 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Inria+Serif:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700;800;900&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Inria+Serif:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap');
 @import "tailwindcss";
 
 @theme {
   --font-inter: 'Inter', sans-serif;
-  --font-baskerville: 'Inter', sans-serif;
-  --font-inria: 'Inter', sans-serif;
+  --font-baskerville: 'Libre Baskerville', serif;
+  --font-inria: 'Inria Serif', serif;
+  --font-space: 'Space Grotesk', sans-serif;
+  --font-outfit: 'Outfit', sans-serif;
   
   --color-isf-orange: #ff6600;
   --color-isf-orange-hover: #e05a00;

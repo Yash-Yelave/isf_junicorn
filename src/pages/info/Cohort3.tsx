@@ -92,33 +92,33 @@ function Countdown() {
 
 // ─── Data ──────────────────────────────────────────────────────────────────
 const arenas = [
-  { icon: <Leaf />, title: 'Agriculture & Food Security', color: 'from-green-500 to-emerald-400', bg: 'bg-green-500/10', border: 'border-green-500/20', desc: 'Precision farming, crop tech, cold-chain innovations for Bharat.' },
-  { icon: <Heart />, title: 'Healthcare & Well-being', color: 'from-rose-500 to-pink-400', bg: 'bg-rose-500/10', border: 'border-rose-500/20', desc: 'Rural diagnostics, telemedicine, and affordable health innovations.' },
-  { icon: <Factory />, title: 'Manufacturing & MSME Growth', color: 'from-amber-500 to-yellow-400', bg: 'bg-amber-500/10', border: 'border-amber-500/20', desc: 'Smart manufacturing, local supply chains, and artisan tech.' },
-  { icon: <Droplets />, title: 'Water Security & Climate Action', color: 'from-blue-500 to-cyan-400', bg: 'bg-blue-500/10', border: 'border-blue-500/20', desc: 'Water conservation, climate-resilient infrastructure and practices.' },
-  { icon: <Rocket />, title: 'Space & Deep-Tech Innovation', color: 'from-violet-500 to-purple-400', bg: 'bg-violet-500/10', border: 'border-violet-500/20', desc: 'AgriSat, rural connectivity, drones, and emerging deep-tech.' },
-  { icon: <BookOpen />, title: 'Education & Skill Development', color: 'from-indigo-500 to-blue-400', bg: 'bg-indigo-500/10', border: 'border-indigo-500/20', desc: 'Ed-tech, vocational platforms, and digital literacy solutions.' },
-  { icon: <Zap />, title: 'Clean Energy & Sustainability', color: 'from-orange-500 to-amber-400', bg: 'bg-orange-500/10', border: 'border-orange-500/20', desc: 'Solar, biogas, clean cook-stoves and distributed energy access.' },
-  { icon: <Monitor />, title: 'Digital Transformation & Future Workforce', color: 'from-teal-500 to-cyan-400', bg: 'bg-teal-500/10', border: 'border-teal-500/20', desc: 'SaaS for rural enterprise, gig platforms, digital infrastructure.' },
-  { icon: <Building />, title: 'Smart Cities & Urban Development', color: 'from-slate-500 to-gray-400', bg: 'bg-slate-500/10', border: 'border-slate-500/20', desc: 'Urban mobility, waste tech, inclusive city planning and governance.' },
-  { icon: <Users2 />, title: 'Women Empowerment & Social Inclusion', color: 'from-pink-500 to-rose-400', bg: 'bg-pink-500/10', border: 'border-pink-500/20', desc: 'Women-led ventures, SHG tech, inclusive social enterprise.' }
+  { icon: <Leaf />, title: 'Agriculture & Food Security', color: 'from-green-500 to-emerald-400', bg: 'bg-green-100', iconColor: 'text-green-800', border: 'border-green-500/30', desc: 'Precision farming, crop tech, cold-chain innovations for Bharat.' },
+  { icon: <Heart />, title: 'Healthcare & Well-being', color: 'from-rose-500 to-pink-400', bg: 'bg-rose-100', iconColor: 'text-rose-800', border: 'border-rose-500/30', desc: 'Rural diagnostics, telemedicine, and affordable health innovations.' },
+  { icon: <Factory />, title: 'Manufacturing & MSME Growth', color: 'from-amber-500 to-yellow-400', bg: 'bg-amber-100', iconColor: 'text-amber-800', border: 'border-amber-500/30', desc: 'Smart manufacturing, local supply chains, and artisan tech.' },
+  { icon: <Droplets />, title: 'Water Security & Climate Action', color: 'from-blue-500 to-cyan-400', bg: 'bg-blue-100', iconColor: 'text-blue-800', border: 'border-blue-500/30', desc: 'Water conservation, climate-resilient infrastructure and practices.' },
+  { icon: <Rocket />, title: 'Space & Deep-Tech Innovation', color: 'from-violet-500 to-purple-400', bg: 'bg-violet-100', iconColor: 'text-violet-800', border: 'border-violet-500/30', desc: 'AgriSat, rural connectivity, drones, and emerging deep-tech.' },
+  { icon: <BookOpen />, title: 'Education & Skill Development', color: 'from-indigo-500 to-blue-400', bg: 'bg-indigo-100', iconColor: 'text-indigo-800', border: 'border-indigo-500/30', desc: 'Ed-tech, vocational platforms, and digital literacy solutions.' },
+  { icon: <Zap />, title: 'Clean Energy & Sustainability', color: 'from-orange-500 to-amber-400', bg: 'bg-orange-100', iconColor: 'text-orange-800', border: 'border-orange-500/30', desc: 'Solar, biogas, clean cook-stoves and distributed energy access.' },
+  { icon: <Monitor />, title: 'Digital Transformation & Future Workforce', color: 'from-teal-500 to-cyan-400', bg: 'bg-teal-100', iconColor: 'text-teal-800', border: 'border-teal-500/30', desc: 'SaaS for rural enterprise, gig platforms, digital infrastructure.' },
+  { icon: <Building />, title: 'Smart Cities & Urban Development', color: 'from-slate-500 to-gray-400', bg: 'bg-slate-100', iconColor: 'text-slate-800', border: 'border-slate-500/30', desc: 'Urban mobility, waste tech, inclusive city planning and governance.' },
+  { icon: <Users2 />, title: 'Women Empowerment & Social Inclusion', color: 'from-pink-500 to-rose-400', bg: 'bg-pink-100', iconColor: 'text-pink-800', border: 'border-pink-500/30', desc: 'Women-led ventures, SHG tech, inclusive social enterprise.' }
 ];
 
 const pillars = [
   {
     icon: <Lightbulb className="w-7 h-7" />, title: 'Mentorship',
     desc: 'Expert guidance from industry leaders, serial entrepreneurs, and global innovators at every step of your journey.',
-    iconColor: 'text-yellow-500', bgColor: 'bg-yellow-500/10'
+    iconColor: 'text-yellow-500', bgColor: 'bg-yellow-50'
   },
   {
     icon: <Globe className="w-7 h-7" />, title: 'Market Access',
     desc: 'Showcase your innovation at state, national, and international platforms. Gain visibility that matters.',
-    iconColor: 'text-blue-500', bgColor: 'bg-blue-500/10'
+    iconColor: 'text-blue-500', bgColor: 'bg-blue-50'
   },
   {
     icon: <TrendingUp className="w-7 h-7" />, title: 'Money',
     desc: 'Access real investment opportunities, grants, and funding networks to take your startup from idea to impact.',
-    iconColor: 'text-emerald-500', bgColor: 'bg-emerald-500/10'
+    iconColor: 'text-emerald-500', bgColor: 'bg-emerald-50'
   }
 ];
 
@@ -151,133 +151,185 @@ const enablers = [
 // ─── Main Component ────────────────────────────────────────────────────────
 const Cohort3: React.FC = () => {
   const [hoveredArena, setHoveredArena] = useState<number | null>(null);
+  const [introPhase, setIntroPhase] = useState<'video-only' | 'show-title' | 'show-all'>('video-only');
+
+  useEffect(() => {
+    const timer1 = setTimeout(() => {
+      setIntroPhase('show-title');
+    }, 5000);
+
+    const timer2 = setTimeout(() => {
+      setIntroPhase('show-all');
+    }, 6000);
+
+    return () => {
+      clearTimeout(timer1);
+      clearTimeout(timer2);
+    };
+  }, []);
 
   return (
-    <div className="font-inter bg-slate-950 min-h-screen pt-20 overflow-x-hidden relative text-white">
+    <div className="font-inter bg-white min-h-screen pt-20 overflow-x-hidden">
 
-      {/* Background Video */}
-      <div className="fixed inset-0 -z-10 w-full h-full overflow-hidden pointer-events-none">
+      {/* ═══ Section 1: Hero Canvas ══════════════════════════════════════════ */}
+      <section className="relative w-full min-h-screen flex flex-col items-center justify-center overflow-hidden bg-slate-950">
+        {/* Background Video */}
         <video
           autoPlay
           loop
           muted
           playsInline
-          className="w-full h-full object-cover"
+          className="absolute inset-0 w-full h-full object-cover z-0 pointer-events-none"
         >
-          <source src="/assets/videos/121885-724720140_small.mp4" type="video/mp4" />
+          <source src="/assets/videos/dubai.mp4" type="video/mp4" />
         </video>
-        <div className="absolute inset-0 bg-slate-950/85" />
-      </div>
+        {/* Dark faint overlay */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: introPhase !== 'video-only' ? 0.75 : 0 }}
+          transition={{ duration: 0.8 }}
+          className="absolute inset-0 bg-slate-950 z-10"
+        />
 
-      {/* ═══ Section 1: Hero Canvas ══════════════════════════════════════════ */}
-      <section className="relative w-full min-h-screen flex flex-col items-center justify-center overflow-hidden bg-transparent">
         {/* Background layers */}
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-slate-950/40 to-slate-950/60" />
-        <div
-          className="absolute inset-0 opacity-10"
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: introPhase !== 'video-only' ? 0.1 : 0 }}
+          transition={{ duration: 0.8 }}
+          className="absolute inset-0 bg-gradient-to-b from-transparent via-slate-950/40 to-slate-950/60 z-10"
+        />
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: introPhase !== 'video-only' ? 0.1 : 0 }}
+          transition={{ duration: 0.8 }}
+          className="absolute inset-0 z-10"
           style={{ backgroundImage: 'radial-gradient(circle at 20% 80%, #166534 0%, transparent 50%), radial-gradient(circle at 80% 20%, #312e81 0%, transparent 50%), radial-gradient(circle at 60% 90%, #f97316 0%, transparent 40%)' }}
         />
 
         {/* Floating orbs */}
-        <motion.div
-          animate={{ y: [0, -16, 0] }}
-          transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' as const }}
-          className="absolute top-1/4 left-[10%] w-64 h-64 rounded-full bg-emerald-600/10 blur-[80px] pointer-events-none"
-        />
-        <motion.div
-          animate={{ y: [0, -20, 0] }}
-          transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' as const }}
-          className="absolute bottom-1/4 right-[10%] w-80 h-80 rounded-full bg-orange-500/10 blur-[100px] pointer-events-none"
-        />
+        {introPhase !== 'video-only' && (
+          <>
+            <motion.div
+              animate={{ y: [0, -16, 0] }}
+              transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' as const }}
+              className="absolute top-1/4 left-[10%] w-64 h-64 rounded-full bg-emerald-600/10 blur-[80px] pointer-events-none z-10"
+            />
+            <motion.div
+              animate={{ y: [0, -20, 0] }}
+              transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' as const }}
+              className="absolute bottom-1/4 right-[10%] w-80 h-80 rounded-full bg-orange-500/10 blur-[100px] pointer-events-none z-10"
+            />
+          </>
+        )}
 
-        <div className="relative z-10 max-w-5xl mx-auto px-6 text-center flex flex-col items-center gap-6">
+        <div className="relative z-20 max-w-5xl mx-auto px-6 text-center flex flex-col items-center gap-6">
           {/* Pre-header */}
-          <FadeUp>
-            <div className="inline-flex flex-wrap items-center justify-center gap-2 px-5 py-2.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-sm font-medium text-white/80">
-              <span>Organised by</span>
-              <span className="font-bold text-white">ISF</span>
-              <span className="text-white/40">·</span>
-              <span className="font-semibold text-amber-300">GAVS</span>
-              <span className="text-white/40">·</span>
-              <span className="font-semibold text-cyan-300">MyAnatomy</span>
-              <span className="text-white/40">·</span>
-              <span className="font-semibold text-rose-300">VISARA</span>
-            </div>
-          </FadeUp>
+          <AnimatePresence>
+            {introPhase === 'show-all' && (
+              <motion.div
+                initial={{ opacity: 0, y: 15 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6 }}
+                className="inline-flex flex-wrap items-center justify-center gap-2 px-5 py-2.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-sm font-medium text-white/80"
+              >
+                <span>Organised by</span>
+                <span className="font-bold text-white">ISF</span>
+                <span className="text-white/40">·</span>
+                <span className="font-semibold text-amber-300">GAVS</span>
+                <span className="text-white/40">·</span>
+                <span className="font-semibold text-cyan-300">MyAnatomy</span>
+                <span className="text-white/40">·</span>
+                <span className="font-semibold text-rose-300">VISARA</span>
+              </motion.div>
+            )}
+          </AnimatePresence>
 
           {/* Headline */}
-          <FadeUp delay={0.1}>
-            <h1 className="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight text-white leading-tight">
-              <span className="block bg-clip-text text-transparent bg-gradient-to-r from-emerald-400 via-teal-300 to-cyan-400">
-                Junicorn Rural
-              </span>
-              <span className="block bg-clip-text text-transparent bg-gradient-to-r from-orange-400 via-amber-300 to-yellow-300">
-                Innovation Challenge
-              </span>
-              <span className="block text-white/90 text-xl sm:text-2xl mt-2 font-bold">
-                — Cohort 3.0
-              </span>
-            </h1>
-          </FadeUp>
-
-          {/* Sub-headline */}
-          <FadeUp delay={0.2}>
-            <p className="text-base sm:text-lg text-white/70 max-w-2xl leading-relaxed">
-              Transforming India's Rural Innovation Story.{' '}
-              <span className="text-white">Bridging the gap between rural ambition and global opportunity.</span>
-            </p>
-          </FadeUp>
-
-          {/* CTA */}
-          <FadeUp delay={0.3}>
-            <motion.div
-              whileHover={{ y: -8, boxShadow: '0 20px 50px rgba(249,115,22,0.45)' }}
-              transition={{ duration: 0.3, ease: 'easeOut' as const }}
-              className="inline-block"
-            >
-              <Link
-                to="/registration"
-                className="flex items-center gap-3 bg-gradient-to-r from-orange-500 to-amber-400 text-white font-bold text-lg px-10 py-4 rounded-full shadow-xl cursor-pointer"
+          <AnimatePresence>
+            {introPhase !== 'video-only' && (
+              <motion.h1
+                initial={{ opacity: 0, y: 30, scale: 0.95 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                transition={{ duration: 0.8, ease: 'easeOut' }}
+                className="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight text-white leading-tight"
               >
-                Apply Now <ArrowRight className="w-5 h-5" />
-              </Link>
-            </motion.div>
-          </FadeUp>
+                <span className="block bg-clip-text text-transparent bg-gradient-to-r from-emerald-400 via-teal-300 to-cyan-400">
+                  Junicorn Rural
+                </span>
+                <span className="block bg-clip-text text-transparent bg-gradient-to-r from-orange-400 via-amber-300 to-yellow-300">
+                  Innovation Challenge
+                </span>
+                <span className="block text-white/90 text-xl sm:text-2xl mt-2 font-bold">
+                  — Cohort 3.0
+                </span>
+              </motion.h1>
+            )}
+          </AnimatePresence>
 
-          {/* Countdown */}
-          <FadeUp delay={0.4} className="w-full">
-            <div className="space-y-4">
-              <p className="text-white/50 text-sm font-semibold uppercase tracking-widest">
-                Registration Deadline — October 1st
-              </p>
-              <Countdown />
-            </div>
-          </FadeUp>
+          {/* Secondary Content & Countdown */}
+          <AnimatePresence>
+            {introPhase === 'show-all' && (
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.1 }}
+                className="flex flex-col items-center gap-6 w-full"
+              >
+                {/* Sub-headline */}
+                <p className="text-base sm:text-lg text-white/70 max-w-2xl leading-relaxed">
+                  Transforming India's Rural Innovation Story.{' '}
+                  <span className="text-white">Bridging the gap between rural ambition and global opportunity.</span>
+                </p>
 
-          {/* Scroll hint */}
-          <motion.div
-            animate={{ y: [0, 8, 0] }}
-            transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' as const }}
-            className="mt-4 text-white/30"
-          >
-            <ChevronDown className="w-6 h-6" />
-          </motion.div>
+                {/* CTA */}
+                <motion.div
+                  whileHover={{ y: -8, boxShadow: '0 20px 50px rgba(249,115,22,0.45)' }}
+                  transition={{ duration: 0.3, ease: 'easeOut' as const }}
+                  className="inline-block"
+                >
+                  <Link
+                    to="/registration"
+                    className="flex items-center gap-3 bg-gradient-to-r from-orange-500 to-amber-400 text-white font-bold text-lg px-10 py-4 rounded-full shadow-xl cursor-pointer"
+                  >
+                    Apply Now <ArrowRight className="w-5 h-5" />
+                  </Link>
+                </motion.div>
+
+                {/* Countdown */}
+                <div className="space-y-4 w-full">
+                  <p className="text-white/50 text-sm font-semibold uppercase tracking-widest">
+                    Registration Deadline — October 1st
+                  </p>
+                  <Countdown />
+                </div>
+
+                {/* Scroll hint */}
+                <motion.div
+                  animate={{ y: [0, 8, 0] }}
+                  transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' as const }}
+                  className="mt-4 text-white/30"
+                >
+                  <ChevronDown className="w-6 h-6" />
+                </motion.div>
+              </motion.div>
+            )}
+          </AnimatePresence>
         </div>
       </section>
 
       {/* ═══ Section 2: Core Philosophy — The 3Ms ════════════════════════════ */}
-      <section className="py-16 md:py-20 bg-transparent border-b border-white/10">
+      <section className="py-16 md:py-20 bg-gradient-to-b from-white to-amber-50/40 border-b border-amber-100/60">
         <div className="max-w-5xl mx-auto px-6">
           <FadeUp>
             <div className="text-center mb-10">
               <span className="text-xs font-bold text-isf-orange tracking-widest uppercase block mb-3">The Why</span>
-              <h2 className="text-xl md:text-3xl font-black text-white leading-tight">The Core Philosophy</h2>
+              <h2 className="text-xl md:text-3xl font-black text-slate-900 leading-tight">The Core Philosophy</h2>
             </div>
           </FadeUp>
 
           {/* Founder Quote */}
           <FadeUp delay={0.1}>
-            <div className="relative bg-white/5 backdrop-blur-md border border-white/10 rounded-3xl p-8 md:p-10 mb-10 overflow-hidden">
+            <div className="relative bg-gradient-to-br from-slate-900 to-slate-800 rounded-3xl p-8 md:p-10 mb-10 overflow-hidden">
               <div className="absolute top-0 left-0 w-2 h-full bg-gradient-to-b from-isf-orange to-amber-400 rounded-l-3xl" />
               <div className="absolute top-6 right-6 text-8xl text-white/5 font-black leading-none select-none">"</div>
               <blockquote className="relative z-10 text-base md:text-lg text-white/90 font-medium leading-relaxed italic max-w-4xl">
@@ -303,9 +355,9 @@ const Cohort3: React.FC = () => {
             {pillars.map((p, i) => (
               <FadeUp key={p.title} delay={0.1 + i * 0.12}>
                 <motion.div
-                  whileHover={{ y: -12, boxShadow: '0 24px 60px rgba(255,255,255,0.06)' }}
+                  whileHover={{ y: -12, boxShadow: '0 24px 60px rgba(249,115,22,0.12)' }}
                   transition={{ duration: 0.35, ease: 'easeOut' as const }}
-                  className="bg-white/5 backdrop-blur-md rounded-3xl p-6 border border-white/10 shadow-lg cursor-default"
+                  className="bg-white rounded-3xl p-6 border border-slate-100 shadow-md cursor-default"
                 >
                   <motion.div
                     animate={{ y: [0, -8, 0] }}
@@ -314,8 +366,8 @@ const Cohort3: React.FC = () => {
                   >
                     {p.icon}
                   </motion.div>
-                  <h3 className="text-lg font-bold text-white mb-2">{p.title}</h3>
-                  <p className="text-white/60 text-sm leading-relaxed">{p.desc}</p>
+                  <h3 className="text-lg font-bold text-slate-900 mb-2">{p.title}</h3>
+                  <p className="text-slate-600 text-sm leading-relaxed">{p.desc}</p>
                 </motion.div>
               </FadeUp>
             ))}
@@ -324,9 +376,9 @@ const Cohort3: React.FC = () => {
       </section>
 
       {/* ═══ Section 3: Innovation Arenas ════════════════════════════════════ */}
-      <section className="py-16 md:py-20 bg-transparent relative overflow-hidden">
+      <section className="py-16 md:py-20 bg-gradient-to-br from-slate-950 via-slate-900 to-indigo-950 relative overflow-hidden">
         <div
-          className="absolute inset-0 opacity-10"
+          className="absolute inset-0 opacity-30"
           style={{ backgroundImage: 'radial-gradient(circle at 30% 30%, #166534 0%, transparent 40%), radial-gradient(circle at 70% 70%, #312e81 0%, transparent 40%)' }}
         />
         <div className="relative z-10 max-w-7xl mx-auto px-6">
@@ -344,28 +396,28 @@ const Cohort3: React.FC = () => {
             {arenas.map((arena, i) => (
               <FadeUp key={arena.title} delay={Math.min(0.04 * i, 0.3)}>
                 <motion.div
-                  whileHover={{ y: -10, boxShadow: '0 20px 50px rgba(255,255,255,0.08)' }}
+                  whileHover={{ y: -12, scale: 1.03, boxShadow: '0 20px 40px rgba(255,255,255,0.15)' }}
                   transition={{ duration: 0.3, ease: 'easeOut' as const }}
                   onHoverStart={() => setHoveredArena(i)}
                   onHoverEnd={() => setHoveredArena(null)}
-                  className={`relative rounded-2xl border ${arena.border} bg-white/5 backdrop-blur-sm p-6 cursor-default overflow-hidden group`}
+                  className={`relative rounded-2xl border ${arena.border} bg-white/5 group-hover:bg-white/10 backdrop-blur-sm p-6 cursor-default overflow-hidden group transition-all duration-300`}
                 >
-                  <div className={`absolute inset-0 bg-gradient-to-br ${arena.color} opacity-0 group-hover:opacity-10 transition-opacity duration-300`} />
+                  <div className={`absolute inset-0 bg-gradient-to-br ${arena.color} opacity-0 group-hover:opacity-20 transition-opacity duration-300`} />
                   <motion.div
                     animate={{ y: [0, -8, 0] }}
                     transition={{ duration: 4 + (i % 3), repeat: Infinity, ease: 'easeInOut' as const, delay: i * 0.25 }}
                     className={`w-12 h-12 rounded-xl ${arena.bg} flex items-center justify-center mb-4`}
                   >
-                    <div className="text-white">{arena.icon}</div>
+                    <div className={arena.iconColor}>{arena.icon}</div>
                   </motion.div>
-                  <h3 className="text-sm font-bold text-white leading-snug mb-2">{arena.title}</h3>
+                  <h3 className="text-sm font-bold text-white! leading-snug mb-2">{arena.title}</h3>
                   <AnimatePresence>
                     {hoveredArena === i && (
                       <motion.p
                         initial={{ opacity: 0, height: 0 }}
                         animate={{ opacity: 1, height: 'auto' }}
                         exit={{ opacity: 0, height: 0 }}
-                        className="text-white/60 text-xs leading-relaxed overflow-hidden"
+                        className="text-white/80! text-xs leading-relaxed overflow-hidden"
                       >
                         {arena.desc}
                       </motion.p>
@@ -379,17 +431,17 @@ const Cohort3: React.FC = () => {
       </section>
 
       {/* ═══ Section 4: Eligibility — Terminal Style ══════════════════════════ */}
-      <section className="py-16 md:py-20 bg-transparent">
+      <section className="py-16 md:py-20 bg-gradient-to-b from-white to-slate-50">
         <div className="max-w-4xl mx-auto px-6">
           <FadeUp>
             <div className="text-center mb-8">
               <span className="text-xs font-bold text-isf-orange tracking-widest uppercase block mb-2">Qualification Check</span>
-              <h2 className="text-xl md:text-3xl font-black text-white">Are You a Junicorn?</h2>
+              <h2 className="text-xl md:text-3xl font-black text-slate-900">Are You a Junicorn?</h2>
             </div>
           </FadeUp>
 
           <FadeUp delay={0.15}>
-            <div className="rounded-3xl overflow-hidden border border-white/10 shadow-2xl shadow-slate-950/80">
+            <div className="rounded-3xl overflow-hidden border border-slate-200 shadow-2xl shadow-slate-200/60">
               {/* Title bar */}
               <div className="bg-slate-900 px-6 py-4 flex items-center gap-3">
                 <div className="w-3 h-3 rounded-full bg-rose-500" />
@@ -431,13 +483,13 @@ const Cohort3: React.FC = () => {
       </section>
 
       {/* ═══ Section 5: The Expedition — Timeline ════════════════════════════ */}
-      <section className="py-16 md:py-20 bg-transparent border-y border-white/10">
+      <section className="py-16 md:py-20 bg-gradient-to-br from-amber-50/50 to-orange-50/30 border-y border-amber-100/60">
         <div className="max-w-5xl mx-auto px-6">
           <FadeUp>
             <div className="text-center mb-10">
               <span className="text-xs font-bold text-isf-orange tracking-widest uppercase block mb-2">The Journey</span>
-              <h2 className="text-xl md:text-3xl font-black text-white">The Expedition</h2>
-              <p className="mt-3 text-white/60 text-sm">Four milestones. One transformational destination.</p>
+              <h2 className="text-xl md:text-3xl font-black text-slate-900">The Expedition</h2>
+              <p className="mt-3 text-slate-600 text-sm">Four milestones. One transformational destination.</p>
             </div>
           </FadeUp>
 
@@ -461,12 +513,12 @@ const Cohort3: React.FC = () => {
                     >
                       {i + 1}
                     </motion.div>
-                    <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1">{phase.phase}</span>
+                    <span className="text-xs font-bold text-slate-400 uppercase tracking-widest mb-1">{phase.phase}</span>
                     <span className="flex items-center gap-1 text-xs font-bold text-isf-orange mb-2">
                       <Calendar className="w-3 h-3" />{phase.date}
                     </span>
-                    <h3 className="text-base font-black text-white mb-2">{phase.title}</h3>
-                    <p className="text-white/50 text-xs leading-relaxed">{phase.desc}</p>
+                    <h3 className="text-base font-black text-slate-900 mb-2">{phase.title}</h3>
+                    <p className="text-slate-500 text-xs leading-relaxed">{phase.desc}</p>
                   </motion.div>
                 </FadeUp>
               ))}
@@ -476,9 +528,9 @@ const Cohort3: React.FC = () => {
       </section>
 
       {/* ═══ Section 6: Global Impact ════════════════════════════════════════ */}
-      <section className="py-16 md:py-20 bg-transparent relative overflow-hidden">
+      <section className="py-16 md:py-20 bg-gradient-to-br from-slate-950 via-indigo-950 to-slate-900 relative overflow-hidden">
         <div
-          className="absolute inset-0 opacity-10"
+          className="absolute inset-0 opacity-20"
           style={{ backgroundImage: 'radial-gradient(circle at 50% 50%, #1d4ed8 0%, transparent 60%)' }}
         />
         {/* Animated rings */}
@@ -510,7 +562,7 @@ const Cohort3: React.FC = () => {
                   transition={{ duration: 0.35, ease: 'easeOut' as const }}
                   className={`bg-gradient-to-br ${d.grad} p-px rounded-3xl cursor-default`}
                 >
-                  <div className="bg-slate-950/60 backdrop-blur-md rounded-3xl p-6 md:p-8 h-full border border-white/5">
+                  <div className="bg-slate-900/80 backdrop-blur-md rounded-3xl p-6 md:p-8 h-full">
                     <div className="flex items-start justify-between mb-6">
                       <div>
                         <span className="text-3xl">{d.flag}</span>
@@ -576,19 +628,19 @@ const Cohort3: React.FC = () => {
       </section>
 
       {/* ═══ Section 7: The Enablers ════════════════════════════════════════ */}
-      <section className="py-16 md:py-20 bg-transparent border-b border-white/10">
-        <div className="max-w-6xl mx-auto px-6">
+      <section className="py-16 md:py-20 bg-gradient-to-b from-white to-slate-50 border-b border-slate-100">
+        <div className="max-w-7xl mx-auto px-6">
           <FadeUp>
             <div className="text-center mb-10">
               <span className="text-xs font-bold text-isf-orange tracking-widest uppercase block mb-2">Partners & People</span>
-              <h2 className="text-xl md:text-3xl font-black text-white">The Enablers</h2>
+              <h2 className="text-xl md:text-3xl font-black text-slate-900">The Enablers</h2>
             </div>
           </FadeUp>
 
           {/* VISARA block */}
           <FadeUp delay={0.1}>
-            <div className="bg-white/5 backdrop-blur-md border border-white/10 rounded-3xl p-8 md:p-10 mb-12 relative overflow-hidden">
-              <div className="absolute top-0 right-0 w-80 h-80 bg-violet-500/10 rounded-full blur-3xl" />
+            <div className="bg-gradient-to-br from-indigo-950 to-slate-900 rounded-3xl p-8 md:p-10 mb-12 relative overflow-hidden">
+              <div className="absolute top-0 right-0 w-80 h-80 bg-violet-500/15 rounded-full blur-3xl" />
               <div className="relative z-10 flex flex-col md:flex-row gap-10 items-start">
                 <div className="md:w-1/2">
                   <span className="inline-block px-3 py-1 rounded-full bg-violet-500/20 text-violet-300 text-xs font-bold tracking-widest uppercase mb-4">VISARA Partnership</span>
@@ -617,7 +669,7 @@ const Cohort3: React.FC = () => {
           {/* Faces */}
           <FadeUp delay={0.2}>
             <div className="text-center mb-8">
-              <h3 className="text-lg font-bold text-white">Faces Behind the Movement</h3>
+              <h3 className="text-lg font-bold text-slate-900">Faces Behind the Movement</h3>
             </div>
           </FadeUp>
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-6">
@@ -640,7 +692,7 @@ const Cohort3: React.FC = () => {
                       onError={e => { e.currentTarget.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(person.name)}&background=f97316&color=fff&size=256`; }}
                     />
                   </motion.div>
-                  <h4 className="text-xs font-bold text-white leading-tight mb-1">{person.name}</h4>
+                  <h4 className="text-xs font-bold text-slate-900 leading-tight mb-1">{person.name}</h4>
                   <p className="text-[10px] text-isf-orange font-semibold leading-snug">{person.role}</p>
                 </motion.div>
               </FadeUp>
@@ -650,9 +702,9 @@ const Cohort3: React.FC = () => {
       </section>
 
       {/* ═══ Section 8: Footer CTA ══════════════════════════════════════════ */}
-      <section className="py-16 md:py-20 bg-transparent relative overflow-hidden">
+      <section className="py-16 md:py-20 bg-gradient-to-br from-slate-950 to-slate-900 relative overflow-hidden">
         <div
-          className="absolute inset-0 opacity-10"
+          className="absolute inset-0 opacity-20"
           style={{ backgroundImage: 'radial-gradient(circle at 80% 20%, #f97316 0%, transparent 40%)' }}
         />
         <div className="relative z-10 max-w-5xl mx-auto px-6">
