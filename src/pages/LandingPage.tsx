@@ -1,10 +1,67 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
-import { Calendar, MapPin, ChevronLeft, ChevronRight, Play, Clock, Building, Map } from "lucide-react";
+import { Calendar, MapPin, ChevronLeft, ChevronRight, Play, Clock, Building, Map, Volume2, VolumeX } from "lucide-react";
 
 export function LandingPage() {
-  const [activeTab, setActiveTab] = useState("2025");
+  const [activeTab, setActiveTab] = useState("2026");
   const [heroIndex, setHeroIndex] = useState(0);
+
+  const videoRef = useRef<HTMLVideoElement | null>(null);
+  const [isMuted, setIsMuted] = useState(true);
+  const [junicornIndex, setJunicornIndex] = useState(0);
+
+  const junicornSlides = [
+    {
+      tag: "Cohort 2",
+      title: "Junicorns Cohort 2 Innovators Team",
+      image: "/assets/cohort3/team.png"
+    },
+    {
+      tag: "Cohort 1",
+      title: "Junicorns Cohort 1 Graduation & Pitches",
+      image: "/assets/themes/jupiterx/junicon-26/images/1-Dflng3M3.jpeg"
+    }
+  ];
+
+  // Auto-play video when scrolled into view
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            // Attempt autoplay unmuted first to respect volume requirement
+            video.muted = false;
+            setIsMuted(false);
+            video.play().catch(() => {
+              // Fallback to muted autoplay if browser blocks audio autoplay
+              video.muted = true;
+              setIsMuted(true);
+              video.play().catch(err => console.log("Video playback error:", err));
+            });
+          } else {
+            video.pause();
+          }
+        });
+      },
+      { threshold: 0.25 }
+    );
+
+    observer.observe(video);
+    return () => {
+      observer.disconnect();
+    };
+  }, []);
+
+  // Auto slide Junicorns images every 4 seconds
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setJunicornIndex((prev) => (prev + 1) % junicornSlides.length);
+    }, 4000);
+    return () => clearInterval(timer);
+  }, [junicornSlides.length]);
 
   const heroSlides = [
     {
@@ -115,6 +172,14 @@ export function LandingPage() {
   }
 
   const events: Record<string, EventDetail[]> = {
+    "2026": [
+      {
+        tag: "ISF 2026",
+        title: "ISF Global Junicorn Cohort 3 & Competitions",
+        desc: "The upcoming major events will feature the launch of Cohort 3 and exciting national-level startup competitions, bringing together the next generation of global innovators.",
+        link: ""
+      }
+    ],
     "2025": [
       {
         tag: "ISF 2025 USA",
@@ -393,6 +458,123 @@ export function LandingPage() {
         </div>
       </section>
 
+      {/* 2. Dubai Video Section */}
+      <section className="py-12 bg-white">
+        <div className="max-w-5xl mx-auto px-4">
+          <div className="relative rounded-2xl md:rounded-3xl overflow-hidden shadow-2xl border border-slate-100/50 aspect-video group">
+            <video
+              ref={videoRef}
+              src="/assets/videos/dubai.mp4"
+              loop
+              playsInline
+              className="w-full h-full object-cover"
+            />
+            
+            {/* Playback Control Overlay */}
+            <div className="absolute inset-0 bg-slate-950/20 group-hover:bg-slate-950/40 transition-colors flex items-center justify-center pointer-events-none">
+              <span className="text-white text-xs font-bold tracking-widest uppercase bg-slate-900/60 px-4 py-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity">
+                Dubai CXO Summit
+              </span>
+            </div>
+
+            {/* Mute/Unmute Floating Button */}
+            <button
+              onClick={() => {
+                if (videoRef.current) {
+                  const nextMuted = !videoRef.current.muted;
+                  videoRef.current.muted = nextMuted;
+                  setIsMuted(nextMuted);
+                }
+              }}
+              className="absolute bottom-4 right-4 bg-slate-900/80 hover:bg-slate-900 text-white p-3 rounded-full shadow-lg transition-all cursor-pointer z-20 flex items-center justify-center"
+            >
+              {isMuted ? (
+                <VolumeX size={20} className="text-white" />
+              ) : (
+                <Volume2 size={20} className="text-white" />
+              )}
+            </button>
+          </div>
+        </div>
+      </section>
+
+      {/* 2b. About Junicorns (Junior Unicorns) Section */}
+      <section className="py-20 bg-gradient-to-tr from-orange-50/20 via-white to-amber-50/15 border-y border-slate-100">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            
+            {/* Left Column: Rich Text content */}
+            <div className="lg:col-span-6 space-y-6 text-left">
+              <span className="text-xs font-bold text-isf-orange tracking-widest uppercase block font-inter">
+                FUTURE LEADERS OF INNOVATION
+              </span>
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold font-baskerville text-[#0C3E2B] leading-tight">
+                About <span className="text-[#D24D7F]">Junicorns</span> <span className="text-slate-800 font-sans font-light text-2xl sm:text-3xl block mt-1">(Junior Unicorns)</span>
+              </h2>
+              
+              <div className="w-16 h-1 bg-[#D24D7F] rounded-full"></div>
+              
+              <div className="space-y-4 text-slate-700 font-inter font-medium leading-relaxed text-sm md:text-base">
+                <p>
+                  Junicorns (Junior Unicorns) is a prestigious flagship initiative by the International Startup Foundation. It identifies, nurtures, and empowers student entrepreneurs and young innovators from college incubators.
+                </p>
+                <p>
+                  By connecting them with global mentors, executive workshops, and direct investor raising channels, Junicorns bridges the gap between campus ideas and commercial success.
+                </p>
+              </div>
+              
+              <div className="pt-4">
+                <Link
+                  to="/junicornshub"
+                  className="bg-[#D24D7F] hover:bg-[#C73E6E] text-white text-xs sm:text-sm font-bold uppercase tracking-wider px-6 py-3.5 rounded-full shadow transition-all inline-block cursor-pointer"
+                >
+                  Explore Junicorns Hub
+                </Link>
+              </div>
+            </div>
+
+            {/* Right Column: Dynamic Slide Gallery */}
+            <div className="lg:col-span-6">
+              <div className="relative rounded-2xl md:rounded-3xl overflow-hidden shadow-xl border border-slate-200/60 bg-white p-4">
+                <div className="relative aspect-[4/3] rounded-xl overflow-hidden bg-slate-100">
+                  <img
+                    src={junicornSlides[junicornIndex].image}
+                    alt={junicornSlides[junicornIndex].title}
+                    className="w-full h-full object-cover transition-all duration-700 ease-in-out"
+                    onError={(e) => {
+                      e.currentTarget.src = "/assets/isf-logo.webp";
+                    }}
+                  />
+                  {/* Title and Tag Overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-950/20 to-transparent flex flex-col justify-end p-6 text-white text-left">
+                    <span className="text-xs font-bold text-amber-300 uppercase tracking-wider block font-inter mb-1">
+                      {junicornSlides[junicornIndex].tag}
+                    </span>
+                    <h3 className="text-base sm:text-lg md:text-xl font-bold font-baskerville">
+                      {junicornSlides[junicornIndex].title}
+                    </h3>
+                  </div>
+                </div>
+
+                {/* Slider pagination dots */}
+                <div className="flex justify-center space-x-2 mt-4">
+                  {junicornSlides.map((_, idx) => (
+                    <button
+                      key={idx}
+                      onClick={() => setJunicornIndex(idx)}
+                      className={`h-2 rounded-full transition-all cursor-pointer ${
+                        junicornIndex === idx ? "bg-[#D24D7F] w-6" : "bg-slate-200 hover:bg-slate-300 w-2"
+                      }`}
+                    />
+                  ))}
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
       {/* 3. Three Event Cards: Pune, USA, AI Summit */}
       <section className="py-16 bg-gradient-to-tr from-[#FFF7E3]/60 via-slate-50 to-[#FFE7AB]/25 border-b border-gray-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -542,7 +724,7 @@ export function LandingPage() {
 
           {/* Tab buttons */}
           <div className="flex justify-center gap-2 sm:gap-3 relative z-10 -mb-[1px] flex-wrap sm:flex-nowrap">
-            {Object.keys(events).map((year) => (
+            {Object.keys(events).sort((a, b) => b.localeCompare(a)).map((year) => (
               <button
                 key={year}
                 onClick={() => setActiveTab(year)}

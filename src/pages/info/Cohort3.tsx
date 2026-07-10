@@ -1,246 +1,698 @@
-import React from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, CheckCircle2, Heart, Users, Shield, Lightbulb, TrendingUp, Sparkles, Target, Zap, Globe, Cpu, HeartPulse } from 'lucide-react';
+import { motion, useInView, AnimatePresence } from 'framer-motion';
+import {
+  ArrowRight, Leaf, Heart, Factory, Droplets, Rocket, BookOpen,
+  Zap, Monitor, Building, Users2, ChevronDown, Globe,
+  MapPin, Calendar, Star, TrendingUp, Lightbulb,
+} from 'lucide-react';
 
-const Cohort3: React.FC = () => {
-  const teamMembers = [
-    { name: "Dr. J A Chowdary", role: "Founder & Chairman", image: "/assets/cohort3/ja-chowdary.png" },
-    { name: "Dr. Mahesh Tangatooru", role: "Co-Founder", image: "/assets/cohort3/dr-siva-mahesh.jpeg" },
-    { name: "Poondla Siddharth Reddy", role: "Core Team", image: "/assets/cohort3/psr.jpg" },
-    { name: "Priyanka Kamath", role: "Core Team", image: "/assets/cohort3/priyanka.jpeg" },
-    { name: "Parvathi Vunnam", role: "Core Team", image: "/assets/cohort3/parvathi.png" },
-    { name: "Venkata Kiran Kumar", role: "Core Team", image: "/assets/cohort3/kiran.jpeg" },
-    { name: "Rounak K Shankar", role: "Core Team", image: "/assets/cohort3/rounak.jpeg" },
-  ];
+// ─── Floating animation helper (inline, type-safe) ─────────────────────────
+const floatAnim = (duration = 4) => ({
+  animate: {
+    y: [0, -10, 0] as number[],
+    transition: { duration, repeat: Infinity, ease: 'easeInOut' as const }
+  }
+});
 
-  const focusAreas = [
-    { icon: <HeartPulse className="w-8 h-8" />, title: "Healthcare & well-being" },
-    { icon: <Globe className="w-8 h-8" />, title: "Agriculture & food security" },
-    { icon: <TrendingUp className="w-8 h-8" />, title: "Manufacturing & MSME growth" },
-    { icon: <Zap className="w-8 h-8" />, title: "Clean energy & sustainability" },
-    { icon: <Cpu className="w-8 h-8" />, title: "Space & deep-tech innovation" },
-    { icon: <Lightbulb className="w-8 h-8" />, title: "Education & skill development" },
-    { icon: <Sparkles className="w-8 h-8" />, title: "Digital transformation" },
-    { icon: <Target className="w-8 h-8" />, title: "Water security & climate action" }
+// ─── Scroll-triggered fade-up ───────────────────────────────────────────────
+function FadeUp({
+  children,
+  delay = 0,
+  className = ''
+}: {
+  children: React.ReactNode;
+  delay?: number;
+  className?: string;
+}) {
+  const ref = useRef(null);
+  const inView = useInView(ref, { once: true, margin: '-60px' });
+  return (
+    <motion.div
+      ref={ref}
+      initial={{ opacity: 0, y: 40 }}
+      animate={inView ? { opacity: 1, y: 0 } : {}}
+      transition={{ duration: 0.65, delay, ease: 'easeOut' as const }}
+      className={className}
+    >
+      {children}
+    </motion.div>
+  );
+}
+
+// ─── Live Countdown ────────────────────────────────────────────────────────
+function Countdown() {
+  const deadline = new Date('2026-10-01T23:59:59');
+  const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, mins: 0, secs: 0 });
+
+  useEffect(() => {
+    const tick = () => {
+      const now = new Date();
+      const diff = Math.max(0, deadline.getTime() - now.getTime());
+      setTimeLeft({
+        days: Math.floor(diff / 86400000),
+        hours: Math.floor((diff % 86400000) / 3600000),
+        mins: Math.floor((diff % 3600000) / 60000),
+        secs: Math.floor((diff % 60000) / 1000)
+      });
+    };
+    tick();
+    const id = setInterval(tick, 1000);
+    return () => clearInterval(id);
+  }, []);
+
+  const units = [
+    { label: 'Days', value: timeLeft.days },
+    { label: 'Hours', value: timeLeft.hours },
+    { label: 'Mins', value: timeLeft.mins },
+    { label: 'Secs', value: timeLeft.secs }
   ];
 
   return (
-    <div className="font-inter bg-slate-50 min-h-screen pt-20 overflow-x-hidden">
-      
-      {/* Hero Section */}
-      <section className="relative w-full py-24 md:py-32 bg-gradient-to-br from-indigo-950 via-slate-900 to-indigo-900 text-white overflow-hidden flex items-center justify-center">
-        <div className="absolute inset-0 bg-[url('/assets/cohort3/cohort3-hero.png')] opacity-10 bg-cover bg-center mix-blend-overlay"></div>
-        <div className="absolute top-0 right-0 -mr-32 -mt-32 w-[600px] h-[600px] rounded-full bg-isf-orange/20 blur-[100px] pointer-events-none"></div>
-        <div className="absolute bottom-0 left-0 -ml-32 -mb-32 w-[600px] h-[600px] rounded-full bg-blue-500/20 blur-[100px] pointer-events-none"></div>
-        
-        <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10 flex flex-col items-center text-center">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur-md border border-white/20 mb-8 animate-fade-in-up">
-            <Sparkles className="w-4 h-4 text-isf-orange" />
-            <span className="text-sm font-semibold tracking-wide text-white">Junicorns Movement</span>
-          </div>
-          
-          <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight mb-6 leading-tight max-w-4xl animate-fade-in-up font-inter" style={{animationDelay: '100ms'}}>
-            <span className="bg-clip-text text-transparent bg-gradient-to-r from-emerald-400 to-yellow-300">
-              Rural Innovation Challenge
-            </span>
-            <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-isf-orange to-yellow-400">
-              Cohort 3.0
-            </span>
-          </h1>
-          
-          <p className="text-xl md:text-2xl text-slate-300 mb-10 max-w-2xl animate-fade-in-up" style={{animationDelay: '200ms'}}>
-            Built for young innovators and changemakers at the start of their journey.
-          </p>
-          
-          <div className="flex flex-col sm:flex-row gap-4 animate-fade-in-up" style={{animationDelay: '300ms'}}>
-            <Link to="/registration" className="px-8 py-4 bg-isf-orange hover:bg-isf-orange-hover text-white rounded-full font-semibold text-lg transition-all duration-300 shadow-[0_0_20px_rgba(249,115,22,0.3)] hover:shadow-[0_0_30px_rgba(249,115,22,0.5)] hover:-translate-y-1 flex items-center justify-center gap-2">
-              Register Now <ArrowRight className="w-5 h-5" />
-            </Link>
-          </div>
-          <p className="mt-6 text-sm text-slate-400 font-medium tracking-wider">Last Date for Registrations: <span className="text-white">October 1st</span></p>
+    <div className="flex gap-3 sm:gap-4 justify-center">
+      {units.map(({ label, value }) => (
+        <div key={label} className="flex flex-col items-center bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl px-4 py-3 min-w-[70px]">
+          <AnimatePresence mode="popLayout">
+            <motion.span
+              key={value}
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: 10 }}
+              className="text-3xl sm:text-4xl font-black tabular-nums text-white leading-none"
+            >
+              {String(value).padStart(2, '0')}
+            </motion.span>
+          </AnimatePresence>
+          <span className="text-[10px] font-bold uppercase tracking-widest text-white/60 mt-1">{label}</span>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+// ─── Data ──────────────────────────────────────────────────────────────────
+const arenas = [
+  { icon: <Leaf />, title: 'Agriculture & Food Security', color: 'from-green-500 to-emerald-400', bg: 'bg-green-50', border: 'border-green-200/40', desc: 'Precision farming, crop tech, cold-chain innovations for Bharat.' },
+  { icon: <Heart />, title: 'Healthcare & Well-being', color: 'from-rose-500 to-pink-400', bg: 'bg-rose-50', border: 'border-rose-200/40', desc: 'Rural diagnostics, telemedicine, and affordable health innovations.' },
+  { icon: <Factory />, title: 'Manufacturing & MSME Growth', color: 'from-amber-500 to-yellow-400', bg: 'bg-amber-50', border: 'border-amber-200/40', desc: 'Smart manufacturing, local supply chains, and artisan tech.' },
+  { icon: <Droplets />, title: 'Water Security & Climate Action', color: 'from-blue-500 to-cyan-400', bg: 'bg-blue-50', border: 'border-blue-200/40', desc: 'Water conservation, climate-resilient infrastructure and practices.' },
+  { icon: <Rocket />, title: 'Space & Deep-Tech Innovation', color: 'from-violet-500 to-purple-400', bg: 'bg-violet-50', border: 'border-violet-200/40', desc: 'AgriSat, rural connectivity, drones, and emerging deep-tech.' },
+  { icon: <BookOpen />, title: 'Education & Skill Development', color: 'from-indigo-500 to-blue-400', bg: 'bg-indigo-50', border: 'border-indigo-200/40', desc: 'Ed-tech, vocational platforms, and digital literacy solutions.' },
+  { icon: <Zap />, title: 'Clean Energy & Sustainability', color: 'from-orange-500 to-amber-400', bg: 'bg-orange-50', border: 'border-orange-200/40', desc: 'Solar, biogas, clean cook-stoves and distributed energy access.' },
+  { icon: <Monitor />, title: 'Digital Transformation & Future Workforce', color: 'from-teal-500 to-cyan-400', bg: 'bg-teal-50', border: 'border-teal-200/40', desc: 'SaaS for rural enterprise, gig platforms, digital infrastructure.' },
+  { icon: <Building />, title: 'Smart Cities & Urban Development', color: 'from-slate-500 to-gray-400', bg: 'bg-slate-100', border: 'border-slate-200/40', desc: 'Urban mobility, waste tech, inclusive city planning and governance.' },
+  { icon: <Users2 />, title: 'Women Empowerment & Social Inclusion', color: 'from-pink-500 to-rose-400', bg: 'bg-pink-50', border: 'border-pink-200/40', desc: 'Women-led ventures, SHG tech, inclusive social enterprise.' }
+];
+
+const pillars = [
+  {
+    icon: <Lightbulb className="w-7 h-7" />, title: 'Mentorship',
+    desc: 'Expert guidance from industry leaders, serial entrepreneurs, and global innovators at every step of your journey.',
+    iconColor: 'text-yellow-500', bgColor: 'bg-yellow-50'
+  },
+  {
+    icon: <Globe className="w-7 h-7" />, title: 'Market Access',
+    desc: 'Showcase your innovation at state, national, and international platforms. Gain visibility that matters.',
+    iconColor: 'text-blue-500', bgColor: 'bg-blue-50'
+  },
+  {
+    icon: <TrendingUp className="w-7 h-7" />, title: 'Money',
+    desc: 'Access real investment opportunities, grants, and funding networks to take your startup from idea to impact.',
+    iconColor: 'text-emerald-500', bgColor: 'bg-emerald-50'
+  }
+];
+
+const phases = [
+  { phase: 'Phase 1', date: 'May 23rd', title: 'Registration Launch', desc: 'Applications open across 20+ states. Submit your idea or prototype.', dotColor: 'bg-emerald-500', shadow: 'shadow-emerald-200' },
+  { phase: 'Phase 2', date: 'August 15th', title: '1st Shortlist — Top 100', desc: 'Top 100 projects selected. Mentorship sessions begin for shortlisted teams.', dotColor: 'bg-blue-500', shadow: 'shadow-blue-200' },
+  { phase: 'Phase 3', date: 'November 14th', title: '2nd Shortlist — Top 50', desc: 'Top 50 move forward. Intensive coaching, investor connects, demo prep.', dotColor: 'bg-violet-500', shadow: 'shadow-violet-200' },
+  { phase: 'Phase 4', date: 'December 24th', title: 'Grand Finale', desc: 'Bengaluru, India. Grand Presentation Mega Event — pitch to global investors.', dotColor: 'bg-orange-500', shadow: 'shadow-orange-200' }
+];
+
+const impactData = [
+  { cohort: 'Cohort 1', location: 'Austin, Texas, USA', year: '2025', flag: '🇺🇸', junicorns: '40', ideas: '22', incorporations: '6', grad: 'from-indigo-600 to-blue-500' },
+  { cohort: 'Cohort 2', location: 'Dubai, UAE', year: '2026', flag: '🇦🇪', junicorns: '50+', ideas: '28', incorporations: '9', grad: 'from-orange-500 to-amber-400' }
+];
+
+const academies = [
+  'Young Entrepreneurship', 'Future Founder', 'Deep-Tech Innovation',
+  'Family Business Excellence', 'MSME Growth', 'Global Leadership'
+];
+
+const enablers = [
+  { name: 'Dr. J A Chowdary', role: 'Founder & Chairman, ISF', img: '/assets/cohort3/ja-chowdary.png' },
+  { name: 'Sreekanth Arimanithaya', role: 'Partner, VISARA', img: '' },
+  { name: 'Dr. Siva Mahesh Tangutooru', role: 'Co-Founder, ISF', img: '/assets/cohort3/dr-siva-mahesh.jpeg' },
+  { name: 'Sri Atluri', role: 'Strategic Partner', img: '' },
+  { name: 'SS Raju', role: 'Ecosystem Lead', img: '' },
+  { name: 'Chinmay Kumar Dash', role: 'Program Director', img: '' }
+];
+
+// ─── Main Component ────────────────────────────────────────────────────────
+const Cohort3: React.FC = () => {
+  const [hoveredArena, setHoveredArena] = useState<number | null>(null);
+
+  return (
+    <div className="font-inter bg-white min-h-screen pt-20 overflow-x-hidden">
+
+      {/* ═══ Section 1: Hero Canvas ══════════════════════════════════════════ */}
+      <section className="relative w-full min-h-screen flex flex-col items-center justify-center overflow-hidden">
+        {/* Background layers */}
+        <div className="absolute inset-0 bg-gradient-to-br from-[#0a2218] via-[#0e1a3a] to-[#1a0a2e]" />
+        <div
+          className="absolute inset-0 opacity-20"
+          style={{ backgroundImage: 'radial-gradient(circle at 20% 80%, #166534 0%, transparent 50%), radial-gradient(circle at 80% 20%, #312e81 0%, transparent 50%), radial-gradient(circle at 60% 90%, #f97316 0%, transparent 40%)' }}
+        />
+
+        {/* Floating orbs */}
+        <motion.div
+          animate={{ y: [0, -16, 0] }}
+          transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' as const }}
+          className="absolute top-1/4 left-[10%] w-64 h-64 rounded-full bg-emerald-600/20 blur-[80px] pointer-events-none"
+        />
+        <motion.div
+          animate={{ y: [0, -20, 0] }}
+          transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' as const }}
+          className="absolute bottom-1/4 right-[10%] w-80 h-80 rounded-full bg-orange-500/20 blur-[100px] pointer-events-none"
+        />
+        <motion.div
+          animate={{ y: [0, -12, 0] }}
+          transition={{ duration: 7, repeat: Infinity, ease: 'easeInOut' as const }}
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 rounded-full bg-violet-500/10 blur-[120px] pointer-events-none"
+        />
+
+        <div className="relative z-10 max-w-6xl mx-auto px-6 text-center flex flex-col items-center gap-8">
+          {/* Pre-header */}
+          <FadeUp>
+            <div className="inline-flex flex-wrap items-center justify-center gap-2 px-5 py-2.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-sm font-medium text-white/80">
+              <span>Organised by</span>
+              <span className="font-bold text-white">ISF</span>
+              <span className="text-white/40">·</span>
+              <span className="font-semibold text-amber-300">GAVS</span>
+              <span className="text-white/40">·</span>
+              <span className="font-semibold text-cyan-300">MyAnatomy</span>
+              <span className="text-white/40">·</span>
+              <span className="font-semibold text-rose-300">VISARA</span>
+            </div>
+          </FadeUp>
+
+          {/* Headline */}
+          <FadeUp delay={0.1}>
+            <h1 className="text-3xl sm:text-5xl md:text-6xl font-black tracking-tight text-white leading-tight">
+              <span className="block bg-clip-text text-transparent bg-gradient-to-r from-emerald-400 via-teal-300 to-cyan-400">
+                Junicorn Rural
+              </span>
+              <span className="block bg-clip-text text-transparent bg-gradient-to-r from-orange-400 via-amber-300 to-yellow-300">
+                Innovation Challenge
+              </span>
+              <span className="block text-white/90 text-xl sm:text-2xl md:text-3xl mt-2 font-bold">
+                — Cohort 3.0
+              </span>
+            </h1>
+          </FadeUp>
+
+          {/* Sub-headline */}
+          <FadeUp delay={0.2}>
+            <p className="text-base sm:text-lg text-white/70 max-w-2xl leading-relaxed">
+              Transforming India's Rural Innovation Story.{' '}
+              <span className="text-white">Bridging the gap between rural ambition and global opportunity.</span>
+            </p>
+          </FadeUp>
+
+          {/* CTA */}
+          <FadeUp delay={0.3}>
+            <motion.div
+              whileHover={{ y: -8, boxShadow: '0 20px 50px rgba(249,115,22,0.45)' }}
+              transition={{ duration: 0.3, ease: 'easeOut' as const }}
+              className="inline-block"
+            >
+              <Link
+                to="/registration"
+                className="flex items-center gap-3 bg-gradient-to-r from-orange-500 to-amber-400 text-white font-bold text-lg px-10 py-4 rounded-full shadow-xl cursor-pointer"
+              >
+                Apply Now <ArrowRight className="w-5 h-5" />
+              </Link>
+            </motion.div>
+          </FadeUp>
+
+          {/* Countdown */}
+          <FadeUp delay={0.4} className="w-full">
+            <div className="space-y-4">
+              <p className="text-white/50 text-sm font-semibold uppercase tracking-widest">
+                Registration Deadline — October 1st
+              </p>
+              <Countdown />
+            </div>
+          </FadeUp>
+
+          {/* Scroll hint */}
+          <motion.div
+            animate={{ y: [0, 8, 0] }}
+            transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' as const }}
+            className="mt-4 text-white/30"
+          >
+            <ChevronDown className="w-6 h-6" />
+          </motion.div>
         </div>
       </section>
 
-      {/* Eligibility & Focus Areas Grid */}
-      <section className="py-24 bg-white relative">
-        <div className="max-w-7xl mx-auto px-6 md:px-12">
-          
-          <div className="text-center mb-16">
-            <h2 className="text-sm font-bold text-isf-orange tracking-widest uppercase mb-3">Who Can Join</h2>
-            <h3 className="text-3xl md:text-4xl font-bold text-slate-900">Eligibility Requirements</h3>
-            <p className="mt-4 text-lg text-slate-600 max-w-2xl mx-auto">A quick check before you apply — most young builders qualify.</p>
-          </div>
+      {/* ═══ Section 2: Core Philosophy — The 3Ms ════════════════════════════ */}
+      <section className="py-24 bg-gradient-to-b from-white to-amber-50/40 border-b border-amber-100/60">
+        <div className="max-w-6xl mx-auto px-6">
+          <FadeUp>
+            <div className="text-center mb-12">
+              <span className="text-xs font-bold text-isf-orange tracking-widest uppercase block mb-3">The Why</span>
+              <h2 className="text-2xl md:text-4xl font-black text-slate-900 leading-tight">The Core Philosophy</h2>
+            </div>
+          </FadeUp>
 
-          <div className="grid md:grid-cols-3 gap-8 mb-24">
-            {[
-              { title: "18–25 years", desc: "Built for young innovators and changemakers at the start of their journey.", icon: <Users className="w-6 h-6" /> },
-              { title: "Students & early builders", desc: "Individuals or teams with a working prototype or a lean MVP.", icon: <Target className="w-6 h-6" /> },
-              { title: "Any ecosystem", desc: "Open to those with college incubators, accelerators, or going it independently.", icon: <Globe className="w-6 h-6" /> }
-            ].map((item, idx) => (
-              <div key={idx} className="bg-slate-50 rounded-3xl p-8 border border-slate-100 hover:border-isf-orange/30 transition-all duration-300 hover:shadow-xl hover:shadow-isf-orange/5 group">
-                <div className="w-14 h-14 bg-white rounded-2xl flex items-center justify-center text-isf-orange shadow-sm mb-6 group-hover:scale-110 group-hover:bg-isf-orange group-hover:text-white transition-all duration-300">
-                  {item.icon}
+          {/* Founder Quote */}
+          <FadeUp delay={0.1}>
+            <div className="relative bg-gradient-to-br from-slate-900 to-slate-800 rounded-3xl p-8 md:p-10 mb-12 overflow-hidden">
+              <div className="absolute top-0 left-0 w-2 h-full bg-gradient-to-b from-isf-orange to-amber-400 rounded-l-3xl" />
+              <div className="absolute top-6 right-6 text-8xl text-white/5 font-black leading-none select-none">"</div>
+              <blockquote className="relative z-10 text-lg md:text-xl text-white/90 font-medium leading-relaxed italic max-w-4xl">
+                India stands at a defining moment to become a global innovation powerhouse... To realize Bharat 2047, we must equip youth—especially from rural India and Tier 2 & 3 cities—with the right tools, mentorship, and global exposure.
+              </blockquote>
+              <div className="mt-8 flex items-center gap-4">
+                <img
+                  src="/assets/cohort3/ja-chowdary.png"
+                  alt="Dr. J A Chowdary"
+                  className="w-14 h-14 rounded-full object-cover border-2 border-isf-orange"
+                  onError={e => { e.currentTarget.src = `https://ui-avatars.com/api/?name=JA+Chowdary&background=f97316&color=fff&size=256`; }}
+                />
+                <div>
+                  <p className="text-white font-bold">Dr. J A Chowdary</p>
+                  <p className="text-white/50 text-sm">Founder & Chairman, ISF</p>
                 </div>
-                <h4 className="text-xl font-bold text-slate-900 mb-3">{item.title}</h4>
-                <p className="text-slate-600 leading-relaxed">{item.desc}</p>
               </div>
+            </div>
+          </FadeUp>
+
+          {/* 3 Pillars — antigravity cards */}
+          <div className="grid md:grid-cols-3 gap-8">
+            {pillars.map((p, i) => (
+              <FadeUp key={p.title} delay={0.1 + i * 0.12}>
+                <motion.div
+                  whileHover={{ y: -12, boxShadow: '0 24px 60px rgba(249,115,22,0.12)' }}
+                  transition={{ duration: 0.35, ease: 'easeOut' as const }}
+                  className="bg-white rounded-3xl p-8 border border-slate-100 shadow-md cursor-default"
+                >
+                  <motion.div
+                    animate={{ y: [0, -8, 0] }}
+                    transition={{ duration: 5 + i, repeat: Infinity, ease: 'easeInOut' as const, delay: i * 0.8 }}
+                    className={`w-14 h-14 rounded-2xl flex items-center justify-center ${p.iconColor} ${p.bgColor} mb-6`}
+                  >
+                    {p.icon}
+                  </motion.div>
+                  <h3 className="text-xl font-bold text-slate-900 mb-2">{p.title}</h3>
+                  <p className="text-slate-600 text-sm leading-relaxed">{p.desc}</p>
+                </motion.div>
+              </FadeUp>
             ))}
           </div>
+        </div>
+      </section>
 
-          {/* Focus Areas */}
-          <div className="bg-slate-900 rounded-[3rem] p-10 md:p-16 relative overflow-hidden text-white shadow-2xl">
-            <div className="absolute top-0 right-0 w-96 h-96 bg-isf-orange/10 rounded-full blur-3xl mix-blend-screen pointer-events-none"></div>
-            
-            <div className="relative z-10 flex flex-col md:flex-row gap-12 items-center">
-              <div className="md:w-1/3 text-center md:text-left">
-                <h2 className="text-sm font-extrabold !text-white tracking-widest uppercase mb-3 font-inter">Ten domains, one mission</h2>
-                <h3 className="text-3xl md:text-4xl font-black mb-6 font-inter !text-white">Focus areas for innovation</h3>
-                <p className="text-slate-400 text-lg mb-8">Not limited to these — but here's where we're looking hardest.</p>
+      {/* ═══ Section 3: Innovation Arenas ════════════════════════════════════ */}
+      <section className="py-24 bg-gradient-to-br from-slate-950 via-slate-900 to-indigo-950 relative overflow-hidden">
+        <div
+          className="absolute inset-0 opacity-30"
+          style={{ backgroundImage: 'radial-gradient(circle at 30% 30%, #166534 0%, transparent 40%), radial-gradient(circle at 70% 70%, #312e81 0%, transparent 40%)' }}
+        />
+        <div className="relative z-10 max-w-7xl mx-auto px-6">
+          <FadeUp>
+            <div className="text-center mb-12">
+              <span className="text-xs font-bold text-emerald-400 tracking-widest uppercase block mb-2">10 Arenas</span>
+              <h2 className="text-2xl md:text-4xl font-black text-white leading-tight">Choose Your Arena of Impact</h2>
+              <p className="mt-3 text-white/60 text-sm sm:text-base max-w-2xl mx-auto">
+                Not limited to these — but here's where we're looking hardest.
+              </p>
+            </div>
+          </FadeUp>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+            {arenas.map((arena, i) => (
+              <FadeUp key={arena.title} delay={Math.min(0.04 * i, 0.3)}>
+                <motion.div
+                  whileHover={{ y: -10, boxShadow: '0 20px 50px rgba(255,255,255,0.08)' }}
+                  transition={{ duration: 0.3, ease: 'easeOut' as const }}
+                  onHoverStart={() => setHoveredArena(i)}
+                  onHoverEnd={() => setHoveredArena(null)}
+                  className={`relative rounded-2xl border ${arena.border} bg-white/5 backdrop-blur-sm p-6 cursor-default overflow-hidden group`}
+                >
+                  <div className={`absolute inset-0 bg-gradient-to-br ${arena.color} opacity-0 group-hover:opacity-10 transition-opacity duration-300`} />
+                  <motion.div
+                    animate={{ y: [0, -8, 0] }}
+                    transition={{ duration: 4 + (i % 3), repeat: Infinity, ease: 'easeInOut' as const, delay: i * 0.25 }}
+                    className={`w-12 h-12 rounded-xl ${arena.bg} flex items-center justify-center mb-4`}
+                  >
+                    <div className="text-slate-700">{arena.icon}</div>
+                  </motion.div>
+                  <h3 className="text-sm font-bold text-white leading-snug mb-2">{arena.title}</h3>
+                  <AnimatePresence>
+                    {hoveredArena === i && (
+                      <motion.p
+                        initial={{ opacity: 0, height: 0 }}
+                        animate={{ opacity: 1, height: 'auto' }}
+                        exit={{ opacity: 0, height: 0 }}
+                        className="text-white/60 text-xs leading-relaxed overflow-hidden"
+                      >
+                        {arena.desc}
+                      </motion.p>
+                    )}
+                  </AnimatePresence>
+                </motion.div>
+              </FadeUp>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ═══ Section 4: Eligibility — Terminal Style ══════════════════════════ */}
+      <section className="py-24 bg-gradient-to-b from-white to-slate-50">
+        <div className="max-w-4xl mx-auto px-6">
+          <FadeUp>
+            <div className="text-center mb-10">
+              <span className="text-xs font-bold text-isf-orange tracking-widest uppercase block mb-2">Qualification Check</span>
+              <h2 className="text-2xl md:text-4xl font-black text-slate-900">Are You a Junicorn?</h2>
+            </div>
+          </FadeUp>
+
+          <FadeUp delay={0.15}>
+            <div className="rounded-3xl overflow-hidden border border-slate-200 shadow-2xl shadow-slate-200/60">
+              {/* Title bar */}
+              <div className="bg-slate-900 px-6 py-4 flex items-center gap-3">
+                <div className="w-3 h-3 rounded-full bg-rose-500" />
+                <div className="w-3 h-3 rounded-full bg-amber-400" />
+                <div className="w-3 h-3 rounded-full bg-emerald-500" />
+                <span className="ml-4 text-white/40 text-xs font-mono">junicorn_eligibility_check.sh</span>
               </div>
-              
-              <div className="md:w-2/3 grid grid-cols-1 sm:grid-cols-2 gap-4">
-                {focusAreas.map((area, idx) => (
-                  <div key={idx} className="flex items-center gap-4 bg-white/5 border border-white/10 p-4 rounded-2xl hover:bg-white/10 transition-colors group">
-                    <div className="text-isf-orange group-hover:text-yellow-400 transition-colors">
-                      {area.icon}
+              {/* Terminal body */}
+              <div className="bg-slate-950 p-8 font-mono text-sm space-y-6">
+                {[
+                  { label: '→ AGE_BRACKET', value: '18–25 years', detail: 'Young innovators & changemakers', color: 'text-emerald-400' },
+                  { label: '→ TARGET_PROFILE', value: 'Students, early-stage innovators, or teams', detail: 'With a prototype or lean MVP', color: 'text-cyan-400' },
+                  { label: '→ BACKGROUND', value: 'Open to independent innovators', detail: 'Or those linked with college incubators from across 20 states', color: 'text-violet-400' }
+                ].map((item, i) => (
+                  <div key={i} className="space-y-1">
+                    <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
+                      <span className="text-white/30">{item.label}</span>
+                      <span className={`font-bold ${item.color}`}>=</span>
+                      <span className="text-white font-bold">"{item.value}"</span>
                     </div>
-                    <span className="font-semibold">{area.title}</span>
+                    <p className="text-white/40 pl-4 text-xs"># {item.detail}</p>
                   </div>
                 ))}
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Video Section Placeholder */}
-      <section className="py-24 bg-slate-50 border-t border-slate-200">
-        <div className="max-w-6xl mx-auto px-6 text-center">
-          <h3 className="text-3xl md:text-4xl font-bold text-slate-900 mb-12">See What Junicorns is All About</h3>
-          <div className="aspect-video bg-slate-900 rounded-3xl overflow-hidden shadow-2xl relative flex items-center justify-center border-4 border-white">
-            <div className="absolute inset-0 bg-gradient-to-tr from-slate-900/80 to-transparent z-10"></div>
-            {/* Play Button Overlay */}
-            <div className="relative z-20 w-20 h-20 bg-isf-orange rounded-full flex items-center justify-center shadow-lg cursor-pointer hover:scale-110 transition-transform duration-300 group">
-              <div className="w-0 h-0 border-t-[12px] border-t-transparent border-l-[20px] border-l-white border-b-[12px] border-b-transparent ml-2 group-hover:border-l-slate-100 transition-colors"></div>
-            </div>
-            <p className="absolute bottom-6 left-6 z-20 text-white font-medium bg-black/50 px-4 py-2 rounded-lg backdrop-blur-sm">
-              Video Placeholder (Link Pending)
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* About Junicorns / Timeline */}
-      <section className="py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-6 md:px-12">
-          <div className="text-center mb-16">
-            <h2 className="text-sm font-bold text-isf-orange tracking-widest uppercase mb-3">Our Legacy</h2>
-            <h3 className="text-3xl md:text-4xl font-bold text-slate-900">About Junicorns</h3>
-            <p className="mt-4 text-lg text-slate-600 max-w-2xl mx-auto">Discover how the Junicorns movement started and evolved.</p>
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-12">
-            <div className="bg-indigo-50 rounded-[2.5rem] p-10 md:p-14 border border-indigo-100 relative overflow-hidden group hover:shadow-2xl hover:shadow-indigo-500/10 transition-all duration-500">
-              <div className="absolute top-0 right-0 w-32 h-32 bg-indigo-200/50 rounded-full blur-2xl -mr-10 -mt-10 transition-transform group-hover:scale-150 duration-700"></div>
-              <div className="relative z-10">
-                <span className="inline-block px-4 py-1.5 rounded-full bg-indigo-100 text-indigo-700 font-bold text-sm tracking-wide mb-6">Cohort 1</span>
-                <h4 className="text-2xl font-bold text-slate-900 mb-4">ISF Global Junicorn AI Summit</h4>
-                <p className="text-slate-600 mb-6 font-medium text-indigo-900/60">USA, 2025</p>
-                <ul className="space-y-4">
-                  {[
-                    "Focused on Artificial Intelligence innovations",
-                    "Global reach with international participants",
-                    "Launched the Junicorns movement"
-                  ].map((text, i) => (
-                    <li key={i} className="flex items-start gap-3">
-                      <CheckCircle2 className="w-5 h-5 text-indigo-500 shrink-0 mt-0.5" />
-                      <span className="text-slate-700">{text}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-
-            <div className="bg-orange-50 rounded-[2.5rem] p-10 md:p-14 border border-orange-100 relative overflow-hidden group hover:shadow-2xl hover:shadow-isf-orange/10 transition-all duration-500">
-              <div className="absolute top-0 right-0 w-32 h-32 bg-orange-200/50 rounded-full blur-2xl -mr-10 -mt-10 transition-transform group-hover:scale-150 duration-700"></div>
-              <div className="relative z-10">
-                <span className="inline-block px-4 py-1.5 rounded-full bg-orange-100 text-isf-orange font-bold text-sm tracking-wide mb-6">Cohort 2</span>
-                <h4 className="text-2xl font-bold text-slate-900 mb-4">Dubai Summit 2026</h4>
-                <p className="text-slate-600 mb-6 font-medium text-orange-900/60">Dubai, 2026</p>
-                <ul className="space-y-4">
-                  {[
-                    "Scaling innovations to the Middle East",
-                    "Focus on smart cities and sustainability",
-                    "Connecting young founders with global investors"
-                  ].map((text, i) => (
-                    <li key={i} className="flex items-start gap-3">
-                      <CheckCircle2 className="w-5 h-5 text-isf-orange shrink-0 mt-0.5" />
-                      <span className="text-slate-700">{text}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Team Section */}
-      <section className="py-24 bg-slate-50 border-t border-slate-200" id="team">
-        <div className="max-w-7xl mx-auto px-6 md:px-12">
-          <div className="text-center mb-16">
-            <h2 className="text-sm font-bold text-isf-orange tracking-widest uppercase mb-3">The Visionaries</h2>
-            <h3 className="text-3xl md:text-4xl font-bold text-slate-900">Junicorn Team</h3>
-            <p className="mt-4 text-lg text-slate-600 max-w-2xl mx-auto">Meet the leaders driving the Junicorns movement forward.</p>
-          </div>
-
-          {/* Leadership Grid */}
-          <div className="flex flex-wrap justify-center gap-6 mb-12">
-            {teamMembers.slice(0, 2).map((member, idx) => (
-              <div key={idx} className="bg-white rounded-xl shadow-sm border border-[#e6e6e6] overflow-hidden hover:shadow-md transition-shadow group flex flex-col items-center text-center p-4 w-44">
-                <div className="w-24 h-24 mb-4 rounded-full overflow-hidden border-2 border-gray-100 mx-auto">
-                  <img 
-                    src={member.image} 
-                    alt={member.name}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
-                    onError={(e) => {
-                      e.currentTarget.src = 'https://ui-avatars.com/api/?name=' + encodeURIComponent(member.name) + '&background=f97316&color=fff&size=256';
-                    }}
-                  />
-                </div>
-                <div className="text-center">
-                  <h4 className="font-bold text-sm text-[#111111] mb-1 leading-tight">{member.name}</h4>
-                  <p className="text-xs text-isf-orange font-semibold leading-snug">{member.role}</p>
+                <div className="flex items-center gap-2 pt-2 border-t border-white/5">
+                  <span className="text-emerald-400">✓</span>
+                  <span className="text-white/60">All checks passed — </span>
+                  <motion.span
+                    animate={{ opacity: [1, 0, 1] }}
+                    transition={{ duration: 1, repeat: Infinity, ease: 'linear' as const }}
+                    className="text-emerald-400 font-bold"
+                  >
+                    You qualify.
+                  </motion.span>
                 </div>
               </div>
+            </div>
+          </FadeUp>
+        </div>
+      </section>
+
+      {/* ═══ Section 5: The Expedition — Timeline ════════════════════════════ */}
+      <section className="py-24 bg-gradient-to-br from-amber-50/50 to-orange-50/30 border-y border-amber-100/60">
+        <div className="max-w-6xl mx-auto px-6">
+          <FadeUp>
+            <div className="text-center mb-12">
+              <span className="text-xs font-bold text-isf-orange tracking-widest uppercase block mb-2">The Journey</span>
+              <h2 className="text-2xl md:text-4xl font-black text-slate-900">The Expedition</h2>
+              <p className="mt-3 text-slate-600 text-sm sm:text-base">Four milestones. One transformational destination.</p>
+            </div>
+          </FadeUp>
+
+          <div className="relative">
+            {/* Connecting gradient line */}
+            <div className="hidden md:block absolute top-[28px] left-[12.5%] right-[12.5%] h-0.5 bg-gradient-to-r from-emerald-400 via-blue-400 via-violet-400 to-orange-400" />
+
+            <div className="grid md:grid-cols-4 gap-8">
+              {phases.map((phase, i) => (
+                <FadeUp key={phase.phase} delay={0.1 * i}>
+                  <motion.div
+                    whileHover={{ y: -8 }}
+                    transition={{ duration: 0.3, ease: 'easeOut' as const }}
+                    className="flex flex-col items-center text-center cursor-default"
+                  >
+                    {/* Animated node */}
+                    <motion.div
+                      animate={{ y: [0, -8, 0] }}
+                      transition={{ duration: 3.5 + i * 0.5, repeat: Infinity, ease: 'easeInOut' as const, delay: i * 0.6 }}
+                      className={`w-14 h-14 rounded-full ${phase.dotColor} flex items-center justify-center text-white font-black text-lg shadow-lg ${phase.shadow} mb-6 relative z-10`}
+                    >
+                      {i + 1}
+                    </motion.div>
+
+                    <span className="text-xs font-bold text-slate-400 uppercase tracking-widest mb-1">{phase.phase}</span>
+                    <span className="flex items-center gap-1 text-sm font-bold text-isf-orange mb-3">
+                      <Calendar className="w-3.5 h-3.5" />{phase.date}
+                    </span>
+                    <h3 className="text-lg font-black text-slate-900 mb-2">{phase.title}</h3>
+                    <p className="text-slate-500 text-sm leading-relaxed">{phase.desc}</p>
+                  </motion.div>
+                </FadeUp>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ═══ Section 6: Global Impact ════════════════════════════════════════ */}
+      <section className="py-24 bg-gradient-to-br from-slate-950 via-indigo-950 to-slate-900 relative overflow-hidden">
+        <div
+          className="absolute inset-0 opacity-20"
+          style={{ backgroundImage: 'radial-gradient(circle at 50% 50%, #1d4ed8 0%, transparent 60%)' }}
+        />
+        {/* Animated rings */}
+        <motion.div
+          animate={{ rotate: 360 }}
+          transition={{ duration: 60, repeat: Infinity, ease: 'linear' as const }}
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] rounded-full border border-white/5 pointer-events-none"
+        />
+        <motion.div
+          animate={{ rotate: -360 }}
+          transition={{ duration: 40, repeat: Infinity, ease: 'linear' as const }}
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full border border-white/5 pointer-events-none"
+        />
+
+        <div className="relative z-10 max-w-6xl mx-auto px-6">
+          <FadeUp>
+            <div className="text-center mb-12">
+              <span className="text-xs font-bold text-amber-400 tracking-widest uppercase block mb-2">Global Impact</span>
+              <h2 className="text-2xl md:text-4xl font-black text-white">From Villages to Ventures</h2>
+              <p className="mt-3 text-white/60 text-sm sm:text-base">Real Junicorns. Real Ventures. Real Change.</p>
+            </div>
+          </FadeUp>
+
+          <div className="grid md:grid-cols-2 gap-8 mb-12">
+            {impactData.map((d, i) => (
+              <FadeUp key={d.cohort} delay={0.1 * i}>
+                <motion.div
+                  whileHover={{ y: -10, boxShadow: '0 30px 70px rgba(0,0,0,0.3)' }}
+                  transition={{ duration: 0.35, ease: 'easeOut' as const }}
+                  className={`bg-gradient-to-br ${d.grad} p-px rounded-3xl cursor-default`}
+                >
+                  <div className="bg-slate-900/80 backdrop-blur-md rounded-3xl p-8 h-full">
+                    <div className="flex items-start justify-between mb-6">
+                      <div>
+                        <span className="text-3xl">{d.flag}</span>
+                        <h3 className="text-xl font-black text-white mt-2">{d.cohort}</h3>
+                        <p className="text-white/50 text-sm flex items-center gap-1 mt-1">
+                          <MapPin className="w-3.5 h-3.5" />{d.location} · {d.year}
+                        </p>
+                      </div>
+                      <div className={`bg-gradient-to-br ${d.grad} text-white text-xs font-bold px-3 py-1.5 rounded-full`}>
+                        COMPLETED
+                      </div>
+                    </div>
+                    <div className="grid grid-cols-3 gap-4">
+                      {[
+                        { label: 'Rural Junicorns', value: d.junicorns },
+                        { label: 'Ideas Showcased', value: d.ideas },
+                        { label: 'Incorporations', value: d.incorporations }
+                      ].map(stat => (
+                        <div key={stat.label} className="text-center">
+                          <motion.span
+                            animate={{ y: [0, -4, 0] }}
+                            transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' as const, delay: i * 0.7 }}
+                            className="text-2xl font-bold text-white block"
+                          >{stat.value}</motion.span>
+                          <span className="text-white/40 text-xs">{stat.label}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </motion.div>
+              </FadeUp>
             ))}
           </div>
 
-          {/* Core Team Grid */}
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-6 max-w-5xl mx-auto">
-            {teamMembers.slice(2).map((member, idx) => (
-              <div key={idx} className="bg-white rounded-xl shadow-sm border border-[#e6e6e6] overflow-hidden hover:shadow-md transition-shadow group flex flex-col items-center text-center p-4">
-                <div className="w-24 h-24 mb-4 rounded-full overflow-hidden border-2 border-gray-100 mx-auto">
-                  <img 
-                    src={member.image} 
-                    alt={member.name}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
-                    onError={(e) => {
-                      e.currentTarget.src = 'https://ui-avatars.com/api/?name=' + encodeURIComponent(member.name) + '&background=f97316&color=fff&size=256';
-                    }}
-                  />
+          {/* Destination banner */}
+          <FadeUp delay={0.25}>
+            <motion.div
+              whileHover={{ scale: 1.01 }}
+              transition={{ duration: 0.3, ease: 'easeOut' as const }}
+              className="relative rounded-3xl overflow-hidden cursor-default"
+            >
+              <div className="absolute inset-0 bg-gradient-to-r from-isf-orange to-amber-400" />
+              <div className="relative z-10 p-10 md:p-14 flex flex-col md:flex-row items-center justify-between gap-8">
+                <div>
+                  <span className="text-white/70 text-xs font-bold uppercase tracking-widest block mb-1">The Destination — Cohort 3</span>
+                  <h3 className="text-2xl md:text-3xl font-bold text-white">Bengaluru, India</h3>
+                  <p className="text-white/80 text-sm mt-1.5 flex items-center gap-2">
+                    <Calendar className="w-4 h-4" /> December 2026 · Grand Finale
+                  </p>
                 </div>
-                <div className="text-center">
-                  <h4 className="font-bold text-sm text-[#111111] mb-1 leading-tight">{member.name}</h4>
-                  <p className="text-xs text-isf-orange font-semibold leading-snug">{member.role}</p>
+                <motion.div whileHover={{ y: -4 }} transition={{ duration: 0.25, ease: 'easeOut' as const }}>
+                  <Link
+                    to="/registration"
+                    className="flex items-center gap-2 bg-white text-isf-orange font-black px-8 py-4 rounded-full shadow-xl whitespace-nowrap"
+                  >
+                    Secure Your Spot <ArrowRight className="w-5 h-5" />
+                  </Link>
+                </motion.div>
+              </div>
+            </motion.div>
+          </FadeUp>
+        </div>
+      </section>
+
+      {/* ═══ Section 7: The Enablers ════════════════════════════════════════ */}
+      <section className="py-24 bg-gradient-to-b from-white to-slate-50 border-b border-slate-100">
+        <div className="max-w-7xl mx-auto px-6">
+          <FadeUp>
+            <div className="text-center mb-12">
+              <span className="text-xs font-bold text-isf-orange tracking-widest uppercase block mb-2">Partners & People</span>
+              <h2 className="text-2xl md:text-4xl font-black text-slate-900">The Enablers</h2>
+            </div>
+          </FadeUp>
+
+          {/* VISARA block */}
+          <FadeUp delay={0.1}>
+            <div className="bg-gradient-to-br from-indigo-950 to-slate-900 rounded-3xl p-10 md:p-14 mb-16 relative overflow-hidden">
+              <div className="absolute top-0 right-0 w-80 h-80 bg-violet-500/15 rounded-full blur-3xl" />
+              <div className="relative z-10 flex flex-col md:flex-row gap-10 items-start">
+                <div className="md:w-1/2">
+                  <span className="inline-block px-3 py-1 rounded-full bg-violet-500/20 text-violet-300 text-xs font-bold tracking-widest uppercase mb-4">VISARA Partnership</span>
+                  <h3 className="text-xl md:text-2xl font-bold text-white mb-3">Deep-Tech Skilling Initiative</h3>
+                  <p className="text-white/60 text-sm leading-relaxed">
+                    VISARA brings future-focused academies to empower Junicorns with cutting-edge skills and domain expertise across six critical verticals.
+                  </p>
+                </div>
+                <div className="md:w-1/2 grid grid-cols-2 gap-3">
+                  {academies.map((a) => (
+                    <motion.div
+                      key={a}
+                      whileHover={{ y: -4 }}
+                      transition={{ duration: 0.25, ease: 'easeOut' as const }}
+                      className="flex items-center gap-2 bg-white/5 border border-white/10 px-4 py-3 rounded-xl cursor-default"
+                    >
+                      <Star className="w-4 h-4 text-amber-400 shrink-0" />
+                      <span className="text-white text-sm font-medium">{a}</span>
+                    </motion.div>
+                  ))}
                 </div>
               </div>
+            </div>
+          </FadeUp>
+
+          {/* Faces */}
+          <FadeUp delay={0.2}>
+            <div className="text-center mb-8">
+              <h3 className="text-xl font-bold text-slate-900">Faces Behind the Movement</h3>
+            </div>
+          </FadeUp>
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-6">
+            {enablers.map((person, i) => (
+              <FadeUp key={person.name} delay={0.05 * i}>
+                <motion.div
+                  whileHover={{ y: -8 }}
+                  transition={{ duration: 0.3, ease: 'easeOut' as const }}
+                  className="flex flex-col items-center text-center cursor-default"
+                >
+                  <motion.div
+                    animate={{ y: [0, -5, 0] }}
+                    transition={{ duration: 5 + i * 0.4, repeat: Infinity, ease: 'easeInOut' as const, delay: i * 0.5 }}
+                    className="w-20 h-20 rounded-full overflow-hidden border-2 border-isf-orange/30 shadow-lg mb-3"
+                  >
+                    <img
+                      src={person.img || ''}
+                      alt={person.name}
+                      className="w-full h-full object-cover"
+                      onError={e => { e.currentTarget.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(person.name)}&background=f97316&color=fff&size=256`; }}
+                    />
+                  </motion.div>
+                  <h4 className="text-xs font-bold text-slate-900 leading-tight mb-1">{person.name}</h4>
+                  <p className="text-[10px] text-isf-orange font-semibold leading-snug">{person.role}</p>
+                </motion.div>
+              </FadeUp>
             ))}
           </div>
         </div>
       </section>
 
+      {/* ═══ Section 8: Footer CTA ══════════════════════════════════════════ */}
+      <section className="py-24 bg-gradient-to-br from-slate-950 to-slate-900 relative overflow-hidden">
+        <div
+          className="absolute inset-0 opacity-20"
+          style={{ backgroundImage: 'radial-gradient(circle at 80% 20%, #f97316 0%, transparent 40%)' }}
+        />
+        <div className="relative z-10 max-w-6xl mx-auto px-6">
+          <FadeUp>
+            <div className="text-center mb-12">
+              <h2 className="text-2xl md:text-4xl font-black text-white mb-6">
+                Ready to Change India's Story?
+              </h2>
+              <motion.div
+                whileHover={{ y: -8, boxShadow: '0 20px 50px rgba(249,115,22,0.45)' }}
+                transition={{ duration: 0.3, ease: 'easeOut' as const }}
+                className="inline-block"
+              >
+                <Link
+                  to="/registration"
+                  className="flex items-center gap-2 bg-gradient-to-r from-orange-500 to-amber-400 text-white font-black text-lg px-10 py-4 rounded-full shadow-xl cursor-pointer"
+                >
+                  Register Now <ArrowRight className="w-5 h-5" />
+                </Link>
+              </motion.div>
+              <p className="mt-8 text-white/40 text-sm font-medium uppercase tracking-widest">
+                Search OR Scan to Register
+              </p>
+            </div>
+          </FadeUp>
+
+          {/* Alignment Badges */}
+          <FadeUp delay={0.1}>
+            <div className="flex flex-wrap items-center justify-center gap-4 mb-12 opacity-70">
+              {['🏭 Make in India', '🎓 Skill India', '🚀 Startup India', '💡 Atal Innovation Mission'].map(badge => (
+                <div key={badge} className="flex items-center gap-2 bg-white/5 border border-white/10 px-5 py-2.5 rounded-full text-white text-sm font-semibold">
+                  {badge}
+                </div>
+              ))}
+            </div>
+          </FadeUp>
+
+          {/* Address */}
+          <FadeUp delay={0.2}>
+            <div className="text-center text-white/30 text-sm">
+              <p className="flex items-center justify-center gap-2">
+                <MapPin className="w-4 h-4" />
+                ISF Office, 310, Saideep Hulas, Old Madras Road Virgonagar, Bangalore, Karnataka — 560049
+              </p>
+            </div>
+          </FadeUp>
+        </div>
+      </section>
 
     </div>
   );
