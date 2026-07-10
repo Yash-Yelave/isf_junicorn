@@ -124,10 +124,73 @@ const pillars = [
 ];
 
 const phases = [
-  { phase: 'Phase 1', date: 'May 23rd', title: 'Registration Launch', desc: 'Applications open across 20+ states. Submit your idea or prototype.', dotColor: 'bg-emerald-500', shadow: 'shadow-emerald-200' },
-  { phase: 'Phase 2', date: 'August 15th', title: '1st Shortlist — Top 100', desc: 'Top 100 projects selected. Mentorship sessions begin for shortlisted teams.', dotColor: 'bg-blue-500', shadow: 'shadow-blue-200' },
-  { phase: 'Phase 3', date: 'November 14th', title: '2nd Shortlist — Top 50', desc: 'Top 50 move forward. Intensive coaching, investor connects, demo prep.', dotColor: 'bg-violet-500', shadow: 'shadow-violet-200' },
-  { phase: 'Phase 4', date: 'December 24th', title: 'Grand Finale', desc: 'Bengaluru, India. Grand Presentation Mega Event — pitch to global investors.', dotColor: 'bg-orange-500', shadow: 'shadow-orange-200' }
+  {
+    phase: 'Phase 1',
+    date: 'May 23rd',
+    title: 'Registration Launch',
+    desc: 'Applications open across 20+ states. Submit your idea or prototype.',
+    dotColor: 'bg-emerald-500',
+    icon: (
+      <svg className="w-8 h-8 text-emerald-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+        <polyline points="22,6 12,13 2,6" />
+        <path d="M12 11c0-1.5.5-2.5 1.5-3.5" strokeWidth="2" stroke="#10b981" />
+        <path d="M12 11c0-2-1-3-2-3" strokeWidth="2" stroke="#10b981" />
+        <circle cx="18" cy="15" r="3.5" stroke="currentColor" />
+        <polyline points="18,13.5 19,15 18,16.5 17,15 18,13.5" fill="currentColor" />
+      </svg>
+    )
+  },
+  {
+    phase: 'Phase 2',
+    date: 'August 15th',
+    title: '1st Shortlist — Top 100',
+    desc: 'Top 100 projects selected. Mentorship sessions begin for shortlisted teams.',
+    dotColor: 'bg-blue-500',
+    icon: (
+      <svg className="w-8 h-8 text-blue-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M12 2L7 9l5 13 5-13z" />
+        <path d="M12 2L4 10l8 12" />
+        <path d="M12 2l8 8-8 12" />
+        <line x1="7" y1="9" x2="17" y2="9" />
+      </svg>
+    )
+  },
+  {
+    phase: 'Phase 3',
+    date: 'November 14th',
+    title: '2nd Shortlist — Top 50',
+    desc: 'Top 50 move forward. Intensive coaching, investor connects, demo prep.',
+    dotColor: 'bg-violet-500',
+    icon: (
+      <svg className="w-8 h-8 text-violet-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+        <circle cx="12" cy="7" r="4.5" className="animate-bounce" style={{ animationDuration: '3s' }} />
+        <path d="M5 8c0 3 3 5 7 5s7-2 7-5" strokeDasharray="3,3" />
+        <path d="M4 17h16" strokeWidth="2" />
+        <path d="M6 17l2 4h8l2-4" />
+      </svg>
+    )
+  },
+  {
+    phase: 'Phase 4',
+    date: 'December 24th',
+    title: 'Grand Finale',
+    desc: 'Bengaluru, India. Grand Presentation Mega Event — pitch to global investors.',
+    dotColor: 'bg-orange-500',
+    icon: (
+      <svg className="w-8 h-8 text-orange-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M3 21h18" />
+        <path d="M5 21V8a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v13" />
+        <line x1="9" y1="10" x2="9" y2="10.01" strokeWidth="2" />
+        <line x1="15" y1="10" x2="15" y2="10.01" strokeWidth="2" />
+        <line x1="9" y1="14" x2="9" y2="14.01" strokeWidth="2" />
+        <line x1="15" y1="14" x2="15" y2="14.01" strokeWidth="2" />
+        <line x1="9" y1="18" x2="9" y2="18.01" strokeWidth="2" />
+        <line x1="15" y1="18" x2="15" y2="18.01" strokeWidth="2" />
+        <polygon points="12,2 13,4 15.5,4.5 13.5,6 14,8.5 12,7 10,8.5 10.5,6 8.5,4.5 11,4" fill="currentColor" />
+      </svg>
+    )
+  }
 ];
 
 const impactData = [
@@ -551,42 +614,85 @@ const Cohort3: React.FC = () => {
       </section>
 
       {/* ═══ Section 5: The Expedition — Timeline ════════════════════════════ */}
-      <section className="py-16 md:py-20 bg-gradient-to-br from-amber-50/50 to-orange-50/30 border-y border-amber-100/60">
-        <div className="max-w-5xl mx-auto px-6">
+      <section className="py-16 md:py-20 bg-[#121212] border-y border-zinc-800 relative overflow-hidden">
+        {/* Reticulate pattern of slowly animating white dots and fine lines */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          <svg className="absolute inset-0 w-full h-full opacity-15" xmlns="http://www.w3.org/2000/svg">
+            <line x1="15%" y1="25%" x2="45%" y2="55%" stroke="white" strokeWidth="0.75" strokeDasharray="4,4" />
+            <line x1="45%" y1="55%" x2="75%" y2="35%" stroke="white" strokeWidth="0.75" />
+            <line x1="75%" y1="35%" x2="92%" y2="75%" stroke="white" strokeWidth="0.75" strokeDasharray="3,3" />
+            <line x1="25%" y1="75%" x2="45%" y2="55%" stroke="white" strokeWidth="0.75" />
+            <line x1="45%" y1="55%" x2="80%" y2="65%" stroke="white" strokeWidth="0.75" />
+          </svg>
+          <motion.div
+            animate={{ opacity: [0.15, 0.7, 0.15] }}
+            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+            className="absolute top-[25%] left-[15%] w-1.5 h-1.5 rounded-full bg-white"
+          />
+          <motion.div
+            animate={{ opacity: [0.7, 0.15, 0.7] }}
+            transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+            className="absolute top-[55%] left-[45%] w-1.5 h-1.5 rounded-full bg-white"
+          />
+          <motion.div
+            animate={{ opacity: [0.2, 0.8, 0.2] }}
+            transition={{ duration: 3, repeat: Infinity, ease: "easeInOut", delay: 2 }}
+            className="absolute top-[35%] left-[75%] w-1.5 h-1.5 rounded-full bg-white"
+          />
+          <motion.div
+            animate={{ opacity: [0.1, 0.6, 0.1] }}
+            transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
+            className="absolute top-[75%] left-[92%] w-1.5 h-1.5 rounded-full bg-white"
+          />
+          <motion.div
+            animate={{ opacity: [0.8, 0.2, 0.8] }}
+            transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: 1.5 }}
+            className="absolute top-[75%] left-[25%] w-1.5 h-1.5 rounded-full bg-white"
+          />
+          <motion.div
+            animate={{ opacity: [0.25, 0.75, 0.25] }}
+            transition={{ duration: 4.2, repeat: Infinity, ease: "easeInOut", delay: 2.5 }}
+            className="absolute top-[65%] left-[80%] w-1.5 h-1.5 rounded-full bg-white"
+          />
+        </div>
+
+        <div className="relative z-10 max-w-5xl mx-auto px-6">
           <FadeUp>
             <div className="text-center mb-10">
               <span className="text-xs font-bold text-isf-orange tracking-widest uppercase block mb-2">The Journey</span>
-              <h2 className="text-xl md:text-3xl font-black text-slate-900">The Expedition</h2>
-              <p className="mt-3 text-slate-600 text-sm">Four milestones. One transformational destination.</p>
+              <h2 className="text-xl md:text-3xl font-black text-white! leading-tight">The Expedition</h2>
+              <p className="mt-3 text-zinc-400 text-sm">Four milestones. One transformational destination.</p>
             </div>
           </FadeUp>
 
           <div className="relative">
-            {/* Connecting gradient line */}
-            <div className="hidden md:block absolute top-[24px] left-[12.5%] right-[12.5%] h-0.5 bg-gradient-to-r from-emerald-400 via-blue-400 via-violet-400 to-orange-400" />
+            {/* Connecting pulsing line aligned with step marker discs */}
+            <div className="hidden md:block absolute top-[148px] left-[12.5%] right-[12.5%] h-0.5 bg-gradient-to-r from-emerald-500 via-blue-500 via-violet-500 to-orange-500 opacity-60" />
 
             <div className="grid md:grid-cols-4 gap-6">
               {phases.map((phase, i) => (
                 <FadeUp key={phase.phase} delay={0.1 * i}>
                   <motion.div
-                    whileHover={{ y: -8 }}
+                    whileHover={{ y: -8, border: '1px solid rgba(255,255,255,0.2)' }}
                     transition={{ duration: 0.3, ease: 'easeOut' as const }}
-                    className="flex flex-col items-center text-center cursor-default"
+                    className="bg-zinc-900 border border-zinc-800/80 rounded-2xl p-6 flex flex-col items-center text-center cursor-default h-full transition-colors duration-300"
                   >
-                    {/* Animated node */}
-                    <motion.div
-                      animate={{ y: [0, -8, 0] }}
-                      transition={{ duration: 3.5 + i * 0.5, repeat: Infinity, ease: 'easeInOut' as const, delay: i * 0.6 }}
-                      className={`w-12 h-12 rounded-full ${phase.dotColor} flex items-center justify-center text-white font-black text-base shadow-lg ${phase.shadow} mb-4 relative z-10`}
-                    >
+                    {/* 2D Line-art icon container */}
+                    <div className="w-16 h-16 rounded-xl bg-zinc-950 border border-zinc-800 flex items-center justify-center mb-5 shrink-0">
+                      {phase.icon}
+                    </div>
+
+                    {/* Step marker (flattened disc) */}
+                    <div className={`w-8 h-8 rounded-full ${phase.dotColor} flex items-center justify-center text-white font-black text-xs mb-3 z-10 shrink-0`}>
                       {i + 1}
-                    </motion.div>
-                    <span className="text-xs font-bold text-slate-400 uppercase tracking-widest mb-1">{phase.phase}</span>
+                    </div>
+
+                    <span className="text-xs font-bold text-zinc-500 uppercase tracking-widest mb-1">{phase.phase}</span>
                     <span className="flex items-center gap-1 text-xs font-bold text-isf-orange mb-2">
                       <Calendar className="w-3 h-3" />{phase.date}
                     </span>
-                    <h3 className="text-base font-black text-slate-900 mb-2">{phase.title}</h3>
-                    <p className="text-slate-500 text-xs leading-relaxed">{phase.desc}</p>
+                    <h3 className="text-base font-black text-white! mb-2 leading-tight">{phase.title}</h3>
+                    <p className="text-zinc-400 text-xs leading-relaxed">{phase.desc}</p>
                   </motion.div>
                 </FadeUp>
               ))}
