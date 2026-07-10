@@ -461,7 +461,6 @@ const Cohort3: React.FC = () => {
                     >
                       {i + 1}
                     </motion.div>
-
                     <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1">{phase.phase}</span>
                     <span className="flex items-center gap-1 text-xs font-bold text-isf-orange mb-2">
                       <Calendar className="w-3 h-3" />{phase.date}
@@ -469,7 +468,7 @@ const Cohort3: React.FC = () => {
                     <h3 className="text-base font-black text-white mb-2">{phase.title}</h3>
                     <p className="text-white/50 text-xs leading-relaxed">{phase.desc}</p>
                   </motion.div>
-                </run_command>
+                </FadeUp>
               ))}
             </div>
           </div>
@@ -577,23 +576,23 @@ const Cohort3: React.FC = () => {
       </section>
 
       {/* ═══ Section 7: The Enablers ════════════════════════════════════════ */}
-      <section className="py-24 bg-gradient-to-b from-white to-slate-50 border-b border-slate-100">
-        <div className="max-w-7xl mx-auto px-6">
+      <section className="py-16 md:py-20 bg-transparent border-b border-white/10">
+        <div className="max-w-6xl mx-auto px-6">
           <FadeUp>
-            <div className="text-center mb-12">
+            <div className="text-center mb-10">
               <span className="text-xs font-bold text-isf-orange tracking-widest uppercase block mb-2">Partners & People</span>
-              <h2 className="text-2xl md:text-4xl font-black text-slate-900">The Enablers</h2>
+              <h2 className="text-xl md:text-3xl font-black text-white">The Enablers</h2>
             </div>
           </FadeUp>
 
           {/* VISARA block */}
           <FadeUp delay={0.1}>
-            <div className="bg-gradient-to-br from-indigo-950 to-slate-900 rounded-3xl p-10 md:p-14 mb-16 relative overflow-hidden">
-              <div className="absolute top-0 right-0 w-80 h-80 bg-violet-500/15 rounded-full blur-3xl" />
+            <div className="bg-white/5 backdrop-blur-md border border-white/10 rounded-3xl p-8 md:p-10 mb-12 relative overflow-hidden">
+              <div className="absolute top-0 right-0 w-80 h-80 bg-violet-500/10 rounded-full blur-3xl" />
               <div className="relative z-10 flex flex-col md:flex-row gap-10 items-start">
                 <div className="md:w-1/2">
                   <span className="inline-block px-3 py-1 rounded-full bg-violet-500/20 text-violet-300 text-xs font-bold tracking-widest uppercase mb-4">VISARA Partnership</span>
-                  <h3 className="text-xl md:text-2xl font-bold text-white mb-3">Deep-Tech Skilling Initiative</h3>
+                  <h3 className="text-lg md:text-xl font-bold text-white! mb-3">Deep-Tech Skilling Initiative</h3>
                   <p className="text-white/60 text-sm leading-relaxed">
                     VISARA brings future-focused academies to empower Junicorns with cutting-edge skills and domain expertise across six critical verticals.
                   </p>
@@ -604,10 +603,10 @@ const Cohort3: React.FC = () => {
                       key={a}
                       whileHover={{ y: -4 }}
                       transition={{ duration: 0.25, ease: 'easeOut' as const }}
-                      className="flex items-center gap-2 bg-white/5 border border-white/10 px-4 py-3 rounded-xl cursor-default"
+                      className="flex items-center gap-2 bg-white/5 border border-white/10 px-3 py-2.5 rounded-xl cursor-default"
                     >
                       <Star className="w-4 h-4 text-amber-400 shrink-0" />
-                      <span className="text-white text-sm font-medium">{a}</span>
+                      <span className="text-white text-xs font-medium">{a}</span>
                     </motion.div>
                   ))}
                 </div>
@@ -618,7 +617,7 @@ const Cohort3: React.FC = () => {
           {/* Faces */}
           <FadeUp delay={0.2}>
             <div className="text-center mb-8">
-              <h3 className="text-xl font-bold text-slate-900">Faces Behind the Movement</h3>
+              <h3 className="text-lg font-bold text-white">Faces Behind the Movement</h3>
             </div>
           </FadeUp>
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-6">
@@ -632,7 +631,7 @@ const Cohort3: React.FC = () => {
                   <motion.div
                     animate={{ y: [0, -5, 0] }}
                     transition={{ duration: 5 + i * 0.4, repeat: Infinity, ease: 'easeInOut' as const, delay: i * 0.5 }}
-                    className="w-20 h-20 rounded-full overflow-hidden border-2 border-isf-orange/30 shadow-lg mb-3"
+                    className="w-16 h-16 rounded-full overflow-hidden border-2 border-isf-orange/30 shadow-lg mb-3"
                   >
                     <img
                       src={person.img || ''}
@@ -641,7 +640,7 @@ const Cohort3: React.FC = () => {
                       onError={e => { e.currentTarget.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(person.name)}&background=f97316&color=fff&size=256`; }}
                     />
                   </motion.div>
-                  <h4 className="text-xs font-bold text-slate-900 leading-tight mb-1">{person.name}</h4>
+                  <h4 className="text-xs font-bold text-white leading-tight mb-1">{person.name}</h4>
                   <p className="text-[10px] text-isf-orange font-semibold leading-snug">{person.role}</p>
                 </motion.div>
               </FadeUp>
@@ -651,15 +650,15 @@ const Cohort3: React.FC = () => {
       </section>
 
       {/* ═══ Section 8: Footer CTA ══════════════════════════════════════════ */}
-      <section className="py-24 bg-gradient-to-br from-slate-950 to-slate-900 relative overflow-hidden">
+      <section className="py-16 md:py-20 bg-transparent relative overflow-hidden">
         <div
-          className="absolute inset-0 opacity-20"
+          className="absolute inset-0 opacity-10"
           style={{ backgroundImage: 'radial-gradient(circle at 80% 20%, #f97316 0%, transparent 40%)' }}
         />
-        <div className="relative z-10 max-w-6xl mx-auto px-6">
+        <div className="relative z-10 max-w-5xl mx-auto px-6">
           <FadeUp>
-            <div className="text-center mb-12">
-              <h2 className="text-2xl md:text-4xl font-black text-white mb-6">
+            <div className="text-center mb-10">
+              <h2 className="text-xl md:text-3xl font-black text-white! mb-6">
                 Ready to Change India's Story?
               </h2>
               <motion.div
@@ -669,12 +668,12 @@ const Cohort3: React.FC = () => {
               >
                 <Link
                   to="/registration"
-                  className="flex items-center gap-2 bg-gradient-to-r from-orange-500 to-amber-400 text-white font-black text-lg px-10 py-4 rounded-full shadow-xl cursor-pointer"
+                  className="flex items-center gap-2 bg-gradient-to-r from-orange-500 to-amber-400 text-white font-black text-base px-8 py-3.5 rounded-full shadow-xl cursor-pointer"
                 >
                   Register Now <ArrowRight className="w-5 h-5" />
                 </Link>
               </motion.div>
-              <p className="mt-8 text-white/40 text-sm font-medium uppercase tracking-widest">
+              <p className="mt-6 text-white/40 text-xs font-medium uppercase tracking-widest">
                 Search OR Scan to Register
               </p>
             </div>
@@ -682,9 +681,9 @@ const Cohort3: React.FC = () => {
 
           {/* Alignment Badges */}
           <FadeUp delay={0.1}>
-            <div className="flex flex-wrap items-center justify-center gap-4 mb-12 opacity-70">
+            <div className="flex flex-wrap items-center justify-center gap-3 mb-10 opacity-70">
               {['🏭 Make in India', '🎓 Skill India', '🚀 Startup India', '💡 Atal Innovation Mission'].map(badge => (
-                <div key={badge} className="flex items-center gap-2 bg-white/5 border border-white/10 px-5 py-2.5 rounded-full text-white text-sm font-semibold">
+                <div key={badge} className="flex items-center gap-2 bg-white/5 border border-white/10 px-4 py-2 rounded-full text-white text-xs font-semibold">
                   {badge}
                 </div>
               ))}
@@ -693,7 +692,7 @@ const Cohort3: React.FC = () => {
 
           {/* Address */}
           <FadeUp delay={0.2}>
-            <div className="text-center text-white/30 text-sm">
+            <div className="text-center text-white/30 text-xs">
               <p className="flex items-center justify-center gap-2">
                 <MapPin className="w-4 h-4" />
                 ISF Office, 310, Saideep Hulas, Old Madras Road Virgonagar, Bangalore, Karnataka — 560049
