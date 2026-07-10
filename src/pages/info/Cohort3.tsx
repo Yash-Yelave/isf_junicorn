@@ -5,6 +5,7 @@ import {
   ArrowRight, Leaf, Heart, Factory, Droplets, Rocket, BookOpen,
   Zap, Monitor, Building, Users2, ChevronDown, Globe,
   MapPin, Calendar, Star, TrendingUp, Lightbulb,
+  Play, Pause, Volume2, VolumeX,
 } from 'lucide-react';
 
 // ─── Floating animation helper (inline, type-safe) ─────────────────────────
@@ -152,6 +153,9 @@ const enablers = [
 const Cohort3: React.FC = () => {
   const [hoveredArena, setHoveredArena] = useState<number | null>(null);
   const [introPhase, setIntroPhase] = useState<'video-only' | 'show-title' | 'show-all'>('video-only');
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [isPlaying, setIsPlaying] = useState(true);
+  const [isMuted, setIsMuted] = useState(false);
 
   useEffect(() => {
     const timer1 = setTimeout(() => {
@@ -162,33 +166,79 @@ const Cohort3: React.FC = () => {
       setIntroPhase('show-all');
     }, 6000);
 
+    // Initial play check to support unmuted autoplay if allowed by browser
+    if (videoRef.current) {
+      videoRef.current.muted = isMuted;
+      const playPromise = videoRef.current.play();
+      if (playPromise !== undefined) {
+        playPromise.catch((err) => {
+          console.log("Autoplay unmuted blocked. Fallback to muted: ", err);
+          setIsMuted(true);
+          if (videoRef.current) {
+            videoRef.current.muted = true;
+            videoRef.current.play().catch(e => console.log("Muted playback fallback failed: ", e));
+          }
+        });
+      }
+    }
+
     return () => {
       clearTimeout(timer1);
       clearTimeout(timer2);
     };
   }, []);
 
+  const togglePlay = () => {
+    if (videoRef.current) {
+      if (isPlaying) {
+        videoRef.current.pause();
+        setIsPlaying(false);
+      } else {
+        videoRef.current.play().catch(e => console.log(e));
+        setIsPlaying(true);
+      }
+    }
+  };
+
+  const toggleMute = () => {
+    if (videoRef.current) {
+      const nextMute = !isMuted;
+      videoRef.current.muted = nextMute;
+      setIsMuted(nextMute);
+    }
+  };
+
   return (
-    <div className="font-inter bg-white min-h-screen pt-20 overflow-x-hidden">
+    <div className="font-inter bg-white min-h-screen pt-0 overflow-x-hidden">
 
       {/* ═══ Section 1: Hero Canvas ══════════════════════════════════════════ */}
-      <section className="relative w-full min-h-screen flex flex-col items-center justify-center overflow-hidden bg-slate-950">
+      <section className="relative w-full h-screen min-h-[720px] flex flex-col items-center justify-center overflow-hidden bg-slate-950 pt-20">
         {/* Background Video */}
         <video
+          ref={videoRef}
           autoPlay
           loop
-          muted
           playsInline
+          muted={isMuted}
           className="absolute inset-0 w-full h-full object-cover z-0 pointer-events-none"
         >
           <source src="/assets/videos/dubai.mp4" type="video/mp4" />
         </video>
+        
         {/* Dark faint overlay */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: introPhase !== 'video-only' ? 0.75 : 0 }}
           transition={{ duration: 0.8 }}
           className="absolute inset-0 bg-slate-950 z-10"
+        />
+
+        {/* Central Vignette Overlay to draw focus and make text pop */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: introPhase !== 'video-only' ? 1 : 0 }}
+          transition={{ duration: 1 }}
+          className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_30%,rgba(15,23,42,0.9)_90%)] z-10 pointer-events-none"
         />
 
         {/* Background layers */}
@@ -222,6 +272,24 @@ const Cohort3: React.FC = () => {
           </>
         )}
 
+        {/* Video Control Bar */}
+        <div className="absolute bottom-6 right-6 z-30 flex items-center gap-2">
+          <button
+            onClick={togglePlay}
+            className="flex items-center justify-center w-10 h-10 rounded-full bg-slate-900/60 hover:bg-slate-900/80 backdrop-blur-md border border-white/10 text-white transition-all shadow-lg active:scale-95 cursor-pointer"
+            title={isPlaying ? "Pause video" : "Play video"}
+          >
+            {isPlaying ? <Pause className="w-4 h-4" /> : <Play className="w-4 h-4" />}
+          </button>
+          <button
+            onClick={toggleMute}
+            className="flex items-center justify-center w-10 h-10 rounded-full bg-slate-900/60 hover:bg-slate-900/80 backdrop-blur-md border border-white/10 text-white transition-all shadow-lg active:scale-95 cursor-pointer"
+            title={isMuted ? "Unmute audio" : "Mute audio"}
+          >
+            {isMuted ? <VolumeX className="w-4 h-4" /> : <Volume2 className="w-4 h-4" />}
+          </button>
+        </div>
+
         <div className="relative z-20 max-w-5xl mx-auto px-6 text-center flex flex-col items-center gap-6">
           {/* Pre-header */}
           <AnimatePresence>
@@ -230,16 +298,16 @@ const Cohort3: React.FC = () => {
                 initial={{ opacity: 0, y: 15 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6 }}
-                className="inline-flex flex-wrap items-center justify-center gap-2 px-5 py-2.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-sm font-medium text-white/80"
+                className="inline-flex flex-wrap items-center justify-center gap-2 px-5 py-2.5 rounded-full bg-white/5 backdrop-blur-md border border-white/10 text-xs font-medium text-white/80 font-inter"
               >
                 <span>Organised by</span>
                 <span className="font-bold text-white">ISF</span>
                 <span className="text-white/40">·</span>
-                <span className="font-semibold text-amber-300">GAVS</span>
+                <span className="font-semibold text-white">GAVS</span>
                 <span className="text-white/40">·</span>
-                <span className="font-semibold text-cyan-300">MyAnatomy</span>
+                <span className="font-semibold text-white">MyAnatomy</span>
                 <span className="text-white/40">·</span>
-                <span className="font-semibold text-rose-300">VISARA</span>
+                <span className="font-semibold text-white">VISARA</span>
               </motion.div>
             )}
           </AnimatePresence>
@@ -251,15 +319,15 @@ const Cohort3: React.FC = () => {
                 initial={{ opacity: 0, y: 30, scale: 0.95 }}
                 animate={{ opacity: 1, y: 0, scale: 1 }}
                 transition={{ duration: 0.8, ease: 'easeOut' }}
-                className="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight text-white leading-tight"
+                className="text-4xl sm:text-5xl md:text-6xl font-black tracking-tight text-white leading-none font-inter"
               >
-                <span className="block bg-clip-text text-transparent bg-gradient-to-r from-emerald-400 via-teal-300 to-cyan-400">
+                <span className="block text-white! font-black drop-shadow-[0_4px_12px_rgba(0,0,0,0.95)]">
                   Junicorn Rural
                 </span>
-                <span className="block bg-clip-text text-transparent bg-gradient-to-r from-orange-400 via-amber-300 to-yellow-300">
+                <span className="block text-[#ff7a00]! text-5xl sm:text-6xl md:text-7xl font-extrabold tracking-tight mt-1.5 drop-shadow-[0_0_25px_rgba(255,122,0,0.45)] drop-shadow-[0_4px_16px_rgba(0,0,0,0.95)]">
                   Innovation Challenge
                 </span>
-                <span className="block text-white/90 text-xl sm:text-2xl mt-2 font-bold">
+                <span className="block text-white/60 text-xs sm:text-sm md:text-base mt-4 font-semibold tracking-widest uppercase">
                   — Cohort 3.0
                 </span>
               </motion.h1>
@@ -276,20 +344,20 @@ const Cohort3: React.FC = () => {
                 className="flex flex-col items-center gap-6 w-full"
               >
                 {/* Sub-headline */}
-                <p className="text-base sm:text-lg text-white/70 max-w-2xl leading-relaxed">
+                <p className="text-white! text-sm sm:text-base md:text-lg max-w-2xl leading-relaxed font-normal font-inter drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]">
                   Transforming India's Rural Innovation Story.{' '}
-                  <span className="text-white">Bridging the gap between rural ambition and global opportunity.</span>
+                  <span className="text-white/80">Bridging the gap between rural ambition and global opportunity.</span>
                 </p>
 
                 {/* CTA */}
                 <motion.div
-                  whileHover={{ y: -8, boxShadow: '0 20px 50px rgba(249,115,22,0.45)' }}
+                  whileHover={{ y: -6 }}
                   transition={{ duration: 0.3, ease: 'easeOut' as const }}
                   className="inline-block"
                 >
                   <Link
                     to="/registration"
-                    className="flex items-center gap-3 bg-gradient-to-r from-orange-500 to-amber-400 text-white font-bold text-lg px-10 py-4 rounded-full shadow-xl cursor-pointer"
+                    className="flex items-center gap-3 bg-[#ff7a00] hover:bg-[#ff8c1a] text-white font-extrabold text-base sm:text-lg px-12 py-4.5 rounded-full shadow-[0_0_25px_rgba(255,122,0,0.4)] hover:shadow-[0_0_35px_rgba(255,122,0,0.6)] cursor-pointer transition-all active:scale-95 duration-300"
                   >
                     Apply Now <ArrowRight className="w-5 h-5" />
                   </Link>
