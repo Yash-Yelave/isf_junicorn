@@ -239,8 +239,12 @@ const AnimatedJourneyLine = ({ targetRef }: { targetRef: React.RefObject<HTMLDiv
     offset: ["start center", "end end"]
   });
 
+  // Calculate the dot position so it follows the exact tip of the drawn path
+  // Our path is length 1. We'll use strokeDasharray to create a dot.
+  const dotOffset = useTransform(scrollYProgress, p => 1 - p);
+
   return (
-    <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
+    <div className="absolute inset-0 z-10 pointer-events-none overflow-hidden">
       <svg
         className="w-full h-full"
         viewBox="0 0 100 100"
@@ -251,29 +255,43 @@ const AnimatedJourneyLine = ({ targetRef }: { targetRef: React.RefObject<HTMLDiv
             <stop offset="0%" stopColor="#10b981" /> {/* emerald-500 */}
             <stop offset="100%" stopColor="#ff7a00" /> {/* isf-orange */}
           </linearGradient>
-          <filter id="neonGlow" x="-20%" y="-20%" width="140%" height="140%">
-            <feGaussianBlur stdDeviation="1.5" result="blur" />
-            <feComposite in="SourceGraphic" in2="blur" operator="over" />
+          <filter id="neonGlow" x="-50%" y="-50%" width="200%" height="200%">
+            <feGaussianBlur stdDeviation="1.5" result="blur1" />
+            <feGaussianBlur stdDeviation="3" result="blur2" />
+            <feMerge>
+              <feMergeNode in="blur2" />
+              <feMergeNode in="blur1" />
+              <feMergeNode in="SourceGraphic" />
+            </feMerge>
           </filter>
         </defs>
         {/*
           Zig-zag path down the page (0 to 100 height):
-          M 90,0 - Starts top right
-          C 90,10 10,15 10,25 - Curves down to left
-          S 90,40 90,50 - Smooth curve down to right
-          S 10,65 10,75 - Smooth curve down to left
-          S 90,90 90,100 - Smooth curve down to right at the bottom
         */}
-        <motion.path
-          d="M 90,0 C 90,10 10,15 10,25 S 90,40 90,50 S 10,65 10,75 S 90,90 90,100"
-          fill="none"
-          stroke="url(#journeyGrad)"
-          strokeWidth="3"
-          strokeLinecap="round"
-          vectorEffect="non-scaling-stroke"
-          filter="url(#neonGlow)"
-          style={{ pathLength: scrollYProgress }}
-        />
+        <g filter="url(#neonGlow)">
+          {/* Main Line */}
+          <motion.path
+            d="M 90,0 C 90,10 10,15 10,25 S 90,40 90,50 S 10,65 10,75 S 90,90 90,100"
+            fill="none"
+            stroke="url(#journeyGrad)"
+            strokeWidth="5"
+            strokeLinecap="round"
+            vectorEffect="non-scaling-stroke"
+            style={{ pathLength: scrollYProgress, opacity: 0.8 }}
+          />
+          {/* Leading Dot */}
+          <motion.path
+            d="M 90,0 C 90,10 10,15 10,25 S 90,40 90,50 S 10,65 10,75 S 90,90 90,100"
+            fill="none"
+            stroke="#ffffff"
+            strokeWidth="8"
+            strokeLinecap="round"
+            vectorEffect="non-scaling-stroke"
+            pathLength="1"
+            strokeDasharray="0 1 0.001 2"
+            style={{ strokeDashoffset: dotOffset }}
+          />
+        </g>
       </svg>
     </div>
   );
