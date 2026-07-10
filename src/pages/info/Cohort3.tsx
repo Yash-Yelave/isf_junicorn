@@ -92,33 +92,33 @@ function Countdown() {
 
 // ─── Data ──────────────────────────────────────────────────────────────────
 const arenas = [
-  { icon: <Leaf />, title: 'Agriculture & Food Security', color: 'from-green-500 to-emerald-400', bg: 'bg-green-50', border: 'border-green-200/40', desc: 'Precision farming, crop tech, cold-chain innovations for Bharat.' },
-  { icon: <Heart />, title: 'Healthcare & Well-being', color: 'from-rose-500 to-pink-400', bg: 'bg-rose-50', border: 'border-rose-200/40', desc: 'Rural diagnostics, telemedicine, and affordable health innovations.' },
-  { icon: <Factory />, title: 'Manufacturing & MSME Growth', color: 'from-amber-500 to-yellow-400', bg: 'bg-amber-50', border: 'border-amber-200/40', desc: 'Smart manufacturing, local supply chains, and artisan tech.' },
-  { icon: <Droplets />, title: 'Water Security & Climate Action', color: 'from-blue-500 to-cyan-400', bg: 'bg-blue-50', border: 'border-blue-200/40', desc: 'Water conservation, climate-resilient infrastructure and practices.' },
-  { icon: <Rocket />, title: 'Space & Deep-Tech Innovation', color: 'from-violet-500 to-purple-400', bg: 'bg-violet-50', border: 'border-violet-200/40', desc: 'AgriSat, rural connectivity, drones, and emerging deep-tech.' },
-  { icon: <BookOpen />, title: 'Education & Skill Development', color: 'from-indigo-500 to-blue-400', bg: 'bg-indigo-50', border: 'border-indigo-200/40', desc: 'Ed-tech, vocational platforms, and digital literacy solutions.' },
-  { icon: <Zap />, title: 'Clean Energy & Sustainability', color: 'from-orange-500 to-amber-400', bg: 'bg-orange-50', border: 'border-orange-200/40', desc: 'Solar, biogas, clean cook-stoves and distributed energy access.' },
-  { icon: <Monitor />, title: 'Digital Transformation & Future Workforce', color: 'from-teal-500 to-cyan-400', bg: 'bg-teal-50', border: 'border-teal-200/40', desc: 'SaaS for rural enterprise, gig platforms, digital infrastructure.' },
-  { icon: <Building />, title: 'Smart Cities & Urban Development', color: 'from-slate-500 to-gray-400', bg: 'bg-slate-100', border: 'border-slate-200/40', desc: 'Urban mobility, waste tech, inclusive city planning and governance.' },
-  { icon: <Users2 />, title: 'Women Empowerment & Social Inclusion', color: 'from-pink-500 to-rose-400', bg: 'bg-pink-50', border: 'border-pink-200/40', desc: 'Women-led ventures, SHG tech, inclusive social enterprise.' }
+  { icon: <Leaf />, title: 'Agriculture & Food Security', color: 'from-green-500 to-emerald-400', bg: 'bg-green-500/10', border: 'border-green-500/20', desc: 'Precision farming, crop tech, cold-chain innovations for Bharat.' },
+  { icon: <Heart />, title: 'Healthcare & Well-being', color: 'from-rose-500 to-pink-400', bg: 'bg-rose-500/10', border: 'border-rose-500/20', desc: 'Rural diagnostics, telemedicine, and affordable health innovations.' },
+  { icon: <Factory />, title: 'Manufacturing & MSME Growth', color: 'from-amber-500 to-yellow-400', bg: 'bg-amber-500/10', border: 'border-amber-500/20', desc: 'Smart manufacturing, local supply chains, and artisan tech.' },
+  { icon: <Droplets />, title: 'Water Security & Climate Action', color: 'from-blue-500 to-cyan-400', bg: 'bg-blue-500/10', border: 'border-blue-500/20', desc: 'Water conservation, climate-resilient infrastructure and practices.' },
+  { icon: <Rocket />, title: 'Space & Deep-Tech Innovation', color: 'from-violet-500 to-purple-400', bg: 'bg-violet-500/10', border: 'border-violet-500/20', desc: 'AgriSat, rural connectivity, drones, and emerging deep-tech.' },
+  { icon: <BookOpen />, title: 'Education & Skill Development', color: 'from-indigo-500 to-blue-400', bg: 'bg-indigo-500/10', border: 'border-indigo-500/20', desc: 'Ed-tech, vocational platforms, and digital literacy solutions.' },
+  { icon: <Zap />, title: 'Clean Energy & Sustainability', color: 'from-orange-500 to-amber-400', bg: 'bg-orange-500/10', border: 'border-orange-500/20', desc: 'Solar, biogas, clean cook-stoves and distributed energy access.' },
+  { icon: <Monitor />, title: 'Digital Transformation & Future Workforce', color: 'from-teal-500 to-cyan-400', bg: 'bg-teal-500/10', border: 'border-teal-500/20', desc: 'SaaS for rural enterprise, gig platforms, digital infrastructure.' },
+  { icon: <Building />, title: 'Smart Cities & Urban Development', color: 'from-slate-500 to-gray-400', bg: 'bg-slate-500/10', border: 'border-slate-500/20', desc: 'Urban mobility, waste tech, inclusive city planning and governance.' },
+  { icon: <Users2 />, title: 'Women Empowerment & Social Inclusion', color: 'from-pink-500 to-rose-400', bg: 'bg-pink-500/10', border: 'border-pink-500/20', desc: 'Women-led ventures, SHG tech, inclusive social enterprise.' }
 ];
 
 const pillars = [
   {
     icon: <Lightbulb className="w-7 h-7" />, title: 'Mentorship',
     desc: 'Expert guidance from industry leaders, serial entrepreneurs, and global innovators at every step of your journey.',
-    iconColor: 'text-yellow-500', bgColor: 'bg-yellow-50'
+    iconColor: 'text-yellow-500', bgColor: 'bg-yellow-500/10'
   },
   {
     icon: <Globe className="w-7 h-7" />, title: 'Market Access',
     desc: 'Showcase your innovation at state, national, and international platforms. Gain visibility that matters.',
-    iconColor: 'text-blue-500', bgColor: 'bg-blue-50'
+    iconColor: 'text-blue-500', bgColor: 'bg-blue-500/10'
   },
   {
     icon: <TrendingUp className="w-7 h-7" />, title: 'Money',
     desc: 'Access real investment opportunities, grants, and funding networks to take your startup from idea to impact.',
-    iconColor: 'text-emerald-500', bgColor: 'bg-emerald-50'
+    iconColor: 'text-emerald-500', bgColor: 'bg-emerald-500/10'
   }
 ];
 
@@ -153,14 +153,28 @@ const Cohort3: React.FC = () => {
   const [hoveredArena, setHoveredArena] = useState<number | null>(null);
 
   return (
-    <div className="font-inter bg-white min-h-screen pt-20 overflow-x-hidden">
+    <div className="font-inter bg-slate-950 min-h-screen pt-20 overflow-x-hidden relative text-white">
+
+      {/* Background Video */}
+      <div className="fixed inset-0 -z-10 w-full h-full overflow-hidden pointer-events-none">
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="w-full h-full object-cover"
+        >
+          <source src="/assets/videos/121885-724720140_small.mp4" type="video/mp4" />
+        </video>
+        <div className="absolute inset-0 bg-slate-950/85" />
+      </div>
 
       {/* ═══ Section 1: Hero Canvas ══════════════════════════════════════════ */}
-      <section className="relative w-full min-h-screen flex flex-col items-center justify-center overflow-hidden">
+      <section className="relative w-full min-h-screen flex flex-col items-center justify-center overflow-hidden bg-transparent">
         {/* Background layers */}
-        <div className="absolute inset-0 bg-gradient-to-br from-[#0a2218] via-[#0e1a3a] to-[#1a0a2e]" />
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-slate-950/40 to-slate-950/60" />
         <div
-          className="absolute inset-0 opacity-20"
+          className="absolute inset-0 opacity-10"
           style={{ backgroundImage: 'radial-gradient(circle at 20% 80%, #166534 0%, transparent 50%), radial-gradient(circle at 80% 20%, #312e81 0%, transparent 50%), radial-gradient(circle at 60% 90%, #f97316 0%, transparent 40%)' }}
         />
 
@@ -168,20 +182,15 @@ const Cohort3: React.FC = () => {
         <motion.div
           animate={{ y: [0, -16, 0] }}
           transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' as const }}
-          className="absolute top-1/4 left-[10%] w-64 h-64 rounded-full bg-emerald-600/20 blur-[80px] pointer-events-none"
+          className="absolute top-1/4 left-[10%] w-64 h-64 rounded-full bg-emerald-600/10 blur-[80px] pointer-events-none"
         />
         <motion.div
           animate={{ y: [0, -20, 0] }}
           transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' as const }}
-          className="absolute bottom-1/4 right-[10%] w-80 h-80 rounded-full bg-orange-500/20 blur-[100px] pointer-events-none"
-        />
-        <motion.div
-          animate={{ y: [0, -12, 0] }}
-          transition={{ duration: 7, repeat: Infinity, ease: 'easeInOut' as const }}
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 rounded-full bg-violet-500/10 blur-[120px] pointer-events-none"
+          className="absolute bottom-1/4 right-[10%] w-80 h-80 rounded-full bg-orange-500/10 blur-[100px] pointer-events-none"
         />
 
-        <div className="relative z-10 max-w-6xl mx-auto px-6 text-center flex flex-col items-center gap-8">
+        <div className="relative z-10 max-w-5xl mx-auto px-6 text-center flex flex-col items-center gap-6">
           {/* Pre-header */}
           <FadeUp>
             <div className="inline-flex flex-wrap items-center justify-center gap-2 px-5 py-2.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-sm font-medium text-white/80">
@@ -198,14 +207,14 @@ const Cohort3: React.FC = () => {
 
           {/* Headline */}
           <FadeUp delay={0.1}>
-            <h1 className="text-3xl sm:text-5xl md:text-6xl font-black tracking-tight text-white leading-tight">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight text-white leading-tight">
               <span className="block bg-clip-text text-transparent bg-gradient-to-r from-emerald-400 via-teal-300 to-cyan-400">
                 Junicorn Rural
               </span>
               <span className="block bg-clip-text text-transparent bg-gradient-to-r from-orange-400 via-amber-300 to-yellow-300">
                 Innovation Challenge
               </span>
-              <span className="block text-white/90 text-xl sm:text-2xl md:text-3xl mt-2 font-bold">
+              <span className="block text-white/90 text-xl sm:text-2xl mt-2 font-bold">
                 — Cohort 3.0
               </span>
             </h1>
@@ -257,56 +266,56 @@ const Cohort3: React.FC = () => {
       </section>
 
       {/* ═══ Section 2: Core Philosophy — The 3Ms ════════════════════════════ */}
-      <section className="py-24 bg-gradient-to-b from-white to-amber-50/40 border-b border-amber-100/60">
-        <div className="max-w-6xl mx-auto px-6">
+      <section className="py-16 md:py-20 bg-transparent border-b border-white/10">
+        <div className="max-w-5xl mx-auto px-6">
           <FadeUp>
-            <div className="text-center mb-12">
+            <div className="text-center mb-10">
               <span className="text-xs font-bold text-isf-orange tracking-widest uppercase block mb-3">The Why</span>
-              <h2 className="text-2xl md:text-4xl font-black text-slate-900 leading-tight">The Core Philosophy</h2>
+              <h2 className="text-xl md:text-3xl font-black text-white leading-tight">The Core Philosophy</h2>
             </div>
           </FadeUp>
 
           {/* Founder Quote */}
           <FadeUp delay={0.1}>
-            <div className="relative bg-gradient-to-br from-slate-900 to-slate-800 rounded-3xl p-8 md:p-10 mb-12 overflow-hidden">
+            <div className="relative bg-white/5 backdrop-blur-md border border-white/10 rounded-3xl p-8 md:p-10 mb-10 overflow-hidden">
               <div className="absolute top-0 left-0 w-2 h-full bg-gradient-to-b from-isf-orange to-amber-400 rounded-l-3xl" />
               <div className="absolute top-6 right-6 text-8xl text-white/5 font-black leading-none select-none">"</div>
-              <blockquote className="relative z-10 text-lg md:text-xl text-white/90 font-medium leading-relaxed italic max-w-4xl">
+              <blockquote className="relative z-10 text-base md:text-lg text-white/90 font-medium leading-relaxed italic max-w-4xl">
                 India stands at a defining moment to become a global innovation powerhouse... To realize Bharat 2047, we must equip youth—especially from rural India and Tier 2 & 3 cities—with the right tools, mentorship, and global exposure.
               </blockquote>
               <div className="mt-8 flex items-center gap-4">
                 <img
                   src="/assets/cohort3/ja-chowdary.png"
                   alt="Dr. J A Chowdary"
-                  className="w-14 h-14 rounded-full object-cover border-2 border-isf-orange"
+                  className="w-12 h-12 rounded-full object-cover border-2 border-isf-orange"
                   onError={e => { e.currentTarget.src = `https://ui-avatars.com/api/?name=JA+Chowdary&background=f97316&color=fff&size=256`; }}
                 />
                 <div>
-                  <p className="text-white font-bold">Dr. J A Chowdary</p>
-                  <p className="text-white/50 text-sm">Founder & Chairman, ISF</p>
+                  <p className="text-white font-bold text-sm">Dr. J A Chowdary</p>
+                  <p className="text-white/50 text-xs">Founder & Chairman, ISF</p>
                 </div>
               </div>
             </div>
           </FadeUp>
 
           {/* 3 Pillars — antigravity cards */}
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-3 gap-6">
             {pillars.map((p, i) => (
               <FadeUp key={p.title} delay={0.1 + i * 0.12}>
                 <motion.div
-                  whileHover={{ y: -12, boxShadow: '0 24px 60px rgba(249,115,22,0.12)' }}
+                  whileHover={{ y: -12, boxShadow: '0 24px 60px rgba(255,255,255,0.06)' }}
                   transition={{ duration: 0.35, ease: 'easeOut' as const }}
-                  className="bg-white rounded-3xl p-8 border border-slate-100 shadow-md cursor-default"
+                  className="bg-white/5 backdrop-blur-md rounded-3xl p-6 border border-white/10 shadow-lg cursor-default"
                 >
                   <motion.div
                     animate={{ y: [0, -8, 0] }}
                     transition={{ duration: 5 + i, repeat: Infinity, ease: 'easeInOut' as const, delay: i * 0.8 }}
-                    className={`w-14 h-14 rounded-2xl flex items-center justify-center ${p.iconColor} ${p.bgColor} mb-6`}
+                    className={`w-12 h-12 rounded-xl flex items-center justify-center ${p.iconColor} ${p.bgColor} mb-4`}
                   >
                     {p.icon}
                   </motion.div>
-                  <h3 className="text-xl font-bold text-slate-900 mb-2">{p.title}</h3>
-                  <p className="text-slate-600 text-sm leading-relaxed">{p.desc}</p>
+                  <h3 className="text-lg font-bold text-white mb-2">{p.title}</h3>
+                  <p className="text-white/60 text-sm leading-relaxed">{p.desc}</p>
                 </motion.div>
               </FadeUp>
             ))}
@@ -315,17 +324,17 @@ const Cohort3: React.FC = () => {
       </section>
 
       {/* ═══ Section 3: Innovation Arenas ════════════════════════════════════ */}
-      <section className="py-24 bg-gradient-to-br from-slate-950 via-slate-900 to-indigo-950 relative overflow-hidden">
+      <section className="py-16 md:py-20 bg-transparent relative overflow-hidden">
         <div
-          className="absolute inset-0 opacity-30"
+          className="absolute inset-0 opacity-10"
           style={{ backgroundImage: 'radial-gradient(circle at 30% 30%, #166534 0%, transparent 40%), radial-gradient(circle at 70% 70%, #312e81 0%, transparent 40%)' }}
         />
         <div className="relative z-10 max-w-7xl mx-auto px-6">
           <FadeUp>
-            <div className="text-center mb-12">
+            <div className="text-center mb-10">
               <span className="text-xs font-bold text-emerald-400 tracking-widest uppercase block mb-2">10 Arenas</span>
-              <h2 className="text-2xl md:text-4xl font-black text-white leading-tight">Choose Your Arena of Impact</h2>
-              <p className="mt-3 text-white/60 text-sm sm:text-base max-w-2xl mx-auto">
+              <h2 className="text-xl md:text-3xl font-black text-white! leading-tight">Choose Your Arena of Impact</h2>
+              <p className="mt-3 text-white/60 text-sm max-w-2xl mx-auto">
                 Not limited to these — but here's where we're looking hardest.
               </p>
             </div>
@@ -347,7 +356,7 @@ const Cohort3: React.FC = () => {
                     transition={{ duration: 4 + (i % 3), repeat: Infinity, ease: 'easeInOut' as const, delay: i * 0.25 }}
                     className={`w-12 h-12 rounded-xl ${arena.bg} flex items-center justify-center mb-4`}
                   >
-                    <div className="text-slate-700">{arena.icon}</div>
+                    <div className="text-white">{arena.icon}</div>
                   </motion.div>
                   <h3 className="text-sm font-bold text-white leading-snug mb-2">{arena.title}</h3>
                   <AnimatePresence>
@@ -370,17 +379,17 @@ const Cohort3: React.FC = () => {
       </section>
 
       {/* ═══ Section 4: Eligibility — Terminal Style ══════════════════════════ */}
-      <section className="py-24 bg-gradient-to-b from-white to-slate-50">
+      <section className="py-16 md:py-20 bg-transparent">
         <div className="max-w-4xl mx-auto px-6">
           <FadeUp>
-            <div className="text-center mb-10">
+            <div className="text-center mb-8">
               <span className="text-xs font-bold text-isf-orange tracking-widest uppercase block mb-2">Qualification Check</span>
-              <h2 className="text-2xl md:text-4xl font-black text-slate-900">Are You a Junicorn?</h2>
+              <h2 className="text-xl md:text-3xl font-black text-white">Are You a Junicorn?</h2>
             </div>
           </FadeUp>
 
           <FadeUp delay={0.15}>
-            <div className="rounded-3xl overflow-hidden border border-slate-200 shadow-2xl shadow-slate-200/60">
+            <div className="rounded-3xl overflow-hidden border border-white/10 shadow-2xl shadow-slate-950/80">
               {/* Title bar */}
               <div className="bg-slate-900 px-6 py-4 flex items-center gap-3">
                 <div className="w-3 h-3 rounded-full bg-rose-500" />
@@ -396,7 +405,7 @@ const Cohort3: React.FC = () => {
                   { label: '→ BACKGROUND', value: 'Open to independent innovators', detail: 'Or those linked with college incubators from across 20 states', color: 'text-violet-400' }
                 ].map((item, i) => (
                   <div key={i} className="space-y-1">
-                    <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
+                     <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
                       <span className="text-white/30">{item.label}</span>
                       <span className={`font-bold ${item.color}`}>=</span>
                       <span className="text-white font-bold">"{item.value}"</span>
@@ -422,21 +431,21 @@ const Cohort3: React.FC = () => {
       </section>
 
       {/* ═══ Section 5: The Expedition — Timeline ════════════════════════════ */}
-      <section className="py-24 bg-gradient-to-br from-amber-50/50 to-orange-50/30 border-y border-amber-100/60">
-        <div className="max-w-6xl mx-auto px-6">
+      <section className="py-16 md:py-20 bg-transparent border-y border-white/10">
+        <div className="max-w-5xl mx-auto px-6">
           <FadeUp>
-            <div className="text-center mb-12">
+            <div className="text-center mb-10">
               <span className="text-xs font-bold text-isf-orange tracking-widest uppercase block mb-2">The Journey</span>
-              <h2 className="text-2xl md:text-4xl font-black text-slate-900">The Expedition</h2>
-              <p className="mt-3 text-slate-600 text-sm sm:text-base">Four milestones. One transformational destination.</p>
+              <h2 className="text-xl md:text-3xl font-black text-white">The Expedition</h2>
+              <p className="mt-3 text-white/60 text-sm">Four milestones. One transformational destination.</p>
             </div>
           </FadeUp>
 
           <div className="relative">
             {/* Connecting gradient line */}
-            <div className="hidden md:block absolute top-[28px] left-[12.5%] right-[12.5%] h-0.5 bg-gradient-to-r from-emerald-400 via-blue-400 via-violet-400 to-orange-400" />
+            <div className="hidden md:block absolute top-[24px] left-[12.5%] right-[12.5%] h-0.5 bg-gradient-to-r from-emerald-400 via-blue-400 via-violet-400 to-orange-400" />
 
-            <div className="grid md:grid-cols-4 gap-8">
+            <div className="grid md:grid-cols-4 gap-6">
               {phases.map((phase, i) => (
                 <FadeUp key={phase.phase} delay={0.1 * i}>
                   <motion.div
@@ -448,19 +457,19 @@ const Cohort3: React.FC = () => {
                     <motion.div
                       animate={{ y: [0, -8, 0] }}
                       transition={{ duration: 3.5 + i * 0.5, repeat: Infinity, ease: 'easeInOut' as const, delay: i * 0.6 }}
-                      className={`w-14 h-14 rounded-full ${phase.dotColor} flex items-center justify-center text-white font-black text-lg shadow-lg ${phase.shadow} mb-6 relative z-10`}
+                      className={`w-12 h-12 rounded-full ${phase.dotColor} flex items-center justify-center text-white font-black text-base shadow-lg ${phase.shadow} mb-4 relative z-10`}
                     >
                       {i + 1}
                     </motion.div>
 
-                    <span className="text-xs font-bold text-slate-400 uppercase tracking-widest mb-1">{phase.phase}</span>
-                    <span className="flex items-center gap-1 text-sm font-bold text-isf-orange mb-3">
-                      <Calendar className="w-3.5 h-3.5" />{phase.date}
+                    <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1">{phase.phase}</span>
+                    <span className="flex items-center gap-1 text-xs font-bold text-isf-orange mb-2">
+                      <Calendar className="w-3 h-3" />{phase.date}
                     </span>
-                    <h3 className="text-lg font-black text-slate-900 mb-2">{phase.title}</h3>
-                    <p className="text-slate-500 text-sm leading-relaxed">{phase.desc}</p>
+                    <h3 className="text-base font-black text-white mb-2">{phase.title}</h3>
+                    <p className="text-white/50 text-xs leading-relaxed">{phase.desc}</p>
                   </motion.div>
-                </FadeUp>
+                </run_command>
               ))}
             </div>
           </div>
@@ -468,9 +477,9 @@ const Cohort3: React.FC = () => {
       </section>
 
       {/* ═══ Section 6: Global Impact ════════════════════════════════════════ */}
-      <section className="py-24 bg-gradient-to-br from-slate-950 via-indigo-950 to-slate-900 relative overflow-hidden">
+      <section className="py-16 md:py-20 bg-transparent relative overflow-hidden">
         <div
-          className="absolute inset-0 opacity-20"
+          className="absolute inset-0 opacity-10"
           style={{ backgroundImage: 'radial-gradient(circle at 50% 50%, #1d4ed8 0%, transparent 60%)' }}
         />
         {/* Animated rings */}
@@ -485,16 +494,16 @@ const Cohort3: React.FC = () => {
           className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full border border-white/5 pointer-events-none"
         />
 
-        <div className="relative z-10 max-w-6xl mx-auto px-6">
+        <div className="relative z-10 max-w-5xl mx-auto px-6">
           <FadeUp>
-            <div className="text-center mb-12">
+            <div className="text-center mb-10">
               <span className="text-xs font-bold text-amber-400 tracking-widest uppercase block mb-2">Global Impact</span>
-              <h2 className="text-2xl md:text-4xl font-black text-white">From Villages to Ventures</h2>
-              <p className="mt-3 text-white/60 text-sm sm:text-base">Real Junicorns. Real Ventures. Real Change.</p>
+              <h2 className="text-xl md:text-3xl font-black text-white!">From Villages to Ventures</h2>
+              <p className="mt-3 text-white/60 text-sm">Real Junicorns. Real Ventures. Real Change.</p>
             </div>
           </FadeUp>
 
-          <div className="grid md:grid-cols-2 gap-8 mb-12">
+          <div className="grid md:grid-cols-2 gap-6 mb-10">
             {impactData.map((d, i) => (
               <FadeUp key={d.cohort} delay={0.1 * i}>
                 <motion.div
@@ -502,16 +511,16 @@ const Cohort3: React.FC = () => {
                   transition={{ duration: 0.35, ease: 'easeOut' as const }}
                   className={`bg-gradient-to-br ${d.grad} p-px rounded-3xl cursor-default`}
                 >
-                  <div className="bg-slate-900/80 backdrop-blur-md rounded-3xl p-8 h-full">
+                  <div className="bg-slate-950/60 backdrop-blur-md rounded-3xl p-6 md:p-8 h-full border border-white/5">
                     <div className="flex items-start justify-between mb-6">
                       <div>
                         <span className="text-3xl">{d.flag}</span>
-                        <h3 className="text-xl font-black text-white mt-2">{d.cohort}</h3>
-                        <p className="text-white/50 text-sm flex items-center gap-1 mt-1">
-                          <MapPin className="w-3.5 h-3.5" />{d.location} · {d.year}
+                        <h3 className="text-lg font-black text-white mt-2">{d.cohort}</h3>
+                        <p className="text-white/50 text-xs flex items-center gap-1 mt-1">
+                          <MapPin className="w-3 h-3" />{d.location} · {d.year}
                         </p>
                       </div>
-                      <div className={`bg-gradient-to-br ${d.grad} text-white text-xs font-bold px-3 py-1.5 rounded-full`}>
+                      <div className={`bg-gradient-to-br ${d.grad} text-white text-[10px] font-bold px-2.5 py-1 rounded-full`}>
                         COMPLETED
                       </div>
                     </div>
@@ -525,9 +534,9 @@ const Cohort3: React.FC = () => {
                           <motion.span
                             animate={{ y: [0, -4, 0] }}
                             transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' as const, delay: i * 0.7 }}
-                            className="text-2xl font-bold text-white block"
+                            className="text-xl font-bold text-white block"
                           >{stat.value}</motion.span>
-                          <span className="text-white/40 text-xs">{stat.label}</span>
+                          <span className="text-white/40 text-[10px]">{stat.label}</span>
                         </div>
                       ))}
                     </div>
@@ -545,10 +554,10 @@ const Cohort3: React.FC = () => {
               className="relative rounded-3xl overflow-hidden cursor-default"
             >
               <div className="absolute inset-0 bg-gradient-to-r from-isf-orange to-amber-400" />
-              <div className="relative z-10 p-10 md:p-14 flex flex-col md:flex-row items-center justify-between gap-8">
+              <div className="relative z-10 p-8 md:p-10 flex flex-col md:flex-row items-center justify-between gap-6">
                 <div>
                   <span className="text-white/70 text-xs font-bold uppercase tracking-widest block mb-1">The Destination — Cohort 3</span>
-                  <h3 className="text-2xl md:text-3xl font-bold text-white">Bengaluru, India</h3>
+                  <h3 className="text-xl md:text-2xl font-bold text-white">Bengaluru, India</h3>
                   <p className="text-white/80 text-sm mt-1.5 flex items-center gap-2">
                     <Calendar className="w-4 h-4" /> December 2026 · Grand Finale
                   </p>
@@ -556,9 +565,9 @@ const Cohort3: React.FC = () => {
                 <motion.div whileHover={{ y: -4 }} transition={{ duration: 0.25, ease: 'easeOut' as const }}>
                   <Link
                     to="/registration"
-                    className="flex items-center gap-2 bg-white text-isf-orange font-black px-8 py-4 rounded-full shadow-xl whitespace-nowrap"
+                    className="flex items-center gap-2 bg-white text-isf-orange font-black px-6 py-3.5 rounded-full shadow-xl whitespace-nowrap text-sm"
                   >
-                    Secure Your Spot <ArrowRight className="w-5 h-5" />
+                    Secure Your Spot <ArrowRight className="w-4 h-4" />
                   </Link>
                 </motion.div>
               </div>
