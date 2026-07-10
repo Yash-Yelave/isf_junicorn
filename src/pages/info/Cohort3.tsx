@@ -225,9 +225,9 @@ const academies = [
 
 const enablers = [
   { name: 'Dr. J A Chowdary', role: 'Founder & Chairman, ISF', img: '/assets/cohort3/ja-chowdary.png' },
-  { name: 'Sreekanth Arimanithaya', role: 'Partner, VISARA', img: '' },
+  { name: 'Sreekanth Arimanithaya', role: 'Partner, VISARA', img: '/assets/distinguished-guests/sreekanth-108.jpg' },
   { name: 'Dr. Siva Mahesh Tangutooru', role: 'Co-Founder, ISF', img: '/assets/cohort3/dr-siva-mahesh.jpeg' },
-  { name: 'Sri Atluri', role: 'Strategic Partner', img: '' },
+  { name: 'Sri Atluri', role: 'Strategic Partner', img: '/assets/distinguished-guests/Sri-Atluri.png' },
   { name: 'SS Raju', role: 'Ecosystem Lead', img: '' },
   { name: 'Chinmay Kumar Dash', role: 'Program Director', img: '' }
 ];
@@ -969,7 +969,7 @@ const Cohort3: React.FC = () => {
                 >
                   <div className="w-24 h-24 mb-4 rounded-full overflow-hidden border-2 border-gray-100 shrink-0">
                     <img
-                      src={person.img || ''}
+                      src={person.img || `https://ui-avatars.com/api/?name=${encodeURIComponent(person.name)}&background=f97316&color=fff&size=256`}
                       alt={person.name}
                       className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
                       onError={e => { e.currentTarget.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(person.name)}&background=f97316&color=fff&size=256`; }}
