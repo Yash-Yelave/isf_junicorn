@@ -193,10 +193,30 @@ const phases = [
   }
 ];
 
-const impactData = [
-  { cohort: 'Cohort 1', location: 'Austin, Texas, USA', year: '2025', flag: '🇺🇸', junicorns: '40', ideas: '22', incorporations: '6', grad: 'from-indigo-600 to-blue-500' },
-  { cohort: 'Cohort 2', location: 'Dubai, UAE', year: '2026', flag: '🇦🇪', junicorns: '50+', ideas: '28', incorporations: '9', grad: 'from-orange-500 to-amber-400' }
-];
+const cohortsData = {
+  'cohort-2': {
+    cohort: 'Cohort 2.0',
+    tag: 'DUBAI EDITION',
+    title: 'Cohort 2: Dubai, UAE',
+    location: 'Dubai, UAE',
+    year: '2026',
+    junicorns: '50+',
+    ideas: '28',
+    incorporations: '9',
+    imgSrc: 'https://www.isfnetwork.org/wp-content/uploads/2026/04/team.png'
+  },
+  'cohort-1': {
+    cohort: 'Cohort 1.0',
+    tag: 'AUSTIN EDITION',
+    title: 'Cohort 1: Austin, Texas, USA',
+    location: 'Austin, Texas, USA',
+    year: '2025',
+    junicorns: '40',
+    ideas: '22',
+    incorporations: '6',
+    imgSrc: 'http://localhost:5173/assets/themes/jupiterx/junicon-26/images/1-Dflng3M3.jpeg'
+  }
+};
 
 const academies = [
   'Young Entrepreneurship', 'Future Founder', 'Deep-Tech Innovation',
@@ -216,6 +236,7 @@ const enablers = [
 const Cohort3: React.FC = () => {
   const [hoveredArena, setHoveredArena] = useState<number | null>(null);
   const [introPhase, setIntroPhase] = useState<'video-only' | 'show-title' | 'show-all'>('video-only');
+  const [activeCohort, setActiveCohort] = useState<'cohort-1' | 'cohort-2'>('cohort-2');
   const videoRef = useRef<HTMLVideoElement>(null);
   const [isPlaying, setIsPlaying] = useState(true);
   const [isMuted, setIsMuted] = useState(false);
@@ -702,77 +723,85 @@ const Cohort3: React.FC = () => {
       </section>
 
       {/* ═══ Section 6: Global Impact ════════════════════════════════════════ */}
-      <section className="py-16 md:py-20 bg-gradient-to-br from-slate-950 via-indigo-950 to-slate-900 relative overflow-hidden">
-        <div
-          className="absolute inset-0 opacity-20"
-          style={{ backgroundImage: 'radial-gradient(circle at 50% 50%, #1d4ed8 0%, transparent 60%)' }}
-        />
-        {/* Animated rings */}
-        <motion.div
-          animate={{ rotate: 360 }}
-          transition={{ duration: 60, repeat: Infinity, ease: 'linear' as const }}
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] rounded-full border border-white/5 pointer-events-none"
-        />
-        <motion.div
-          animate={{ rotate: -360 }}
-          transition={{ duration: 40, repeat: Infinity, ease: 'linear' as const }}
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full border border-white/5 pointer-events-none"
-        />
-
-        <div className="relative z-10 max-w-5xl mx-auto px-6">
+      <section className="py-20 bg-slate-50 border-b border-gray-100 relative overflow-hidden">
+        <div className="max-w-5xl mx-auto px-6">
           <FadeUp>
-            <div className="text-center mb-10">
-              <span className="text-xs font-bold text-amber-400 tracking-widest uppercase block mb-2">Global Impact</span>
-              <h2 className="text-xl md:text-3xl font-black text-white!">From Villages to Ventures</h2>
-              <p className="mt-3 text-white/60 text-sm">Real Junicorns. Real Ventures. Real Change.</p>
+            <div className="text-center mb-10 space-y-2">
+              <span className="text-xs font-bold text-gray-400 uppercase tracking-widest block font-inter">Global Impact</span>
+              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold font-baskerville text-slate-900 leading-tight">From Villages to Ventures</h2>
             </div>
           </FadeUp>
 
-          <div className="grid md:grid-cols-2 gap-6 mb-10">
-            {impactData.map((d, i) => (
-              <FadeUp key={d.cohort} delay={0.1 * i}>
-                <motion.div
-                  whileHover={{ y: -10, boxShadow: '0 30px 70px rgba(0,0,0,0.3)' }}
-                  transition={{ duration: 0.35, ease: 'easeOut' as const }}
-                  className={`bg-gradient-to-br ${d.grad} p-px rounded-3xl cursor-default`}
-                >
-                  <div className="bg-slate-900/80 backdrop-blur-md rounded-3xl p-6 md:p-8 h-full">
-                    <div className="flex items-start justify-between mb-6">
-                      <div>
-                        <span className="text-3xl">{d.flag}</span>
-                        <h3 className="text-lg font-black text-white mt-2">{d.cohort}</h3>
-                        <p className="text-white/50 text-xs flex items-center gap-1 mt-1">
-                          <MapPin className="w-3 h-3" />{d.location} · {d.year}
-                        </p>
-                      </div>
-                      <div className={`bg-gradient-to-br ${d.grad} text-white text-[10px] font-bold px-2.5 py-1 rounded-full`}>
-                        COMPLETED
-                      </div>
-                    </div>
-                    <div className="grid grid-cols-3 gap-4">
-                      {[
-                        { label: 'Rural Junicorns', value: d.junicorns },
-                        { label: 'Ideas Showcased', value: d.ideas },
-                        { label: 'Incorporations', value: d.incorporations }
-                      ].map(stat => (
-                        <div key={stat.label} className="text-center">
-                          <motion.span
-                            animate={{ y: [0, -4, 0] }}
-                            transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' as const, delay: i * 0.7 }}
-                            className="text-xl font-bold text-white block"
-                          >{stat.value}</motion.span>
-                          <span className="text-white/40 text-[10px]">{stat.label}</span>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                </motion.div>
-              </FadeUp>
+          {/* Tab buttons */}
+          <div className="flex justify-center gap-2 sm:gap-3 relative z-10 -mb-[1px] flex-wrap sm:flex-nowrap">
+            {['cohort-2', 'cohort-1'].map((key) => (
+              <button
+                key={key}
+                onClick={() => setActiveCohort(key as 'cohort-1' | 'cohort-2')}
+                className={`px-6 sm:px-10 py-2.5 md:py-3.5 text-sm sm:text-lg md:text-xl font-bold rounded-t-xl transition-all focus:outline-none cursor-pointer ${
+                  activeCohort === key
+                    ? "bg-[#FFF7E3] text-[#D45625] border-t border-x border-[#FFE7C4]/30 font-extrabold"
+                    : "bg-[#ECEFF1] text-[#1E293B] hover:bg-[#E2E8F0]"
+                }`}
+              >
+                {key === 'cohort-2' ? 'Cohort 2.0' : 'Cohort 1.0'}
+              </button>
             ))}
           </div>
 
+          {/* Tab content card */}
+          <FadeUp delay={0.1}>
+            <div className="bg-[#FFF7E3] p-8 md:p-12 rounded-3xl border border-[#FFE7C4]/30 shadow-sm mb-12">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+                {/* Content Column */}
+                <div className="space-y-5">
+                  <span className="text-xs font-semibold text-slate-500 uppercase tracking-wider block font-inter">
+                    {cohortsData[activeCohort].tag}
+                  </span>
+                  <h3 className="text-xl sm:text-2xl md:text-3xl font-bold font-baskerville text-slate-900 leading-snug">
+                    {cohortsData[activeCohort].title}
+                  </h3>
+                  <p className="text-slate-600 leading-relaxed text-sm md:text-base font-inter">
+                    Bridging the gap between rural ambition and global opportunity. Empowering young innovators at {cohortsData[activeCohort].location} in {cohortsData[activeCohort].year} to transform ideas into viable start-up ventures.
+                  </p>
+                  <div className="grid grid-cols-3 gap-6 pt-6 border-t border-[#FFE7C4] mt-6">
+                    {[
+                      { label: 'Rural Junicorns', value: cohortsData[activeCohort].junicorns },
+                      { label: 'Ideas Showcased', value: cohortsData[activeCohort].ideas },
+                      { label: 'Incorporations', value: cohortsData[activeCohort].incorporations }
+                    ].map((stat) => (
+                      <div key={stat.label} className="text-left">
+                        <span className="text-2xl sm:text-3xl font-extrabold text-[#D45625] block leading-none">
+                          {stat.value}
+                        </span>
+                        <span className="text-slate-600 text-[10px] sm:text-xs mt-1.5 block leading-tight font-medium font-inter">
+                          {stat.label}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Image Column */}
+                <div className="rounded-2xl overflow-hidden border border-[#FFE7C4] shadow-md aspect-video md:aspect-[4/3] bg-amber-100/50">
+                  <img
+                    src={cohortsData[activeCohort].imgSrc}
+                    alt={cohortsData[activeCohort].title}
+                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                    onError={(e) => {
+                      // Fallback to relative path if absolute localhost fails
+                      if (activeCohort === 'cohort-1') {
+                        e.currentTarget.src = '/assets/themes/jupiterx/junicon-26/images/1-Dflng3M3.jpeg';
+                      }
+                    }}
+                  />
+                </div>
+              </div>
+            </div>
+          </FadeUp>
+
           {/* Destination banner */}
-          <FadeUp delay={0.25}>
+          <FadeUp delay={0.2}>
             <motion.div
               whileHover={{ scale: 1.01 }}
               transition={{ duration: 0.3, ease: 'easeOut' as const }}
@@ -781,7 +810,7 @@ const Cohort3: React.FC = () => {
               <div className="absolute inset-0 bg-gradient-to-r from-isf-orange to-amber-400" />
               <div className="relative z-10 p-8 md:p-10 flex flex-col md:flex-row items-center justify-between gap-6">
                 <div>
-                  <span className="text-white/70 text-xs font-bold uppercase tracking-widest block mb-1">The Destination — Cohort 3</span>
+                  <span className="text-white/70 text-xs font-bold uppercase tracking-widest block mb-1">The Destination — Cohort 3.0</span>
                   <h3 className="text-xl md:text-2xl font-bold text-white">Bengaluru, India</h3>
                   <p className="text-white/80 text-sm mt-1.5 flex items-center gap-2">
                     <Calendar className="w-4 h-4" /> December 2026 · Grand Finale
