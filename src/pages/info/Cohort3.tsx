@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
-import { motion, useInView, AnimatePresence, useScroll } from 'framer-motion';
+import { motion, useInView, AnimatePresence, useScroll, useTransform } from 'framer-motion';
 import {
   ArrowRight, Leaf, Heart, Factory, Droplets, Rocket, BookOpen,
   Zap, Monitor, Building, Users2, ChevronDown, Globe,
@@ -239,60 +239,78 @@ const AnimatedJourneyLine = ({ targetRef }: { targetRef: React.RefObject<HTMLDiv
     offset: ["start center", "end end"]
   });
 
-  // Calculate the dot position so it follows the exact tip of the drawn path
-  // Our path is length 1. We'll use strokeDasharray to create a dot.
-  const dotOffset = useTransform(scrollYProgress, p => 1 - p);
+  // Calculate the dot Y position (0% to 100%)
+  const dotY = useTransform(scrollYProgress, v => `${v * 100}%`);
+  
+  // Calculate the dot X position. We use a cosine wave to create a smooth zig-zag.
+  // 10% to 90% mapping perfectly to the Y progress.
+  const dotX = useTransform(scrollYProgress, v => {
+    const angle = v * 4 * Math.PI;
+    const normalized = (Math.cos(angle) + 1) / 2; // oscillates 1 -> 0 -> 1 -> 0 -> 1
+    return `${10 + normalized * 80}%`;
+  });
+
+  // Generate the exact same smooth cosine wave path for the SVG.
+  // Using 1000 segments ensures the path is perfectly smooth even over very tall sections.
+  const pathD = Array.from({ length: 1000 }).map((_, i) => {
+    const v = i / 999;
+    const y = v * 100;
+    const angle = v * 4 * Math.PI;
+    const normalized = (Math.cos(angle) + 1) / 2;
+    const x = 10 + normalized * 80;
+    return `${i === 0 ? 'M' : 'L'} ${x},${y}`;
+  }).join(' ');
+
+  // Clip from bottom based on scroll to reveal the line smoothly
+  const clipPath = useTransform(scrollYProgress, v => `inset(0 0 ${100 - v * 100}% 0)`);
+  
+  // Fade in/out the glowing dot at boundaries
+  const dotOpacity = useTransform(scrollYProgress, v => (v > 0.01 && v < 0.99 ? 1 : 0));
 
   return (
     <div className="absolute inset-0 z-10 pointer-events-none overflow-hidden">
-      <svg
-        className="w-full h-full"
-        viewBox="0 0 100 100"
-        preserveAspectRatio="none"
+      {/* Clipped Line Layer */}
+      <motion.div 
+        className="absolute inset-0" 
+        style={{ clipPath }}
       >
-        <defs>
-          <linearGradient id="journeyGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-            <stop offset="0%" stopColor="#10b981" /> {/* emerald-500 */}
-            <stop offset="100%" stopColor="#ff7a00" /> {/* isf-orange */}
-          </linearGradient>
-          <filter id="neonGlow" x="-50%" y="-50%" width="200%" height="200%">
-            <feGaussianBlur stdDeviation="1.5" result="blur1" />
-            <feGaussianBlur stdDeviation="3" result="blur2" />
-            <feMerge>
-              <feMergeNode in="blur2" />
-              <feMergeNode in="blur1" />
-              <feMergeNode in="SourceGraphic" />
-            </feMerge>
-          </filter>
-        </defs>
-        {/*
-          Zig-zag path down the page (0 to 100 height):
-        */}
-        <g filter="url(#neonGlow)">
-          {/* Main Line */}
-          <motion.path
-            d="M 90,0 C 90,10 10,15 10,25 S 90,40 90,50 S 10,65 10,75 S 90,90 90,100"
+        <svg 
+          className="w-full h-full overflow-visible" 
+          viewBox="0 0 100 100" 
+          preserveAspectRatio="none"
+          style={{ filter: "drop-shadow(0 0 8px rgba(16,185,129,0.8)) drop-shadow(0 0 16px rgba(249,115,22,0.8))" }}
+        >
+          <defs>
+            <linearGradient id="journeyGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stopColor="#10b981" />
+              <stop offset="50%" stopColor="#3b82f6" />
+              <stop offset="100%" stopColor="#f97316" />
+            </linearGradient>
+          </defs>
+          <path
+            d={pathD}
             fill="none"
             stroke="url(#journeyGrad)"
-            strokeWidth="5"
-            strokeLinecap="round"
+            strokeWidth="4"
             vectorEffect="non-scaling-stroke"
-            style={{ pathLength: scrollYProgress, opacity: 0.8 }}
-          />
-          {/* Leading Dot */}
-          <motion.path
-            d="M 90,0 C 90,10 10,15 10,25 S 90,40 90,50 S 10,65 10,75 S 90,90 90,100"
-            fill="none"
-            stroke="#ffffff"
-            strokeWidth="8"
             strokeLinecap="round"
-            vectorEffect="non-scaling-stroke"
-            pathLength="1"
-            strokeDasharray="0 1 0.001 2"
-            style={{ strokeDashoffset: dotOffset }}
+            strokeLinejoin="round"
           />
-        </g>
-      </svg>
+        </svg>
+      </motion.div>
+
+      {/* Unclipped Glowing Dot Layer tracking the tip of the line */}
+      <motion.div
+        className="absolute w-3 h-3 rounded-full bg-white z-20 pointer-events-none"
+        style={{
+          top: dotY,
+          left: dotX,
+          x: "-50%",
+          y: "-50%",
+          opacity: dotOpacity,
+          boxShadow: "0 0 15px 5px rgba(255,255,255,0.8), 0 0 30px 12px rgba(249,115,22,0.8)"
+        }}
+      />
     </div>
   );
 };
@@ -536,12 +554,12 @@ const Cohort3: React.FC = () => {
       </section>
 
       {/* Main Content Wrapper for Journey Line */}
-      <div className="relative w-full" ref={mainContentRef}>
+      <div className="relative w-full overflow-hidden" ref={mainContentRef}>
         <AnimatedJourneyLine targetRef={mainContentRef} />
 
         {/* ═══ Section 2: Core Philosophy — The 3Ms ════════════════════════════ */}
       <section className="py-16 md:py-20 bg-gradient-to-b from-white to-amber-50/40 border-b border-amber-100/60">
-        <div className="max-w-5xl mx-auto px-6">
+        <div className="relative z-20 max-w-5xl mx-auto px-6">
           <FadeUp>
             <div className="text-center mb-10">
               <span className="text-xs font-bold text-isf-orange tracking-widest uppercase block mb-3">The Why</span>
@@ -598,12 +616,12 @@ const Cohort3: React.FC = () => {
       </section>
 
       {/* ═══ Section 3: Innovation Arenas ════════════════════════════════════ */}
-      <section className="py-16 md:py-20 bg-gradient-to-br from-slate-950 via-slate-900 to-indigo-950 relative overflow-hidden">
+      <section className="py-16 md:py-20 bg-gradient-to-br from-slate-950 via-slate-900 to-indigo-950 relative">
         <div
-          className="absolute inset-0 opacity-30"
+          className="absolute inset-0 opacity-30 z-0"
           style={{ backgroundImage: 'radial-gradient(circle at 30% 30%, #166534 0%, transparent 40%), radial-gradient(circle at 70% 70%, #312e81 0%, transparent 40%)' }}
         />
-        <div className="relative z-10 max-w-7xl mx-auto px-6">
+        <div className="relative z-20 max-w-7xl mx-auto px-6">
           <FadeUp>
             <div className="text-center mb-10">
               <span className="text-xs font-bold text-emerald-400 tracking-widest uppercase block mb-2">10 Arenas</span>
@@ -654,7 +672,7 @@ const Cohort3: React.FC = () => {
 
       {/* ═══ Section 4: Eligibility — Terminal Style ══════════════════════════ */}
       <section className="py-16 md:py-20 bg-gradient-to-b from-white to-slate-50">
-        <div className="max-w-4xl mx-auto px-6">
+        <div className="relative z-20 max-w-4xl mx-auto px-6">
           <FadeUp>
             <div className="text-center mb-8">
               <span className="text-xs font-bold text-isf-orange tracking-widest uppercase block mb-2">Qualification Check</span>
@@ -705,16 +723,12 @@ const Cohort3: React.FC = () => {
       </section>
 
       {/* ═══ Section 5: The Expedition — Timeline ════════════════════════════ */}
-      <section className="py-16 md:py-20 bg-[#121212] border-y border-zinc-800 relative overflow-hidden">
-        {/* Reticulate pattern of slowly animating white dots and fine lines */}
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <svg className="absolute inset-0 w-full h-full opacity-15" xmlns="http://www.w3.org/2000/svg">
-            <line x1="15%" y1="25%" x2="45%" y2="55%" stroke="white" strokeWidth="0.75" strokeDasharray="4,4" />
-            <line x1="45%" y1="55%" x2="75%" y2="35%" stroke="white" strokeWidth="0.75" />
-            <line x1="75%" y1="35%" x2="92%" y2="75%" stroke="white" strokeWidth="0.75" strokeDasharray="3,3" />
-            <line x1="25%" y1="75%" x2="45%" y2="55%" stroke="white" strokeWidth="0.75" />
-            <line x1="45%" y1="55%" x2="80%" y2="65%" stroke="white" strokeWidth="0.75" />
-          </svg>
+      <section className="py-20 md:py-32 bg-[#121212] relative">
+        {/* Deep background elements */}
+        <div className="absolute inset-0 z-0 bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] bg-[size:3rem_3rem]" />
+        
+        {/* Animated grid dots (Reticulate pattern) */}
+        <div className="absolute inset-0 z-0 overflow-hidden">
           <motion.div
             animate={{ opacity: [0.15, 0.7, 0.15] }}
             transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
@@ -747,7 +761,7 @@ const Cohort3: React.FC = () => {
           />
         </div>
 
-        <div className="relative z-10 max-w-5xl mx-auto px-6">
+        <div className="relative z-20 max-w-5xl mx-auto px-6">
           <FadeUp>
             <div className="text-center mb-10">
               <span className="text-xs font-bold text-isf-orange tracking-widest uppercase block mb-2">The Journey</span>
@@ -793,8 +807,8 @@ const Cohort3: React.FC = () => {
       </section>
 
       {/* ═══ Section 6: Global Impact ════════════════════════════════════════ */}
-      <section className="py-20 bg-slate-50 border-b border-gray-100 relative overflow-hidden">
-        <div className="max-w-5xl mx-auto px-6">
+      <section className="py-20 bg-slate-50 border-b border-gray-100">
+        <div className="relative z-20 max-w-5xl mx-auto px-6">
           <FadeUp>
             <div className="text-center mb-10 space-y-2">
               <span className="text-xs font-bold text-gray-400 uppercase tracking-widest block font-inter">Global Impact</span>
@@ -902,7 +916,7 @@ const Cohort3: React.FC = () => {
 
       {/* ═══ Section 7: The Enablers ════════════════════════════════════════ */}
       <section className="py-16 md:py-20 bg-gradient-to-b from-white to-slate-50 border-b border-slate-100">
-        <div className="max-w-7xl mx-auto px-6">
+        <div className="relative z-20 max-w-7xl mx-auto px-6">
           <FadeUp>
             <div className="text-center mb-10">
               <span className="text-xs font-bold text-isf-orange tracking-widest uppercase block mb-2">Partners & People</span>
@@ -971,12 +985,12 @@ const Cohort3: React.FC = () => {
       </section>
 
       {/* ═══ Section 8: Footer CTA ══════════════════════════════════════════ */}
-      <section className="py-16 md:py-20 bg-gradient-to-br from-slate-950 to-slate-900 relative overflow-hidden">
+      <section className="py-16 md:py-20 bg-gradient-to-br from-slate-950 to-slate-900 relative">
         <div
-          className="absolute inset-0 opacity-20"
+          className="absolute inset-0 opacity-20 z-0"
           style={{ backgroundImage: 'radial-gradient(circle at 80% 20%, #f97316 0%, transparent 40%)' }}
         />
-        <div className="relative z-10 max-w-5xl mx-auto px-6">
+        <div className="relative z-20 max-w-5xl mx-auto px-6">
           <FadeUp>
             <div className="text-center mb-10">
               <h2 className="text-xl md:text-3xl font-black text-white! mb-6">
