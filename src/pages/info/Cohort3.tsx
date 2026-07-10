@@ -214,7 +214,7 @@ const cohortsData = {
     junicorns: '40',
     ideas: '22',
     incorporations: '6',
-    imgSrc: 'http://localhost:5173/assets/themes/jupiterx/junicon-26/images/1-Dflng3M3.jpeg'
+    imgSrc: '/assets/themes/jupiterx/junicon-26/images/1-Dflng3M3.jpeg'
   }
 };
 
