@@ -380,7 +380,7 @@ const Cohort3: React.FC = () => {
         </video>
         
         {/* Left Gradient Overlay for text legibility while keeping video visible */}
-        <div className="absolute inset-0 bg-gradient-to-r from-slate-950/90 via-slate-950/50 to-transparent z-10 pointer-events-none" />
+        <div className="absolute inset-y-0 left-0 w-full lg:w-2/3 bg-gradient-to-r from-slate-950/80 via-slate-950/20 to-transparent z-10 pointer-events-none" />
 
         {/* Floating orbs */}
         <motion.div
