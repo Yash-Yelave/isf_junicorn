@@ -550,7 +550,7 @@ export function LandingPage() {
                     <span className="text-xs font-bold text-amber-300 uppercase tracking-wider block font-inter mb-1">
                       {junicornSlides[junicornIndex].tag}
                     </span>
-                    <h3 className="text-base sm:text-lg md:text-xl font-bold font-baskerville">
+                    <h3 className="text-base sm:text-lg md:text-xl font-bold font-baskerville !text-white" style={{ color: '#ffffff' }}>
                       {junicornSlides[junicornIndex].title}
                     </h3>
                   </div>
