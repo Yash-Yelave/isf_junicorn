@@ -318,7 +318,6 @@ const AnimatedJourneyLine = ({ targetRef }: { targetRef: React.RefObject<HTMLDiv
 // ─── Main Component ────────────────────────────────────────────────────────
 const Cohort3: React.FC = () => {
   const [hoveredArena, setHoveredArena] = useState<number | null>(null);
-  const [introPhase, setIntroPhase] = useState<'video-only' | 'show-title' | 'show-all'>('video-only');
   const [activeCohort, setActiveCohort] = useState<'cohort-1' | 'cohort-2'>('cohort-2');
   const videoRef = useRef<HTMLVideoElement>(null);
   const mainContentRef = useRef<HTMLDivElement>(null);
@@ -326,14 +325,6 @@ const Cohort3: React.FC = () => {
   const [isMuted, setIsMuted] = useState(false);
 
   useEffect(() => {
-    const timer1 = setTimeout(() => {
-      setIntroPhase('show-title');
-    }, 5000);
-
-    const timer2 = setTimeout(() => {
-      setIntroPhase('show-all');
-    }, 6000);
-
     // Initial play check to support unmuted autoplay if allowed by browser
     if (videoRef.current) {
       videoRef.current.muted = isMuted;
@@ -349,11 +340,6 @@ const Cohort3: React.FC = () => {
         });
       }
     }
-
-    return () => {
-      clearTimeout(timer1);
-      clearTimeout(timer2);
-    };
   }, []);
 
   const togglePlay = () => {
@@ -393,52 +379,20 @@ const Cohort3: React.FC = () => {
           <source src="/assets/videos/dubai.mp4" type="video/mp4" />
         </video>
         
-        {/* Dark faint overlay */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: introPhase !== 'video-only' ? 0.75 : 0 }}
-          transition={{ duration: 0.8 }}
-          className="absolute inset-0 bg-slate-950 z-10"
-        />
-
-        {/* Central Vignette Overlay to draw focus and make text pop */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: introPhase !== 'video-only' ? 1 : 0 }}
-          transition={{ duration: 1 }}
-          className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_30%,rgba(15,23,42,0.9)_90%)] z-10 pointer-events-none"
-        />
-
-        {/* Background layers */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: introPhase !== 'video-only' ? 0.1 : 0 }}
-          transition={{ duration: 0.8 }}
-          className="absolute inset-0 bg-gradient-to-b from-transparent via-slate-950/40 to-slate-950/60 z-10"
-        />
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: introPhase !== 'video-only' ? 0.1 : 0 }}
-          transition={{ duration: 0.8 }}
-          className="absolute inset-0 z-10"
-          style={{ backgroundImage: 'radial-gradient(circle at 20% 80%, #166534 0%, transparent 50%), radial-gradient(circle at 80% 20%, #312e81 0%, transparent 50%), radial-gradient(circle at 60% 90%, #f97316 0%, transparent 40%)' }}
-        />
+        {/* Left Gradient Overlay for text legibility while keeping video visible */}
+        <div className="absolute inset-0 bg-gradient-to-r from-slate-950/90 via-slate-950/50 to-transparent z-10 pointer-events-none" />
 
         {/* Floating orbs */}
-        {introPhase !== 'video-only' && (
-          <>
-            <motion.div
-              animate={{ y: [0, -16, 0] }}
-              transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' as const }}
-              className="absolute top-1/4 left-[10%] w-64 h-64 rounded-full bg-emerald-600/10 blur-[80px] pointer-events-none z-10"
-            />
-            <motion.div
-              animate={{ y: [0, -20, 0] }}
-              transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' as const }}
-              className="absolute bottom-1/4 right-[10%] w-80 h-80 rounded-full bg-orange-500/10 blur-[100px] pointer-events-none z-10"
-            />
-          </>
-        )}
+        <motion.div
+          animate={{ y: [0, -16, 0] }}
+          transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' as const }}
+          className="absolute top-1/4 left-[5%] w-64 h-64 rounded-full bg-emerald-600/20 blur-[80px] pointer-events-none z-10"
+        />
+        <motion.div
+          animate={{ y: [0, -20, 0] }}
+          transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' as const }}
+          className="absolute bottom-1/4 right-[10%] w-80 h-80 rounded-full bg-orange-500/10 blur-[100px] pointer-events-none z-10"
+        />
 
         {/* Video Control Bar */}
         <div className="absolute bottom-6 right-6 z-30 flex items-center gap-2">
@@ -458,98 +412,88 @@ const Cohort3: React.FC = () => {
           </button>
         </div>
 
-        <div className="relative z-20 max-w-5xl mx-auto px-6 text-center flex flex-col items-center gap-6">
+        <div className="relative z-20 w-full max-w-7xl mx-auto px-6 sm:px-12 md:px-16 text-left flex flex-col items-start gap-6">
           {/* Pre-header */}
-          <AnimatePresence>
-            {introPhase === 'show-all' && (
-              <motion.div
-                initial={{ opacity: 0, y: 15 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6 }}
-                className="inline-flex flex-wrap items-center justify-center gap-2 px-5 py-2.5 rounded-full bg-white/5 backdrop-blur-md border border-white/10 text-xs font-medium text-white/80 font-inter"
-              >
-                <span>Organised by</span>
-                <span className="font-bold text-white">ISF</span>
-                <span className="text-white/40">·</span>
-                <span className="font-semibold text-white">GAVS</span>
-                <span className="text-white/40">·</span>
-                <span className="font-semibold text-white">MyAnatomy</span>
-                <span className="text-white/40">·</span>
-                <span className="font-semibold text-white">VISARA</span>
-              </motion.div>
-            )}
-          </AnimatePresence>
+          <motion.div
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="inline-flex flex-wrap items-center justify-start gap-2 px-5 py-2.5 rounded-full bg-white/5 backdrop-blur-md border border-white/10 text-xs font-medium text-white/80 font-inter"
+          >
+            <span>Organised by</span>
+            <span className="font-bold text-white">ISF</span>
+            <span className="text-white/40">·</span>
+            <span className="font-semibold text-white">GAVS</span>
+            <span className="text-white/40">·</span>
+            <span className="font-semibold text-white">MyAnatomy</span>
+            <span className="text-white/40">·</span>
+            <span className="font-semibold text-white">VISARA</span>
+          </motion.div>
 
           {/* Headline */}
-          <AnimatePresence>
-            {introPhase !== 'video-only' && (
-              <motion.h1
-                initial={{ opacity: 0, y: 30, scale: 0.95 }}
-                animate={{ opacity: 1, y: 0, scale: 1 }}
-                transition={{ duration: 0.8, ease: 'easeOut' }}
-                className="text-4xl sm:text-5xl md:text-6xl font-black tracking-tight text-white leading-none font-inter"
-              >
-                <span className="block text-white! font-black drop-shadow-[0_4px_12px_rgba(0,0,0,0.95)]">
-                  Junicorn Rural
-                </span>
-                <span className="block text-[#ff7a00]! text-5xl sm:text-6xl md:text-7xl font-extrabold tracking-tight mt-1.5 drop-shadow-[0_0_25px_rgba(255,122,0,0.45)] drop-shadow-[0_4px_16px_rgba(0,0,0,0.95)]">
-                  Innovation Challenge
-                </span>
-                <span className="block text-white/60 text-xs sm:text-sm md:text-base mt-4 font-semibold tracking-widest uppercase">
-                  — Cohort 3.0
-                </span>
-              </motion.h1>
-            )}
-          </AnimatePresence>
+          <motion.h1
+            initial={{ opacity: 0, y: 30, scale: 0.95 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            transition={{ duration: 0.8, ease: 'easeOut', delay: 0.3 }}
+            className="text-4xl sm:text-5xl md:text-6xl font-black tracking-tight text-white leading-none font-inter"
+          >
+            <span className="block text-white! font-black drop-shadow-[0_4px_12px_rgba(0,0,0,0.95)]">
+              Junicorn Rural
+            </span>
+            <span className="block text-[#ff7a00]! text-5xl sm:text-6xl md:text-7xl font-extrabold tracking-tight mt-1.5 drop-shadow-[0_0_25px_rgba(255,122,0,0.45)] drop-shadow-[0_4px_16px_rgba(0,0,0,0.95)]">
+              Innovation Challenge
+            </span>
+            <span className="block text-white/60 text-xs sm:text-sm md:text-base mt-4 font-semibold tracking-widest uppercase">
+              — Cohort 3.0
+            </span>
+          </motion.h1>
 
           {/* Secondary Content & Countdown */}
-          <AnimatePresence>
-            {introPhase === 'show-all' && (
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.1 }}
-                className="flex flex-col items-center gap-6 w-full"
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.5 }}
+            className="flex flex-col items-start gap-6 w-full max-w-2xl"
+          >
+            {/* Sub-headline */}
+            <p className="text-white! text-sm sm:text-base md:text-lg leading-relaxed font-normal font-inter drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]">
+              Transforming India's Rural Innovation Story.{' '}
+              <span className="text-white/80">Bridging the gap between rural ambition and global opportunity.</span>
+            </p>
+
+            {/* CTA */}
+            <motion.div
+              whileHover={{ y: -6 }}
+              transition={{ duration: 0.3, ease: 'easeOut' as const }}
+              className="inline-block"
+            >
+              <Link
+                to="/registration"
+                className="flex items-center gap-3 bg-[#ff7a00] hover:bg-[#ff8c1a] text-white font-extrabold text-base sm:text-lg px-12 py-4.5 rounded-full shadow-[0_0_25px_rgba(255,122,0,0.4)] hover:shadow-[0_0_35px_rgba(255,122,0,0.6)] cursor-pointer transition-all active:scale-95 duration-300"
               >
-                {/* Sub-headline */}
-                <p className="text-white! text-sm sm:text-base md:text-lg max-w-2xl leading-relaxed font-normal font-inter drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]">
-                  Transforming India's Rural Innovation Story.{' '}
-                  <span className="text-white/80">Bridging the gap between rural ambition and global opportunity.</span>
-                </p>
+                Apply Now <ArrowRight className="w-5 h-5" />
+              </Link>
+            </motion.div>
 
-                {/* CTA */}
-                <motion.div
-                  whileHover={{ y: -6 }}
-                  transition={{ duration: 0.3, ease: 'easeOut' as const }}
-                  className="inline-block"
-                >
-                  <Link
-                    to="/registration"
-                    className="flex items-center gap-3 bg-[#ff7a00] hover:bg-[#ff8c1a] text-white font-extrabold text-base sm:text-lg px-12 py-4.5 rounded-full shadow-[0_0_25px_rgba(255,122,0,0.4)] hover:shadow-[0_0_35px_rgba(255,122,0,0.6)] cursor-pointer transition-all active:scale-95 duration-300"
-                  >
-                    Apply Now <ArrowRight className="w-5 h-5" />
-                  </Link>
-                </motion.div>
+            {/* Countdown */}
+            <div className="space-y-4 w-full mt-4">
+              <p className="text-white/50 text-sm font-semibold uppercase tracking-widest">
+                Registration Deadline — October 1st
+              </p>
+              <div className="flex justify-start">
+                <Countdown />
+              </div>
+            </div>
 
-                {/* Countdown */}
-                <div className="space-y-4 w-full">
-                  <p className="text-white/50 text-sm font-semibold uppercase tracking-widest">
-                    Registration Deadline — October 1st
-                  </p>
-                  <Countdown />
-                </div>
-
-                {/* Scroll hint */}
-                <motion.div
-                  animate={{ y: [0, 8, 0] }}
-                  transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' as const }}
-                  className="mt-4 text-white/30"
-                >
-                  <ChevronDown className="w-6 h-6" />
-                </motion.div>
-              </motion.div>
-            )}
-          </AnimatePresence>
+            {/* Scroll hint */}
+            <motion.div
+              animate={{ y: [0, 8, 0] }}
+              transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' as const }}
+              className="mt-6 text-white/30"
+            >
+              <ChevronDown className="w-6 h-6" />
+            </motion.div>
+          </motion.div>
         </div>
       </section>
 
