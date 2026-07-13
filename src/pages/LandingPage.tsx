@@ -180,6 +180,7 @@ export function LandingPage() {
     desc?: string;
     isHighlight?: boolean;
     link: string;
+    btnText?: string;
   }
 
   const events: Record<string, EventDetail[]> = {
@@ -188,7 +189,8 @@ export function LandingPage() {
         tag: "ISF 2026",
         title: "ISF Global Junicorn Cohort 3 & Competitions",
         desc: "The upcoming major events will feature the launch of Cohort 3 and exciting national-level startup competitions, bringing together the next generation of global innovators.",
-        link: ""
+        link: "https://match.myanatomy.in/sc/69eaf7b184db4d003436f748/n",
+        btnText: "Apply Now"
       }
     ],
     "2025": [
@@ -845,14 +847,14 @@ export function LandingPage() {
                               rel="noopener noreferrer"
                               className="inline-block bg-[#D45625] hover:bg-[#B8451B] text-white text-xs sm:text-sm font-extrabold uppercase tracking-wider px-5 sm:px-6 py-3 sm:py-3.5 rounded shadow transition-colors cursor-pointer"
                             >
-                              KNOW MORE
+                              {ev.btnText || "KNOW MORE"}
                             </a>
                           ) : (
                             <Link
                               to={ev.link}
                               className="inline-block bg-[#D45625] hover:bg-[#B8451B] text-white text-xs sm:text-sm font-extrabold uppercase tracking-wider px-5 sm:px-6 py-3 sm:py-3.5 rounded shadow transition-colors cursor-pointer"
                             >
-                              KNOW MORE
+                              {ev.btnText || "KNOW MORE"}
                             </Link>
                           )}
                         </div>
@@ -894,14 +896,14 @@ export function LandingPage() {
                             rel="noopener noreferrer"
                             className="inline-block bg-[#D45625] hover:bg-[#B8451B] text-white text-xs sm:text-sm font-extrabold uppercase tracking-wider px-5 sm:px-6 py-3 sm:py-3.5 rounded shadow transition-colors cursor-pointer"
                           >
-                            KNOW MORE
+                            {ev.btnText || "KNOW MORE"}
                           </a>
                         ) : (
                           <Link
                             to={ev.link}
                             className="inline-block bg-[#D45625] hover:bg-[#B8451B] text-white text-xs sm:text-sm font-extrabold uppercase tracking-wider px-5 sm:px-6 py-3 sm:py-3.5 rounded shadow transition-colors cursor-pointer"
                           >
-                            KNOW MORE
+                            {ev.btnText || "KNOW MORE"}
                           </Link>
                         )
                       )}

@@ -942,51 +942,77 @@ const Cohort3: React.FC = () => {
           style={{ backgroundImage: 'radial-gradient(circle at 80% 20%, #f97316 0%, transparent 40%)' }}
         />
         <div className="relative z-20 max-w-5xl mx-auto px-6">
-          <FadeUp>
-            <div className="text-center mb-10">
-              <h2 className="text-xl md:text-3xl font-black text-white! mb-6">
-                Ready to Change India's Story?
-              </h2>
-              <motion.div
-                whileHover={{ y: -8, boxShadow: '0 20px 50px rgba(249,115,22,0.45)' }}
-                transition={{ duration: 0.3, ease: 'easeOut' as const }}
-                className="inline-block"
-              >
-                <a
-                  href="https://match.myanatomy.in/sc/69eaf7b184db4d003436f748/n"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-2 bg-gradient-to-r from-orange-500 to-amber-400 text-white font-black text-base px-8 py-3.5 rounded-full shadow-xl cursor-pointer"
-                >
-                  Register Now <ArrowRight className="w-5 h-5" />
-                </a>
-              </motion.div>
-              <p className="mt-6 text-white/40 text-xs font-medium uppercase tracking-widest">
-                Search OR Scan to Register
-              </p>
-            </div>
-          </FadeUp>
-
-          {/* Alignment Badges */}
-          <FadeUp delay={0.1}>
-            <div className="flex flex-wrap items-center justify-center gap-3 mb-10 opacity-70">
-              {['🏭 Make in India', '🎓 Skill India', '🚀 Startup India', '💡 Atal Innovation Mission'].map(badge => (
-                <div key={badge} className="flex items-center gap-2 bg-white/5 border border-white/10 px-4 py-2 rounded-full text-white text-xs font-semibold">
-                  {badge}
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-10 items-center">
+            {/* Left Column */}
+            <div className="md:col-span-7 space-y-6 text-left">
+              <FadeUp>
+                <div className="space-y-4">
+                  <h2 className="text-2xl md:text-4xl font-black text-white! leading-tight">
+                    Ready to Change India's Story?
+                  </h2>
+                  <p className="text-white/60 text-sm md:text-base leading-relaxed">
+                    Join Cohort 3.0 and be part of the national movement driving grassroots innovations from villages to global ventures.
+                  </p>
                 </div>
-              ))}
-            </div>
-          </FadeUp>
+              </FadeUp>
 
-          {/* Address */}
-          <FadeUp delay={0.2}>
-            <div className="text-center text-white/30 text-xs">
-              <p className="flex items-center justify-center gap-2">
-                <MapPin className="w-4 h-4" />
-                ISF Office, 310, Saideep Hulas, Old Madras Road Virgonagar, Bangalore, Karnataka — 560049
-              </p>
+              <FadeUp delay={0.1}>
+                <div className="flex flex-col items-start gap-4">
+                  <motion.div
+                    whileHover={{ y: -8, boxShadow: '0 20px 50px rgba(249,115,22,0.45)' }}
+                    transition={{ duration: 0.3, ease: 'easeOut' as const }}
+                    className="inline-block"
+                  >
+                    <a
+                      href="https://match.myanatomy.in/sc/69eaf7b184db4d003436f748/n"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-2 bg-gradient-to-r from-orange-500 to-amber-400 text-white font-black text-base px-8 py-3.5 rounded-full shadow-xl cursor-pointer"
+                    >
+                      Register Now <ArrowRight className="w-5 h-5" />
+                    </a>
+                  </motion.div>
+                  <p className="text-white/40 text-xs font-medium uppercase tracking-widest">
+                    Search OR Scan to Register
+                  </p>
+                </div>
+              </FadeUp>
+
+              {/* Alignment Badges */}
+              <FadeUp delay={0.2}>
+                <div className="flex flex-wrap items-center gap-2.5 opacity-70">
+                  {['🏭 Make in India', '🎓 Skill India', '🚀 Startup India', '💡 Atal Innovation Mission'].map(badge => (
+                    <div key={badge} className="flex items-center gap-2 bg-white/5 border border-white/10 px-3.5 py-1.5 rounded-full text-white text-xs font-semibold">
+                      {badge}
+                    </div>
+                  ))}
+                </div>
+              </FadeUp>
+
+              {/* Address */}
+              <FadeUp delay={0.3}>
+                <div className="text-white/30 text-xs pt-4 border-t border-white/10">
+                  <p className="flex items-start gap-2">
+                    <MapPin className="w-4 h-4 mt-0.5 shrink-0" />
+                    <span>ISF Office, 310, Saideep Hulas, Old Madras Road Virgonagar, Bangalore, Karnataka — 560049</span>
+                  </p>
+                </div>
+              </FadeUp>
             </div>
-          </FadeUp>
+
+            {/* Right Column */}
+            <div className="md:col-span-5">
+              <FadeUp delay={0.2}>
+                <div className="rounded-3xl overflow-hidden border border-white/10 shadow-2xl bg-slate-900/50 aspect-video md:aspect-square lg:aspect-[4/3]">
+                  <img
+                    src="/assets/cohort3/group-photo.png"
+                    alt="Ready to Change India's Story"
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+              </FadeUp>
+            </div>
+          </div>
         </div>
       </section>
 
