@@ -65,6 +65,17 @@ export function LandingPage() {
 
   const heroSlides = [
     {
+      tag: "Cohort 3.0",
+      title: "Junicorn Rural Innovation Challenge — Cohort 3.0",
+      desc: "Bridging the gap between rural ambition and global opportunity. Empowering young innovators from across 20+ states to transform ideas into viable start-up ventures.",
+      primaryBtnText: "Apply Now",
+      primaryBtnLink: "https://match.myanatomy.in/sc/69eaf7b184db4d003436f748/n",
+      secondaryBtnText: "Cohort Details",
+      secondaryBtnLink: "/cohort-3",
+      image: "/assets/cohort3/bangalore-skyline.png",
+      bgGradient: "from-emerald-50 to-teal-100"
+    },
+    {
       tag: "Global Mentorship Program",
       title: "Join the International Startup Foundation’s Global Mentorship Program – One Hour a Week",
       desc: "Empower the next generation of innovators! This program connects mentors (experienced professionals, industry leaders) with mentees (startups, students, and aspiring entrepreneurs) worldwide. Share your expertise, inspire growth, and make a global impact—all in just one hour a week.",
@@ -398,18 +409,43 @@ export function LandingPage() {
                     </p>
                     
                     <div className="flex flex-wrap gap-4 pt-2">
-                      <Link
-                        to={slide.primaryBtnLink}
-                        className="bg-isf-orange hover:bg-isf-orange-hover text-white text-xs sm:text-sm font-semibold uppercase tracking-wider px-5 sm:px-6 py-3 sm:py-3.5 rounded shadow transition-all cursor-pointer"
-                      >
-                        {slide.primaryBtnText}
-                      </Link>
-                      <Link
-                        to={slide.secondaryBtnLink}
-                        className="bg-white border border-gray-300 text-slate-800 text-xs sm:text-sm font-semibold uppercase tracking-wider px-5 sm:px-6 py-3 sm:py-3.5 rounded hover:bg-gray-50 transition-all cursor-pointer"
-                      >
-                        {slide.secondaryBtnText}
-                      </Link>
+                      {slide.primaryBtnLink.startsWith("http") ? (
+                        <a
+                          href={slide.primaryBtnLink}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="bg-isf-orange hover:bg-isf-orange-hover text-white text-xs sm:text-sm font-semibold uppercase tracking-wider px-5 sm:px-6 py-3 sm:py-3.5 rounded shadow transition-all cursor-pointer inline-flex items-center"
+                        >
+                          {slide.primaryBtnText}
+                        </a>
+                      ) : (
+                        <Link
+                          to={slide.primaryBtnLink}
+                          className="bg-isf-orange hover:bg-isf-orange-hover text-white text-xs sm:text-sm font-semibold uppercase tracking-wider px-5 sm:px-6 py-3 sm:py-3.5 rounded shadow transition-all cursor-pointer"
+                        >
+                          {slide.primaryBtnText}
+                        </Link>
+                      )}
+
+                      {slide.secondaryBtnLink && (
+                        slide.secondaryBtnLink.startsWith("http") ? (
+                          <a
+                            href={slide.secondaryBtnLink}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="bg-white border border-gray-300 text-slate-800 text-xs sm:text-sm font-semibold uppercase tracking-wider px-5 sm:px-6 py-3 sm:py-3.5 rounded hover:bg-gray-50 transition-all cursor-pointer inline-flex items-center"
+                          >
+                            {slide.secondaryBtnText}
+                          </a>
+                        ) : (
+                          <Link
+                            to={slide.secondaryBtnLink}
+                            className="bg-white border border-gray-300 text-slate-800 text-xs sm:text-sm font-semibold uppercase tracking-wider px-5 sm:px-6 py-3 sm:py-3.5 rounded hover:bg-gray-50 transition-all cursor-pointer"
+                          >
+                            {slide.secondaryBtnText}
+                          </Link>
+                        )
+                      )}
                     </div>
                   </div>
 
