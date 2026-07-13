@@ -102,14 +102,40 @@ export function MenteeForm() {
     e.preventDefault();
     setStatus("submitting");
 
-    // Client-side visual toast verification / mock console log action only
-    setTimeout(() => {
-      console.log("Form Data Submitted:", formData);
+    const scriptUrl = import.meta.env.VITE_MENTEE_SCRIPT_URL;
+    if (!scriptUrl) {
+      console.error("VITE_MENTEE_SCRIPT_URL environment variable is missing.");
+      setStatus("error");
+      toast.error("Endpoint configuration missing!");
+      return;
+    }
+
+    try {
+      // Extract PitchDeck as it's a File object and can't be directly stringified
+      const { PitchDeck, ...restFormData } = formData;
+      const payload = {
+        ...restFormData,
+        PitchDeckName: PitchDeck ? PitchDeck.name : "No file uploaded",
+      };
+
+      await fetch(scriptUrl, {
+        method: "POST",
+        mode: "no-cors",
+        headers: {
+          "Content-Type": "text/plain;charset=utf-8",
+        },
+        body: JSON.stringify(payload),
+      });
+
       setStatus("success");
       toast.success("Thank you! Your application has been submitted.");
       handleClear();
       window.scrollTo({ top: 0, behavior: 'smooth' });
-    }, 1000);
+    } catch (err) {
+      console.error("Submission failed:", err);
+      setStatus("error");
+      toast.error("Something went wrong. Please try again.");
+    }
   };
 
   return (
