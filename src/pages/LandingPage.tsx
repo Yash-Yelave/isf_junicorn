@@ -67,7 +67,7 @@ export function LandingPage() {
     {
       tag: "Cohort 3.0",
       title: "Junicorn Rural Innovation Challenge — Cohort 3.0",
-      desc: "Bridging the gap between rural ambition and global opportunity. Empowering young innovators from across 20+ states to transform ideas into viable start-up ventures.",
+      desc: "Bridging the gap between rural ambition and global opportunity. Empowering young innovators from across 20+ states to transform ideas into viable start-up ventures. Tentative Event Date: December 2026.",
       primaryBtnText: "Apply Now",
       primaryBtnLink: "https://match.myanatomy.in/sc/69eaf7b184db4d003436f748/n",
       secondaryBtnText: "Cohort Details",
