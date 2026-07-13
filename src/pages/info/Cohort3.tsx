@@ -225,11 +225,13 @@ const academies = [
 
 const enablers = [
   { name: 'Dr. J A Chowdary', role: 'Founder & Chairman, ISF', img: '/assets/cohort3/ja-chowdary.png' },
-  { name: 'Sreekanth Arimanithaya', role: 'Partner, VISARA', img: '/assets/distinguished-guests/sreekanth-108.jpg' },
   { name: 'Dr. Siva Mahesh Tangutooru', role: 'Co-Founder, ISF', img: '/assets/cohort3/dr-siva-mahesh.jpeg' },
-  { name: 'Sri Atluri', role: 'Strategic Partner', img: '/assets/distinguished-guests/Sri-Atluri.png' },
-  { name: 'SS Raju', role: 'Ecosystem Lead', img: '' },
-  { name: 'Chinmay Kumar Dash', role: 'Program Director', img: '' }
+  { name: 'Poondla Siddharth Reddy', role: 'Global Head Junicorns', img: '/assets/cohort3/siddharth-reddy.jpg' },
+  { name: 'Priyanka Kamath', role: 'Head Junicorns for Girls', img: '/assets/cohort3/priyanka-kamath.jpeg' },
+  { name: 'Parvathi Vunnam', role: 'Management Coordinator', img: '' },
+  { name: 'Venkata Sai', role: 'Junicorn Program Lead & Operations', img: '/assets/cohort3/venkata-sai.png' },
+  { name: 'Venkata Kiran Kumar', role: 'ISF Junicorn Volunteer', img: '/assets/cohort3/kiran-kumar.jpeg' },
+  { name: 'Rounak K Shankar', role: 'ISF Junicorn Volunteer', img: '/assets/cohort3/rounak-shankar.jpeg' }
 ];
 
 // ─── Animated Journey Line ───────────────────────────────────────────────────
@@ -908,7 +910,7 @@ const Cohort3: React.FC = () => {
               <h3 className="text-lg font-bold text-slate-900">Faces Behind the Movement</h3>
             </div>
           </FadeUp>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
             {enablers.map((person, i) => (
               <FadeUp key={person.name} delay={0.05 * i}>
                 <motion.div
