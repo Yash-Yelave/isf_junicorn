@@ -5,21 +5,34 @@ import { Loader2 } from "lucide-react";
 export function MenteeForm() {
   const [formData, setFormData] = useState({
     FullName: "",
-    Phone: "",
     Email: "",
-    Location: "",
-    College: "",
-    CohortStatus: "",
+    Phone: "",
+    LinkedIn: "",
     CompanyName: "",
+    Website: "",
+    FounderType: "",
     TeamSize: "",
-    Teammates: "",
-    VolunteerExp: "",
-    ContributionRole: "",
-    TimeCommitment: "",
-    WhyVolunteer: "",
-    Seeking: "",
-    Source: "",
-    Feedback: "",
+    ElevatorPitch: "",
+    Problem: "",
+    Solution: "",
+    Sector: "",
+    Stage: "",
+    Incorporated: "",
+    TargetAudience: "",
+    Competitors: "",
+    USP: "",
+    Traction: "",
+    BusinessModel: "",
+    RaisedFunding: "",
+    FundingDetails: "",
+    Revenue: "",
+    LookingToRaise: "",
+    CapitalSeeking: "",
+    FundUtilization: "",
+    PrimarySeeking: [] as string[],
+    MentorshipAreas: [] as string[],
+    PitchDeck: null as File | null,
+    AdditionalInfo: "",
   });
 
   const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
@@ -30,24 +43,58 @@ export function MenteeForm() {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
+  const handleCheckboxChange = (name: "PrimarySeeking" | "MentorshipAreas", value: string, maxLimit?: number) => {
+    setFormData((prev) => {
+      const current = prev[name];
+      if (current.includes(value)) {
+        return { ...prev, [name]: current.filter((item) => item !== value) };
+      } else {
+        if (maxLimit && current.length >= maxLimit) {
+          toast.error(`You can select up to ${maxLimit} options.`);
+          return prev;
+        }
+        return { ...prev, [name]: [...current, value] };
+      }
+    });
+  };
+
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files && e.target.files.length > 0) {
+      setFormData({ ...formData, PitchDeck: e.target.files[0] });
+    }
+  };
+
   const handleClear = () => {
     setFormData({
       FullName: "",
-      Phone: "",
       Email: "",
-      Location: "",
-      College: "",
-      CohortStatus: "",
+      Phone: "",
+      LinkedIn: "",
       CompanyName: "",
+      Website: "",
+      FounderType: "",
       TeamSize: "",
-      Teammates: "",
-      VolunteerExp: "",
-      ContributionRole: "",
-      TimeCommitment: "",
-      WhyVolunteer: "",
-      Seeking: "",
-      Source: "",
-      Feedback: "",
+      ElevatorPitch: "",
+      Problem: "",
+      Solution: "",
+      Sector: "",
+      Stage: "",
+      Incorporated: "",
+      TargetAudience: "",
+      Competitors: "",
+      USP: "",
+      Traction: "",
+      BusinessModel: "",
+      RaisedFunding: "",
+      FundingDetails: "",
+      Revenue: "",
+      LookingToRaise: "",
+      CapitalSeeking: "",
+      FundUtilization: "",
+      PrimarySeeking: [],
+      MentorshipAreas: [],
+      PitchDeck: null,
+      AdditionalInfo: "",
     });
   };
 
@@ -55,33 +102,14 @@ export function MenteeForm() {
     e.preventDefault();
     setStatus("submitting");
 
-    const scriptUrl = import.meta.env.VITE_MENTEE_SCRIPT_URL;
-    if (!scriptUrl) {
-      console.error("VITE_MENTEE_SCRIPT_URL environment variable is missing.");
-      setStatus("error");
-      toast.error("Endpoint configuration missing!");
-      return;
-    }
-
-    try {
-      await fetch(scriptUrl, {
-        method: "POST",
-        mode: "no-cors",
-        headers: {
-          "Content-Type": "text/plain;charset=utf-8",
-        },
-        body: JSON.stringify(formData),
-      });
-
+    // Client-side visual toast verification / mock console log action only
+    setTimeout(() => {
+      console.log("Form Data Submitted:", formData);
       setStatus("success");
       toast.success("Thank you! Your application has been submitted.");
       handleClear();
       window.scrollTo({ top: 0, behavior: 'smooth' });
-    } catch (err) {
-      console.error("Submission failed:", err);
-      setStatus("error");
-      toast.error("Something went wrong. Please try again.");
-    }
+    }, 1000);
   };
 
   return (
@@ -122,42 +150,27 @@ export function MenteeForm() {
             <p className="text-sm text-red-500 font-medium mb-4">* Indicates required question</p>
 
             <form onSubmit={handleSubmit} className="space-y-6">
-              {/* Section 1: Personal Info */}
+              {/* Section 1: Founder & Team Details */}
               <div className="bg-white rounded-lg shadow-sm border-t-4 border-t-[#0c3e2b] border-gray-200 p-6 md:p-8">
                 <h2 className="text-xl font-bold font-baskerville text-gray-900 mb-6">
-                  Personal Information
+                  Founder & Team Details
                 </h2>
+                
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                   <div>
                     <label className="block text-sm font-semibold text-gray-700 mb-2">
-                      Full Name <span className="text-red-500">*</span>
+                      Full Name of Primary Applicant <span className="text-red-500">*</span>
                     </label>
                     <input
                       type="text"
                       name="FullName"
                       required
-                      placeholder="Your full name"
+                      placeholder="Enter your full name"
                       value={formData.FullName}
                       onChange={handleChange}
                       className="w-full bg-white border border-gray-300 rounded px-4 py-2.5 text-sm focus:outline-none focus:border-[#0c3e2b] focus:ring-1 focus:ring-[#0c3e2b] transition-colors"
                     />
                   </div>
-                  <div>
-                    <label className="block text-sm font-semibold text-gray-700 mb-2">
-                      Phone Number <span className="text-red-500">*</span>
-                    </label>
-                    <input
-                      type="text"
-                      name="Phone"
-                      required
-                      placeholder="+91 XXXXXXXXXX"
-                      value={formData.Phone}
-                      onChange={handleChange}
-                      className="w-full bg-white border border-gray-300 rounded px-4 py-2.5 text-sm focus:outline-none focus:border-[#0c3e2b] focus:ring-1 focus:ring-[#0c3e2b] transition-colors"
-                    />
-                  </div>
-                </div>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                   <div>
                     <label className="block text-sm font-semibold text-gray-700 mb-2">
                       Email Address <span className="text-red-500">*</span>
@@ -166,248 +179,440 @@ export function MenteeForm() {
                       type="email"
                       name="Email"
                       required
-                      placeholder="email@example.com"
+                      placeholder="name@example.com"
                       value={formData.Email}
+                      onChange={handleChange}
+                      className="w-full bg-white border border-gray-300 rounded px-4 py-2.5 text-sm focus:outline-none focus:border-[#0c3e2b] focus:ring-1 focus:ring-[#0c3e2b] transition-colors"
+                    />
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                  <div>
+                    <label className="block text-sm font-semibold text-gray-700 mb-2">
+                      Phone Number <span className="text-red-500">*</span>
+                    </label>
+                    <input
+                      type="tel"
+                      name="Phone"
+                      required
+                      placeholder="Enter 10-digit number"
+                      value={formData.Phone}
                       onChange={handleChange}
                       className="w-full bg-white border border-gray-300 rounded px-4 py-2.5 text-sm focus:outline-none focus:border-[#0c3e2b] focus:ring-1 focus:ring-[#0c3e2b] transition-colors"
                     />
                   </div>
                   <div>
                     <label className="block text-sm font-semibold text-gray-700 mb-2">
-                      City, State & Country <span className="text-red-500">*</span>
+                      Applicant's LinkedIn Profile URL <span className="text-red-500">*</span>
                     </label>
                     <input
                       type="text"
-                      name="Location"
+                      name="LinkedIn"
                       required
-                      placeholder="e.g. Hyderabad, TG, India"
-                      value={formData.Location}
+                      placeholder="https://linkedin.com/in/..."
+                      value={formData.LinkedIn}
                       onChange={handleChange}
                       className="w-full bg-white border border-gray-300 rounded px-4 py-2.5 text-sm focus:outline-none focus:border-[#0c3e2b] focus:ring-1 focus:ring-[#0c3e2b] transition-colors"
                     />
                   </div>
                 </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                  <div>
+                    <label className="block text-sm font-semibold text-gray-700 mb-2">
+                      Startup / Company Name <span className="text-red-500">*</span>
+                    </label>
+                    <input
+                      type="text"
+                      name="CompanyName"
+                      required
+                      placeholder="Enter company name"
+                      value={formData.CompanyName}
+                      onChange={handleChange}
+                      className="w-full bg-white border border-gray-300 rounded px-4 py-2.5 text-sm focus:outline-none focus:border-[#0c3e2b] focus:ring-1 focus:ring-[#0c3e2b] transition-colors"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-semibold text-gray-700 mb-2">
+                      Startup Website or App Link <span className="text-red-500">*</span>
+                    </label>
+                    <input
+                      type="text"
+                      name="Website"
+                      required
+                      placeholder="https://yourstartup.com"
+                      value={formData.Website}
+                      onChange={handleChange}
+                      className="w-full bg-white border border-gray-300 rounded px-4 py-2.5 text-sm focus:outline-none focus:border-[#0c3e2b] focus:ring-1 focus:ring-[#0c3e2b] transition-colors"
+                    />
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                  <div>
+                    <label className="block text-sm font-semibold text-gray-700 mb-2">
+                      Are you a Solo Founder or do you have Co-founders? <span className="text-red-500">*</span>
+                    </label>
+                    <select
+                      name="FounderType"
+                      required
+                      value={formData.FounderType}
+                      onChange={handleChange}
+                      className="w-full bg-white border border-gray-300 rounded px-4 py-2.5 text-sm focus:outline-none focus:border-[#0c3e2b] focus:ring-1 focus:ring-[#0c3e2b] transition-colors"
+                    >
+                      <option value="" disabled>Select an option</option>
+                      {["Solo Founder", "1 Co-founder", "2 Co-founders", "3 or more Co-founders"].map(opt => (
+                        <option key={opt} value={opt}>{opt}</option>
+                      ))}
+                    </select>
+                  </div>
+                  <div>
+                    <label className="block text-sm font-semibold text-gray-700 mb-2">
+                      Total Current Team Size (including founders) <span className="text-red-500">*</span>
+                    </label>
+                    <select
+                      name="TeamSize"
+                      required
+                      value={formData.TeamSize}
+                      onChange={handleChange}
+                      className="w-full bg-white border border-gray-300 rounded px-4 py-2.5 text-sm focus:outline-none focus:border-[#0c3e2b] focus:ring-1 focus:ring-[#0c3e2b] transition-colors"
+                    >
+                      <option value="" disabled>Select an option</option>
+                      {["1-5", "6-10", "11-20", "21-50", "50+"].map(opt => (
+                        <option key={opt} value={opt}>{opt}</option>
+                      ))}
+                    </select>
+                  </div>
+                </div>
+              </div>
+
+              {/* Section 2: Startup Overview & Legal Status */}
+              <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6 md:p-8">
+                <h2 className="text-xl font-bold font-baskerville text-gray-900 mb-6">Startup Overview & Legal Status</h2>
+
                 <div className="mb-6">
                   <label className="block text-sm font-semibold text-gray-700 mb-2">
-                    College / Institute / University <span className="text-gray-400 font-normal text-xs ml-1">optional</span>
+                    Elevator Pitch (Describe your startup in one sentence) <span className="text-red-500">*</span>
                   </label>
-                  <input
-                    type="text"
-                    name="College"
-                    placeholder="Your college or institute"
-                    value={formData.College}
+                  <textarea
+                    name="ElevatorPitch"
+                    required
+                    maxLength={150}
+                    rows={2}
+                    placeholder="What does your company do?"
+                    value={formData.ElevatorPitch}
                     onChange={handleChange}
-                    className="w-full bg-white border border-gray-300 rounded px-4 py-2.5 text-sm focus:outline-none focus:border-[#0c3e2b] focus:ring-1 focus:ring-[#0c3e2b] transition-colors"
-                  />
-                </div>
-
-                <hr className="my-8 border-gray-200" />
-
-                <div>
-                  <label className="block text-sm font-semibold text-gray-700 mb-3">
-                    Are you part of the Junicorn Cohort? <span className="text-red-500">*</span>
-                  </label>
-                  <div className="space-y-3">
-                    {["Yes, Cohort 1 (Austin, Texas, USA)", "Yes, Cohort 2 (Dubai, UAE)", "No, my first time"].map(opt => (
-                      <label key={opt} className="flex items-start gap-3 cursor-pointer group">
-                        <input
-                          type="radio"
-                          name="CohortStatus"
-                          value={opt}
-                          required
-                          checked={formData.CohortStatus === opt}
-                          onChange={handleChange}
-                          className="mt-0.5 w-4 h-4 text-[#0c3e2b] focus:ring-[#0c3e2b] border-gray-300"
-                        />
-                        <span className="text-sm text-gray-700 group-hover:text-gray-900">{opt}</span>
-                      </label>
-                    ))}
-                  </div>
-                </div>
-              </div>
-
-              {/* Section 2: Team & Venture */}
-              <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6 md:p-8">
-                <h2 className="text-xl font-bold font-baskerville text-gray-900 mb-2">Team & Venture</h2>
-                <p className="text-[13px] text-gray-500 mb-6">If you are a Junicorn building a venture, tell us about your team. Skip this section if not applicable.</p>
-
-                <div className="mb-6">
-                  <label className="block text-sm font-semibold text-gray-700 mb-1">
-                    Company Name <span className="text-gray-400 font-normal text-xs ml-1">optional</span>
-                  </label>
-                  <p className="text-xs text-gray-500 mb-2">If you are a Junicorn, please enter your company name.</p>
-                  <input
-                    type="text"
-                    name="CompanyName"
-                    placeholder="Your company / venture name"
-                    value={formData.CompanyName}
-                    onChange={handleChange}
-                    className="w-full bg-white border border-gray-300 rounded px-4 py-2.5 text-sm focus:outline-none focus:border-[#0c3e2b] focus:ring-1 focus:ring-[#0c3e2b] transition-colors"
+                    className="w-full bg-white border border-gray-300 rounded px-4 py-3 text-sm focus:outline-none focus:border-[#0c3e2b] focus:ring-1 focus:ring-[#0c3e2b] transition-colors resize-y"
                   />
                 </div>
 
                 <div className="mb-6">
-                  <label className="block text-sm font-semibold text-gray-700 mb-3">
-                    Team Size <span className="text-gray-400 font-normal text-xs ml-1">optional</span>
+                  <label className="block text-sm font-semibold text-gray-700 mb-2">
+                    What specific problem are you solving? <span className="text-red-500">*</span>
                   </label>
-                  <div className="space-y-3">
-                    {["1", "2", "3", "4", "Other"].map(opt => (
-                      <label key={opt} className="flex items-center gap-3 cursor-pointer group">
-                        <input
-                          type="radio"
-                          name="TeamSize"
-                          value={opt}
-                          checked={formData.TeamSize === opt}
-                          onChange={handleChange}
-                          className="w-4 h-4 text-[#0c3e2b] focus:ring-[#0c3e2b] border-gray-300"
-                        />
-                        <span className="text-sm text-gray-700 group-hover:text-gray-900">{opt}</span>
-                      </label>
-                    ))}
+                  <textarea
+                    name="Problem"
+                    required
+                    rows={3}
+                    placeholder="Detail the pain point..."
+                    value={formData.Problem}
+                    onChange={handleChange}
+                    className="w-full bg-white border border-gray-300 rounded px-4 py-3 text-sm focus:outline-none focus:border-[#0c3e2b] focus:ring-1 focus:ring-[#0c3e2b] transition-colors resize-y"
+                  />
+                </div>
+
+                <div className="mb-6">
+                  <label className="block text-sm font-semibold text-gray-700 mb-2">
+                    How does your product/service solve this problem? <span className="text-red-500">*</span>
+                  </label>
+                  <textarea
+                    name="Solution"
+                    required
+                    rows={3}
+                    placeholder="Detail your solution..."
+                    value={formData.Solution}
+                    onChange={handleChange}
+                    className="w-full bg-white border border-gray-300 rounded px-4 py-3 text-sm focus:outline-none focus:border-[#0c3e2b] focus:ring-1 focus:ring-[#0c3e2b] transition-colors resize-y"
+                  />
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                  <div>
+                    <label className="block text-sm font-semibold text-gray-700 mb-2">
+                      Primary Sector / Industry Focus <span className="text-red-500">*</span>
+                    </label>
+                    <select
+                      name="Sector"
+                      required
+                      value={formData.Sector}
+                      onChange={handleChange}
+                      className="w-full bg-white border border-gray-300 rounded px-4 py-2.5 text-sm focus:outline-none focus:border-[#0c3e2b] focus:ring-1 focus:ring-[#0c3e2b] transition-colors"
+                    >
+                      <option value="" disabled>Select an option</option>
+                      {["Agriculture & Food Security", "Healthcare & Well-being", "Manufacturing & MSME", "Deep-Tech & AI", "EdTech", "Clean Energy & Sustainability", "FinTech", "E-commerce/Retail", "Smart Cities", "Mobility/Logistics", "Other"].map(opt => (
+                        <option key={opt} value={opt}>{opt}</option>
+                      ))}
+                    </select>
+                  </div>
+                  <div>
+                    <label className="block text-sm font-semibold text-gray-700 mb-2">
+                      Current Stage of the Startup <span className="text-red-500">*</span>
+                    </label>
+                    <select
+                      name="Stage"
+                      required
+                      value={formData.Stage}
+                      onChange={handleChange}
+                      className="w-full bg-white border border-gray-300 rounded px-4 py-2.5 text-sm focus:outline-none focus:border-[#0c3e2b] focus:ring-1 focus:ring-[#0c3e2b] transition-colors"
+                    >
+                      <option value="" disabled>Select an option</option>
+                      {["Ideation", "Prototype/MVP (Minimum Viable Product)", "Early Revenue/Traction", "Growth & Scaling"].map(opt => (
+                        <option key={opt} value={opt}>{opt}</option>
+                      ))}
+                    </select>
                   </div>
                 </div>
 
-                <div>
-                  <label className="block text-sm font-semibold text-gray-700 mb-1">
-                    Teammate Name(s) <span className="text-gray-400 font-normal text-xs ml-1">optional</span>
+                <div className="mb-6">
+                  <label className="block text-sm font-semibold text-gray-700 mb-2">
+                    Is your startup officially incorporated? <span className="text-red-500">*</span>
                   </label>
-                  <p className="text-xs text-gray-500 mb-2">Please enter your co-founder and other teammates' name(s). Ex: Kiran, Charan and Siddharth</p>
+                  <select
+                    name="Incorporated"
+                    required
+                    value={formData.Incorporated}
+                    onChange={handleChange}
+                    className="w-full bg-white border border-gray-300 rounded px-4 py-2.5 text-sm focus:outline-none focus:border-[#0c3e2b] focus:ring-1 focus:ring-[#0c3e2b] transition-colors"
+                  >
+                    <option value="" disabled>Select an option</option>
+                    {["Yes - Private Limited", "Yes - LLP", "Yes - Sole Proprietorship/Partnership", "No - Not incorporated yet"].map(opt => (
+                      <option key={opt} value={opt}>{opt}</option>
+                    ))}
+                  </select>
+                </div>
+              </div>
+
+              {/* Section 3: Market, Product & Traction */}
+              <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6 md:p-8">
+                <h2 className="text-xl font-bold font-baskerville text-gray-900 mb-6">Market, Product & Traction</h2>
+
+                <div className="mb-6">
+                  <label className="block text-sm font-semibold text-gray-700 mb-2">
+                    Who is your primary Target Audience / Ideal Customer? <span className="text-red-500">*</span>
+                  </label>
+                  <textarea
+                    name="TargetAudience"
+                    required
+                    rows={2}
+                    placeholder="Describe your target market demographics"
+                    value={formData.TargetAudience}
+                    onChange={handleChange}
+                    className="w-full bg-white border border-gray-300 rounded px-4 py-3 text-sm focus:outline-none focus:border-[#0c3e2b] focus:ring-1 focus:ring-[#0c3e2b] transition-colors resize-y"
+                  />
+                </div>
+
+                <div className="mb-6">
+                  <label className="block text-sm font-semibold text-gray-700 mb-2">
+                    Who are your top 3 competitors? <span className="text-red-500">*</span>
+                  </label>
                   <input
                     type="text"
-                    name="Teammates"
-                    placeholder="Your answer"
-                    value={formData.Teammates}
+                    name="Competitors"
+                    required
+                    placeholder="Competitor A, Competitor B, Competitor C"
+                    value={formData.Competitors}
                     onChange={handleChange}
                     className="w-full bg-white border border-gray-300 rounded px-4 py-2.5 text-sm focus:outline-none focus:border-[#0c3e2b] focus:ring-1 focus:ring-[#0c3e2b] transition-colors"
                   />
                 </div>
+
+                <div className="mb-6">
+                  <label className="block text-sm font-semibold text-gray-700 mb-2">
+                    What is your Unique Selling Proposition (USP) / Competitive Advantage? <span className="text-red-500">*</span>
+                  </label>
+                  <textarea
+                    name="USP"
+                    required
+                    rows={2}
+                    placeholder="What makes your product uncopyable?"
+                    value={formData.USP}
+                    onChange={handleChange}
+                    className="w-full bg-white border border-gray-300 rounded px-4 py-3 text-sm focus:outline-none focus:border-[#0c3e2b] focus:ring-1 focus:ring-[#0c3e2b] transition-colors resize-y"
+                  />
+                </div>
+
+                <div className="mb-6">
+                  <label className="block text-sm font-semibold text-gray-700 mb-2">
+                    What is your current traction? <span className="text-red-500">*</span>
+                  </label>
+                  <p className="text-xs text-gray-500 mb-2">(Mention active users, pilots, B2B clients, or key milestones achieved)</p>
+                  <textarea
+                    name="Traction"
+                    required
+                    rows={3}
+                    placeholder="Detail active metrics, client pilots, or revenue milestones"
+                    value={formData.Traction}
+                    onChange={handleChange}
+                    className="w-full bg-white border border-gray-300 rounded px-4 py-3 text-sm focus:outline-none focus:border-[#0c3e2b] focus:ring-1 focus:ring-[#0c3e2b] transition-colors resize-y"
+                  />
+                </div>
+
+                <div className="mb-6">
+                  <label className="block text-sm font-semibold text-gray-700 mb-2">
+                    What is your current Business Model (How do you make money)? <span className="text-red-500">*</span>
+                  </label>
+                  <textarea
+                    name="BusinessModel"
+                    required
+                    rows={2}
+                    placeholder="e.g., B2B SaaS Subscription, Marketplace Commission, Transaction Fees"
+                    value={formData.BusinessModel}
+                    onChange={handleChange}
+                    className="w-full bg-white border border-gray-300 rounded px-4 py-3 text-sm focus:outline-none focus:border-[#0c3e2b] focus:ring-1 focus:ring-[#0c3e2b] transition-colors resize-y"
+                  />
+                </div>
               </div>
 
-              {/* Section 3: Volunteer Experience */}
+              {/* Section 4: Financials & Funding Ask */}
               <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6 md:p-8">
-                <h2 className="text-xl font-bold font-baskerville text-gray-900 mb-6">Volunteer Experience</h2>
+                <h2 className="text-xl font-bold font-baskerville text-gray-900 mb-6">Financials & Funding Ask</h2>
 
-                <div className="mb-8">
-                  <label className="block text-sm font-semibold text-gray-700 mb-3 text-center sm:text-left">
-                    Please indicate your level of experience with volunteer work <span className="text-red-500">*</span>
-                  </label>
-                  <div className="flex flex-col sm:flex-row items-center justify-between gap-4 max-w-xl">
-                    <span className="text-xs text-gray-500 hidden sm:block">First Time Volunteer</span>
-                    <div className="flex items-center gap-4 sm:gap-6">
-                      {["1", "2", "3", "4", "5"].map(num => (
-                        <label key={num} className="flex flex-col items-center gap-2 cursor-pointer group">
-                          <span className="text-sm font-medium text-gray-700">{num}</span>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                  <div>
+                    <label className="block text-sm font-semibold text-gray-700 mb-3">
+                      Have you raised any external funding previously? <span className="text-red-500">*</span>
+                    </label>
+                    <div className="space-y-3">
+                      {["Yes", "No"].map(opt => (
+                        <label key={opt} className="flex items-start gap-3 cursor-pointer group">
                           <input
                             type="radio"
-                            name="VolunteerExp"
-                            value={num}
+                            name="RaisedFunding"
+                            value={opt}
                             required
-                            checked={formData.VolunteerExp === num}
+                            checked={formData.RaisedFunding === opt}
                             onChange={handleChange}
-                            className="w-4 h-4 text-[#0c3e2b] focus:ring-[#0c3e2b] border-gray-300"
+                            className="mt-0.5 w-4 h-4 text-[#0c3e2b] focus:ring-[#0c3e2b] border-gray-300"
                           />
+                          <span className="text-sm text-gray-700 group-hover:text-gray-900">{opt}</span>
                         </label>
                       ))}
                     </div>
-                    <span className="text-xs text-gray-500 hidden sm:block">Highly Experienced</span>
                   </div>
-                  <div className="flex justify-between w-full mt-2 sm:hidden px-4">
-                    <span className="text-xs text-gray-500">First Time</span>
-                    <span className="text-xs text-gray-500">Experienced</span>
-                  </div>
-                </div>
-
-                <hr className="my-8 border-gray-200" />
-
-                <div className="mb-8">
-                  <label className="block text-sm font-semibold text-gray-700 mb-3">
-                    How Would You Like to Contribute? <span className="text-red-500">*</span>
-                  </label>
-                  <div className="space-y-3">
-                    {[
-                      "Community / Operations", "Content / Social Media", "Design / Creatives",
-                      "Tech / No-Code", "Partnerships / Outreach", "I am here ONLY to share feedback"
-                    ].map(opt => (
-                      <label key={opt} className="flex items-start gap-3 cursor-pointer group">
-                        <input
-                          type="radio"
-                          name="ContributionRole"
-                          value={opt}
-                          required
-                          checked={formData.ContributionRole === opt}
-                          onChange={handleChange}
-                          className="mt-0.5 w-4 h-4 text-[#0c3e2b] focus:ring-[#0c3e2b] border-gray-300"
-                        />
-                        <span className="text-sm text-gray-700 group-hover:text-gray-900">{opt}</span>
+                  
+                  {formData.RaisedFunding === "Yes" && (
+                    <div>
+                      <label className="block text-sm font-semibold text-gray-700 mb-2">
+                        If Yes, how much was raised and from what type of investors? <span className="text-red-500">*</span>
                       </label>
-                    ))}
-                  </div>
+                      <input
+                        type="text"
+                        name="FundingDetails"
+                        required={formData.RaisedFunding === "Yes"}
+                        placeholder="e.g., $50k from Angel Investors / Pre-seed Grant"
+                        value={formData.FundingDetails}
+                        onChange={handleChange}
+                        className="w-full bg-white border border-gray-300 rounded px-4 py-2.5 text-sm focus:outline-none focus:border-[#0c3e2b] focus:ring-1 focus:ring-[#0c3e2b] transition-colors"
+                      />
+                    </div>
+                  )}
                 </div>
 
-                <hr className="my-8 border-gray-200" />
-
-                <div className="mb-8">
-                  <label className="block text-sm font-semibold text-gray-700 mb-3">
-                    Time You Can Commit Per Week <span className="text-red-500">*</span>
-                  </label>
-                  <div className="space-y-3">
-                    {["1-3 hours", "5-8 hours", "8+ hours", "0 hours (I am here ONLY to share feedback)"].map(opt => (
-                      <label key={opt} className="flex items-start gap-3 cursor-pointer group">
-                        <input
-                          type="radio"
-                          name="TimeCommitment"
-                          value={opt}
-                          required
-                          checked={formData.TimeCommitment === opt}
-                          onChange={handleChange}
-                          className="mt-0.5 w-4 h-4 text-[#0c3e2b] focus:ring-[#0c3e2b] border-gray-300"
-                        />
-                        <span className="text-sm text-gray-700 group-hover:text-gray-900">{opt}</span>
-                      </label>
-                    ))}
-                  </div>
-                </div>
-
-                <hr className="my-8 border-gray-200" />
-
-                <div>
+                <div className="mb-6">
                   <label className="block text-sm font-semibold text-gray-700 mb-2">
-                    Why Do You Want to Volunteer with Junicorns? <span className="text-gray-400 font-normal text-xs ml-1">optional</span>
+                    What is your current Average Monthly Revenue? <span className="text-red-500">*</span>
                   </label>
-                  <input
-                    type="text"
-                    name="WhyVolunteer"
-                    placeholder="Your answer"
-                    value={formData.WhyVolunteer}
+                  <select
+                    name="Revenue"
+                    required
+                    value={formData.Revenue}
                     onChange={handleChange}
                     className="w-full bg-white border border-gray-300 rounded px-4 py-2.5 text-sm focus:outline-none focus:border-[#0c3e2b] focus:ring-1 focus:ring-[#0c3e2b] transition-colors"
-                  />
+                  >
+                    <option value="" disabled>Select an option</option>
+                    {["Pre-revenue", "Under ₹1 Lakh", "₹1 Lakh - ₹5 Lakhs", "₹5 Lakhs - ₹10 Lakhs", "₹10 Lakhs+"].map(opt => (
+                      <option key={opt} value={opt}>{opt}</option>
+                    ))}
+                  </select>
                 </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                  <div>
+                    <label className="block text-sm font-semibold text-gray-700 mb-3">
+                      Are you currently looking to raise funds? <span className="text-red-500">*</span>
+                    </label>
+                    <div className="space-y-3">
+                      {["Yes", "No"].map(opt => (
+                        <label key={opt} className="flex items-start gap-3 cursor-pointer group">
+                          <input
+                            type="radio"
+                            name="LookingToRaise"
+                            value={opt}
+                            required
+                            checked={formData.LookingToRaise === opt}
+                            onChange={handleChange}
+                            className="mt-0.5 w-4 h-4 text-[#0c3e2b] focus:ring-[#0c3e2b] border-gray-300"
+                          />
+                          <span className="text-sm text-gray-700 group-hover:text-gray-900">{opt}</span>
+                        </label>
+                      ))}
+                    </div>
+                  </div>
+
+                  {formData.LookingToRaise === "Yes" && (
+                    <div>
+                      <label className="block text-sm font-semibold text-gray-700 mb-2">
+                        If looking to raise, how much capital are you seeking? <span className="text-red-500">*</span>
+                      </label>
+                      <input
+                        type="text"
+                        name="CapitalSeeking"
+                        required={formData.LookingToRaise === "Yes"}
+                        placeholder="Specify currency and target amount"
+                        value={formData.CapitalSeeking}
+                        onChange={handleChange}
+                        className="w-full bg-white border border-gray-300 rounded px-4 py-2.5 text-sm focus:outline-none focus:border-[#0c3e2b] focus:ring-1 focus:ring-[#0c3e2b] transition-colors"
+                      />
+                    </div>
+                  )}
+                </div>
+
+                {formData.LookingToRaise === "Yes" && (
+                  <div className="mb-6">
+                    <label className="block text-sm font-semibold text-gray-700 mb-2">
+                      How do you plan to utilize the requested funds? <span className="text-red-500">*</span>
+                    </label>
+                    <p className="text-xs text-gray-500 mb-2">(e.g., 40% Product, 40% Marketing, 20% Team)</p>
+                    <textarea
+                      name="FundUtilization"
+                      required={formData.LookingToRaise === "Yes"}
+                      rows={2}
+                      placeholder="Provide breakdown percentage allocation"
+                      value={formData.FundUtilization}
+                      onChange={handleChange}
+                      className="w-full bg-white border border-gray-300 rounded px-4 py-3 text-sm focus:outline-none focus:border-[#0c3e2b] focus:ring-1 focus:ring-[#0c3e2b] transition-colors resize-y"
+                    />
+                  </div>
+                )}
               </div>
 
-              {/* Section 4: Goals */}
+              {/* Section 5: Mentorship & Support Requirements */}
               <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6 md:p-8">
-                <h2 className="text-xl font-bold font-baskerville text-gray-900 mb-6">What You're Seeking</h2>
+                <h2 className="text-xl font-bold font-baskerville text-gray-900 mb-6">Mentorship & Support Requirements</h2>
 
                 <div className="mb-8">
                   <label className="block text-sm font-semibold text-gray-700 mb-3">
-                    What Are You Seeking For? <span className="text-red-500">*</span>
+                    What are you primarily seeking from this program? (Select all that apply) <span className="text-red-500">*</span>
                   </label>
                   <div className="space-y-3">
-                    {[
-                      "Mentorship & Guidance", "Network & Ecosystem Access", "Product & Growth Support",
-                      "Fundraising Readiness", "Market Access & Idea Validation", "I am here ONLY to share feedback",
-                      "Other"
-                    ].map(opt => (
+                    {["Funding/Investment", "Expert Mentorship", "Market/Customer Access", "Technical/Product Support", "Legal/Compliance Guidance"].map(opt => (
                       <label key={opt} className="flex items-start gap-3 cursor-pointer group">
                         <input
-                          type="radio"
-                          name="Seeking"
-                          value={opt}
-                          required
-                          checked={formData.Seeking === opt}
-                          onChange={handleChange}
-                          className="mt-0.5 w-4 h-4 text-[#0c3e2b] focus:ring-[#0c3e2b] border-gray-300"
+                          type="checkbox"
+                          checked={formData.PrimarySeeking.includes(opt)}
+                          onChange={() => handleCheckboxChange("PrimarySeeking", opt)}
+                          className="mt-0.5 w-4 h-4 rounded text-[#0c3e2b] focus:ring-[#0c3e2b] border-gray-300"
                         />
                         <span className="text-sm text-gray-700 group-hover:text-gray-900">{opt}</span>
                       </label>
@@ -415,46 +620,49 @@ export function MenteeForm() {
                   </div>
                 </div>
 
-                <hr className="my-8 border-gray-200" />
-
-                <div>
-                  <label className="block text-sm font-semibold text-gray-700 mb-3">
-                    How Did You Hear About Junicorns? <span className="text-red-500">*</span>
-                  </label>
-                  <div className="space-y-3">
-                    {["Social Media", "Word of Mouth", "Event", "Other"].map(opt => (
-                      <label key={opt} className="flex items-start gap-3 cursor-pointer group">
-                        <input
-                          type="radio"
-                          name="Source"
-                          value={opt}
-                          required
-                          checked={formData.Source === opt}
-                          onChange={handleChange}
-                          className="mt-0.5 w-4 h-4 text-[#0c3e2b] focus:ring-[#0c3e2b] border-gray-300"
-                        />
-                        <span className="text-sm text-gray-700 group-hover:text-gray-900">{opt}</span>
-                      </label>
-                    ))}
+                {formData.PrimarySeeking.includes("Expert Mentorship") && (
+                  <div className="mb-8">
+                    <label className="block text-sm font-semibold text-gray-700 mb-3">
+                      If seeking Mentorship, which specific areas do you need the most help with? (Select top 2) <span className="text-red-500">*</span>
+                    </label>
+                    <div className="space-y-3">
+                      {["Go-to-Market (GTM) Strategy", "Pitch Deck Refinement & Fundraising", "Product Scaling & Tech Architecture", "Hiring & Culture", "Financial Modeling"].map(opt => (
+                        <label key={opt} className="flex items-start gap-3 cursor-pointer group">
+                          <input
+                            type="checkbox"
+                            checked={formData.MentorshipAreas.includes(opt)}
+                            onChange={() => handleCheckboxChange("MentorshipAreas", opt, 2)}
+                            className="mt-0.5 w-4 h-4 rounded text-[#0c3e2b] focus:ring-[#0c3e2b] border-gray-300"
+                          />
+                          <span className="text-sm text-gray-700 group-hover:text-gray-900">{opt}</span>
+                        </label>
+                      ))}
+                    </div>
                   </div>
-                </div>
-              </div>
+                )}
 
-              {/* Section 5: Additional Info */}
-              <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6 md:p-8">
-                <h2 className="text-xl font-bold font-baskerville text-gray-900 mb-6">Additional Information</h2>
+                <div className="mb-8">
+                  <label className="block text-sm font-semibold text-gray-700 mb-2">
+                    Upload your latest Pitch Deck (PDF format) <span className="text-red-500">*</span>
+                  </label>
+                  <input
+                    type="file"
+                    accept=".pdf"
+                    required
+                    onChange={handleFileChange}
+                    className="w-full bg-white border border-gray-300 rounded px-4 py-2.5 text-sm focus:outline-none focus:border-[#0c3e2b] focus:ring-1 focus:ring-[#0c3e2b] transition-colors file:mr-4 file:py-2 file:px-4 file:rounded file:border-0 file:text-sm file:font-semibold file:bg-[#0c3e2b] file:text-white hover:file:bg-[#125c40] cursor-pointer"
+                  />
+                </div>
+
                 <div>
                   <label className="block text-sm font-semibold text-gray-700 mb-2">
-                    Suggestions / Feedback <span className="text-gray-400 font-normal text-xs ml-1">optional</span>
+                    Is there any additional information or a specific milestone you'd like to share with the evaluation committee? <span className="text-gray-400 font-normal text-xs ml-1">optional</span>
                   </label>
-                  <p className="text-[13px] text-gray-500 mb-4 leading-relaxed">
-                    Have you volunteered with Junicorns or the ISF Foundation before? If yes, share any <strong className="text-gray-700">suggestions, feedback, or scope for improvement</strong> from your experience.
-                  </p>
                   <textarea
-                    name="Feedback"
-                    rows={4}
-                    placeholder="Your answer here..."
-                    value={formData.Feedback}
+                    name="AdditionalInfo"
+                    rows={3}
+                    placeholder="Any details not captured above..."
+                    value={formData.AdditionalInfo}
                     onChange={handleChange}
                     className="w-full bg-white border border-gray-300 rounded px-4 py-3 text-sm focus:outline-none focus:border-[#0c3e2b] focus:ring-1 focus:ring-[#0c3e2b] transition-colors resize-y"
                   />
@@ -487,7 +695,7 @@ export function MenteeForm() {
                 {/* Status-based UI Messages */}
                 {status === "error" && (
                   <div className="p-4 bg-red-50 border border-red-200 text-red-700 rounded text-sm font-medium animate-fade-in text-center mt-2">
-                    An error occurred during submission. Please verify environment configuration and try again.
+                    An error occurred during submission. Please try again.
                   </div>
                 )}
               </div>
