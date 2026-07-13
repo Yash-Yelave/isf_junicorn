@@ -228,7 +228,7 @@ const enablers = [
   { name: 'Dr. Siva Mahesh Tangutooru', role: 'Co-Founder, ISF', img: '/assets/cohort3/dr-siva-mahesh.jpeg' },
   { name: 'Poondla Siddharth Reddy', role: 'Global Head Junicorns', img: '/assets/cohort3/siddharth-reddy.jpg' },
   { name: 'Priyanka Kamath', role: 'Head Junicorns for Girls', img: '/assets/cohort3/priyanka-kamath.jpeg' },
-  { name: 'Parvathi Vunnam', role: 'Management Coordinator', img: '' },
+  { name: 'Parvathi Vunnam', role: 'Management Coordinator', img: '/assets/cohort3/parvathi-vunnam.png' },
   { name: 'Venkata Sai', role: 'Junicorn Program Lead & Operations', img: '/assets/cohort3/venkata-sai.png' },
   { name: 'Venkata Kiran Kumar', role: 'ISF Junicorn Volunteer', img: '/assets/cohort3/kiran-kumar.jpeg' },
   { name: 'Rounak K Shankar', role: 'ISF Junicorn Volunteer', img: '/assets/cohort3/rounak-shankar.jpeg' }
