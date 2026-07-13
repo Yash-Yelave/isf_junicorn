@@ -467,12 +467,14 @@ const Cohort3: React.FC = () => {
               transition={{ duration: 0.3, ease: 'easeOut' as const }}
               className="inline-block"
             >
-              <Link
-                to="/registration"
+              <a
+                href="https://match.myanatomy.in/sc/69eaf7b184db4d003436f748/n"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="flex items-center gap-3 bg-[#ff7a00] hover:bg-[#ff8c1a] text-white font-extrabold text-base sm:text-lg px-12 py-4.5 rounded-full shadow-[0_0_25px_rgba(255,122,0,0.4)] hover:shadow-[0_0_35px_rgba(255,122,0,0.6)] cursor-pointer transition-all active:scale-95 duration-300"
               >
                 Apply Now <ArrowRight className="w-5 h-5" />
-              </Link>
+              </a>
             </motion.div>
 
             {/* Countdown */}
@@ -535,13 +537,13 @@ const Cohort3: React.FC = () => {
           </FadeUp>
 
           {/* 3 Pillars — antigravity cards */}
-          <div className="grid md:grid-cols-3 gap-6">
+          <div className="grid md:grid-cols-3 gap-6 items-stretch">
             {pillars.map((p, i) => (
-              <FadeUp key={p.title} delay={0.1 + i * 0.12}>
+              <FadeUp key={p.title} delay={0.1 + i * 0.12} className="h-full">
                 <motion.div
                   whileHover={{ y: -12, boxShadow: '0 24px 60px rgba(249,115,22,0.12)' }}
                   transition={{ duration: 0.35, ease: 'easeOut' as const }}
-                  className="bg-white rounded-3xl p-6 border border-slate-100 shadow-md cursor-default"
+                  className="bg-white rounded-3xl p-6 border border-slate-100 shadow-md cursor-default h-full flex flex-col justify-start"
                 >
                   <motion.div
                     animate={{ y: [0, -8, 0] }}
@@ -576,15 +578,16 @@ const Cohort3: React.FC = () => {
             </div>
           </FadeUp>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 items-stretch">
             {arenas.map((arena, i) => (
-              <FadeUp key={arena.title} delay={Math.min(0.04 * i, 0.3)}>
+              <FadeUp key={arena.title} delay={Math.min(0.04 * i, 0.3)} className="h-full">
                 <motion.div
                   whileHover={{ y: -12, scale: 1.03, boxShadow: '0 20px 40px rgba(255,255,255,0.15)' }}
                   transition={{ duration: 0.3, ease: 'easeOut' as const }}
                   onHoverStart={() => setHoveredArena(i)}
                   onHoverEnd={() => setHoveredArena(null)}
-                  className={`relative rounded-2xl border ${arena.border} bg-white/5 group-hover:bg-white/10 backdrop-blur-sm p-6 cursor-default overflow-hidden group transition-all duration-300`}
+                  onClick={() => setHoveredArena(hoveredArena === i ? null : i)}
+                  className={`relative rounded-2xl border ${arena.border} bg-white/5 group-hover:bg-white/10 backdrop-blur-sm p-6 cursor-pointer overflow-hidden group transition-all duration-300 h-full flex flex-col justify-start`}
                 >
                   <div className={`absolute inset-0 bg-gradient-to-br ${arena.color} opacity-0 group-hover:opacity-20 transition-opacity duration-300`} />
                   <motion.div
@@ -845,12 +848,14 @@ const Cohort3: React.FC = () => {
                   </p>
                 </div>
                 <motion.div whileHover={{ y: -4 }} transition={{ duration: 0.25, ease: 'easeOut' as const }}>
-                  <Link
-                    to="/registration"
+                  <a
+                    href="https://match.myanatomy.in/sc/69eaf7b184db4d003436f748/n"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="flex items-center gap-2 bg-white text-isf-orange font-black px-6 py-3.5 rounded-full shadow-xl whitespace-nowrap text-sm"
                   >
                     Secure Your Spot <ArrowRight className="w-4 h-4" />
-                  </Link>
+                  </a>
                 </motion.div>
               </div>
             </motion.div>
@@ -945,12 +950,14 @@ const Cohort3: React.FC = () => {
                 transition={{ duration: 0.3, ease: 'easeOut' as const }}
                 className="inline-block"
               >
-                <Link
-                  to="/registration"
+                <a
+                  href="https://match.myanatomy.in/sc/69eaf7b184db4d003436f748/n"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="flex items-center gap-2 bg-gradient-to-r from-orange-500 to-amber-400 text-white font-black text-base px-8 py-3.5 rounded-full shadow-xl cursor-pointer"
                 >
                   Register Now <ArrowRight className="w-5 h-5" />
-                </Link>
+                </a>
               </motion.div>
               <p className="mt-6 text-white/40 text-xs font-medium uppercase tracking-widest">
                 Search OR Scan to Register
