@@ -18,6 +18,40 @@ import {
   hyderabadSchedule
 } from "./eventsData";
 
+const guests = [
+  { name: "Dr. Sridhar Babu", title: "Hon'ble Minister for IT, E&C, Industries & Commerce, Govt of Telangana", img: "/assets/images/D.-Sridhar-Babu.png" },
+  { name: "Nalamada Uttam Kumar Reddy", title: "Hon'ble Minister for Civil Supplies & Irrigation, Govt of Telangana", img: "/assets/images/uttam-kumar-reddy.jpg" },
+  { name: "Bharat Mathukumilli", title: "Hon'ble Member of Parliament, Visakhapatnam", img: "/assets/images/srbharath.jpg" },
+  { name: "Dr. Guna S. Muppuri", title: "Founder / President & CEO, BIMS - School of Medicine", img: "/assets/images/GUNA-S-MUPPURI.jpg" },
+  { name: "Dr. Kalidindi N. Satyanarayana", title: "Director, I.I.T. Tirupati", img: "/assets/images/sathyanarayana.jpg" },
+  { name: "Raj Narayanam", title: "Founder & Exec Chairman, Zaggle", img: "/assets/images/raj-narayanam.jpg" },
+  { name: "Ajit Rangnekar", title: "Director-General, RICH Hyderabad", img: "/assets/images/ajit-rangnekar.jpg" },
+  { name: "Jon Levingston", title: "Executive Director, Crossroads Economic Partnership", img: "/assets/images/jon-levingston.jpg" },
+  { name: "Amit Gupta", title: "Founder & Group CEO, Ecosystm Group", img: "/assets/images/amit-gupta.jpg" },
+  { name: "Sanjeev Deshpande", title: "EVP-APAC, MD-India NTT DATA", img: "/assets/images/sanjeev-deshpande.jpg" },
+  { name: "Dr. BVR Mohan Reddy", title: "Founder Chairman & Board Member, CYIENT", img: "/assets/images/BVR-Mohan-Reddy.jpg" },
+  { name: "Dr. J. M. Vyas", title: "Vice Chancellor - NFSU & Director General - DFS", img: "/assets/images/Vyas.jpg" },
+  { name: "Ram Chilukuri", title: "Entrepreneur, Investor and Ex CEO SemanticBits", img: "/assets/images/ram-chilukuri.jpg" },
+  { name: "Dr. G. Rameshwar Rao", title: "Director of Engineering Staff College of India", img: "/assets/images/rameswara-rao.jpg" },
+  { name: "Dr. Sangita Reddy", title: "Joint Managing Director, Apollo Hospitals Group", img: "/assets/images/sangita-reddy.jpg" }
+];
+
+const cxos = [
+  { name: "A Balasubramanian", title: "MD & CEO, Aditya Birla Sun Life MF", img: "/assets/images/A-Balasubramanian,-MD-&-CEO,-Aditya-Birla-Sun-Life-MF.jpg" },
+  { name: "Akhil Handa", title: "Founder, Credit Fintech Pvt Ltd", img: "/assets/images/Akhil-Handa,-Founder,-Credit-Fintech-Pvt-Ltd.jpg" },
+  { name: "Chaitanya Gorrepati", title: "MD, DEShaw", img: "/assets/images/Chaitanya-Gorrepati,-MD,-DEShaw.jpg" },
+  { name: "Chava Satyanarayana", title: "Founder & CEO, Laurus Labs", img: "/assets/images/Chava-Satyanarayana,-Founder-&-CEO,-Laurus-Labs.jpg" },
+  { name: "Dayakar Puskoor", title: "Founder & MD, Dallas Venture Capital", img: "/assets/images/Dayakar-Puskoor,-Founder-&-MD,-Dallas-Venture-Capital.jpg" },
+  { name: "Devika Penekelapati", title: "Founding Partner, Borders Law", img: "/assets/images/Devika-Penekelapati,-Founding-Partner,-Borders-Law.jpg" },
+  { name: "Diwakar Dayal", title: "MD & VP - India & SAARC, SentinelOne", img: "/assets/images/Diwakar-Dayal,-MD-&-Area-Vice-President---India-&-SAARC,-SentinelOne.jpg" },
+  { name: "Dr. Viswanadham Duppatla", title: "Vice President, Biopharma Innovations", img: "/assets/images/Dr.-Viswanadham-Duppatla,-Vice-President,-Biopharma-Innovations.jpg" },
+  { name: "Dr Ashok Sangappa Alur", title: "Vice Chancellor, Kodagu University", img: "/assets/images/Dr-Ashok-Sangappa-Alur,-Vice-Chancellor,-Kodagu-University.jpg" },
+  { name: "Dr Babu UV", title: "Director R&D, Himalaya Wellness", img: "/assets/images/user-placeholder.png" },
+  { name: "Dr B Rajsekhar, IAS", title: "Special Chief Secretary to Government, GoAP", img: "/assets/images/Dr-B-Rajsekhar,-IAS,-Special-Chief-Secretary-to-Government-(Agriculture,-Sericulture,-Cooperation-and-Marketing),-GoAP.jpg" },
+  { name: "Dr D Nageshwar Reddy", title: "Chairman, AIG Hospitals", img: "/assets/images/Dr-D-Nageshwar-Reddy,-Chairman,-AIG-Hospitals.jpg" },
+  { name: "Dr Kanwaljeet Sunny Anand", title: "Professor of Pediatrics, Stanford University", img: "/assets/images/Dr-Kanwaljeet-Sunny-Anand,-Professor-of-Pediatrics-(Pediatric-Critical-Care)-and-Anesthesiology,-Perioperative-&-Pain-Medicine,-Stanford-University.jpg" }
+];
+
 export function IsfHyderabad2024() {
   const [speakerCount, setSpeakerCount] = useState(8);
   const [activeTab, setActiveTab] = useState<"speakers" | "roundtables" | "schedule">("speakers");
@@ -157,6 +191,60 @@ export function IsfHyderabad2024() {
               </button>
             </div>
           )}
+        </div>
+      </section>
+
+      {/* Distinguished Guests Section */}
+      <section className="py-16 bg-[#f9f9f9] border-b border-gray-100">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center space-y-3 mb-10">
+            <span className="text-isf-orange font-bold uppercase tracking-widest text-xs">
+              INTERNATIONAL STARTUP FESTIVALS 2024
+            </span>
+            <h2 className="text-3xl md:text-4xl font-bold font-baskerville text-[#111111]">
+              Distinguished Guests at ISF Conference
+            </h2>
+            <div className="w-12 h-1 bg-isf-orange mx-auto rounded mt-4"></div>
+          </div>
+
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+            {guests.map((person, idx) => (
+              <div key={idx} className="bg-white rounded-xl shadow-sm border border-[#e6e6e6] overflow-hidden hover:shadow-md transition-shadow group flex flex-col items-center text-center p-4">
+                <div className="w-24 h-24 mb-4 rounded-full overflow-hidden border-2 border-gray-100">
+                  <img src={person.img} alt={person.name} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300" />
+                </div>
+                <h3 className="font-bold text-sm text-[#111111] mb-1 leading-tight">{person.name}</h3>
+                <p className="text-xs text-[#666666] font-light leading-snug">{person.title}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CXOs Section */}
+      <section className="py-16 bg-white border-b border-gray-100">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center space-y-3 mb-10">
+            <span className="text-isf-orange font-bold uppercase tracking-widest text-xs">
+              INTERNATIONAL STARTUP FESTIVALS 2024
+            </span>
+            <h2 className="text-3xl md:text-4xl font-bold font-baskerville text-[#111111]">
+              CXOs (Investors, Mentors & Leaders) at ISF Conference
+            </h2>
+            <div className="w-12 h-1 bg-isf-orange mx-auto rounded mt-4"></div>
+          </div>
+
+          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-6">
+            {cxos.map((person, idx) => (
+              <div key={idx} className="bg-[#f9f9f9] rounded-xl shadow-sm border border-[#e6e6e6] overflow-hidden hover:shadow-md transition-shadow group flex flex-col items-center text-center p-6">
+                <div className="w-28 h-28 mb-4 rounded-full overflow-hidden border-4 border-white shadow-sm">
+                  <img src={person.img} alt={person.name} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300" />
+                </div>
+                <h3 className="font-bold text-base text-[#111111] mb-2 leading-tight">{person.name}</h3>
+                <p className="text-xs text-[#666666] font-light leading-snug">{person.title}</p>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
