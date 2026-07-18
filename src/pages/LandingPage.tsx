@@ -85,17 +85,6 @@ export function LandingPage() {
       secondaryBtnLink: "/registration/student",
       image: "/assets/images/1hour-1week.png",
       bgGradient: "from-orange-50 to-orange-100"
-    },
-    {
-      tag: "ISF Events & Summits",
-      title: "ISF Global Junicorn & AI Summit 2025",
-      desc: "Empowering 100,000 innovators! Join us at the world's leading summit bridging artificial intelligence and startup ventures, connecting young innovators from college incubators directly to global investors and leaders.",
-      primaryBtnText: "Summit Details",
-      primaryBtnLink: "/isf-ai-summit",
-      secondaryBtnText: "Explore Junicorns",
-      secondaryBtnLink: "/junicornshub",
-      image: "/assets/cohort3/junicorns-logo.png",
-      bgGradient: "from-blue-50 to-indigo-105"
     }
   ];
 
