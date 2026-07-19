@@ -6,10 +6,7 @@ import {
   Clock,
   ExternalLink,
   Info,
-  CheckCircle2,
-  QrCode,
-  DollarSign,
-  ArrowRight
+  CheckCircle2
 } from "lucide-react";
 import { Link } from "react-router-dom";
 
@@ -44,7 +41,6 @@ export function IsfNewJersey2024() {
           <a href="#overview" className="hover:text-blue-700 transition-colors whitespace-nowrap">Overview</a>
           <a href="#expectations" className="hover:text-blue-700 transition-colors whitespace-nowrap">What to Expect</a>
           <a href="#agenda" className="hover:text-blue-700 transition-colors whitespace-nowrap">Agenda</a>
-          <a href="#pricing" className="hover:text-blue-700 transition-colors whitespace-nowrap">Pricing &amp; Vouchers</a>
           <a href="#venue" className="hover:text-blue-700 transition-colors whitespace-nowrap">Venue</a>
         </div>
       </div>
@@ -73,14 +69,7 @@ export function IsfNewJersey2024() {
             <p className="text-xs sm:text-sm md:text-base text-slate-600 mb-8 max-w-xl leading-relaxed">
               Welcome and thank you for showing interest to be a part of the ISF 2024 Conference. Participate in high-value CXO connect events, investor pitching, and panels at Bell Works, Holmdel.
             </p>
-            <div className="flex flex-col sm:flex-row gap-3">
-              <a
-                href="#pricing"
-                className="inline-flex items-center justify-center text-xs md:text-sm font-bold uppercase tracking-wider border border-slate-300 text-slate-700 hover:bg-slate-100 px-6 py-3.5 rounded transition-all duration-300"
-              >
-                Pricing &amp; Payment
-              </a>
-            </div>
+
           </div>
         </div>
       </section>
@@ -169,66 +158,6 @@ export function IsfNewJersey2024() {
         </div>
       </section>
 
-      {/* Pricing / QR Code Vouchers */}
-      <section className="py-16 md:py-24 bg-slate-50 border-t border-b border-slate-200/80" id="pricing">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div className="space-y-6">
-              <span className="px-3 py-1 text-xs font-semibold bg-blue-100 text-blue-700 rounded-full tracking-wider uppercase inline-block">
-                Payments
-              </span>
-              <h2 className="text-3xl md:text-4xl font-bold font-baskerville text-slate-900">
-                Pricing &amp; Delegate Vouchers
-              </h2>
-              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-                Please scan the payment QR code and pay the delegate registration fee. Enter the Transaction reference ID in the registration form to finalize your admission.
-              </p>
-
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div className="bg-white border border-slate-200 rounded-2xl p-5 hover:border-blue-500 transition-colors">
-                  <span className="text-xxs font-bold text-slate-400 uppercase tracking-widest block mb-1">
-                    Dallas Vouchers
-                  </span>
-                  <h4 className="text-xl font-bold text-slate-900 flex items-center gap-1">
-                    <DollarSign size={18} className="text-blue-600" />
-                    120 <span className="text-xs text-slate-400 font-normal">/ delegate</span>
-                  </h4>
-                  <p className="text-xxs text-slate-500 mt-2">Dallas Chapter Access • Vouchers at ₹10,000</p>
-                </div>
-
-                <div className="bg-white border border-slate-200 rounded-2xl p-5 hover:border-blue-500 transition-colors">
-                  <span className="text-xxs font-bold text-slate-400 uppercase tracking-widest block mb-1">
-                    New Jersey Vouchers
-                  </span>
-                  <h4 className="text-xl font-bold text-slate-900 flex items-center gap-1">
-                    <DollarSign size={18} className="text-blue-600" />
-                    120 <span className="text-xs text-slate-400 font-normal">/ delegate</span>
-                  </h4>
-                  <p className="text-xxs text-slate-500 mt-2">NJ Bell Works Access • Vouchers at ₹10,000</p>
-                </div>
-              </div>
-            </div>
-
-            <div className="flex flex-col items-center justify-center bg-white border border-slate-200 rounded-3xl p-8 shadow-sm max-w-sm mx-auto">
-              <QrCode size={48} className="text-blue-600 mb-4" />
-              <h3 className="font-bold text-slate-800 text-base mb-2 font-inter">Scan &amp; Pay Vouchers</h3>
-              <div className="w-48 h-48 border border-slate-200 rounded-2xl p-3 mb-4">
-                <img
-                  src="/assets/images/isf-qr-code.png"
-                  alt="ISF Payment QR Code"
-                  className="w-full h-full object-contain"
-                  onError={(e) => {
-                    e.currentTarget.src = "/assets/images/qr-placeholder.png";
-                  }}
-                />
-              </div>
-              <p className="text-[10px] text-slate-400 text-center leading-relaxed">
-                Save transaction ID &amp; upload to the delegate registration panels to validate your attendance.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* Venue Section */}
       <section className="py-16 md:py-24 bg-white" id="venue">
