@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import { Heart, Users, Award, Shield, Target, Activity, Calendar, Zap, Handshake, ChevronRight } from "lucide-react";
+import { Heart, Users, Award, Shield, Target, Activity, Calendar, Zap, Handshake, ChevronRight, PlayCircle, Star, Building2, Globe, FileText, CheckCircle2 } from "lucide-react";
 
 // --- Animated CountUp Component ---
 function useIntersectionObserver(options = {}) {
@@ -67,138 +67,239 @@ export function AboutUs() {
   ];
 
   const coreValues = [
-    { icon: <Handshake size={24} className="text-[#0C3E2B]" />, title: "Collaboration", desc: "Building strong networks across borders to support global ecosystems." },
-    { icon: <Zap size={24} className="text-[#0C3E2B]" />, title: "Empowerment", desc: "Uplifting rural and youth innovators with actionable insights." },
-    { icon: <Heart size={24} className="text-[#0C3E2B]" />, title: "Sustainability", desc: "Focusing on enduring and impactful relationships for the long-term." },
-    { icon: <Award size={24} className="text-[#0C3E2B]" />, title: "Excellence", desc: "Setting high standards for technical and business innovation." }
+    { icon: <Handshake size={24} className="text-[#0C3E2B]" />, title: "Commitment" },
+    { icon: <Zap size={24} className="text-[#0C3E2B]" />, title: "Innovation" },
+    { icon: <Heart size={24} className="text-[#0C3E2B]" />, title: "Collaboration" },
+    { icon: <Award size={24} className="text-[#0C3E2B]" />, title: "Support" }
   ];
 
   const features = [
     {
       icon: "globe",
       title: "Enduring Connections",
-      desc: "Nurturing lasting relationships between industry experts, leaders, and upcoming innovators globally.",
+      desc: "We prioritize enduring connections, recognizing their power to drive sustained entrepreneurial success.",
       bg: "bg-[#E8F5E9]",
       text: "text-[#458B79]",
     },
     {
       icon: "users",
       title: "Extensive Network",
-      desc: "Reaching across borders to assemble robust ecosystems.",
+      desc: "Aims to connect with over 50,000 startups, contributing to their goals and fostering growth",
       bg: "bg-[#FCE4EC]",
       text: "text-[#D24D7F]",
     },
     {
       icon: "shield",
-      title: "Mentorship",
-      desc: "Enlisting trusted advisory frameworks for startup validation.",
+      title: "Mentorship & Guidance",
+      desc: "Provides mentorship opportunities, enriching its support for startups through guidance and expertise.",
       bg: "bg-[#FFFDE7]",
       text: "text-[#EAB308]",
     },
     {
       icon: "target",
       title: "Rural Enhancement",
-      desc: "Empowering rural ecosystems and grassroot innovators.",
+      desc: "ISF values rural entrepreneurship for its potential in driving inclusive growth and economic development.",
       bg: "bg-[#E8EAF6]",
       text: "text-[#3B82F6]",
+    },
+    {
+      icon: "zap",
+      title: "Youth Empowerment",
+      desc: "Encouraging entrepreneurship among the younger generation, ISF supports under-16 entrepreneurs and acknowledges their contributions",
+      bg: "bg-[#FFF4E5]",
+      text: "text-isf-orange",
     }
   ];
 
   const achievements = [
     {
-      date: "January 2024",
-      title: "India Tech Talent League, Delhi",
-      desc: "Massive congregation of deep-tech talent showcasing next-generation AI and Robotics.",
-      image: "/assets/images/journey-highlight-3.jpg"
+      date: "October 2023",
+      title: "Pondicherry Rural Innovation Meet",
+      desc: "",
+      image: "/assets/images/journey-highlight-1.jpg"
     },
     {
       date: "September 2023",
       title: "MoU with Hon' PM of Netherlands",
-      desc: "Strategic partnership aimed at expanding tech corridors and cross-border incubation.",
+      desc: "",
       image: "/assets/images/journey-highlight-2.jpg"
     },
     {
-      date: "October 2023",
-      title: "Pondicherry Rural Innovation Meet",
-      desc: "Focused on bridging the gap between urban innovation and rural empowerment.",
-      image: "/assets/images/journey-highlight-1.jpg"
+      date: "January 2024",
+      title: "India Tech Talent League, Delhi",
+      desc: "",
+      image: "/assets/images/journey-highlight-3.jpg"
     }
   ];
 
   const team = [
-    { name: "J A Chowdary", role: "Chairperson & Convenor", image: "/assets/images/J-A-Chowdary.jpg" },
-    { name: "Dr. Siva Mahesh Tangutooru", role: "Co-founder & Managing Trustee", image: "/assets/team/shiva.a623ce07.svg" },
-    { name: "M. Sathyendra Kumar", role: "Co-founder", image: "/assets/team/sathyendra_kumar.jpg" },
-    { name: "Deenanath Harapanahalli", role: "Co-founder", image: "/assets/images/placeholder.jpg" },
-    { name: "Seshadri Vangala", role: "Co-founder", image: "/assets/images/Seshadri-Vangala.jpg" },
-    { name: "Achyut Yerragangu", role: "Co-founder & COO", image: "/assets/images/Achyut-Yerragangu.jpg" },
-    { name: "Bipin Chandra Pendyala", role: "Co-founder", image: "/assets/team/bipun_chandar.jpeg" },
-    { name: "Dr. Bhanu Prakash Varla", role: "Co-founder", image: "/assets/team/varla_bhanu.jpg" }
+    { name: "J A Chowdary", role: "Key Architect, Indian Tech Industry / Chairperson & Convenor, India Startup Festival", image: "/assets/images/J-A-Chowdary.jpg" },
+    { name: "Dr. Siva Mahesh Tangutooru", role: "Founder CEO, Jama Botanics & TurfPearl Agritech / Co-founder & Managing Trustee India Startup Foundation", image: "/assets/team/shiva.a623ce07.svg" },
+    { name: "M. Sathyendra Kumar", role: "Business Unit Head – India, Maccaferri Environmental Solutions Pvt Ltd / Co-founder, India Startup Festival", image: "/assets/team/sathyendra_kumar.jpg" },
+    { name: "Deenanath Harapanahalli", role: "Founder CEO, LifeCykul / Co-founder & India Startup Foundation", image: "/assets/images/placeholder.jpg" },
+    { name: "Seshadri Vangala", role: "Founder and Group CEO IFin Global Group & SGlobal Group / Co-founder & India Startup Festival", image: "/assets/images/Seshadri-Vangala.jpg" },
+    { name: "Achyut Yerragangu", role: "Founder, CEO, Nature Quotient Ventures Pvt Ltd / Co-founder & COO, International Startup Foundation", image: "/assets/images/Achyut-Yerragangu.jpg" },
+    { name: "Bipin Chandra Pendyala", role: "CPO, InvenioLSI / Co-founder, India Startup Festival", image: "/assets/team/bipun_chandar.jpeg" },
+    { name: "Dr. Bhanu Prakash Varla", role: "Partner & Director, Plural Technology & EdifyPath / Co-founder, India Startup Festival", image: "/assets/team/varla_bhanu.jpg" }
   ];
 
   const awards = [
-    { name: "Dr. D Nageshwar Reddy", role: "Chairman & Chief of Gastroenterology, AIG Hospitals", image: "/assets/images/Dr-D-Nageshwar-Reddy,-Chairman,-AIG-Hospitals.jpg" },
+    { name: "Dr. D Nageshwar Reddy", role: "Chairman & Chief of Gastroenterology, Asian Institute of Gastroenterology & AIG Hospitals", image: "/assets/images/Dr-D-Nageshwar-Reddy,-Chairman,-AIG-Hospitals.jpg" },
     { name: "Dr. Galla Ramachandra Naidu", role: "Founder Chairman, Amara Raja Group", image: "/assets/images/placeholder.jpg" },
     { name: "Dr. Kazuhiro Chiba", role: "President, Tokyo University of Agriculture and Technology", image: "/assets/images/placeholder.jpg" },
-    { name: "Sri Atluri", role: "MD - Global Head of Enterprise Quality, BNY Mellon", image: "/assets/images/Sri-Atluri.jpg" },
+    { name: "Sri Atluri", role: "Managing Director - Global Head of Enterprise Quality Engineering, BNY Mellon", image: "/assets/images/Sri-Atluri.jpg" },
     { name: "Dr. P Raja Mohan Rao", role: "Chairman, United Telecoms Group", image: "/assets/images/placeholder.jpg" },
     { name: "Vineet Rai", role: "Founder & Chairman, Aavishkaar Group", image: "/assets/images/Vineet-Rai.jpg" },
-    { name: "Sivakumar Surampudi", role: "Group Head, Agri & IT Businesses, ITC", image: "/assets/images/S-Siva-Kumar,-Group-Head,-Agri-&-IT-Businesses,-ITC.jpg" }
+    { name: "Sivakumar Surampudi", role: "Group Head, Agri & IT Businesses of ITC Limited", image: "/assets/images/S-Siva-Kumar,-Group-Head,-Agri-&-IT-Businesses,-ITC.jpg" }
+  ];
+
+  const startupWinners = [
+    "Hiringhood", "Rennaissance Superfoods", "Game On", "Brewed Games", "MetaBrix",
+    "Flying Duck", "Medyseva", "EnDimensions", "ICATTT", "Arakruthu 3D Private Limited"
+  ];
+
+  const mous = [
+    { name: "Wheels Foundation USA", location: "" },
+    { name: "Bart Foundation USA", location: "" },
+    { name: "Software Technology Parks of India", location: "" },
+    { name: "London Chamber of Commerce & Indistry", location: "" },
+    { name: "Netherlands India Chamber of Commerce & Trade", location: "" },
+    { name: "World Startups", location: "Netherlands" },
+    { name: "Link Innovation", location: "France" },
+    { name: "Swissnex, Consulate General of Switzerland", location: "" },
+    { name: "London & Partners", location: "UK" },
+    { name: "Finnish Ministry of Employment and the Economy", location: "" },
+    { name: "Indo German Chamber of Commerce", location: "" }
   ];
 
   return (
     <div className="font-inter bg-white text-[#111111] antialiased overflow-hidden">
       
-      {/* 1. Hero & Mission Section - Clean White/Light BG */}
+      {/* 1. Hero & Mission Section */}
       <section className="bg-[#FAF8F5] flex flex-col items-center justify-center pt-32 pb-24 px-4 relative">
-        {/* Subtle decorative background blobs instead of images */}
         <div className="absolute top-1/4 right-0 w-[400px] h-[400px] bg-isf-orange/5 rounded-full blur-3xl -z-10 translate-x-1/3"></div>
         <div className="absolute bottom-0 right-1/4 w-[300px] h-[300px] bg-teal-600/5 rounded-full blur-3xl -z-10 translate-y-1/3"></div>
         
         <div className="container-custom text-center space-y-10 relative z-10">
-          <div className="space-y-5 max-w-4xl mx-auto">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-[#111111] leading-tight tracking-tight font-inter">
-              Unveiling the{" "}
-              <br className="hidden md:block" />
+          <div className="space-y-6 max-w-4xl mx-auto">
+            <h1 className="text-3xl md:text-5xl lg:text-6xl font-extrabold text-[#111111] leading-tight tracking-tight font-inter">
+              Unveiling the <br className="hidden md:block" />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-isf-orange to-[#D24D7F]">
                 International Startup Foundation
               </span>
             </h1>
-            <p className="text-base md:text-lg text-[#666666] max-w-2xl mx-auto font-normal leading-relaxed">
-              Dedicated to enhancing India's entrepreneurial landscape, fostering vital connections between founders, resources, and visionary investors.
-            </p>
+            
+            <div className="py-2">
+              <h2 className="text-xl md:text-2xl font-bold font-inter text-[#458B79] uppercase tracking-wide">
+                ISF INDIA
+              </h2>
+              <p className="text-[#666666] font-semibold text-lg italic mt-1">
+                connect. collaborate. celebrate.
+              </p>
+            </div>
+
+            <div className="pt-6">
+              <h3 className="text-2xl font-bold mb-4 font-inter">About Us</h3>
+              <h4 className="text-xl font-semibold mb-4 text-[#D24D7F]">What is International Startup Foundation</h4>
+              <p className="text-base md:text-lg text-[#666666] max-w-3xl mx-auto font-normal leading-relaxed text-justify md:text-center mb-4">
+                Dedicated to enhancing India’s entrepreneurial landscape, the International Startup Foundation (ISF) fosters vital connections between entrepreneurs, resources, investors, and mentors. Our commitment extends beyond conventional boundaries, embracing nature, nurturing enduring relationships, and championing youth and rural empowerment.
+              </p>
+              <p className="text-base md:text-lg text-[#666666] max-w-3xl mx-auto font-normal leading-relaxed text-justify md:text-center">
+                Aligned with GOI’s pivotal initiatives like Startup India, Digital India, and Make-in-India, ISF aims to collaborate with over 50,000 startups, fostering their growth and bolstering the vision of an Atmanirbhar Bharat.
+              </p>
+            </div>
           </div>
 
-          <div className="pt-8 max-w-3xl mx-auto space-y-4 border-t border-gray-200/60">
-             <h2 className="text-2xl md:text-3xl font-inter font-bold text-[#111111] leading-tight">
-              Building a brighter future to <span className="text-[#D24D7F]">Empower</span>, <span className="text-blue-500">Connect</span> and <span className="text-[#458B79]">Thrive</span>.
-            </h2>
-            <p className="text-sm md:text-base text-[#666666] font-light leading-relaxed max-w-2xl mx-auto">
-              Evolving triumph from Seed to Sky, establishing pathways for rural development and global technical capabilities aligned with Atmanirbhar Bharat.
+          <div className="pt-8 max-w-3xl mx-auto space-y-6 border-t border-gray-200/60">
+             <h3 className="text-2xl font-bold font-inter text-[#111111]">ISF’s Mission</h3>
+             <h4 className="text-xl md:text-2xl font-inter font-bold text-[#D24D7F] leading-tight">
+              Building a Brighter Future to Empower, Connect and Thrive
+            </h4>
+            <p className="text-base md:text-lg text-[#666666] font-normal leading-relaxed max-w-2xl mx-auto text-justify md:text-center">
+              ISF India reimagines the startup ecosystem, fueling creativity and innovation to shape a brighter future. We empower startups, forge meaningful connections, and cultivate an environment where entrepreneurship thrives.
             </p>
           </div>
         </div>
       </section>
 
       {/* 2. Stats Bar */}
-      <section className="py-12 bg-white border-b border-gray-150 relative z-10">
+      <section className="py-16 bg-white border-b border-gray-150 relative z-10">
         <div className="container-custom">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 divide-x divide-gray-100">
+          
+          <div className="text-center space-y-3 mb-10">
+            <h2 className="text-2xl md:text-3xl font-extrabold font-inter tracking-tight uppercase">
+              Quick Stats
+            </h2>
+            <p className="text-xs text-[#666666] font-semibold uppercase tracking-wider">
+              Our ISF Ecosystem Numbers
+            </p>
+            <div className="w-12 h-1 bg-isf-orange mx-auto rounded"></div>
+          </div>
+
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 divide-x divide-gray-100 mb-12">
             {stats.map((stat, idx) => (
               <div key={idx} className="text-center px-4">
-                <div className="text-3xl md:text-4xl font-extrabold text-[#111111] font-inter mb-1">
+                <div className="text-3xl md:text-5xl font-extrabold text-[#D24D7F] font-inter mb-2">
                   <CountUp end={stat.value} suffix={stat.suffix} />
                 </div>
-                <div className="text-xs md:text-sm font-semibold text-[#666666] uppercase tracking-wider">
+                <div className="text-sm md:text-base font-semibold text-[#111111]">
                   {stat.label}
                 </div>
+              </div>
+            ))}
+          </div>
+
+          <div className="text-center space-y-4 max-w-lg mx-auto bg-[#FCE4EC] p-6 rounded-2xl">
+            <h3 className="text-xl font-bold font-inter text-[#D24D7F]">
+              Evolving Triumph from Seed to Sky
+            </h3>
+            <button className="flex items-center gap-2 mx-auto text-[#111111] hover:text-[#D24D7F] transition-colors font-semibold">
+              <PlayCircle size={24} />
+              Watch our video!
+            </button>
+          </div>
+        </div>
+      </section>
+
+      {/* 3. ISF INDIA KEY FEATURES */}
+      <section className="py-16 bg-[#f9f9f9] border-b border-gray-200">
+        <div className="container-custom space-y-12">
+          <div className="text-center space-y-3">
+            <h2 className="text-2xl md:text-3xl font-extrabold font-inter text-[#111111] tracking-tight uppercase">
+              ISF INDIA KEY FEATURES
+            </h2>
+            <p className="text-xs text-[#666666] font-semibold uppercase tracking-wider">
+              Signature Features of ISF India’s Support Ecosystem
+            </p>
+            <div className="w-12 h-1 bg-isf-orange mx-auto rounded"></div>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-6">
+            {features.map((feat, idx) => (
+              <div 
+                key={idx} 
+                className="bg-white border border-[#e6e6e6] rounded-xl p-6 hover:shadow-lg hover:border-isf-orange transition-all space-y-4 shadow-sm flex flex-col group"
+              >
+                <div className={`w-14 h-14 rounded-full flex items-center justify-center ${feat.bg} group-hover:scale-110 transition-transform duration-300`}>
+                  {feat.icon === 'globe' && <Target size={24} className={feat.text} />}
+                  {feat.icon === 'users' && <Users size={24} className={feat.text} />}
+                  {feat.icon === 'shield' && <Shield size={24} className={feat.text} />}
+                  {feat.icon === 'target' && <Activity size={24} className={feat.text} />}
+                  {feat.icon === 'zap' && <Zap size={24} className={feat.text} />}
+                </div>
+                <h3 className="text-base font-bold font-inter text-[#111111]">
+                  {feat.title}
+                </h3>
+                <p className="text-sm text-[#666666] leading-relaxed font-light grow">
+                  {feat.desc}
+                </p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* 3. ISF INDIA CORE VALUES */}
+      {/* 4. ISF INDIA CORE VALUES */}
       <section className="py-16 bg-[#6B9D8F] border-b border-gray-150">
         <div className="container-custom space-y-12">
           <div className="text-center space-y-3">
@@ -211,31 +312,31 @@ export function AboutUs() {
             <div className="w-12 h-1 bg-white mx-auto rounded"></div>
           </div>
           
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
             {coreValues.map((val, idx) => (
-              <div key={idx} className="bg-white rounded-xl p-6 flex flex-col items-start text-left space-y-4 shadow-sm border border-gray-100 hover:shadow-md hover:-translate-y-1 transition-all duration-300">
-                <div className="w-12 h-12 rounded-full flex items-center justify-center bg-[#E8F5E9]">
+              <div key={idx} className="bg-white rounded-xl p-6 flex flex-col items-center text-center space-y-4 shadow-sm border border-gray-100 hover:shadow-md hover:-translate-y-1 transition-all duration-300">
+                <div className="w-16 h-16 rounded-full flex items-center justify-center bg-[#E8F5E9]">
                   {val.icon}
                 </div>
                 <h3 className="text-lg font-bold font-inter text-[#111111]">{val.title}</h3>
-                <p className="text-sm text-[#666666] leading-relaxed font-light">{val.desc}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* 4. Echoes of Success (Immersive Interactive Viewer - Light Theme) */}
+      {/* 5. Echoes of Success (Immersive Interactive Viewer - Light Theme) */}
       <section className="py-20 bg-white text-[#111111] border-b border-gray-200">
         <div className="container-custom space-y-12">
           <div className="text-center space-y-3">
             <h2 className="text-2xl md:text-3xl font-extrabold font-inter tracking-tight uppercase">
-              Echoes of Success
+              ISF INDIA’S PAST ACHIEVEMENTS
             </h2>
             <p className="text-xs text-[#666666] font-semibold uppercase tracking-wider">
-              ISF India's Remarkable Chronicles
+              Echoes of Success: ISF India's Remarkable Chronicles
             </p>
             <div className="w-12 h-1 bg-isf-orange mx-auto rounded"></div>
+            <h3 className="text-xl font-bold font-inter mt-4">ISF 2023 Journey Highlights</h3>
           </div>
 
           <div 
@@ -257,14 +358,9 @@ export function AboutUs() {
                   <span className="flex items-center gap-2 text-xs font-bold uppercase tracking-widest mb-2 opacity-80">
                     <Calendar size={14} /> {achieve.date}
                   </span>
-                  <h3 className="text-lg font-bold font-inter leading-tight mb-2">
+                  <h3 className="text-lg font-bold font-inter leading-tight">
                     {achieve.title}
                   </h3>
-                  {activeAchievement === idx && (
-                    <p className="text-sm font-light text-[#666666] leading-relaxed mt-3 animate-fade-in">
-                      {achieve.desc}
-                    </p>
-                  )}
                 </button>
               ))}
             </div>
@@ -297,58 +393,20 @@ export function AboutUs() {
         </div>
       </section>
 
-      {/* 5. Signature Features */}
+      {/* 6. Lifetime Awardees */}
       <section className="py-16 bg-[#f9f9f9] border-b border-gray-200">
         <div className="container-custom space-y-12">
           <div className="text-center space-y-3">
-            <h2 className="text-2xl md:text-3xl font-extrabold font-inter text-[#111111] tracking-tight">
-              Signature Features
+            <h2 className="text-2xl md:text-3xl font-extrabold font-inter text-[#111111] tracking-tight uppercase">
+              ISF LIFETIME ACHIEVEMENT AWARDEES
             </h2>
             <p className="text-xs text-[#666666] font-semibold uppercase tracking-wider">
-              The core pillars of the ISF India support ecosystem
-            </p>
-            <div className="w-12 h-1 bg-isf-orange mx-auto rounded"></div>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-            {features.map((feat, idx) => (
-              <div 
-                key={idx} 
-                className="bg-white border border-[#e6e6e6] rounded-xl p-8 hover:shadow-lg hover:border-isf-orange transition-all space-y-5 shadow-sm flex flex-col group"
-              >
-                <div className={`w-14 h-14 rounded-full flex items-center justify-center ${feat.bg} group-hover:scale-110 transition-transform duration-300`}>
-                  {feat.icon === 'globe' && <Target size={24} className={feat.text} />}
-                  {feat.icon === 'users' && <Users size={24} className={feat.text} />}
-                  {feat.icon === 'shield' && <Shield size={24} className={feat.text} />}
-                  {feat.icon === 'target' && <Activity size={24} className={feat.text} />}
-                </div>
-                <h3 className="text-lg font-bold font-inter text-[#111111]">
-                  {feat.title}
-                </h3>
-                <p className="text-sm text-[#666666] leading-relaxed font-light grow">
-                  {feat.desc}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* 6. Lifetime Awardees (Horizontal Carousel to reduce image clutter) */}
-      <section className="py-16 bg-[#f9f9f9] border-b border-gray-200">
-        <div className="container-custom space-y-12">
-          <div className="text-center space-y-3">
-            <h2 className="text-2xl md:text-3xl font-extrabold font-inter text-[#111111] tracking-tight">
-              Lifetime Achievement Awardees
-            </h2>
-            <p className="text-xs text-[#666666] font-semibold uppercase tracking-wider">
-              Honoring excellence and visionary leadership
+              Honoring Excellence: Meet the Stalwarts of ISF
             </p>
             <div className="w-12 h-1 bg-isf-orange mx-auto rounded"></div>
           </div>
 
           <div className="relative group">
-            {/* Horizontal scrolling container */}
             <div className="flex overflow-x-auto gap-6 pb-6 snap-x snap-mandatory">
               {awards.map((award, idx) => (
                 <div 
@@ -365,36 +423,134 @@ export function AboutUs() {
                       }}
                     />
                   </div>
-                  <h4 className="text-base font-bold font-inter text-[#111111] mb-1">
+                  <h4 className="text-base font-bold font-inter text-[#111111] mb-2">
                     {award.name}
                   </h4>
                   <p className="text-xs text-[#666666] font-light leading-relaxed">
-                    {award.role}
+                    {award.role.split(',').map((part, i) => (
+                      <span key={i}>
+                        {part}
+                        {i < award.role.split(',').length - 1 && <br />}
+                      </span>
+                    ))}
                   </p>
                 </div>
               ))}
             </div>
-            {/* Visual fade hint for scrollability */}
             <div className="absolute top-0 bottom-6 right-0 w-12 bg-gradient-to-l from-[#f9f9f9] to-transparent pointer-events-none"></div>
           </div>
         </div>
       </section>
 
-      {/* 7. ISF Team (Horizontal Carousel to reduce image clutter) */}
+      {/* 7. ISF STARTUP AWARD WINNERS */}
+      <section className="py-16 bg-white border-b border-gray-200">
+        <div className="container-custom space-y-12">
+          <div className="text-center space-y-3">
+            <h2 className="text-2xl md:text-3xl font-extrabold font-inter text-[#111111] tracking-tight uppercase">
+              ISF STARTUP AWARD WINNERS
+            </h2>
+            <p className="text-xs text-[#666666] font-semibold uppercase tracking-wider">
+              The Trailblazers of Tomorrow Making Lasting Impact
+            </p>
+            <div className="w-12 h-1 bg-isf-orange mx-auto rounded"></div>
+          </div>
+
+          <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
+            {startupWinners.map((winner, idx) => (
+              <div key={idx} className="bg-[#FAF8F5] border border-gray-100 rounded-lg p-4 flex flex-col items-center justify-center text-center hover:border-[#D24D7F] hover:shadow-md transition-all">
+                <Star className="text-[#D24D7F] mb-2" size={20} />
+                <span className="font-semibold text-sm text-[#111111]">{winner}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 8. ISF JUNICORNS */}
+      <section className="py-16 bg-[#458B79] border-b border-gray-200 text-white">
+        <div className="container-custom space-y-8">
+          <div className="text-center space-y-3">
+            <h2 className="text-2xl md:text-3xl font-extrabold font-inter tracking-tight uppercase">
+              ISF JUNICONS
+            </h2>
+            <p className="text-xs text-white/80 font-semibold uppercase tracking-wider">
+              Fueling the Innovation Spark in the Next Generation
+            </p>
+            <div className="w-12 h-1 bg-white mx-auto rounded"></div>
+          </div>
+
+          <div className="text-center space-y-4 max-w-2xl mx-auto">
+            <h3 className="text-xl font-bold">Encouraging Next Generation Innovators</h3>
+            <div className="inline-block bg-white/20 backdrop-blur-sm px-6 py-3 rounded-full text-lg font-semibold border border-white/30">
+              600 Pitches | 10 Winners
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 9. ISF MOUs */}
+      <section className="py-16 bg-[#f9f9f9] border-b border-gray-200">
+        <div className="container-custom space-y-12">
+          <div className="text-center space-y-3">
+            <h2 className="text-2xl md:text-3xl font-extrabold font-inter text-[#111111] tracking-tight uppercase">
+              ISF MOUs
+            </h2>
+            <div className="w-12 h-1 bg-isf-orange mx-auto rounded"></div>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {mous.map((mou, idx) => (
+              <div key={idx} className="flex items-start gap-4 p-5 bg-white rounded-xl border border-gray-100 shadow-sm hover:border-[#458B79] hover:shadow-md transition-all">
+                <div className="p-3 rounded-full bg-[#E8F5E9] text-[#458B79] shrink-0">
+                  <FileText size={24} />
+                </div>
+                <div>
+                  <h4 className="font-bold text-sm text-[#111111] mb-1">{mou.name}</h4>
+                  {mou.location && <span className="text-xs font-semibold text-[#D24D7F]">{mou.location}</span>}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 10. ISF MEDIA COVERAGE */}
+      <section className="py-16 bg-white border-b border-gray-200">
+        <div className="container-custom space-y-12">
+          <div className="text-center space-y-3">
+            <h2 className="text-2xl md:text-3xl font-extrabold font-inter text-[#111111] tracking-tight uppercase">
+              ISF MEDIA COVERAGE
+            </h2>
+            <div className="w-12 h-1 bg-isf-orange mx-auto rounded"></div>
+          </div>
+          
+          {/* Placeholder for Media Coverage, matching the empty section or if there are images, they go here */}
+          <div className="h-48 border-2 border-dashed border-gray-200 rounded-xl flex items-center justify-center text-gray-400 bg-gray-50">
+             Media Coverage Assets Go Here
+          </div>
+        </div>
+      </section>
+
+      {/* 11. INTERNATIONAL STARTUP FESTIVALS 2024 Banner */}
+      <section className="py-12 bg-[#111111] text-white">
+        <div className="container-custom text-center">
+           <h2 className="text-2xl md:text-4xl font-extrabold tracking-widest uppercase">
+             INTERNATIONAL STARTUP FESTIVALS 2024
+           </h2>
+        </div>
+      </section>
+
+      {/* 12. ISF Team */}
       <section className="py-16 bg-white border-b border-gray-150">
         <div className="container-custom space-y-12">
           <div className="text-center space-y-3">
-            <h2 className="text-2xl md:text-3xl font-extrabold font-inter text-[#111111] tracking-tight">
+            <h2 className="text-2xl md:text-3xl font-extrabold font-inter text-[#111111] tracking-tight uppercase">
               ISF Team
             </h2>
-            <p className="text-xs text-[#666666] font-semibold uppercase tracking-wider">
-              The visionary architects behind the India Startup Foundation
-            </p>
             <div className="w-12 h-1 bg-isf-orange mx-auto rounded"></div>
           </div>
           
           <div className="relative">
-            {/* Horizontal scrolling container */}
             <div className="flex overflow-x-auto gap-6 pb-6 snap-x snap-mandatory">
               {team.map((member, idx) => (
                 <div 
@@ -411,12 +567,18 @@ export function AboutUs() {
                       }}
                     />
                   </div>
-                  <h4 className="text-base font-bold font-inter text-[#111111] mb-1">{member.name}</h4>
-                  <p className="text-xs text-[#666666] font-light leading-relaxed">{member.role}</p>
+                  <h4 className="text-base font-bold font-inter text-[#111111] mb-2">{member.name}</h4>
+                  <p className="text-xs text-[#666666] font-light leading-relaxed">
+                    {member.role.split(' / ').map((part, i) => (
+                      <span key={i}>
+                        {part}
+                        {i < member.role.split(' / ').length - 1 && <br />}
+                      </span>
+                    ))}
+                  </p>
                 </div>
               ))}
             </div>
-            {/* Visual fade hint for scrollability */}
             <div className="absolute top-0 bottom-6 right-0 w-12 bg-gradient-to-l from-white to-transparent pointer-events-none"></div>
           </div>
         </div>
