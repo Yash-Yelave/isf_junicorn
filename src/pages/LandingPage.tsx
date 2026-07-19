@@ -96,69 +96,6 @@ export function LandingPage() {
   }, [heroSlides.length]);
 
 
-  const carouselSlides = [
-    {
-      image: "/assets/2024/08/CM-of-AP-1024x478.png",
-      caption: "Inviting Shri Chandrababu Naidu Hon. CM of AP"
-    },
-    {
-      image: "/assets/2024/08/Dy-CM-of-AP-1024x478.png",
-      caption: "Inviting Shri Pawan Kalyan Hon. Deputy CM of AP"
-    },
-    {
-      image: "/assets/2024/08/Industries-Secretary-AP-1024x478.png",
-      caption: "Dr. N. Yuvaraj, Secretary, Department of Industries & Commerce, Govt of AP"
-    },
-    {
-      image: "/assets/2024/08/K_Durgesh_Minister_of_Tourism_AP-1-1024x478.png",
-      caption: "Inviting Shri Kandula Durgesh Hon. Minister for Tourism and Culture Government of AP"
-    },
-    {
-      image: "/assets/2024/08/Union-minister-of-civil-aviation-1024x478.png",
-      caption: "Inviting Shri Ram Mohan Naidu Kinjarapu Hon. Union Minister of Civil Aviation"
-    },
-    {
-      image: "/assets/2024/08/Agriculture-Minister-of-AP-Shri-Achannaidu-1024x478.png",
-      caption: "Inviting Shri Kinjarapu Atchannaidu, Agriculture Minister of AP"
-    },
-    {
-      image: "/assets/2024/08/Cabinet-Minister-of-AP-1024x478.png",
-      caption: "Shri Ponguru Narayana, Cabinet Minister of AP"
-    },
-    {
-      image: "/assets/2024/08/ISF-Pune-1024x478.png",
-      caption: "ISF Event at Pune"
-    },
-    {
-      image: "/assets/2024/08/ISF-Jamaica-1024x478.png",
-      caption: "ISF Event at Jamaica"
-    },
-    {
-      image: "/assets/2024/08/ISF-Jamaica-1-1024x478.png",
-      caption: "ISF Event at Jamaica"
-    },
-    {
-      image: "/assets/2024/08/Richardson-city-Mayor-ISF-Dallas-1024x478.png",
-      caption: "Meeting Mr.Mayor Robert Dubey at ISF Dallas"
-    },
-    {
-      image: "/assets/2024/08/South-Texas-EDC-meet-with-ISF-1024x478.png",
-      caption: "South Texas EDC meet with ISF"
-    }
-  ];
-
-  const [carouselIndex, setCarouselIndex] = useState(0);
-
-  const handleNextSlide = () => {
-    setCarouselIndex((prev) => (prev + 1) % carouselSlides.length);
-  };
-
-  const handlePrevSlide = () => {
-    setCarouselIndex((prev) => (prev - 1 + carouselSlides.length) % carouselSlides.length);
-  };
-
-
-
   interface EventDetail {
     tag: string;
     title: string;
@@ -642,68 +579,6 @@ export function LandingPage() {
         </div>
       </section>
 
-      {/* 3.5. Video and Image Carousel Layout (Side-by-Side Section) */}
-      <section className="py-16 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
-            
-            {/* Left Column (YouTube Embed) */}
-            <div className="rounded-3xl overflow-hidden aspect-video shadow-md bg-slate-950 flex items-stretch border border-gray-200">
-              <iframe
-                className="w-full h-full"
-                src="https://www.youtube.com/embed/VyTBaNp5NzY?si=KB16ofHH0JGaOguE"
-                title="Unveiling the International Startup Foundation"
-                frameBorder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                referrerPolicy="strict-origin-when-cross-origin"
-                allowFullScreen
-              />
-            </div>
-            
-            {/* Right Column (Image Carousel) */}
-            <div className="rounded-3xl overflow-hidden aspect-video shadow-md bg-slate-100 relative group border border-gray-200">
-              <img
-                src={carouselSlides[carouselIndex].image}
-                alt={carouselSlides[carouselIndex].caption}
-                className="w-full h-full object-cover transition-all duration-300"
-              />
-              
-              {/* Navigation Arrows */}
-              <button
-                onClick={handlePrevSlide}
-                className="absolute left-3 top-1/2 -translate-y-1/2 bg-isf-orange hover:bg-isf-orange-hover text-white p-2 rounded shadow-sm focus:outline-none z-30 transition-all cursor-pointer flex items-center justify-center"
-              >
-                <ChevronLeft size={16} strokeWidth={2.5} />
-              </button>
-              <button
-                onClick={handleNextSlide}
-                className="absolute right-3 top-1/2 -translate-y-1/2 bg-isf-orange hover:bg-isf-orange-hover text-white p-2 rounded shadow-sm focus:outline-none z-30 transition-all cursor-pointer flex items-center justify-center"
-              >
-                <ChevronRight size={16} strokeWidth={2.5} />
-              </button>
-              
-              {/* Pagination Dots */}
-              <div className="absolute bottom-12 left-1/2 -translate-x-1/2 flex space-x-1.5 z-30">
-                {carouselSlides.map((_, idx) => (
-                  <button
-                    key={idx}
-                    onClick={() => setCarouselIndex(idx)}
-                    className={`w-1.5 h-1.5 rounded-full transition-colors cursor-pointer ${
-                      carouselIndex === idx ? "bg-isf-orange" : "bg-white/60 hover:bg-white"
-                    }`}
-                  />
-                ))}
-              </div>
-              
-              {/* Caption Overlay */}
-              <div className="absolute bottom-3 left-1/2 -translate-x-1/2 bg-white/95 px-4 py-1.5 rounded-full shadow border border-gray-150 max-w-[85%] text-center text-slate-800 text-[10px] font-bold tracking-wide z-30 whitespace-nowrap overflow-hidden text-ellipsis">
-                {carouselSlides[carouselIndex].caption}
-              </div>
-            </div>
-            
-          </div>
-        </div>
-      </section>
 
       {/* 4. Events Timeline Tabs */}
       <section className="py-20 bg-slate-50 border-b border-gray-100">
