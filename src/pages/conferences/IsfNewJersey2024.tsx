@@ -195,14 +195,7 @@ export function IsfNewJersey2024() {
                   </div>
                 </div>
               </div>
-              <div className="pt-4">
-                <Link
-                  to="/registration/delegate"
-                  className="inline-flex items-center justify-center text-xs md:text-sm font-bold uppercase tracking-wider bg-blue-600 hover:bg-blue-700 text-white px-6 py-3.5 rounded shadow-md transition-all duration-300"
-                >
-                  Go to Delegate Registration <ArrowRight size={14} className="ml-2" />
-                </Link>
-              </div>
+
             </div>
 
             {/* Google Map */}
