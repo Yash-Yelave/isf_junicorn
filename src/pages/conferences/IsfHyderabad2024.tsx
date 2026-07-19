@@ -103,12 +103,6 @@ export function IsfHyderabad2024() {
               An Event to Celebrate Your Visions and Ventures. Network with the most brilliant and influential minds, pitch your ideas to top investors, and learn from industry pioneers who have paved the way.
             </p>
             <div className="flex flex-col sm:flex-row gap-3">
-              <Link
-                to="/registration/delegate"
-                className="inline-flex items-center justify-center text-xs md:text-sm font-bold uppercase tracking-wider bg-isf-orange hover:bg-isf-orange-hover text-white px-6 py-3.5 rounded shadow-md transition-all duration-300"
-              >
-                Register as Delegate <ArrowRight size={14} className="ml-2" />
-              </Link>
               <a
                 href="#schedule"
                 className="inline-flex items-center justify-center text-xs md:text-sm font-bold uppercase tracking-wider border border-slate-300 text-slate-700 hover:bg-slate-100 px-6 py-3.5 rounded transition-all duration-300"
