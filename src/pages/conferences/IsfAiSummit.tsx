@@ -131,8 +131,8 @@ export function IsfAiSummit() {
               May 29-30, 2025 • Texas, USA
             </span>
             <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold font-baskerville mb-3 text-slate-900 leading-tight">
-              ISF Global Junicorn <br />
-              <span className="text-isf-orange">&amp; AI Summit 2025</span>
+              ISF Global <br />
+              <span className="text-isf-orange">AI Summit 2025</span>
             </h1>
             <p className="text-xs sm:text-sm text-slate-600 mb-5 max-w-lg leading-relaxed">
               Join us for two power-packed days of action, insight, and inspiration with the world's top minds in AI, innovation, and entrepreneurship at Texas State University.
@@ -240,7 +240,7 @@ export function IsfAiSummit() {
                   Zoom Livestream Webcast
                 </h2>
                 <p className="text-slate-500 text-xs md:text-sm">
-                  Join us virtually for the ISF Global Junicorn &amp; AI Summit 2025.
+                  Join us virtually for the ISF Global AI Summit 2025.
                 </p>
               </div>
             </div>
