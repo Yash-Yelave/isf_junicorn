@@ -74,12 +74,6 @@ export function IsfNewJersey2024() {
               Welcome and thank you for showing interest to be a part of the ISF 2024 Conference. Participate in high-value CXO connect events, investor pitching, and panels at Bell Works, Holmdel.
             </p>
             <div className="flex flex-col sm:flex-row gap-3">
-              <Link
-                to="/registration/delegate"
-                className="inline-flex items-center justify-center text-xs md:text-sm font-bold uppercase tracking-wider bg-blue-600 hover:bg-blue-700 text-white px-6 py-3.5 rounded shadow-md transition-all duration-300"
-              >
-                Register as Delegate
-              </Link>
               <a
                 href="#pricing"
                 className="inline-flex items-center justify-center text-xs md:text-sm font-bold uppercase tracking-wider border border-slate-300 text-slate-700 hover:bg-slate-100 px-6 py-3.5 rounded transition-all duration-300"

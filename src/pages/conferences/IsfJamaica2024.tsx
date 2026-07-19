@@ -112,14 +112,7 @@ export function IsfJamaica2024() {
               BIMS Medical School, Montego Bay, Jamaica
             </span>
           </div>
-          <div className="pt-4">
-            <Link
-              to="/registration/delegate"
-              className="bg-isf-orange hover:bg-isf-orange-hover text-white text-xs font-bold uppercase tracking-wider px-6 py-3.5 rounded shadow transition-all inline-block"
-            >
-              Register Now
-            </Link>
-          </div>
+
         </div>
 
         {/* Shape Divider - Wave effect at the bottom */}

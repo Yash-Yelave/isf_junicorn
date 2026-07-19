@@ -359,14 +359,7 @@ export function IsfHyderabad2024() {
                   </div>
                 </div>
               </div>
-              <div className="pt-4">
-                <Link
-                  to="/registration/delegate"
-                  className="inline-flex items-center justify-center text-xs md:text-sm font-bold uppercase tracking-wider bg-isf-orange hover:bg-isf-orange-hover text-white px-6 py-3.5 rounded shadow-md transition-all duration-300"
-                >
-                  Register Now <ArrowRight size={14} className="ml-2" />
-                </Link>
-              </div>
+
             </div>
 
             {/* Mock Map Image or Beautiful Graphic */}

@@ -65,12 +65,6 @@ export function IsfPune2024() {
               Curtain Raiser &amp; Investor Connect. Engage with top CEOs, leading investors, and brilliant founders. Build strategic networks and jumpstart your ventures within Pune's startup ecosystem.
             </p>
             <div className="flex flex-col sm:flex-row gap-3">
-              <Link
-                to="/registration/delegate"
-                className="inline-flex items-center justify-center text-xs md:text-sm font-bold uppercase tracking-wider bg-purple-600 hover:bg-purple-700 text-white px-6 py-3.5 rounded shadow-md transition-all duration-300"
-              >
-                Register Now <ArrowRight size={14} className="ml-2" />
-              </Link>
               <a
                 href="#schedule"
                 className="inline-flex items-center justify-center text-xs md:text-sm font-bold uppercase tracking-wider border border-slate-300 text-slate-700 hover:bg-slate-100 px-6 py-3.5 rounded transition-all duration-300"
@@ -229,14 +223,7 @@ export function IsfPune2024() {
                   </div>
                 </div>
               </div>
-              <div className="pt-4">
-                <Link
-                  to="/registration/delegate"
-                  className="inline-flex items-center justify-center text-xs md:text-sm font-bold uppercase tracking-wider bg-purple-600 hover:bg-purple-700 text-white px-6 py-3.5 rounded shadow-md transition-all duration-300"
-                >
-                  Register Now <ArrowRight size={14} className="ml-2" />
-                </Link>
-              </div>
+
             </div>
 
             {/* Google Map */}
