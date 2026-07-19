@@ -97,7 +97,7 @@ export function IsfHyderabad2024() {
               26 - 28 September, 2024 • Hyderabad, India
             </span>
             <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold font-baskerville mb-5 text-slate-900 leading-tight">
-              ISF 2024 <span className="text-isf-orange">Hyderabad</span>
+              Indian Startup Festival 2024 <span className="text-isf-orange">Hyderabad</span>
             </h1>
             <p className="text-xs sm:text-sm md:text-base text-slate-600 mb-8 max-w-xl leading-relaxed">
               An Event to Celebrate Your Visions and Ventures. Network with the most brilliant and influential minds, pitch your ideas to top investors, and learn from industry pioneers who have paved the way.
@@ -143,7 +143,7 @@ export function IsfHyderabad2024() {
               Dignitaries &amp; Speakers
             </h2>
             <p className="text-slate-500 text-sm md:text-base max-w-2xl mx-auto mt-2">
-              Renowned keynotes, advisors, and experts who participated in the ISF 2024 Hyderabad conference.
+              Renowned keynotes, advisors, and experts who participated in the Indian Startup Festival 2024 Hyderabad conference.
             </p>
           </div>
 
@@ -300,7 +300,7 @@ export function IsfHyderabad2024() {
               Timeline
             </span>
             <h2 className="text-3xl md:text-4xl font-bold font-baskerville text-slate-900">
-              ISF 2024 Hyderabad Agenda
+              Indian Startup Festival 2024 Hyderabad Agenda
             </h2>
             <p className="text-slate-500 text-sm md:text-base max-w-2xl mx-auto mt-2">
               Overview of sessions, keynote fireside chats, pitch presentations, and networking events.
