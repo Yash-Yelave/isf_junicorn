@@ -460,7 +460,7 @@ export function LandingPage() {
                   to="/junicornshub"
                   className="bg-[#D24D7F] hover:bg-[#C73E6E] text-white text-xs sm:text-sm font-bold uppercase tracking-wider px-6 py-3.5 rounded-full shadow transition-all inline-block cursor-pointer"
                 >
-                  Explore Junicorns Hub
+                  About Junicorn
                 </Link>
               </div>
             </div>

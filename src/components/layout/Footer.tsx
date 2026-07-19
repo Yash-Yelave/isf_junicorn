@@ -30,7 +30,7 @@ export function Footer() {
             <ul className="space-y-2.5 text-xs text-slate-400">
               <li>
                 <Link to="/junicornshub" className="hover:text-isf-orange font-semibold transition-colors">
-                  Junicorns Hub
+                  About Junicorn
                 </Link>
               </li>
               <li>

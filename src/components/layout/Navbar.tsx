@@ -40,7 +40,7 @@ export function Navbar() {
       name: "Junicorns",
       path: "#",
       submenu: [
-        { name: "Junicorns Hub", path: "/junicornshub" },
+        { name: "About Junicorn", path: "/junicornshub" },
         { name: "Cohort 3.0", path: "/cohort-3" }
       ]
     },
