@@ -40,6 +40,7 @@ export function Navbar() {
       name: "Junicorns",
       path: "#",
       submenu: [
+        { name: "Cohort 1 Austin 2025", path: "/isf-global-junicorn-ai-summit-2025" },
         { name: "About Junicorn", path: "/junicornshub" },
         { name: "Cohort 3.0", path: "/cohort-3" }
       ]
