@@ -243,8 +243,8 @@ export function LandingPage() {
     },
     {
       tag: "Global Mentorship Program",
-      title: "Join the International Startup Foundation’s Global Mentorship Program – One Hour a Week",
-      desc: "Empower the next generation of innovators! This program connects mentors (experienced professionals, industry leaders) with mentees (startups, students, and aspiring entrepreneurs) worldwide. Share your expertise, inspire growth, and make a global impact—all in just one hour a week.",
+      title: "ISF Global Mentorship Program",
+      desc: "Empower the next generation of innovators. Join as a mentor or mentee to share expertise and drive global impact—all in just one hour a week.",
       primaryBtnText: "Mentor Registration",
       primaryBtnLink: "/mentor-form",
       secondaryBtnText: "Mentee Registration",
