@@ -1,6 +1,171 @@
 import { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
-import { Calendar, MapPin, ChevronLeft, ChevronRight, Play, Clock, Building, Map, Volume2, VolumeX } from "lucide-react";
+import { Calendar, MapPin, ChevronLeft, ChevronRight, Play, Clock, Building, Map, Volume2, VolumeX, ChevronDown, ChevronUp } from "lucide-react";
+import { speakers as austinSpeakers, junicorns as austinJunicorns, angels as austinAngels } from "./conferences/summitData";
+import { junicorns as dubaiJunicorns } from "./conferences/dubaiEventData";
+
+// --- Animated CountUp Component ---
+function useIntersectionObserver(options = {}) {
+  const [isIntersecting, setIsIntersecting] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) {
+        setIsIntersecting(true);
+        if (ref.current) observer.unobserve(ref.current);
+      }
+    }, { threshold: 0.1, ...options });
+
+    if (ref.current) observer.observe(ref.current);
+    return () => observer.disconnect();
+  }, [options]);
+
+  return [ref, isIntersecting] as const;
+}
+
+const CountUp = ({ end, duration = 2000, suffix = "" }: { end: number, duration?: number, suffix?: string }) => {
+  const [count, setCount] = useState(0);
+  const [ref, isVisible] = useIntersectionObserver();
+
+  useEffect(() => {
+    if (!isVisible) return;
+    
+    let startTime: number;
+    let animationFrame: number;
+
+    const updateCount = (timestamp: number) => {
+      if (!startTime) startTime = timestamp;
+      const progress = timestamp - startTime;
+      const percentage = Math.min(progress / duration, 1);
+      const easeProgress = percentage === 1 ? 1 : 1 - Math.pow(2, -10 * percentage);
+      
+      setCount(Math.floor(end * easeProgress));
+
+      if (percentage < 1) {
+        animationFrame = requestAnimationFrame(updateCount);
+      }
+    };
+
+    animationFrame = requestAnimationFrame(updateCount);
+    return () => cancelAnimationFrame(animationFrame);
+  }, [end, duration, isVisible]);
+
+  return (
+    <span ref={ref}>
+      {count}{suffix}
+    </span>
+  );
+};
+
+const mediaVideos = [
+  { id: "POtf5roWMwE", title: "Global Mentorship Program", category: "Mentorship" },
+  { id: "hVPoLKMRfKQ", title: "ISF Summit Highlights", category: "Summit" },
+  { id: "nP4ME1M5Ev4", title: "Empowering Rural Ambitions", category: "Rural Innovation" },
+  { id: "iWi1173Bh_0", title: "Junicorns Pitching Session", category: "Pitches" },
+  { id: "n6hSZS8wi-o", title: "Future Leaders Showcase", category: "Leaders" },
+  { id: "8DiEYebHZUY", title: "Ecosystem Partner Network", category: "Ecosystem" },
+  { id: "Z1PXHqvQ_sY", title: "Startup Scaling & Success", category: "Startups" },
+  { id: "fDpX7sfh8d4", title: "Innovation Spotlight", category: "Spotlight" }
+];
+
+const faqs = [
+  {
+    q: "What is the Junicorn Rural Innovation Challenge?",
+    a: "The Junicorn (Junior Unicorns) Rural Innovation Challenge is a flagship national program by the International Startup Foundation (ISF). It bridges the gap between rural ambition and global opportunities by empowering young innovators aged 8 to 25 to solve community problems and transform their ideas into scalable, impact-driven startup ventures."
+  },
+  {
+    q: "Who is eligible to participate in the Junicorn program?",
+    a: "Students and young innovators aged 8 to 25 are eligible to apply. The initiative encompasses dedicated school-level and college-level programs to support and nurture ideas at different stages of educational growth."
+  },
+  {
+    q: "What are the core focus sectors/arenas for Cohort 3.0?",
+    a: "Cohort 3.0 invites solutions in vital domains including Agriculture & Food Security, Healthcare & Well-being, Smart Manufacturing & MSME Growth, Clean Energy & Sustainability, Water Security & Climate Action, Space & Deep-Tech, and Education & Skill Development."
+  },
+  {
+    q: "Do I need a registered startup or a working prototype to apply?",
+    a: "No, you do not need a registered company or a working prototype. We welcome early-stage problem statements and promising ideas. The program's build phase is designed to help you construct your MVP (Minimum Viable Product) from scratch with expert guidance."
+  },
+  {
+    q: "What does the '3 M's' ecosystem stand for?",
+    a: "ISF supports startups through the '3 M's': Mentorship (guidance from 800+ global industry experts), Market Access (opportunities to showcase ideas at global summits in Austin and Dubai), and Money (direct connection to angel networks, VCs, and development grants)."
+  },
+  {
+    q: "Is there a registration fee to participate in the challenge?",
+    a: "No, participation in Junicorn camps, mentorship sessions, and startup challenges is completely free. Furthermore, ISF offers travel and accommodation support for top selected teams to present at global summits."
+  },
+  {
+    q: "Can I apply individually, and are cross-school teams allowed?",
+    a: "Yes! You can apply as an individual innovator or as a team. We also highly encourage cross-institutional collaboration, allowing teams to form with members from different schools or colleges."
+  },
+  {
+    q: "How can industry professionals and schools partner with ISF?",
+    a: "Industry leaders can apply to join the Global Mentorship Program ('One Hour a Week') to guide student founders. Schools and colleges can partner with us as institutional nodes to host localized innovation bootcamps on their campuses."
+  }
+];
+
+interface VideoCardProps {
+  videoId: string;
+  title: string;
+  category: string;
+}
+
+function VideoCard({ videoId, title, category }: VideoCardProps) {
+  const [isHovered, setIsHovered] = useState(false);
+
+  return (
+    <div
+      className="relative w-[280px] sm:w-[340px] shrink-0 bg-white border border-slate-200/60 rounded-2xl shadow-[0_10px_35px_rgba(0,0,0,0.06)] hover:shadow-[0_20px_50px_rgba(0,0,0,0.15)] overflow-hidden transition-all duration-300 hover:scale-[1.02] flex flex-col group cursor-pointer"
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
+      {/* 16:9 Video Container */}
+      <div className="w-full aspect-video relative overflow-hidden bg-slate-950">
+        {/* Static YouTube Thumbnail Overlay */}
+        <div 
+          className={`absolute inset-0 transition-opacity duration-300 z-10 ${
+            isHovered ? "opacity-0 pointer-events-none" : "opacity-100"
+          }`}
+        >
+          <img
+            src={`https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`}
+            alt={title}
+            className="w-full h-full object-cover"
+            onError={(e) => {
+              e.currentTarget.src = `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`;
+            }}
+          />
+          {/* Play Button Overlay */}
+          <div className="absolute inset-0 bg-slate-950/20 flex items-center justify-center">
+            <div className="w-12 h-12 bg-white/30 backdrop-blur-md rounded-full flex items-center justify-center border border-white/40 group-hover:scale-110 group-hover:bg-isf-orange group-hover:border-isf-orange transition-all duration-300 shadow-md">
+              <Play size={18} className="text-white fill-white ml-0.5" />
+            </div>
+          </div>
+        </div>
+
+        {/* Embed on Hover */}
+        {isHovered && (
+          <iframe
+            src={`https://www.youtube.com/embed/${videoId}?autoplay=1&controls=0&rel=0&modestbranding=1&loop=1&playlist=${videoId}`}
+            title={title}
+            className="w-full h-full border-0 absolute inset-0 pointer-events-none"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          />
+        )}
+      </div>
+
+      {/* Card Content details below */}
+      <div className="p-4 sm:p-5 flex flex-col gap-2 flex-grow text-left bg-white">
+        <span className="text-[10px] sm:text-xs font-bold text-isf-orange tracking-widest uppercase font-inter">
+          {category}
+        </span>
+        <h4 className="text-xs sm:text-sm font-bold text-slate-800 leading-snug font-inter line-clamp-2 group-hover:text-isf-orange transition-colors duration-300">
+          {title}
+        </h4>
+      </div>
+    </div>
+  );
+}
 
 export function LandingPage() {
   const [activeTab, setActiveTab] = useState("2026");
@@ -9,6 +174,7 @@ export function LandingPage() {
   const videoRef = useRef<HTMLVideoElement | null>(null);
   const [isMuted, setIsMuted] = useState(true);
   const [junicornIndex, setJunicornIndex] = useState(0);
+  const [openFaq, setOpenFaq] = useState<number | null>(null);
 
   const junicornSlides = [
     {
@@ -390,6 +556,54 @@ export function LandingPage() {
         </div>
       </section>
 
+      {/* 1.5. Trust and Impact Strip Section */}
+      <section className="relative z-30 -mt-10 sm:-mt-12 md:-mt-16 px-4 max-w-7xl mx-auto">
+        <div className="bg-gradient-to-r from-[#FFFBF7] to-[#FFF8F2] shadow-[0_20px_50px_rgba(15,23,42,0.22)] border border-orange-100/60 p-6 md:p-8 rounded-xl md:rounded-2xl">
+          <div className="grid grid-cols-2 md:grid-cols-5 gap-6 sm:gap-8 text-center divide-x-0 md:divide-x divide-slate-200/80">
+            <div className="px-2">
+              <h3 className="text-3xl sm:text-4xl font-extrabold text-slate-900 font-baskerville mb-1 sm:mb-2">
+                <CountUp end={austinJunicorns.length + dubaiJunicorns.length} />
+              </h3>
+              <p className="text-[10px] sm:text-xs font-bold text-isf-orange uppercase tracking-wider font-inter">
+                Junicorns Pitching
+              </p>
+            </div>
+            <div className="px-2 md:border-t-0 border-t pt-4 md:pt-0 border-slate-200/80">
+              <h3 className="text-3xl sm:text-4xl font-extrabold text-slate-900 font-baskerville mb-1 sm:mb-2">
+                <CountUp end={austinSpeakers.length} suffix="+" />
+              </h3>
+              <p className="text-[10px] sm:text-xs font-bold text-isf-orange uppercase tracking-wider font-inter">
+                Global Speakers
+              </p>
+            </div>
+            <div className="px-2 md:border-t-0 border-t pt-4 md:pt-0 border-slate-200/80">
+              <h3 className="text-3xl sm:text-4xl font-extrabold text-slate-900 font-baskerville mb-1 sm:mb-2">
+                <CountUp end={austinAngels.length} />
+              </h3>
+              <p className="text-[10px] sm:text-xs font-bold text-isf-orange uppercase tracking-wider font-inter">
+                Idea Angels
+              </p>
+            </div>
+            <div className="px-2 md:border-t-0 border-t pt-4 md:pt-0 border-slate-200/80">
+              <h3 className="text-3xl sm:text-4xl font-extrabold text-slate-900 font-baskerville mb-1 sm:mb-2">
+                <CountUp end={vcLogos.length} suffix="+" />
+              </h3>
+              <p className="text-[10px] sm:text-xs font-bold text-isf-orange uppercase tracking-wider font-inter">
+                VC & Investor Partners
+              </p>
+            </div>
+            <div className="px-2 md:border-t-0 border-t pt-4 md:pt-0 border-slate-200/80">
+              <h3 className="text-3xl sm:text-4xl font-extrabold text-slate-900 font-baskerville mb-1 sm:mb-2">
+                <CountUp end={10000} suffix="+" />
+              </h3>
+              <p className="text-[10px] sm:text-xs font-bold text-isf-orange uppercase tracking-wider font-inter">
+                Startup Registrations
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* 2. Dubai Video Section */}
       <section className="py-12 bg-white">
         <div className="max-w-5xl mx-auto px-4">
@@ -748,7 +962,50 @@ export function LandingPage() {
         </div>
       </section>
 
+      {/* Media Section */}
+      <section className="py-20 bg-slate-50 border-b border-gray-100 overflow-hidden relative">
+        {/* Subtle grid lines background overlay */}
+        <div className="absolute inset-0 opacity-[0.015] pointer-events-none">
+          <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <pattern id="media-grid" width="40" height="40" patternUnits="userSpaceOnUse">
+                <path d="M 40 0 L 0 0 0 40" fill="none" stroke="black" strokeWidth="1" />
+              </pattern>
+            </defs>
+            <rect width="100%" height="100%" fill="url(#media-grid)" />
+          </svg>
+        </div>
 
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-12 relative z-10">
+          <div className="text-center space-y-3">
+            <span className="text-xs font-extrabold text-isf-orange tracking-widest uppercase block font-inter">
+              Moments & Highlights
+            </span>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold font-baskerville text-slate-900 leading-tight">
+              Media Showcase
+            </h2>
+            <p className="text-slate-500 text-sm md:text-base max-w-xl mx-auto font-light font-inter">
+              Highlights, stories, and moments from our global summits and challenges.
+            </p>
+            <div className="w-12 h-1 bg-isf-orange mx-auto rounded mt-4"></div>
+          </div>
+        </div>
+
+        {/* Carousel / Marquee Container */}
+        <div className="w-full flex overflow-hidden py-4 select-none relative z-10">
+          <div className="flex gap-6 min-w-max animate-marquee hover:[animation-play-state:paused]">
+            {/* Double the array elements to ensure seamless loop */}
+            {[...mediaVideos, ...mediaVideos].map((video, idx) => (
+              <VideoCard
+                key={`${video.id}-${idx}`}
+                videoId={video.id}
+                title={video.title}
+                category={video.category}
+              />
+            ))}
+          </div>
+        </div>
+      </section>
 
       {/* VC & Investor Connect Section */}
       <section className="py-16 bg-[#f9f9f9] border-b border-gray-100">
@@ -809,6 +1066,54 @@ export function LandingPage() {
                   <p className="text-xxs text-slate-500 font-medium leading-relaxed max-w-xs mx-auto">
                     {member.role}
                   </p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 6.5. FAQ Section */}
+      <section className="py-20 bg-slate-50 border-b border-gray-100">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center space-y-3 mb-12">
+            <span className="text-xs font-extrabold text-isf-orange tracking-widest uppercase block font-inter">
+              HAVE QUESTIONS?
+            </span>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold font-baskerville text-slate-900 leading-tight text-center">
+              Frequently Asked Questions
+            </h2>
+            <div className="w-12 h-1 bg-isf-orange mx-auto rounded mt-4"></div>
+          </div>
+
+          <div className="space-y-4">
+            {faqs.map((faq, idx) => (
+              <div 
+                key={idx} 
+                className="bg-white border border-slate-200/80 rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-300"
+              >
+                <button
+                  onClick={() => setOpenFaq(openFaq === idx ? null : idx)}
+                  className="w-full text-left px-6 py-5 flex items-center justify-between focus:outline-none hover:bg-slate-50/50 transition-colors cursor-pointer"
+                >
+                  <span className="font-bold text-slate-900 pr-8 font-baskerville text-base sm:text-lg leading-snug">
+                    {faq.q}
+                  </span>
+                  {openFaq === idx ? (
+                    <ChevronUp size={20} className="text-isf-orange shrink-0 transition-transform duration-300" />
+                  ) : (
+                    <ChevronDown size={20} className="text-slate-400 shrink-0 transition-transform duration-300" />
+                  )}
+                </button>
+                
+                <div 
+                  className={`transition-all duration-300 ease-in-out overflow-hidden ${
+                    openFaq === idx ? "max-h-[300px] border-t border-slate-100" : "max-h-0"
+                  }`}
+                >
+                  <div className="px-6 py-5 text-slate-600 text-sm leading-relaxed font-inter">
+                    {faq.a}
+                  </div>
                 </div>
               </div>
             ))}
