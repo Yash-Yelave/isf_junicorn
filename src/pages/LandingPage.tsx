@@ -339,7 +339,7 @@ export function LandingPage() {
         link: "/isf-2023"
       },
       {
-        tag: "ISF INDIA STARTUP FESTIVAL, 2023",
+        tag: "ISF INTERNATIONAL STARTUP FOUNDATION, 2023",
         title: "Mark Unmissable Days",
         date: "September 27 - 28, 2023",
         time: "09:00 AM - 05:00 PM (Asia/Kolkata)",
@@ -357,7 +357,7 @@ export function LandingPage() {
         link: ""
       },
       {
-        tag: "ISF INDIA STARTUP FESTIVAL, 2022",
+        tag: "ISF INTERNATIONAL STARTUP FOUNDATION, 2022",
         title: "Redefining The Startup",
         date: "October 1 - 2, 2022",
         time: "09:00 AM - 05:00 PM (Asia/Kolkata)",

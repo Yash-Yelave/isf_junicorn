@@ -133,14 +133,14 @@ export function AboutUs() {
   ];
 
   const team = [
-    { name: "J A Chowdary", role: "Key Architect, Indian Tech Industry / Chairperson & Convenor, India Startup Festival", image: "/assets/images/J-A-Chowdary.jpg" },
+    { name: "J A Chowdary", role: "Key Architect, Indian Tech Industry / Chairperson & Convenor, International Startup Foundation", image: "/assets/images/J-A-Chowdary.jpg" },
     { name: "Dr. Siva Mahesh Tangutooru", role: "Founder CEO, Jama Botanics & TurfPearl Agritech / Co-founder & Managing Trustee India Startup Foundation", image: "/assets/team/shiva.a623ce07.svg" },
-    { name: "M. Sathyendra Kumar", role: "Business Unit Head – India, Maccaferri Environmental Solutions Pvt Ltd / Co-founder, India Startup Festival", image: "/assets/team/sathyendra_kumar.jpg" },
+    { name: "M. Sathyendra Kumar", role: "Business Unit Head – India, Maccaferri Environmental Solutions Pvt Ltd / Co-founder, International Startup Foundation", image: "/assets/team/sathyendra_kumar.jpg" },
     { name: "Deenanath Harapanahalli", role: "Founder CEO, LifeCykul / Co-founder & India Startup Foundation", image: "/assets/images/placeholder.jpg" },
-    { name: "Seshadri Vangala", role: "Founder and Group CEO IFin Global Group & SGlobal Group / Co-founder & India Startup Festival", image: "/assets/images/Seshadri-Vangala.jpg" },
+    { name: "Seshadri Vangala", role: "Founder and Group CEO IFin Global Group & SGlobal Group / Co-founder & International Startup Foundation", image: "/assets/images/Seshadri-Vangala.jpg" },
     { name: "Achyut Yerragangu", role: "Founder, CEO, Nature Quotient Ventures Pvt Ltd / Co-founder & COO, International Startup Foundation", image: "/assets/images/Achyut-Yerragangu.jpg" },
-    { name: "Bipin Chandra Pendyala", role: "CPO, InvenioLSI / Co-founder, India Startup Festival", image: "/assets/team/bipun_chandar.jpeg" },
-    { name: "Dr. Bhanu Prakash Varla", role: "Partner & Director, Plural Technology & EdifyPath / Co-founder, India Startup Festival", image: "/assets/team/varla_bhanu.jpg" }
+    { name: "Bipin Chandra Pendyala", role: "CPO, InvenioLSI / Co-founder, International Startup Foundation", image: "/assets/team/bipun_chandar.jpeg" },
+    { name: "Dr. Bhanu Prakash Varla", role: "Partner & Director, Plural Technology & EdifyPath / Co-founder, International Startup Foundation", image: "/assets/team/varla_bhanu.jpg" }
   ];
 
   const awards = [

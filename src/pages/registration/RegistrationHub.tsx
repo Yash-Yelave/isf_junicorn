@@ -65,7 +65,7 @@ export function RegistrationHub() {
           </h1>
           <div className="h-1.5 w-16 bg-purple-700 mx-auto mt-4 rounded-full" />
           <p className="text-gray-500 mt-4 leading-relaxed text-sm sm:text-base">
-            Select the appropriate registration track below to secure your pass for the India Startup Festival 2025.
+            Select the appropriate registration track below to secure your pass for the International Startup Foundation 2025.
           </p>
         </div>
 
