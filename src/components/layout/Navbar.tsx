@@ -29,7 +29,6 @@ export function Navbar() {
       name: "ISF Events",
       path: "#",
       submenu: [
-        { name: "Dubai Innovation Summit 2026", path: "/event" },
         { name: "ISF AI Summit 2025", path: "/isf-ai-summit" },
         { name: "ISF 2024 Hyderabad", path: "/isf-hyderabad-2024-main" },
         { name: "ISF 2024 Pune", path: "/isf-2024-pune" },
@@ -42,8 +41,9 @@ export function Navbar() {
       path: "#",
       submenu: [
         { name: "Cohort 1 Austin 2025", path: "/isf-global-junicorn-ai-summit-2025" },
-        { name: "About Junicorn", path: "/junicornshub" },
-        { name: "Cohort 3.0", path: "/cohort-3" }
+        { name: "Cohort 2.0 Dubai 2026", path: "/cohort-2-dubai" },
+        { name: "Cohort 3.0", path: "/cohort-3" },
+        { name: "About Junicorn", path: "/junicornshub" }
       ]
     },
     {
