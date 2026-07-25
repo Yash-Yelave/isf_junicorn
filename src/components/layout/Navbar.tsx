@@ -47,10 +47,6 @@ export function Navbar() {
       ]
     },
     {
-      name: "Dignitaries",
-      path: "/distinguished-guests"
-    },
-    {
       name: "About Us",
       path: "/about-us"
     }
