@@ -402,45 +402,6 @@ export function LandingPage() {
     "/assets/images/cc-logo.jpg"
   ];
 
-  const team = [
-    {
-      name: "J A Chowdary",
-      role: "Key Architect, Indian Tech Industry",
-      title: "Founder, ISF",
-      image: "/assets/2024/02/J-A-Chowdary.jpg"
-    },
-    {
-      name: "Deenanath Harapanahalli",
-      role: "Founder & CEO, LifeCykul & Ontropi",
-      title: "Co-founder, ISF",
-      image: "/assets/2024/03/Deenanath-Harapanahalli.jpg"
-    },
-    {
-      name: "Dr. Siva Mahesh Tangutooru",
-      role: "Founder & CEO, Jama Botanics & TurfPearl Agritech",
-      title: "Co-founder, ISF",
-      image: "/assets/2024/02/Dr.-Siva-Mahesh-Tangutooru.jpg"
-    },
-    {
-      name: "Seshadri Vangala",
-      role: "Founder and Group CEO IFin Global Group & SGlobal Group",
-      title: "Co-founder, ISF",
-      image: "/assets/2024/02/Seshadri-Vangala.jpg"
-    },
-    {
-      name: "M. Sathyendra Kumar",
-      role: "Business Unit Head - India, Maccaferri Environmental Solutions Pvt Ltd",
-      title: "Co-founder, ISF",
-      image: "/assets/2024/03/M.-Sathyendra-Kumar.jpg"
-    },
-    {
-      name: "Achyut Yerragangu",
-      role: "Founder, CEO, Nature Quotient Ventures Pvt Ltd",
-      title: "Co-founder & COO, International Startup Foundation",
-      image: "/assets/2024/03/Achyut-Yerragangu.jpg"
-    }
-  ];
-
   return (
     <div className="font-inter pt-20">
       {/* 1. Hero Sliding Banner Section */}
@@ -1024,49 +985,6 @@ export function LandingPage() {
             {vcLogos.map((logo, idx) => (
               <div key={idx} className="bg-white rounded-lg shadow-sm border border-[#e6e6e6] hover:shadow-md transition-shadow flex items-center justify-center p-3 w-28 h-16 md:w-36 md:h-20 lg:w-40 lg:h-24">
                 <img src={logo} alt={`VC Partner ${idx+1}`} className="max-w-full max-h-full object-contain grayscale hover:grayscale-0 transition-all duration-300 opacity-75 hover:opacity-100" />
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* 6. ISF Conference Team */}
-      <section className="py-16 bg-white border-b border-gray-100">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center space-y-3 mb-12">
-            <h2 className="text-2xl font-bold font-baskerville">
-              ISF Conference Team
-            </h2>
-            <div className="w-12 h-1 bg-isf-orange mx-auto rounded"></div>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
-            {team.map((member, idx) => (
-              <div
-                key={idx}
-                className="bg-slate-50 border border-gray-100 rounded-lg p-6 text-center space-y-4 hover:shadow-md transition-shadow"
-              >
-                <div className="w-24 h-24 rounded-full overflow-hidden mx-auto bg-gray-200 border-2 border-isf-orange/20">
-                  <img
-                    src={member.image}
-                    alt={member.name}
-                    className="w-full h-full object-cover"
-                    onError={(e) => {
-                      e.currentTarget.src = "/assets/images/cropped-isf-favicon-192x192.png";
-                    }}
-                  />
-                </div>
-                <div className="space-y-1">
-                  <h4 className="text-base font-bold text-slate-900 font-baskerville">
-                    {member.name}
-                  </h4>
-                  <p className="text-xs text-isf-orange font-semibold">
-                    {member.title}
-                  </p>
-                  <p className="text-xxs text-slate-500 font-medium leading-relaxed max-w-xs mx-auto">
-                    {member.role}
-                  </p>
-                </div>
               </div>
             ))}
           </div>
