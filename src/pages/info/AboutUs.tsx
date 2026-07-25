@@ -287,12 +287,12 @@ export function AboutUs() {
             ))}
           </div>
 
-          <div className="max-w-5xl mx-auto relative rounded-2xl overflow-hidden shadow-2xl group cursor-pointer">
-             <img src="/assets/about-us/about-ISF-1024x499.png" alt="ISF Ecosystem" className="w-full object-cover transform group-hover:scale-105 transition-transform duration-700" />
-             <div className="absolute inset-0 bg-black/40 flex flex-col items-center justify-center text-white transition-opacity group-hover:bg-black/50">
-                <PlayCircle size={64} className="text-isf-orange mb-4 group-hover:scale-110 transition-transform" />
-                <h3 className="text-2xl md:text-4xl font-extrabold drop-shadow-md">Watch our video!</h3>
-             </div>
+          <div className="max-w-5xl mx-auto bg-white p-4 md:p-6 rounded-3xl border border-gray-150 shadow-[0_20px_50px_rgba(0,0,0,0.06)] hover:shadow-[0_20px_50px_rgba(0,0,0,0.12)] transition-shadow duration-300">
+             <img 
+               src="/assets/about-us/about-ISF-1024x499.png" 
+               alt="ISF Ecosystem Growth Timeline (2022 - 2024)" 
+               className="w-full rounded-2xl object-contain" 
+             />
           </div>
         </div>
       </section>
@@ -318,30 +318,38 @@ export function AboutUs() {
       </section>
 
       {/* 4. ISF INDIA CORE VALUES */}
-      <section className="py-16 bg-[#111] text-white">
+      <section className="py-16 bg-[#FAF9F6] border-b border-gray-200">
         <div className="container-custom space-y-12 px-4">
           <div className="text-center space-y-3">
-            <h2 className="text-2xl md:text-3xl font-extrabold font-inter tracking-tight uppercase">ISF INDIA CORE VALUES</h2>
-            <p className="text-xs text-white/80 font-semibold uppercase tracking-wider">Ambitious Values Shaping the Nation's Future Success</p>
+            <h2 className="text-2xl md:text-3xl font-extrabold font-inter tracking-tight uppercase text-[#111111]">ISF INDIA CORE VALUES</h2>
+            <p className="text-xs text-[#666666] font-semibold uppercase tracking-wider">Ambitious Values Shaping the Nation's Future Success</p>
             <div className="w-12 h-1 bg-isf-orange mx-auto rounded"></div>
           </div>
           
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            <div className="flex flex-col items-center text-center space-y-4">
-              <img src="/assets/about-us/commitment.svg" alt="Commitment" className="w-20 h-20" />
+            <div className="bg-white border border-gray-100 rounded-2xl p-6 shadow-sm hover:shadow-md transition-all flex flex-col items-center text-center space-y-4">
+              <div className="w-24 h-24 rounded-full bg-[#FAF8F5] flex items-center justify-center p-4">
+                <img src="/assets/about-us/commitment.svg" alt="Commitment" className="w-full h-full object-contain" />
+              </div>
               <h3 className="text-lg font-bold uppercase tracking-widest text-[#D24D7F]">Commitment</h3>
             </div>
-            <div className="flex flex-col items-center text-center space-y-4">
-              <img src="/assets/about-us/innovation.svg" alt="Innovation" className="w-20 h-20" />
+            <div className="bg-white border border-gray-100 rounded-2xl p-6 shadow-sm hover:shadow-md transition-all flex flex-col items-center text-center space-y-4">
+              <div className="w-24 h-24 rounded-full bg-[#FAF8F5] flex items-center justify-center p-4">
+                <img src="/assets/about-us/innovation.svg" alt="Innovation" className="w-full h-full object-contain" />
+              </div>
               <h3 className="text-lg font-bold uppercase tracking-widest text-isf-orange">Innovation</h3>
             </div>
-            <div className="flex flex-col items-center text-center space-y-4">
-              <img src="/assets/about-us/collaboration.svg" alt="Collaboration" className="w-20 h-20" />
-              <h3 className="text-lg font-bold uppercase tracking-widest text-teal-500">Collaboration</h3>
+            <div className="bg-white border border-gray-100 rounded-2xl p-6 shadow-sm hover:shadow-md transition-all flex flex-col items-center text-center space-y-4">
+              <div className="w-24 h-24 rounded-full bg-[#FAF8F5] flex items-center justify-center p-4">
+                <img src="/assets/about-us/collaboration.svg" alt="Collaboration" className="w-full h-full object-contain" />
+              </div>
+              <h3 className="text-lg font-bold uppercase tracking-widest text-teal-600">Collaboration</h3>
             </div>
-            <div className="flex flex-col items-center text-center space-y-4">
-              <img src="/assets/about-us/support.svg" alt="Support" className="w-20 h-20" />
-              <h3 className="text-lg font-bold uppercase tracking-widest text-blue-400">Support</h3>
+            <div className="bg-white border border-gray-100 rounded-2xl p-6 shadow-sm hover:shadow-md transition-all flex flex-col items-center text-center space-y-4">
+              <div className="w-24 h-24 rounded-full bg-[#FAF8F5] flex items-center justify-center p-4">
+                <img src="/assets/about-us/support.svg" alt="Support" className="w-full h-full object-contain" />
+              </div>
+              <h3 className="text-lg font-bold uppercase tracking-widest text-blue-500">Support</h3>
             </div>
           </div>
         </div>
