@@ -173,7 +173,10 @@ export function AboutUs() {
         <div className="absolute inset-0 bg-black/50 z-0"></div>
 
         <div className="container-custom text-center relative z-10 max-w-4xl mx-auto px-6 space-y-6">
-          <h1 className="text-3xl md:text-5xl lg:text-6xl font-extrabold leading-tight tracking-tight drop-shadow-lg text-white">
+          <h1 
+            className="text-3xl md:text-5xl lg:text-6xl font-extrabold leading-tight tracking-tight drop-shadow-lg !text-white"
+            style={{ color: '#ffffff' }}
+          >
             Unveiling the <br className="hidden md:block" />
             International Startup Foundation
           </h1>
@@ -185,7 +188,10 @@ export function AboutUs() {
             </svg>
           </div>
 
-          <h2 className="text-2xl md:text-4xl font-extrabold uppercase tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-amber-200 to-yellow-400 drop-shadow">
+          <h2 
+            className="text-2xl md:text-4xl font-extrabold uppercase tracking-wider !text-white drop-shadow"
+            style={{ color: '#ffffff' }}
+          >
             ISF INDIA
           </h2>
           <p className="text-xl md:text-2xl italic font-semibold text-amber-100/90 drop-shadow">
@@ -457,12 +463,20 @@ export function AboutUs() {
             <h3 className="text-xl font-bold mt-4 uppercase text-[#D24D7F]">Encouraging Next Generation Innovators</h3>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-5 gap-6">
-             {junicorns.map((img, i) => (
-                 <div key={i} className="bg-white rounded-xl shadow-sm p-4 flex items-center justify-center hover:shadow-md transition-shadow">
-                     <img src={img} alt={`Junicon ${i+1}`} className="w-full h-24 object-contain" />
-                 </div>
-             ))}
+          <div className="relative flex overflow-hidden group py-6 bg-white shadow-inner border-y border-teal-100 rounded-2xl">
+            <div className="flex gap-6 w-max animate-marquee pr-6 hover:[animation-play-state:paused]">
+               {junicorns.map((img, i) => (
+                   <div key={`slide-1-${i}`} className="w-[280px] md:w-[350px] h-[180px] md:h-[220px] shrink-0 rounded-2xl overflow-hidden shadow-lg hover:scale-105 transition-transform duration-500 bg-gray-100">
+                       <img src={img} alt={`Junicon ${i+1}`} className="w-full h-full object-cover" />
+                   </div>
+               ))}
+               {/* Duplicated for seamless loop */}
+               {junicorns.map((img, i) => (
+                   <div key={`slide-2-${i}`} className="w-[280px] md:w-[350px] h-[180px] md:h-[220px] shrink-0 rounded-2xl overflow-hidden shadow-lg hover:scale-105 transition-transform duration-500 bg-gray-100">
+                       <img src={img} alt={`Junicon ${i+1} duplicated`} className="w-full h-full object-cover" />
+                   </div>
+               ))}
+            </div>
           </div>
         </div>
       </section>
@@ -509,14 +523,7 @@ export function AboutUs() {
         </div>
       </section>
 
-      {/* 11. INTERNATIONAL STARTUP FESTIVALS 2024 Banner */}
-      <section className="py-16 bg-[#111] text-white">
-        <div className="container-custom text-center px-4">
-           <h2 className="text-2xl md:text-4xl font-extrabold tracking-widest uppercase text-transparent bg-clip-text bg-gradient-to-r from-isf-orange to-[#D24D7F]">
-             INTERNATIONAL STARTUP FESTIVALS 2024
-           </h2>
-        </div>
-      </section>
+      {/* 11. Banner Removed */}
 
       {/* 12. ISF Team */}
       <section className="py-16 bg-white border-b border-gray-150">
