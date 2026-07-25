@@ -12,7 +12,12 @@ import {
   Clock, 
   ExternalLink,
   ChevronDown,
-  ChevronUp
+  ChevronUp,
+  Presentation,
+  Sparkles,
+  Users,
+  Rocket,
+  ArrowRight
 } from "lucide-react";
 import { 
   schedule, 
@@ -35,6 +40,7 @@ const IconMap: Record<string, React.ComponentType<any>> = {
 export function DubaiEvent() {
   const [activeScheduleDay, setActiveScheduleDay] = useState(0);
   const [speakerCount, setSpeakerCount] = useState(12);
+  const [activeHighlight, setActiveHighlight] = useState(3);
 
   const toggleSpeakers = () => {
     if (speakerCount === 12) {
@@ -45,10 +51,26 @@ export function DubaiEvent() {
   };
 
   const highlights = [
-    { title: "50+ Top Junicorns Pitching", description: "Breakthrough innovations from India & UAE on a global stage." },
-    { title: "Inspiring Keynotes & Talks", description: "Next-gen tech, AI, and disruptive innovation insights." },
-    { title: "Industry Roundtables", description: "Engage in dynamic discussions with AI pioneers shaping the industry's future." },
-    { title: "High-Impact Networking", description: "Join a vibrant community of peers, mentors and partners dedicated to innovation and collaboration." }
+    { 
+      title: "50+ Top Junicorns Pitching", 
+      description: "Breakthrough innovations from India & UAE on a global stage.",
+      icon: Presentation
+    },
+    { 
+      title: "Inspiring Keynotes & Talks", 
+      description: "Next-gen tech, AI, and disruptive innovation insights.",
+      icon: Sparkles
+    },
+    { 
+      title: "Industry Roundtables", 
+      description: "Engage in dynamic discussions with AI pioneers shaping the industry's future.",
+      icon: Users
+    },
+    { 
+      title: "High-Impact Networking", 
+      description: "Join a vibrant community of peers, mentors and partners dedicated to innovation and collaboration.",
+      icon: Rocket
+    }
   ];
 
   return (
@@ -114,33 +136,60 @@ export function DubaiEvent() {
       </section>
 
       {/* Highlights Section */}
-      <section className="py-16 md:py-24 bg-white" id="highlights">
+      <section className="py-20 md:py-28 bg-[linear-gradient(180deg,#FFFFFF_0%,#FAF9F6_100%)] overflow-hidden" id="highlights">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <span className="px-4 py-1 text-xs font-bold bg-[#e6f2ef] text-[#016a56] rounded-full tracking-widest uppercase inline-block mb-4">
+            <span className="px-4 py-1 text-xs font-bold bg-[#e6f2ef] text-[#016a56] rounded-full tracking-widest uppercase inline-block mb-4 border border-[#016a56]/10">
               Highlights
             </span>
-            <h2 className="text-3xl md:text-5xl font-bold text-[#063a31]">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#063a31]">
               Summit Highlights
             </h2>
+            <p className="text-[#4d4d4d] text-sm md:text-base max-w-xl mx-auto mt-3">
+              Discover what awaits you at the Dubai Global Innovation Summit & Retreat
+            </p>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-            {highlights.map((item, idx) => (
-              <div 
-                key={idx}
-                className="text-center flex flex-col items-center group"
-              >
-                <div className="w-20 h-20 flex items-center justify-center rounded-full mb-6 bg-[#fff7e3] text-[#d94686] transition-transform duration-300 group-hover:-translate-y-2 group-hover:shadow-[0_12px_24px_rgba(217,70,134,0.15)]">
-                  <CheckCircle2 size={32} />
+
+          {/* Overlapping Cards Stack */}
+          <div className="flex flex-col md:flex-row items-stretch justify-center pt-6 pb-10 px-2 max-w-6xl mx-auto min-h-[320px]">
+            {highlights.map((item, idx) => {
+              const IconComp = item.icon;
+              const isActive = activeHighlight === idx;
+              
+              return (
+                <div
+                  key={idx}
+                  onClick={() => setActiveHighlight(idx)}
+                  onMouseEnter={() => setActiveHighlight(idx)}
+                  className={`relative cursor-pointer transition-all duration-700 ease-in-out rounded-2xl p-7 md:p-8 flex flex-col justify-start w-full md:w-[280px] lg:w-[300px] shrink-0 mb-6 md:mb-0 ${
+                    idx > 0 ? "md:-ml-8 lg:-ml-12" : ""
+                  } ${
+                    isActive
+                      ? "z-30 bg-white text-[#063a31] scale-[1.05] -translate-y-4 border-2 border-[#016a56] shadow-none"
+                      : "z-10 bg-white text-[#063a31] border border-[#e6f2ef] hover:z-20 hover:-translate-y-2 opacity-95 hover:opacity-100 shadow-[0_18px_40px_rgba(0,0,0,0.22)]"
+                  }`}
+                >
+                  {/* Icon Container */}
+                  <div className={`w-16 h-16 rounded-2xl flex items-center justify-center mb-6 transition-all duration-700 ease-in-out ${
+                    isActive 
+                      ? "bg-[#016a56] text-white scale-105" 
+                      : "bg-[#e6f2ef] text-[#016a56]"
+                  }`}>
+                    <IconComp size={28} />
+                  </div>
+
+                  {/* Card Title */}
+                  <h3 className="text-xl md:text-2xl font-bold text-[#063a31] mb-3 leading-snug">
+                    {item.title}
+                  </h3>
+
+                  {/* Card Description */}
+                  <p className="text-sm leading-relaxed text-[#555555]">
+                    {item.description}
+                  </p>
                 </div>
-                <h3 className="text-lg md:text-xl font-bold text-[#063a31] mb-3">
-                  {item.title}
-                </h3>
-                <p className="text-[#4d4d4d] text-sm leading-relaxed">
-                  {item.description}
-                </p>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>
