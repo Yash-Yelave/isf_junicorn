@@ -27,7 +27,7 @@ import { IsfPune2024 } from "./pages/conferences/IsfPune2024";
 import { IsfJamaica2024 } from "./pages/conferences/IsfJamaica2024";
 import { IsfNewJersey2024 } from "./pages/conferences/IsfNewJersey2024";
 import { IsfAiSummit } from "./pages/conferences/IsfAiSummit";
-import { IsfGlobalJunicornAiSummit } from "./pages/conferences/IsfGlobalJunicornAiSummit";
+import { Cohort1Austin } from "./pages/conferences/Cohort1Austin";
 import { DubaiEvent } from "./pages/conferences/DubaiEvent";
 
 function App() {
@@ -51,7 +51,7 @@ function App() {
             
             {/* Conferences Pages */}
             <Route path="/isf-ai-summit" element={<IsfAiSummit />} />
-            <Route path="/isf-global-junicorn-ai-summit-2025" element={<IsfGlobalJunicornAiSummit />} />
+            <Route path="/cohort-1-austin" element={<Cohort1Austin />} />
             <Route path="/cohort-2-dubai" element={<DubaiEvent />} />
             <Route path="/isf-hyderabad-2024-main" element={<IsfHyderabad2024 />} />
             <Route path="/isf-2024-pune" element={<IsfPune2024 />} />
