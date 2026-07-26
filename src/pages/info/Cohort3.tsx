@@ -1,8 +1,9 @@
+import { getImageUrl } from "../../utils/imageUtils";
 import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, useInView, AnimatePresence, useScroll, useTransform } from 'framer-motion';
 import {
-  ArrowRight, Leaf, Heart, Factory, Droplets, Rocket, BookOpen,
+ArrowRight, Leaf, Heart, Factory, Droplets, Rocket, BookOpen,
   Zap, Monitor, Building, Users2, ChevronDown, Globe,
   MapPin, Calendar, Star, TrendingUp, Lightbulb,
   Play, Pause, Volume2, VolumeX,
@@ -525,7 +526,7 @@ const Cohort3: React.FC = () => {
               </blockquote>
               <div className="mt-8 flex items-center gap-4">
                 <img
-                  src="/assets/cohort3/ja-chowdary.png"
+                  src={getImageUrl("/assets/cohort3/ja-chowdary.png")}
                   alt="Dr. J A Chowdary"
                   className="w-12 h-12 rounded-full object-cover border-2 border-isf-orange"
                   onError={e => { e.currentTarget.src = `https://ui-avatars.com/api/?name=JA+Chowdary&background=f97316&color=fff&size=256`; }}
@@ -1005,7 +1006,7 @@ const Cohort3: React.FC = () => {
               <FadeUp delay={0.2}>
                 <div className="rounded-3xl overflow-hidden border border-white/10 shadow-2xl bg-slate-900/50 aspect-video md:aspect-square lg:aspect-[4/3]">
                   <img
-                    src="/assets/cohort3/group-photo.png"
+                    src={getImageUrl("/assets/cohort3/group-photo.png")}
                     alt="Ready to Change India's Story"
                     className="w-full h-full object-cover"
                   />

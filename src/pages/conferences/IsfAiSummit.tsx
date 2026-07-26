@@ -1,3 +1,4 @@
+import { getImageUrl } from "../../utils/imageUtils";
 import React, { useState } from "react";
 import { 
   Calendar, 
@@ -20,7 +21,7 @@ import {
   ChevronUp
 } from "lucide-react";
 import { 
-  speakers, 
+speakers, 
   junicorns, 
   angels, 
   usaCommittee, 
@@ -116,7 +117,7 @@ export function IsfAiSummit() {
       <section className="relative min-h-[60vh] md:min-h-[70vh] flex items-center justify-start overflow-hidden px-4 md:px-8 py-12 md:py-16">
         <div className="absolute inset-0">
           <img 
-            src="/assets/images/pexels-introspectivedsgn-18441165.jpg" 
+            src={getImageUrl("/assets/images/pexels-introspectivedsgn-18441165.jpg")} 
             alt="ISF Global Background" 
             className="w-full h-full object-cover object-center" 
           />
@@ -794,7 +795,7 @@ export function IsfAiSummit() {
             <div className="bg-white border border-slate-200 rounded-3xl overflow-hidden shadow-sm hover:shadow-md transition-shadow flex flex-col">
               <div className="h-56 sm:h-64 bg-slate-100 overflow-hidden relative">
                 <img 
-                  src="/assets/images/txst.jpg" 
+                  src={getImageUrl("/assets/images/txst.jpg")} 
                   alt="Texas State University" 
                   className="w-full h-full object-cover" 
                 />
@@ -834,7 +835,7 @@ export function IsfAiSummit() {
             <div className="bg-white border border-slate-200 rounded-3xl overflow-hidden shadow-sm hover:shadow-md transition-shadow flex flex-col">
               <div className="h-56 sm:h-64 bg-slate-100 overflow-hidden relative">
                 <img 
-                  src="/assets/images/courthouse.jpg" 
+                  src={getImageUrl("/assets/images/courthouse.jpg")} 
                   alt="San Marcos, TX" 
                   className="w-full h-full object-cover" 
                 />

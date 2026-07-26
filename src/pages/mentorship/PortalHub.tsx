@@ -1,8 +1,8 @@
+import { getImageUrl } from "../../utils/imageUtils";
 import React, { useState } from "react";
 import { toast } from "sonner";
 import { motion, AnimatePresence } from "framer-motion";
 import { User, Key, Mail, Lock, ShieldCheck, Settings, Users, Calendar, LogOut, Edit3, ArrowRight } from "lucide-react";
-
 export function PortalHub() {
   const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
   const [role, setRole] = useState<"mentor" | "mentee">("mentor");
@@ -89,7 +89,7 @@ export function PortalHub() {
               {/* Logo / Header */}
               <div className="text-center space-y-2">
                 <img
-                  src="/assets/isf-logo.webp"
+                  src={getImageUrl("/assets/isf-logo.webp")}
                   alt="ISF Logo"
                   className="h-10 w-auto mx-auto"
                   onError={(e) => {

@@ -1,9 +1,9 @@
+import { getImageUrl } from "../utils/imageUtils";
 import { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { Calendar, MapPin, ChevronLeft, ChevronRight, Play, Clock, Building, Map, Volume2, VolumeX, ChevronDown, ChevronUp } from "lucide-react";
 import { speakers as austinSpeakers, junicorns as austinJunicorns, angels as austinAngels } from "./conferences/summitData";
 import { junicorns as dubaiJunicorns } from "./conferences/dubaiEventData";
-
 // --- Animated CountUp Component ---
 function useIntersectionObserver(options = {}) {
   const [isIntersecting, setIsIntersecting] = useState(false);
@@ -1047,7 +1047,7 @@ export function LandingPage() {
           </h2>
           <div className="flex flex-wrap justify-center items-center gap-8 md:gap-16 opacity-75">
             <img
-              src="/assets/images/isf-Logo-Final-TOL.png"
+              src={getImageUrl("/assets/images/isf-Logo-Final-TOL.png")}
               alt="Partner 1"
               className="h-10 w-auto object-contain grayscale hover:grayscale-0 transition-all cursor-pointer"
             />

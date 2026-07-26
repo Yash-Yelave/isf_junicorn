@@ -1,6 +1,6 @@
+import { getImageUrl } from "../../utils/imageUtils";
 import { Calendar, UserCheck, ShieldCheck, HelpCircle } from "lucide-react";
 import { Link } from "react-router-dom";
-
 export function OneHourAWeek() {
   const steps = [
     {
@@ -53,7 +53,7 @@ export function OneHourAWeek() {
           </div>
           <div className="flex justify-center">
             <img
-              src="/assets/images/1hour-1week.png"
+              src={getImageUrl("/assets/images/1hour-1week.png")}
               alt="1 Hour 1 Week"
               className="w-full max-w-sm object-contain"
             />

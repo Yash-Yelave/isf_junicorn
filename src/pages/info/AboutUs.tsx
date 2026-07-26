@@ -1,6 +1,6 @@
+import { getImageUrl } from "../../utils/imageUtils";
 import React, { useState, useEffect, useRef } from "react";
 import { Heart, Users, Award, Shield, Target, Activity, Calendar, Zap, Handshake, ChevronRight, PlayCircle, Star, Building2, Globe, FileText, CheckCircle2 } from "lucide-react";
-
 // --- Animated CountUp Component ---
 function useIntersectionObserver(options = {}) {
   const [isIntersecting, setIsIntersecting] = useState(false);
@@ -168,7 +168,7 @@ export function AboutUs() {
       {/* 1. Hero Section */}
       <section 
         className="relative py-24 md:py-36 bg-cover bg-center text-white overflow-hidden flex flex-col justify-center items-center"
-        style={{ backgroundImage: "url('/assets/about-us/hero-bg.jpg')" }}
+        style={{ backgroundImage: `url(${getImageUrl("/assets/about-us/hero-bg.jpg")})` }}
       >
         <div className="absolute inset-0 bg-black/50 z-0"></div>
 
@@ -226,7 +226,7 @@ export function AboutUs() {
             <div className="flex justify-center items-center">
               <div className="relative p-6 bg-amber-50/50 rounded-3xl border border-amber-100 max-w-md w-full">
                 <img 
-                  src="/assets/about-us/about-isf.svg" 
+                  src={getImageUrl("/assets/about-us/about-isf.svg")} 
                   alt="About ISF" 
                   className="w-full h-auto object-contain max-h-[350px]" 
                 />
@@ -246,7 +246,7 @@ export function AboutUs() {
             <div className="order-2 lg:order-1 flex justify-center items-center">
               <div className="relative rounded-3xl overflow-hidden shadow-xl max-w-md w-full border-4 border-white">
                 <img 
-                  src="/assets/about-us/8704.jpg" 
+                  src={getImageUrl("/assets/about-us/8704.jpg")} 
                   alt="ISF Team Gathering" 
                   className="w-full h-auto object-cover max-h-[350px]" 
                 />
@@ -295,7 +295,7 @@ export function AboutUs() {
 
           <div className="max-w-5xl mx-auto bg-white p-4 md:p-6 rounded-3xl border border-gray-150 shadow-[0_20px_50px_rgba(0,0,0,0.06)] hover:shadow-[0_20px_50px_rgba(0,0,0,0.12)] transition-shadow duration-300">
              <img 
-               src="/assets/about-us/about-ISF-1024x499.png" 
+               src={getImageUrl("/assets/about-us/about-ISF-1024x499.png")} 
                alt="ISF Ecosystem Growth Timeline (2022 - 2024)" 
                className="w-full rounded-2xl object-contain" 
              />
@@ -335,25 +335,25 @@ export function AboutUs() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             <div className="bg-white border border-gray-100 rounded-2xl p-6 shadow-sm hover:shadow-md transition-all flex flex-col items-center text-center space-y-4">
               <div className="w-24 h-24 rounded-full bg-[#FAF8F5] flex items-center justify-center p-4">
-                <img src="/assets/about-us/commitment.svg" alt="Commitment" className="w-full h-full object-contain" />
+                <img src={getImageUrl("/assets/about-us/commitment.svg")} alt="Commitment" className="w-full h-full object-contain" />
               </div>
               <h3 className="text-lg font-bold uppercase tracking-widest text-[#D24D7F]">Commitment</h3>
             </div>
             <div className="bg-white border border-gray-100 rounded-2xl p-6 shadow-sm hover:shadow-md transition-all flex flex-col items-center text-center space-y-4">
               <div className="w-24 h-24 rounded-full bg-[#FAF8F5] flex items-center justify-center p-4">
-                <img src="/assets/about-us/innovation.svg" alt="Innovation" className="w-full h-full object-contain" />
+                <img src={getImageUrl("/assets/about-us/innovation.svg")} alt="Innovation" className="w-full h-full object-contain" />
               </div>
               <h3 className="text-lg font-bold uppercase tracking-widest text-isf-orange">Innovation</h3>
             </div>
             <div className="bg-white border border-gray-100 rounded-2xl p-6 shadow-sm hover:shadow-md transition-all flex flex-col items-center text-center space-y-4">
               <div className="w-24 h-24 rounded-full bg-[#FAF8F5] flex items-center justify-center p-4">
-                <img src="/assets/about-us/collaboration.svg" alt="Collaboration" className="w-full h-full object-contain" />
+                <img src={getImageUrl("/assets/about-us/collaboration.svg")} alt="Collaboration" className="w-full h-full object-contain" />
               </div>
               <h3 className="text-lg font-bold uppercase tracking-widest text-teal-600">Collaboration</h3>
             </div>
             <div className="bg-white border border-gray-100 rounded-2xl p-6 shadow-sm hover:shadow-md transition-all flex flex-col items-center text-center space-y-4">
               <div className="w-24 h-24 rounded-full bg-[#FAF8F5] flex items-center justify-center p-4">
-                <img src="/assets/about-us/support.svg" alt="Support" className="w-full h-full object-contain" />
+                <img src={getImageUrl("/assets/about-us/support.svg")} alt="Support" className="w-full h-full object-contain" />
               </div>
               <h3 className="text-lg font-bold uppercase tracking-widest text-blue-500">Support</h3>
             </div>
@@ -453,7 +453,7 @@ export function AboutUs() {
       {/* 8. ISF JUNICORNS */}
       <section className="py-16 bg-[#E8F5E9] border-b border-gray-200 relative overflow-hidden">
         <div className="absolute right-0 bottom-0 opacity-20 pointer-events-none w-1/3">
-           <img src="/assets/about-us/friends.svg" alt="" className="w-full h-full object-contain" />
+           <img src={getImageUrl("/assets/about-us/friends.svg")} alt="" className="w-full h-full object-contain" />
         </div>
         <div className="container-custom space-y-12 relative z-10 px-4">
           <div className="text-center space-y-3">

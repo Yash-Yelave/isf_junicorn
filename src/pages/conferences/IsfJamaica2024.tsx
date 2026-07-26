@@ -1,8 +1,8 @@
+import { getImageUrl } from "../../utils/imageUtils";
 import { useState } from "react";
 import { Calendar, MapPin, CheckCircle, ChevronLeft, ChevronRight, Quote, FileText, Download, Clock } from "lucide-react";
 import { Link } from "react-router-dom";
 import { jamaicaEventData } from "./jamaicaData";
-
 export function IsfJamaica2024() {
   const [activeSlide, setActiveSlide] = useState(0);
   const [activeTab, setActiveTab] = useState<"AM" | "PM">("AM");
@@ -83,7 +83,7 @@ export function IsfJamaica2024() {
       {/* 1. Header Banner */}
       <section 
         className="text-white pt-24 pb-32 md:pt-32 md:pb-40 relative bg-cover bg-center bg-no-repeat overflow-hidden"
-        style={{ backgroundImage: "url('/assets/images/jamaica-beach.jpg')" }}
+        style={{ backgroundImage: `url(${getImageUrl("/assets/images/jamaica-beach.jpg")})` }}
       >
         <div className="absolute inset-0 bg-slate-950/60 z-0"></div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6 relative z-10">

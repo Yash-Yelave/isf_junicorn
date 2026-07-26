@@ -1,11 +1,11 @@
+import { getImageUrl } from "../../utils/imageUtils";
 import { distinguishedGuestsData, cxosData } from "./distinguishedGuestsData";
-
 export function DistinguishedGuests() {
   return (
     <div 
       className="font-inter pb-16 pt-24 min-h-screen"
       style={{
-        backgroundImage: "url('/assets/images/blurry-white-bg.jpg')",
+        backgroundImage: `url(${getImageUrl("/assets/images/blurry-white-bg.jpg")})`,
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat',

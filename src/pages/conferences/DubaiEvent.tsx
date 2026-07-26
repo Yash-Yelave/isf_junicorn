@@ -1,3 +1,4 @@
+import { getImageUrl } from "../../utils/imageUtils";
 import React, { useState } from "react";
 import { 
   Calendar, 
@@ -20,7 +21,7 @@ import {
   ArrowRight
 } from "lucide-react";
 import { 
-  schedule, 
+schedule, 
   speakers, 
   panels, 
   roundtables, 
@@ -125,7 +126,7 @@ export function DubaiEvent() {
             {/* Right Column: Illustration Image */}
             <div className="lg:col-span-5 flex items-center justify-center animate-fade-in">
               <img
-                src="/assets/images/dubai-illustration.png"
+                src={getImageUrl("/assets/images/dubai-illustration.png")}
                 alt="Dubai Skyline Illustration"
                 className="w-full max-w-[450px] md:max-w-[500px] h-auto object-contain drop-shadow-[0_15px_30px_rgba(0,0,0,0.05)]"
               />

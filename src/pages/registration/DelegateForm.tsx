@@ -1,8 +1,8 @@
+import { getImageUrl } from "../../utils/imageUtils";
 import React, { useState } from "react";
 import { toast } from "sonner";
 import { ArrowLeft } from "lucide-react";
 import { Link } from "react-router-dom";
-
 interface Attendee {
   firstName: string;
   lastName: string;
@@ -103,7 +103,7 @@ export function DelegateForm() {
           {/* Top Banner Card */}
           <div className="relative h-44 md:h-56 bg-slate-800 flex items-center justify-center">
             <img
-              src="/assets/images/Conference_Delegate_Registration_banner_image_1.png"
+              src={getImageUrl("/assets/images/Conference_Delegate_Registration_banner_image_1.png")}
               alt="Delegate Banner"
               className="absolute inset-0 w-full h-full object-cover opacity-60"
               onError={(e) => {

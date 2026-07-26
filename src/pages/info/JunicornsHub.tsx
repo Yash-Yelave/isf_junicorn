@@ -1,8 +1,8 @@
+import { getImageUrl } from "../../utils/imageUtils";
 import { useState } from "react";
 import { ChevronDown, ChevronUp, ChevronLeft, ChevronRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import heroImg from "../../assets/hero.png";
-
 export function JunicornsHub() {
   // FAQs State
   const [openFaq, setOpenFaq] = useState<number | null>(null);
@@ -231,7 +231,7 @@ export function JunicornsHub() {
                       {/* Background blob behind founder photo */}
                       <div className="absolute -inset-1.5 bg-gradient-to-br from-[#EAB308] to-[#F59E0B] rounded-full translate-x-1.5 translate-y-1.5 opacity-90 blur-[2px]"></div>
                       <img
-                        src="/assets/themes/jupiterx/junicon-26/images/jac.png"
+                        src={getImageUrl("/assets/themes/jupiterx/junicon-26/images/jac.png")}
                         alt="J A Chowdary"
                         className="relative w-20 h-20 sm:w-24 sm:h-24 object-cover rounded-full border-[3px] border-white shadow-md z-10"
                         onError={(e) => {
@@ -255,7 +255,7 @@ export function JunicornsHub() {
             <div className="lg:col-span-6 flex justify-center lg:justify-end z-10 relative">
               <div className="relative w-full max-w-lg lg:max-w-xl xl:max-w-2xl translate-x-4 lg:translate-x-8">
                 <img 
-                  src="/assets/images/hero-De-l_Mnh.png" 
+                  src={getImageUrl("/assets/images/hero-De-l_Mnh.png")} 
                   alt="Hero Illustration" 
                   className="w-full h-auto object-contain drop-shadow-xl hover:scale-[1.02] transition-transform duration-500"
                   onError={(e) => {

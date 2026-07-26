@@ -1,6 +1,6 @@
+import { getImageUrl } from "../../utils/imageUtils";
 import { Link } from "react-router-dom";
 import { Mail, Phone, MapPin } from "lucide-react";
-
 export function Footer() {
   return (
     <footer className="bg-[#111111] text-slate-300 border-t border-gray-800 font-inter mt-auto">
@@ -10,7 +10,7 @@ export function Footer() {
           {/* Column 1: Brand & Logo */}
           <div className="space-y-4">
             <img
-              src="/assets/images/isf-Logo-Final-TOL.png"
+              src={getImageUrl("/assets/images/isf-Logo-Final-TOL.png")}
               alt="ISF Logo"
               className="h-12 w-auto brightness-200"
               onError={(e) => {

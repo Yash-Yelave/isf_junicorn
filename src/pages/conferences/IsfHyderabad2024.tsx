@@ -1,3 +1,4 @@
+import { getImageUrl } from "../../utils/imageUtils";
 import React, { useState } from "react";
 import {
   Calendar,
@@ -13,7 +14,7 @@ import {
 } from "lucide-react";
 import { Link } from "react-router-dom";
 import {
-  hyderabadSpeakers,
+hyderabadSpeakers,
   hyderabadRoundtables,
   hyderabadSchedule
 } from "./eventsData";
@@ -82,7 +83,7 @@ export function IsfHyderabad2024() {
       <section className="relative min-h-[75vh] flex items-center justify-start overflow-hidden px-4 md:px-8 py-20" id="overview">
         <div className="absolute inset-0">
           <img
-            src="/assets/images/pexels-introspectivedsgn-18441165.jpg"
+            src={getImageUrl("/assets/images/pexels-introspectivedsgn-18441165.jpg")}
             alt="ISF Hyderabad Background"
             className="w-full h-full object-cover object-center"
           />

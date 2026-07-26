@@ -1,7 +1,7 @@
+import { getImageUrl } from "../../utils/imageUtils";
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X, ChevronDown } from "lucide-react";
-
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
@@ -61,7 +61,7 @@ export function Navbar() {
           <div className="flex-shrink-0">
             <Link to="/" onClick={closeMenu}>
               <img
-                src="/assets/images/isf-Logo-Final-TOL.png"
+                src={getImageUrl("/assets/images/isf-Logo-Final-TOL.png")}
                 alt="ISF Network"
                 className="h-16 w-auto object-contain"
                 onError={(e) => {
