@@ -116,7 +116,7 @@ export function Footer() {
 
         {/* Bottom row */}
         <div className="mt-12 pt-8 border-t border-gray-800 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-slate-500">
-          <p>© {new Date().getFullYear()} ISF Network. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} ISF Network. Managed by Jnanana Foundation. All rights reserved.</p>
           <div className="flex gap-4">
             <a href="#" className="hover:text-isf-orange transition-colors">Privacy Policy</a>
             <span className="text-slate-700">|</span>

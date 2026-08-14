@@ -215,7 +215,7 @@ export function AboutUs() {
                 <div className="w-12 h-1 bg-isf-orange rounded"></div>
               </div>
               <p className="text-base md:text-lg text-[#666666] leading-relaxed text-justify">
-                Dedicated to enhancing India’s entrepreneurial landscape, the International Startup Foundation (ISF) fosters vital connections between entrepreneurs, resources, investors, and mentors. Our commitment extends beyond conventional boundaries, embracing nature, nurturing enduring relationships, and championing youth and rural empowerment.
+                Dedicated to enhancing India’s entrepreneurial landscape, the International Startup Foundation (ISF), managed by Jnanana Foundation, fosters vital connections between entrepreneurs, resources, investors, and mentors. Our commitment extends beyond conventional boundaries, embracing nature, nurturing enduring relationships, and championing youth and rural empowerment.
               </p>
               <p className="text-base md:text-lg text-[#666666] leading-relaxed text-justify">
                 Aligned with GOI’s pivotal initiatives like Startup India, Digital India, and Make-in-India, ISF aims to collaborate with over 50,000 startups, fostering their growth and bolstering the vision of an Atmanirbhar Bharat.
