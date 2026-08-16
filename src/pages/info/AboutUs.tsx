@@ -1,6 +1,6 @@
 import { getImageUrl } from "../../utils/imageUtils";
 import React, { useState, useEffect, useRef } from "react";
-import { Heart, Users, Award, Shield, Target, Activity, Calendar, Zap, Handshake, ChevronRight, PlayCircle, Star, Building2, Globe, FileText, CheckCircle2 } from "lucide-react";
+import { Heart, Users, Award, Shield, Target, Activity, Calendar, Zap, Handshake, ChevronRight, PlayCircle, Star, Building2, Globe, FileText, CheckCircle2, Sparkles } from "lucide-react";
 // --- Animated CountUp Component ---
 function useIntersectionObserver(options = {}) {
   const [isIntersecting, setIsIntersecting] = useState(false);
@@ -68,24 +68,58 @@ export function AboutUs() {
 
   const features = [
     {
+      id: "01",
       title: "Enduring Connections",
-      desc: "We prioritize enduring connections, recognizing their power to drive sustained entrepreneurial success.",
+      desc: "Driving sustained entrepreneurial success through lasting strategic connections across global markets.",
+      icon: Handshake,
+      badgeBg: "bg-emerald-500/10 text-emerald-700 border-emerald-200",
+      iconBg: "from-emerald-600 to-teal-700 text-white shadow-emerald-600/30",
+      accent: "bg-emerald-600"
     },
     {
+      id: "02",
       title: "Extensive Network",
-      desc: "Aims to connect with over 50,000 startups, contributing to their goals and fostering growth",
+      desc: "Connecting 50,000+ startups with international investors, corporate leaders, and trade delegations.",
+      icon: Globe,
+      badgeBg: "bg-pink-500/10 text-[#D24D7F] border-pink-200",
+      iconBg: "from-[#D24D7F] to-rose-600 text-white shadow-pink-500/30",
+      accent: "bg-[#D24D7F]"
     },
     {
+      id: "03",
       title: "Mentorship & Guidance",
-      desc: "Provides mentorship opportunities, enriching its support for startups through guidance and expertise.",
+      desc: "Providing 1-on-1 access to seasoned CXOs, VCs, and domain experts worldwide.",
+      icon: Users,
+      badgeBg: "bg-amber-500/10 text-amber-700 border-amber-200",
+      iconBg: "from-amber-400 to-orange-500 text-white shadow-amber-500/30",
+      accent: "bg-amber-500"
     },
     {
+      id: "04",
       title: "Rural Enhancement",
-      desc: "ISF values rural entrepreneurship for its potential in driving inclusive growth and economic development.",
+      desc: "Championing grassroots rural entrepreneurship for inclusive and sustainable economic development.",
+      icon: Building2,
+      badgeBg: "bg-purple-500/10 text-purple-700 border-purple-200",
+      iconBg: "from-purple-600 to-indigo-700 text-white shadow-purple-600/30",
+      accent: "bg-purple-600"
     },
     {
+      id: "05",
       title: "Youth Empowerment",
-      desc: "Encouraging entrepreneurship among the younger generation, ISF supports under-16 entrepreneurs and acknowledges their contributions",
+      desc: "Supporting student & under-16 founders with incubators, tools, and global recognition.",
+      icon: Award,
+      badgeBg: "bg-blue-500/10 text-blue-700 border-blue-200",
+      iconBg: "from-blue-500 to-cyan-600 text-white shadow-blue-500/30",
+      accent: "bg-blue-500"
+    },
+    {
+      id: "06",
+      title: "And Many More",
+      desc: "Continuous innovation, global pitch stages, and dedicated startup acceleration programs.",
+      icon: Sparkles,
+      badgeBg: "bg-orange-500/10 text-orange-700 border-orange-200",
+      iconBg: "from-orange-500 to-amber-600 text-white shadow-orange-500/30",
+      accent: "bg-orange-500"
     }
   ];
 
@@ -308,21 +342,65 @@ export function AboutUs() {
       </section>
 
       {/* 3. ISF KEY FEATURES */}
-      <section className="py-16 bg-white border-b border-gray-200">
-        <div className="container-custom space-y-12 px-4">
-          <div className="text-center space-y-3">
-            <h2 className="text-2xl md:text-3xl font-extrabold text-[#111111] tracking-tight uppercase">ISF KEY FEATURES</h2>
-            <p className="text-xs text-[#666666] font-semibold uppercase tracking-wider">Signature Features of ISF’s Support Ecosystem</p>
-            <div className="w-12 h-1 bg-isf-orange mx-auto rounded"></div>
+      <section className="py-10 md:py-12 bg-gradient-to-b from-white via-[#FAF8F5]/60 to-white border-b border-gray-200 relative overflow-hidden">
+        {/* Subtle background decorative glows */}
+        <div className="absolute top-1/3 left-0 w-96 h-96 bg-emerald-500/5 rounded-full blur-3xl pointer-events-none -z-0"></div>
+        <div className="absolute bottom-10 right-0 w-96 h-96 bg-amber-500/5 rounded-full blur-3xl pointer-events-none -z-0"></div>
+
+        <div className="container-custom space-y-6 md:space-y-8 px-4 max-w-6xl mx-auto relative z-10">
+          <div className="text-center space-y-2 max-w-2xl mx-auto">
+            <span className="text-[11px] font-bold uppercase tracking-widest text-[#D24D7F] bg-pink-50 border border-pink-100 px-3.5 py-1 rounded-full inline-block">
+              Core Ecosystem Pillars
+            </span>
+            <h2 className="text-2xl md:text-3xl font-extrabold text-[#111111] font-baskerville tracking-tight uppercase">
+              ISF Key Features
+            </h2>
+            <p className="text-xs md:text-sm text-[#666666] font-normal">
+              Signature features and foundation pillars driving our startup support ecosystem globally.
+            </p>
+            <div className="w-12 h-1 bg-[#D24D7F] mx-auto rounded-full mt-1"></div>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {features.map((feat, idx) => (
-              <div key={idx} className="bg-[#FAF8F5] border border-[#e6e6e6] rounded-xl p-8 hover:shadow-lg hover:border-[#D24D7F] transition-all space-y-4">
-                <h3 className="text-xl font-bold font-inter text-[#D24D7F] uppercase">{feat.title}</h3>
-                <p className="text-base text-[#666666] leading-relaxed">{feat.desc}</p>
-              </div>
-            ))}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+            {features.map((feat, idx) => {
+              const IconComp = feat.icon;
+              return (
+                <div
+                  key={idx}
+                  className="group relative bg-white border border-gray-150 rounded-2xl p-5 hover:shadow-xl hover:border-gray-300 transition-all duration-300 hover:-translate-y-1 flex flex-col justify-between overflow-hidden shadow-2xs"
+                >
+                  {/* Subtle hover gradient sheen */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-transparent via-transparent to-[#FAF8F5]/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
+
+                  <div className="space-y-3.5 relative z-10">
+                    {/* Top Row: Icon Badge & Number */}
+                    <div className="flex items-center justify-between">
+                      <div className={`w-11 h-11 rounded-xl bg-gradient-to-br ${feat.iconBg} flex items-center justify-center shadow-md group-hover:scale-105 transition-transform duration-300`}>
+                        <IconComp size={20} />
+                      </div>
+                      <span className={`text-[10px] font-black px-2.5 py-1 rounded-full border ${feat.badgeBg}`}>
+                        {feat.id}
+                      </span>
+                    </div>
+
+                    {/* Content */}
+                    <div className="space-y-1.5">
+                      <h3 className="text-base font-bold font-baskerville text-[#111111] group-hover:text-[#0C3E2B] transition-colors leading-snug">
+                        {feat.title}
+                      </h3>
+                      <p className="text-xs text-[#666666] font-normal leading-relaxed">
+                        {feat.desc}
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* Expanding accent bar at bottom */}
+                  <div className="mt-4 pt-2.5 border-t border-gray-100 relative z-10">
+                    <div className={`w-8 h-1 ${feat.accent} rounded-full group-hover:w-full transition-all duration-500`}></div>
+                  </div>
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>
