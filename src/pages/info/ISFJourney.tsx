@@ -350,6 +350,28 @@ export function ISFJourney() {
       linkText: "View Jamaica Summit"
     },
     {
+      id: "journey-highlights-2023",
+      year: "2023",
+      date: "Full Year 2023",
+      title: "2023 Journey Highlights: Foundation & Rural Outreach",
+      location: "Bengaluru, Hyderabad & Regional Centers",
+      category: "Ecosystem Milestones",
+      tagColor: "bg-purple-100 text-purple-900 border-purple-300",
+      badgeColor: "bg-purple-600 text-white",
+      accentLine: "bg-gradient-to-r from-purple-600 via-[#D24D7F] to-[#E5532A]",
+      desc: "A landmark founding year establishing the core infrastructure for International Startup Foundation, onboarding 200+ inaugural mentors and conducting rural innovation drives.",
+      highlights: [
+        "Rolled out the 3 M's Framework: Mentorship, Market Access, and Capital Pathways",
+        "Onboarded initial 200+ industry CXOs across India and global hubs",
+        "Conducted 15+ university & college outreach sessions for student founders",
+        "Laid the groundwork for the inaugural Junicorns Cohort 1.0 delegation"
+      ],
+      image: getImageUrl("/assets/images/journey-highlight-1.jpg"),
+      link: "/aboutus",
+      isExternal: false,
+      linkText: "Explore 2023 Highlights"
+    },
+    {
       id: "genesis-2023",
       year: "Genesis",
       date: "2023",
