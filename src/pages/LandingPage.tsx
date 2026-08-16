@@ -244,8 +244,8 @@ export function LandingPage() {
       coreMessageHighlight: "worth putting in the spotlight?",
       supportingMessage: "One room. New ideas. The next Junicorn could be here.",
       audience: ["Students", "Builders", "Innovators", "Dreamers", "Problem Solvers"],
-      primaryBtnText: "STAY TUNED FOR REGISTRATION",
-      primaryBtnLink: "",
+      primaryBtnText: "REQUEST TO JOIN",
+      primaryBtnLink: "https://luma.com/oiv1aoqu",
       seats: "ONLY 50 SEATS",
       personImage: "/assets/events/j-spotlight/j-spotlight-person.png",
       personName: "DR. JA CHOWDARY",
@@ -539,12 +539,15 @@ export function LandingPage() {
 
                       {/* CTA & Seat Count */}
                       <div className="flex flex-wrap items-center gap-3.5 pt-1">
-                        <button
-                          className="bg-[#0F5A47] hover:bg-[#083b2e] text-white text-xs sm:text-sm font-extrabold uppercase tracking-wider px-6 py-3 rounded-xl shadow-md hover:shadow-lg transition-all cursor-default border border-emerald-600/50 flex items-center gap-2 group"
+                        <a
+                          href={slide.primaryBtnLink}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="bg-[#0F5A47] hover:bg-[#083b2e] text-white text-xs sm:text-sm font-extrabold uppercase tracking-wider px-6 py-3 rounded-xl shadow-md hover:shadow-lg transition-all cursor-pointer border border-emerald-600/50 flex items-center gap-2 group"
                         >
                           <span>{slide.primaryBtnText}</span>
                           <span className="w-2.5 h-2.5 rounded-full bg-amber-400 group-hover:scale-125 transition-transform" />
-                        </button>
+                        </a>
 
                         <div className="bg-amber-100/90 border border-amber-300 text-amber-950 text-xs font-bold px-3.5 py-2 rounded-xl flex items-center gap-2 shadow-xs">
                           <span className="w-2.5 h-2.5 rounded-full bg-amber-500 animate-ping" />
