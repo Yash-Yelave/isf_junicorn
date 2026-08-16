@@ -231,28 +231,6 @@ export function LandingPage() {
 
   const heroSlides = [
     {
-      tag: "Cohort 3.0",
-      title: "Junicorn Rural Innovation Challenge — Cohort 3.0",
-      desc: "Bridging the gap between rural ambition and global opportunity. Empowering young innovators from across 20+ states to transform ideas into viable start-up ventures. Tentative Event Date: December 2026.",
-      primaryBtnText: "Apply Now",
-      primaryBtnLink: "https://match.myanatomy.in/sc/69eaf7b184db4d003436f748/n",
-      secondaryBtnText: "Cohort Details",
-      secondaryBtnLink: "/cohort-3",
-      image: "/assets/cohort3/bangalore-skyline.png",
-      bgGradient: "from-emerald-50 to-teal-100"
-    },
-    {
-      tag: "Global Mentorship Program",
-      title: "ISF Global Mentorship Program",
-      desc: "Empower the next generation of innovators. Join as a mentor or mentee to share expertise and drive global impact—all in just one hour a week.",
-      primaryBtnText: "Mentor Registration",
-      primaryBtnLink: "/mentor-form",
-      secondaryBtnText: "Mentee Registration",
-      secondaryBtnLink: "/registration/student",
-      image: "/assets/images/1hour-1week.png",
-      bgGradient: "from-orange-50 to-orange-100"
-    },
-    {
       isCustom: true,
       tag: "JNANANA FOUNDATION × ISF JUNICORNS",
       title: "J-SPOTLIGHT",
@@ -274,6 +252,28 @@ export function LandingPage() {
       personRole: "Founder & Chairman, ISF Junicorns",
       personTitle: "Visionary Leader | Mentor | Nation Builder",
       bgGradient: "from-[#FFFDF9] via-[#FAF6EE] to-[#F0F7F4]"
+    },
+    {
+      tag: "Cohort 3.0",
+      title: "Junicorn Rural Innovation Challenge — Cohort 3.0",
+      desc: "Bridging the gap between rural ambition and global opportunity. Empowering young innovators from across 20+ states to transform ideas into viable start-up ventures. Tentative Event Date: December 2026.",
+      primaryBtnText: "Apply Now",
+      primaryBtnLink: "https://match.myanatomy.in/sc/69eaf7b184db4d003436f748/n",
+      secondaryBtnText: "Cohort Details",
+      secondaryBtnLink: "/cohort-3",
+      image: "/assets/cohort3/bangalore-skyline.png",
+      bgGradient: "from-emerald-50 to-teal-100"
+    },
+    {
+      tag: "Global Mentorship Program",
+      title: "ISF Global Mentorship Program",
+      desc: "Empower the next generation of innovators. Join as a mentor or mentee to share expertise and drive global impact—all in just one hour a week.",
+      primaryBtnText: "Mentor Registration",
+      primaryBtnLink: "/mentor-form",
+      secondaryBtnText: "Mentee Registration",
+      secondaryBtnLink: "/registration/student",
+      image: "/assets/images/1hour-1week.png",
+      bgGradient: "from-orange-50 to-orange-100"
     }
   ];
 
@@ -437,7 +437,7 @@ export function LandingPage() {
     <div className="font-inter pt-20">
       {/* 1. Hero Sliding Banner Section */}
       <section 
-        className="relative w-full border-b border-gray-200 overflow-hidden h-[680px] md:h-[520px]"
+        className="relative w-full border-b border-gray-200 overflow-hidden min-h-[680px] md:min-h-[540px] md:h-[540px]"
         onMouseEnter={() => setIsHeroHovered(true)}
         onMouseLeave={() => setIsHeroHovered(false)}
       >
@@ -450,7 +450,7 @@ export function LandingPage() {
             slide.isCustom ? (
               <div 
                 key={idx} 
-                className="w-full h-full shrink-0 flex items-center justify-center bg-gradient-to-br from-[#FFFDF9] via-[#FAF6EE] to-[#F0F7F4] relative overflow-hidden py-6 md:py-10 border-b border-emerald-900/10"
+                className="w-full h-full shrink-0 flex items-center justify-center bg-gradient-to-br from-[#FFFDF9] via-[#FAF6EE] to-[#F0F7F4] relative overflow-hidden py-6 md:py-8 border-b border-emerald-900/10"
               >
                 {/* Background Decorative Elements */}
                 <div className="absolute inset-0 bg-[radial-gradient(#0F5A47_1px,transparent_1px)] [background-size:24px_24px] opacity-[0.04] pointer-events-none" />
@@ -461,14 +461,14 @@ export function LandingPage() {
                   <div className="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-8 items-center">
                     
                     {/* Left Column: Event Information */}
-                    <div className="md:col-span-7 flex flex-col justify-center space-y-3 text-left">
+                    <div className="md:col-span-7 flex flex-col justify-center space-y-4 text-left pr-0 md:pr-2">
                       
                       {/* Eyebrow + Badge */}
-                      <div className="flex flex-wrap items-center gap-2">
-                        <span className="text-[10px] sm:text-xs font-extrabold uppercase tracking-widest text-[#0F5A47] font-inter">
+                      <div className="flex flex-wrap items-center gap-2.5">
+                        <span className="text-[11px] sm:text-xs font-extrabold uppercase tracking-widest text-[#0F5A47] font-inter">
                           {slide.tag}
                         </span>
-                        <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-[10px] font-extrabold tracking-wider bg-[#D24D7F] text-white uppercase shadow-xs">
+                        <span className="inline-flex items-center px-3 py-0.5 rounded-full text-[10px] font-extrabold tracking-wider bg-[#D24D7F] text-white uppercase shadow-xs">
                           {slide.format}
                         </span>
                       </div>
@@ -486,7 +486,7 @@ export function LandingPage() {
                           <span>TLIGHT</span>
                         </h1>
 
-                        <div className="flex items-center gap-2 mt-2 flex-wrap">
+                        <div className="flex items-center gap-2 mt-2.5 flex-wrap">
                           <span className="bg-[#D24D7F] text-white text-xs sm:text-sm font-extrabold uppercase px-3 py-1 rounded shadow-xs tracking-wider">
                             {slide.subtitle}
                           </span>
@@ -497,10 +497,10 @@ export function LandingPage() {
                       </div>
 
                       {/* Core Message & Supporting */}
-                      <div className="space-y-0.5">
-                        <p className="text-sm sm:text-base md:text-lg font-semibold text-slate-800 leading-snug">
+                      <div className="space-y-1">
+                        <p className="text-base sm:text-lg md:text-xl font-bold text-slate-900 leading-snug">
                           {slide.coreMessage}{" "}
-                          <span className="text-[#D24D7F] font-extrabold underline decoration-amber-400 decoration-2 underline-offset-4">
+                          <span className="text-[#D24D7F] font-black underline decoration-amber-400 decoration-2 underline-offset-4">
                             {slide.coreMessageHighlight}
                           </span>
                         </p>
@@ -510,83 +510,87 @@ export function LandingPage() {
                       </div>
 
                       {/* Metadata Row: Date, Time, Location */}
-                      <div className="flex flex-wrap items-center gap-3 py-1.5 px-3 bg-white/80 backdrop-blur border border-emerald-900/10 rounded-lg text-xs font-semibold text-slate-700 w-fit">
+                      <div className="flex flex-wrap items-center gap-3 py-2 px-3.5 bg-white/90 backdrop-blur border border-emerald-900/15 rounded-xl text-xs sm:text-sm font-semibold text-slate-800 shadow-xs w-fit">
                         <div className="flex items-center gap-1.5 text-[#0F5A47]">
-                          <Calendar size={15} className="text-[#D24D7F]" />
+                          <Calendar size={16} className="text-[#D24D7F]" />
                           <span>{slide.date}</span>
                         </div>
-                        <span className="text-slate-300">|</span>
+                        <span className="text-slate-300 font-normal">|</span>
                         <div className="flex items-center gap-1.5 text-[#0F5A47]">
-                          <Clock size={15} className="text-[#D24D7F]" />
+                          <Clock size={16} className="text-[#D24D7F]" />
                           <span>{slide.time}</span>
                         </div>
-                        <span className="text-slate-300">|</span>
+                        <span className="text-slate-300 font-normal">|</span>
                         <div className="flex items-center gap-1.5 text-[#0F5A47]">
-                          <MapPin size={15} className="text-[#D24D7F]" />
+                          <MapPin size={16} className="text-[#D24D7F]" />
                           <span>{slide.location}</span>
                         </div>
                       </div>
 
-                      {/* Audience Tags */}
-                      <div className="flex flex-wrap items-center gap-1.5 text-[11px] text-slate-600">
-                        <span className="font-bold text-[#0F5A47] uppercase tracking-wider">For:</span>
+                      {/* Audience / Experience Tags */}
+                      <div className="flex flex-wrap items-center gap-1.5 text-xs text-slate-600">
+                        <span className="font-bold text-[#0F5A47] uppercase tracking-wider text-[11px] mr-1">For:</span>
                         {slide.audience?.map((item: string, i: number) => (
-                          <span key={i} className="inline-flex items-center bg-emerald-50 text-[#0F5A47] px-2 py-0.5 rounded border border-emerald-200/60 font-medium">
+                          <span key={i} className="inline-flex items-center bg-white text-[#0F5A47] px-2.5 py-0.5 rounded-full border border-emerald-300/60 font-semibold text-[11px] shadow-2xs">
                             {item}
                           </span>
                         ))}
                       </div>
 
                       {/* CTA & Seat Count */}
-                      <div className="flex flex-wrap items-center gap-3 pt-1">
+                      <div className="flex flex-wrap items-center gap-3.5 pt-1">
                         <button
-                          className="bg-[#0F5A47] hover:bg-[#083b2e] text-white text-xs sm:text-sm font-bold uppercase tracking-wider px-5 py-2.5 rounded-lg shadow-md hover:shadow-lg transition-all cursor-default border border-emerald-600/50 flex items-center gap-2 group"
+                          className="bg-[#0F5A47] hover:bg-[#083b2e] text-white text-xs sm:text-sm font-extrabold uppercase tracking-wider px-6 py-3 rounded-xl shadow-md hover:shadow-lg transition-all cursor-default border border-emerald-600/50 flex items-center gap-2 group"
                         >
                           <span>{slide.primaryBtnText}</span>
-                          <span className="w-2 h-2 rounded-full bg-amber-400 group-hover:scale-125 transition-transform" />
+                          <span className="w-2.5 h-2.5 rounded-full bg-amber-400 group-hover:scale-125 transition-transform" />
                         </button>
 
-                        <div className="bg-amber-50 border border-amber-300/80 text-amber-900 text-xs font-bold px-3 py-2 rounded-lg flex items-center gap-1.5 shadow-xs">
-                          <span className="w-2 h-2 rounded-full bg-amber-500 animate-ping" />
+                        <div className="bg-amber-100/90 border border-amber-300 text-amber-950 text-xs font-bold px-3.5 py-2 rounded-xl flex items-center gap-2 shadow-xs">
+                          <span className="w-2.5 h-2.5 rounded-full bg-amber-500 animate-ping" />
                           <span>{slide.seats}</span>
                         </div>
                       </div>
 
                     </div>
 
-                    {/* Right Column: Person Profile */}
+                    {/* Right Column: Person Profile Card */}
                     <div className="md:col-span-5 flex flex-col items-center justify-center relative">
-                      <div className="relative w-full max-w-[280px] sm:max-w-[320px] md:max-w-[340px]">
-                        {/* Soft backdrop frame */}
-                        <div className="absolute inset-0 bg-gradient-to-tr from-[#0F5A47]/15 to-[#D24D7F]/10 rounded-2xl transform rotate-1 scale-105 border border-emerald-900/10" />
+                      <div className="relative w-full max-w-[300px] sm:max-w-[330px]">
                         
-                        {/* Person Image Card */}
-                        <div className="relative overflow-hidden rounded-2xl bg-gradient-to-b from-emerald-900/5 to-emerald-900/15 border border-emerald-800/15 shadow-xl">
-                          <img
-                            src={slide.personImage}
-                            alt={slide.personName}
-                            className="w-full h-[210px] sm:h-[240px] md:h-[260px] object-cover object-top filter contrast-[1.03]"
-                            onError={(e) => {
-                              e.currentTarget.src = "/assets/images/J-A-Chowdary.png";
-                            }}
-                          />
-
-                          {/* Inauguration Ribbon Overlay */}
-                          <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-slate-950 via-slate-900/95 to-transparent p-3 pt-6 text-white text-left">
-                            <span className="bg-[#D24D7F] text-white text-[9px] font-black uppercase tracking-widest px-2 py-0.5 rounded shadow-xs inline-block mb-1">
+                        {/* Person Card Structure */}
+                        <div className="relative overflow-hidden rounded-2xl bg-white border border-emerald-800/15 shadow-xl flex flex-col">
+                          
+                          {/* Image Frame */}
+                          <div className="relative h-[230px] sm:h-[250px] bg-gradient-to-b from-emerald-50/90 via-amber-50/20 to-slate-100 flex items-center justify-center p-2 overflow-hidden">
+                            <img
+                              src={slide.personImage}
+                              alt={slide.personName}
+                              className="h-full w-auto object-contain drop-shadow-md transform hover:scale-105 transition-transform duration-500"
+                              onError={(e) => {
+                                e.currentTarget.src = "/assets/images/J-A-Chowdary.png";
+                              }}
+                            />
+                            <span className="absolute top-3 left-3 bg-[#D24D7F] text-white text-[10px] font-extrabold uppercase tracking-widest px-2.5 py-1 rounded-md shadow-sm">
                               INAUGURATION BY
                             </span>
-                            <h4 className="text-sm font-extrabold text-white leading-snug">
+                          </div>
+
+                          {/* Info Panel Below Photo */}
+                          <div className="p-3.5 bg-slate-900 text-white text-left space-y-0.5 border-t border-slate-800">
+                            <h4 className="text-sm font-black text-amber-400 leading-snug tracking-wide">
                               {slide.personName}
                             </h4>
-                            <p className="text-[11px] font-medium text-emerald-300">
+                            <p className="text-xs font-semibold text-emerald-300">
                               {slide.personRole}
                             </p>
-                            <p className="text-[10px] text-slate-300 opacity-90 mt-0.5 line-clamp-1">
+                            <p className="text-[11px] text-slate-300 font-medium">
                               {slide.personTitle}
                             </p>
                           </div>
+
                         </div>
+
                       </div>
                     </div>
 
