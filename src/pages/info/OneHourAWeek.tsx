@@ -43,12 +43,6 @@ export function OneHourAWeek() {
               >
                 Mentor Registration
               </Link>
-              <Link
-                to="/registration/student"
-                className="bg-white border border-gray-300 text-slate-800 text-xs font-bold uppercase tracking-wider px-6 py-3.5 rounded hover:bg-gray-50 transition-all"
-              >
-                Mentee Registration
-              </Link>
             </div>
           </div>
           <div className="flex justify-center">
@@ -136,7 +130,7 @@ export function OneHourAWeek() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="max-w-xl mx-auto">
           <div className="bg-white border border-gray-200 rounded-lg p-8 shadow-sm flex flex-col justify-between hover:border-isf-orange transition-colors">
             <div className="space-y-4 mb-6">
               <h3 className="text-lg font-bold font-baskerville text-slate-900">
@@ -151,23 +145,6 @@ export function OneHourAWeek() {
               className="block text-center text-xs font-bold uppercase tracking-wider text-white bg-isf-orange hover:bg-isf-orange-hover py-3 rounded"
             >
               Mentor Registration
-            </Link>
-          </div>
-
-          <div className="bg-white border border-gray-200 rounded-lg p-8 shadow-sm flex flex-col justify-between hover:border-isf-orange transition-colors">
-            <div className="space-y-4 mb-6">
-              <h3 className="text-lg font-bold font-baskerville text-slate-900">
-                Register as a Mentee
-              </h3>
-              <p className="text-xs text-slate-500 leading-relaxed">
-                Startups, students, and early founders looking to connect with investors, resources, and technical guidance.
-              </p>
-            </div>
-            <Link
-              to="/registration/student"
-              className="block text-center text-xs font-bold uppercase tracking-wider text-slate-800 border border-gray-300 hover:bg-gray-50 py-3 rounded"
-            >
-              Mentee Registration
             </Link>
           </div>
         </div>
