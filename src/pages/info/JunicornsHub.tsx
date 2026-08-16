@@ -17,7 +17,10 @@ import {
   MapPin,
   Users,
   CheckCircle2,
-  ArrowRight
+  ArrowRight,
+  Coins,
+  Handshake,
+  Landmark
 } from "lucide-react";
 import { Link } from "react-router-dom";
 import heroImg from "../../assets/hero.png";
@@ -240,7 +243,7 @@ export function JunicornsHub() {
             <div className="lg:col-span-6 space-y-10 z-10">
               
               {/* Hero Title & Subtitle */}
-              <div className="space-y-6">
+              <div className="space-y-5">
                 <div className="inline-flex items-center gap-2 bg-[#0C3E2B]/5 border border-[#0C3E2B]/15 text-[#0C3E2B] px-3.5 py-1.5 rounded-full text-xs font-semibold shadow-2xs">
                   <span className="w-2 h-2 rounded-full bg-isf-orange animate-pulse" />
                   <span>Junicorn events and activities are managed by Jnanana Foundation</span>
@@ -255,15 +258,77 @@ export function JunicornsHub() {
                   </span>
                 </h1>
                 <p className="text-base md:text-lg text-[#0C3E2B] max-w-xl font-normal leading-relaxed">
-                  Connecting founders in emerging markets with the mentorship, network, and capital to build the future. All Junicorn events and activities are managed by Jnanana Foundation.
+                  Empowering youth and rural innovators with the <strong>3 M's Framework</strong>—<strong>Mentorship</strong>, <strong>Market Access</strong>, and <strong>Money</strong>—to transform promising ideas into global startups. All Junicorn events and activities are managed by Jnanana Foundation.
                 </p>
-                <div className="pt-2">
+                <div className="pt-1">
                   <Link
                     to="/registration/student"
-                    className="bg-[#D24D7F] hover:bg-[#C73E6E] text-white text-sm font-bold tracking-wide px-8 py-4 rounded-full shadow-md transition-colors inline-block"
+                    className="bg-[#D24D7F] hover:bg-[#C73E6E] text-white text-sm font-bold tracking-wide px-8 py-3.5 rounded-full shadow-md transition-colors inline-block"
                   >
                     Join the movement
                   </Link>
+                </div>
+              </div>
+
+              {/* The 3 M's Core Ecosystem Cards */}
+              <div className="bg-white p-5 sm:p-6 rounded-2xl border border-emerald-100 shadow-md space-y-3">
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-2">
+                    <span className="w-2 h-2 rounded-full bg-[#D24D7F]"></span>
+                    <span className="text-xs font-extrabold text-[#0C3E2B] uppercase tracking-wider font-baskerville">
+                      The 3 M's Foundation Ecosystem
+                    </span>
+                  </div>
+                  <span className="text-[10px] font-bold text-[#D24D7F] bg-pink-50 border border-pink-200 px-2.5 py-0.5 rounded-full">
+                    Core Pillars
+                  </span>
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-1">
+                  {/* 1. Mentorship */}
+                  <div className="bg-[#FAF8F5] p-3.5 rounded-xl border border-pink-200/70 hover:border-[#D24D7F] transition-all group">
+                    <div className="flex items-center gap-2 mb-1.5">
+                      <div className="w-7 h-7 rounded-lg bg-pink-100 text-[#D24D7F] flex items-center justify-center font-extrabold text-xs shrink-0 shadow-2xs">
+                        M1
+                      </div>
+                      <h4 className="text-xs font-extrabold text-[#0C3E2B] group-hover:text-[#D24D7F] transition-colors">
+                        Mentorship
+                      </h4>
+                    </div>
+                    <p className="text-[11px] text-slate-600 font-normal leading-snug">
+                      One-on-one guidance from 800+ global industry leaders & CXOs via 1 Hour a Week.
+                    </p>
+                  </div>
+
+                  {/* 2. Market Access */}
+                  <div className="bg-[#FAF8F5] p-3.5 rounded-xl border border-emerald-200/70 hover:border-[#026956] transition-all group">
+                    <div className="flex items-center gap-2 mb-1.5">
+                      <div className="w-7 h-7 rounded-lg bg-emerald-100 text-[#026956] flex items-center justify-center font-extrabold text-xs shrink-0 shadow-2xs">
+                        M2
+                      </div>
+                      <h4 className="text-xs font-extrabold text-[#0C3E2B] group-hover:text-[#026956] transition-colors">
+                        Market Access
+                      </h4>
+                    </div>
+                    <p className="text-[11px] text-slate-600 font-normal leading-snug">
+                      Global pitch stages at summits in Austin TX, Dubai UAE, and across India.
+                    </p>
+                  </div>
+
+                  {/* 3. Money / Capital */}
+                  <div className="bg-[#FAF8F5] p-3.5 rounded-xl border border-amber-200/70 hover:border-[#D45625] transition-all group">
+                    <div className="flex items-center gap-2 mb-1.5">
+                      <div className="w-7 h-7 rounded-lg bg-amber-100 text-[#D45625] flex items-center justify-center font-extrabold text-xs shrink-0 shadow-2xs">
+                        M3
+                      </div>
+                      <h4 className="text-xs font-extrabold text-[#0C3E2B] group-hover:text-[#D45625] transition-colors">
+                        Money & Capital
+                      </h4>
+                    </div>
+                    <p className="text-[11px] text-slate-600 font-normal leading-snug">
+                      Direct connections to VCs, angel networks, seed grants & prototype support.
+                    </p>
+                  </div>
                 </div>
               </div>
 

@@ -1,7 +1,15 @@
 import { getImageUrl } from "../../utils/imageUtils";
-import { Calendar, UserCheck, ShieldCheck, HelpCircle, Globe, Lock, Sparkles } from "lucide-react";
+import { useState } from "react";
+import { Calendar, UserCheck, ShieldCheck, HelpCircle, Globe, Lock, Sparkles, ChevronDown, ChevronUp } from "lucide-react";
 import { Link } from "react-router-dom";
+
 export function OneHourAWeek() {
+  const [openFaq, setOpenFaq] = useState<number | null>(null);
+
+  const toggleFaq = (idx: number) => {
+    setOpenFaq(openFaq === idx ? null : idx);
+  };
+
   const steps = [
     {
       icon: <Calendar className="w-8 h-8 text-isf-orange" />,
@@ -17,6 +25,37 @@ export function OneHourAWeek() {
       icon: <UserCheck className="w-8 h-8 text-isf-orange" />,
       title: "AI-Powered Matchmaking",
       desc: "Automated profile evaluations matches mentees directly with fitting mentors based on criteria."
+    }
+  ];
+
+  const faqs = [
+    {
+      q: "What is the 'One Hour a Week' Mentorship Initiative?",
+      a: "The 'One Hour a Week' initiative is a flagship global mentorship program by the International Startup Foundation (ISF). It connects experienced industry leaders, CXOs, serial entrepreneurs, and domain experts with promising student founders, early-stage startups, and rural innovators to provide dedicated 1-hour weekly guidance."
+    },
+    {
+      q: "Who can register as a Mentor?",
+      a: "Senior corporate executives, founders, investors, academic leaders, and domain experts across technology, business strategy, legal, finance, marketing, and product design are welcome to register as mentors. Minimum 5+ years of professional or entrepreneurial experience is recommended."
+    },
+    {
+      q: "How does the mentor-mentee matching process work?",
+      a: "ISF utilizes an AI-powered matchmaking algorithm that pairs mentees with mentors based on sector domain, current startup challenges, technical requirements, geographic relevance, and mutual scheduling availability."
+    },
+    {
+      q: "What is the time commitment required from a Mentor?",
+      a: "As the name suggests, mentors commit just 1 hour per week (or 4 hours a month). Mentors can customize their preferred time slots, mode of interaction (virtual video calls), and total number of active mentees they wish to guide."
+    },
+    {
+      q: "How is mentor data privacy and security handled?",
+      a: "Mentor profiles and personal contact information are password-protected and strictly secured. Direct contact details are never publicly shared; all session scheduling and initial communications occur through ISF's encrypted, permission-based platform."
+    },
+    {
+      q: "Is there any financial compensation or fee involved?",
+      a: "No. The 'One Hour a Week' program is a pro-bono social impact initiative. Mentors donate their time voluntarily to give back to the ecosystem, and participation is completely free for all selected student founders and startups."
+    },
+    {
+      q: "What happens after I complete a mentorship session?",
+      a: "After each 1-hour session, mentors and mentees submit brief session feedback on the platform. Startups showing exceptional progress and recommendation from mentors gain priority access to ISF Global Summits in Austin and Dubai, as well as seed funding and VC channels."
     }
   ];
 
@@ -168,6 +207,55 @@ export function OneHourAWeek() {
             >
               Mentor Registration
             </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* 5. Frequently Asked Questions (FAQ) Section */}
+      <section className="py-16 md:py-24 bg-slate-50 border-t border-gray-200">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center space-y-3 mb-12">
+            <span className="text-xs font-bold text-isf-orange uppercase tracking-widest block font-inter">
+              GOT QUESTIONS?
+            </span>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold font-baskerville text-slate-900 leading-tight">
+              Frequently Asked Questions
+            </h2>
+            <p className="text-xs sm:text-sm text-slate-600 font-normal leading-relaxed max-w-xl mx-auto">
+              Everything you need to know about the 1 Hour a Week global mentorship program.
+            </p>
+            <div className="w-12 h-1 bg-isf-orange mx-auto rounded-full"></div>
+          </div>
+
+          <div className="space-y-4">
+            {faqs.map((faq, idx) => {
+              const isOpen = openFaq === idx;
+              return (
+                <div
+                  key={idx}
+                  className="bg-white border border-gray-200/90 rounded-2xl overflow-hidden shadow-2xs transition-all duration-200 hover:border-orange-300"
+                >
+                  <button
+                    type="button"
+                    onClick={() => toggleFaq(idx)}
+                    className="w-full text-left p-5 sm:p-6 flex items-center justify-between gap-4 cursor-pointer focus:outline-none"
+                  >
+                    <span className="text-sm sm:text-base font-bold text-slate-900 font-baskerville">
+                      {faq.q}
+                    </span>
+                    <span className="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center shrink-0 text-slate-600 transition-transform duration-200">
+                      {isOpen ? <ChevronUp size={18} /> : <ChevronDown size={18} />}
+                    </span>
+                  </button>
+
+                  {isOpen && (
+                    <div className="px-5 sm:px-6 pb-6 pt-1 text-xs sm:text-sm text-slate-600 font-normal leading-relaxed border-t border-gray-100 bg-slate-50/50">
+                      {faq.a}
+                    </div>
+                  )}
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>
