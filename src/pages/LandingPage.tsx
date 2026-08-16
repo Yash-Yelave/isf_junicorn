@@ -201,23 +201,23 @@ export function LandingPage() {
       isCustom: true,
       tag: "JNANANA FOUNDATION × ISF JUNICORNS",
       title: "J-SPOTLIGHT",
-      subtitle: "FINDING THE NEXT JUNICORN",
-      edition: "EDITION 01",
-      format: "MONTHLY MEETUP",
-      date: "29 AUGUST 2026",
-      time: "4:00 - 6:00 PM",
-      location: "DRAPER U INDIA",
-      coreMessage: "Do you have an idea",
-      coreMessageHighlight: "worth putting in the spotlight?",
-      supportingMessage: "One room. New ideas. The next Junicorn could be here.",
-      audience: ["Students", "Builders", "Innovators", "Dreamers", "Problem Solvers"],
-      primaryBtnText: "REQUEST TO JOIN",
+      subtitle: "NATIONAL INNOVATION CONCLAVE",
+      edition: "EDITION 01 • BENGALURU",
+      format: "MONTHLY INNOVATION SERIES",
+      date: "Saturday, 29 August 2026",
+      time: "4:00 PM – 6:00 PM IST",
+      location: "Draper U India, Bangalore",
+      coreMessage: "Empowering India's Next Generation of",
+      coreMessageHighlight: "High-Impact Founders",
+      supportingMessage: "An exclusive monthly pitch & mentorship conclave connecting curated student innovators with industry chairs, venture capital leads, and global incubation pathways.",
+      audience: ["Student Founders", "Deep-Tech Builders", "Patent Innovators", "Startup Researchers"],
+      primaryBtnText: "REQUEST DELEGATE SEAT",
       primaryBtnLink: "https://luma.com/oiv1aoqu",
-      seats: "ONLY 50 SEATS",
+      seats: "ONLY 50 DELEGATE SEATS",
       personImage: "/assets/events/j-spotlight/j-spotlight-person.png",
-      personName: "DR. JA CHOWDARY",
-      personRole: "Founder & Chairman, ISF Junicorns",
-      personTitle: "Visionary Leader | Mentor | Nation Builder",
+      personName: "DR. J.A. CHOWDARY",
+      personRole: "Founder & Chairman, International Startup Foundation",
+      personTitle: "Former IT Advisor to Govt of AP & TN | Ecosystem Architect",
       bgGradient: "from-[#FFFDF9] via-[#FAF6EE] to-[#F0F7F4]"
     },
     {
@@ -444,40 +444,55 @@ export function LandingPage() {
                       <div>
                         <h1 className="text-3xl sm:text-4xl md:text-5xl font-black text-[#0B4637] tracking-tight leading-none flex items-center flex-wrap gap-x-1.5">
                           <span>J-SP</span>
-                          {/* Spotlight 'O' Highlight */}
-                          <span className="inline-flex items-center justify-center w-8 h-8 sm:w-10 sm:h-10 md:w-11 md:h-11 rounded-full bg-amber-400 text-amber-950 shadow-inner border-2 border-[#0B4637] relative -top-0.5 mx-0.5">
-                            <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5 sm:w-6 sm:h-6 text-amber-950" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+                          {/* Radiant Spotlight Light Beam 'O' Highlight */}
+                          <span className="relative inline-flex items-center justify-center w-9 h-9 sm:w-11 sm:h-11 md:w-12 md:h-12 rounded-full bg-gradient-to-tr from-amber-400 via-amber-300 to-yellow-100 text-slate-950 shadow-[0_0_22px_rgba(245,158,11,0.7)] border-2 border-[#0B4637] relative -top-0.5 mx-0.5 overflow-visible">
+                            <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-6 h-6 sm:w-7 sm:h-7 text-amber-950 drop-shadow-md">
+                              {/* Stage Lamp Housing */}
+                              <path d="M16 3L11 9H21L16 3Z" fill="#1E293B" />
+                              {/* Lamp Lens Ring */}
+                              <ellipse cx="16" cy="9" rx="5" ry="1.5" fill="#F59E0B" />
+                              {/* Downward Radiant Light Beam Cone */}
+                              <path d="M11 9.5L4 28H28L21 9.5H11Z" fill="url(#stageLightConeGrad)" opacity="0.85" />
+                              {/* Focal Beam Flare Core */}
+                              <circle cx="16" cy="9.5" r="3" fill="#FFFFFF" />
+                              <defs>
+                                <linearGradient id="stageLightConeGrad" x1="16" y1="9.5" x2="16" y2="28" gradientUnits="userSpaceOnUse">
+                                  <stop stopColor="#FFFFFF" stopOpacity="0.95" />
+                                  <stop offset="0.5" stopColor="#FBBF24" stopOpacity="0.75" />
+                                  <stop offset="1" stopColor="#F59E0B" stopOpacity="0.15" />
+                                </linearGradient>
+                              </defs>
                             </svg>
+                            <span className="absolute -inset-1 rounded-full bg-amber-400/40 blur-sm -z-10 animate-pulse" />
                           </span>
                           <span>TLIGHT</span>
                         </h1>
 
-                        <div className="flex items-center gap-2 mt-2.5 flex-wrap">
-                          <span className="bg-[#D24D7F] text-white text-xs sm:text-sm font-extrabold uppercase px-3 py-1 rounded shadow-xs tracking-wider">
+                        <div className="flex items-center gap-2 mt-3 flex-wrap">
+                          <span className="bg-[#D24D7F] text-white text-xs sm:text-sm font-extrabold uppercase px-3.5 py-1 rounded-md shadow-xs tracking-wider">
                             {slide.subtitle}
                           </span>
-                          <span className="bg-[#0F5A47] text-amber-300 text-xs font-bold uppercase px-2.5 py-1 rounded tracking-wide border border-emerald-700">
+                          <span className="bg-[#0F5A47] text-amber-300 text-xs font-bold uppercase px-3 py-1 rounded-md tracking-wide border border-emerald-700">
                             {slide.edition}
                           </span>
                         </div>
                       </div>
 
                       {/* Core Message & Supporting */}
-                      <div className="space-y-1">
-                        <p className="text-base sm:text-lg md:text-xl font-bold text-slate-900 leading-snug">
+                      <div className="space-y-1.5 pt-1">
+                        <p className="text-base sm:text-lg md:text-xl font-semibold text-slate-800 leading-snug tracking-tight">
                           {slide.coreMessage}{" "}
-                          <span className="text-[#D24D7F] font-black underline decoration-amber-400 decoration-2 underline-offset-4">
+                          <span className="text-[#D24D7F] font-bold">
                             {slide.coreMessageHighlight}
                           </span>
                         </p>
-                        <p className="text-xs sm:text-sm text-slate-600 font-medium">
+                        <p className="text-xs sm:text-sm text-slate-600 font-normal leading-relaxed max-w-xl">
                           {slide.supportingMessage}
                         </p>
                       </div>
 
                       {/* Metadata Row: Date, Time, Location */}
-                      <div className="flex flex-wrap items-center gap-3 py-2 px-3.5 bg-white/90 backdrop-blur border border-emerald-900/15 rounded-xl text-xs sm:text-sm font-semibold text-slate-800 shadow-xs w-fit">
+                      <div className="flex flex-wrap items-center gap-3 py-2 px-4 bg-white/95 backdrop-blur border border-emerald-900/15 rounded-xl text-xs sm:text-sm font-semibold text-slate-800 shadow-xs w-fit">
                         <div className="flex items-center gap-1.5 text-[#0F5A47]">
                           <Calendar size={16} className="text-[#D24D7F]" />
                           <span>{slide.date}</span>
@@ -496,9 +511,9 @@ export function LandingPage() {
 
                       {/* Audience / Experience Tags */}
                       <div className="flex flex-wrap items-center gap-1.5 text-xs text-slate-600">
-                        <span className="font-bold text-[#0F5A47] uppercase tracking-wider text-[11px] mr-1">For:</span>
+                        <span className="font-extrabold text-[#0F5A47] uppercase tracking-wider text-[11px] mr-1">Target Cohort:</span>
                         {slide.audience?.map((item: string, i: number) => (
-                          <span key={i} className="inline-flex items-center bg-white text-[#0F5A47] px-2.5 py-0.5 rounded-full border border-emerald-300/60 font-semibold text-[11px] shadow-2xs">
+                          <span key={i} className="inline-flex items-center bg-white text-[#0F5A47] px-3 py-1 rounded-full border border-emerald-300/80 font-bold text-[11px] shadow-2xs">
                             {item}
                           </span>
                         ))}
@@ -516,7 +531,7 @@ export function LandingPage() {
                           <span className="w-2.5 h-2.5 rounded-full bg-amber-400 group-hover:scale-125 transition-transform" />
                         </a>
 
-                        <div className="bg-amber-100/90 border border-amber-300 text-amber-950 text-xs font-bold px-3.5 py-2 rounded-xl flex items-center gap-2 shadow-xs">
+                        <div className="bg-amber-100/90 border border-amber-300 text-amber-950 text-xs font-extrabold px-4 py-2.5 rounded-xl flex items-center gap-2 shadow-xs">
                           <span className="w-2.5 h-2.5 rounded-full bg-amber-500 animate-ping" />
                           <span>{slide.seats}</span>
                         </div>
@@ -529,7 +544,7 @@ export function LandingPage() {
                       <div className="relative w-full max-w-[300px] sm:max-w-[330px]">
                         
                         {/* Person Card Structure */}
-                        <div className="relative overflow-hidden rounded-2xl bg-white border border-emerald-800/15 shadow-xl flex flex-col">
+                        <div className="relative overflow-hidden rounded-2xl bg-white border border-emerald-800/20 shadow-2xl flex flex-col">
                           
                           {/* Image Frame */}
                           <div className="relative h-[230px] sm:h-[250px] bg-gradient-to-b from-emerald-50/90 via-amber-50/20 to-slate-100 flex items-center justify-center p-2 overflow-hidden">
@@ -541,20 +556,20 @@ export function LandingPage() {
                                 e.currentTarget.src = "/assets/images/J-A-Chowdary.png";
                               }}
                             />
-                            <span className="absolute top-3 left-3 bg-[#D24D7F] text-white text-[10px] font-extrabold uppercase tracking-widest px-2.5 py-1 rounded-md shadow-sm">
-                              INAUGURATION BY
+                            <span className="absolute top-3 left-3 bg-gradient-to-r from-[#D24D7F] to-[#E5532A] text-white text-[10px] font-extrabold uppercase tracking-widest px-3 py-1 rounded-md shadow-md">
+                              KEYNOTE INAUGURATION
                             </span>
                           </div>
 
-                          {/* Info Panel Below Photo */}
-                          <div className="p-3.5 bg-slate-900 text-white text-left space-y-0.5 border-t border-slate-800">
-                            <h4 className="text-sm font-black text-amber-400 leading-snug tracking-wide">
+                          {/* Info Panel Below Photo with High Contrast Executive Styling */}
+                          <div className="p-4 bg-gradient-to-b from-slate-900 to-slate-950 text-white text-left space-y-1 border-t-2 border-amber-400">
+                            <h4 className="text-base font-extrabold text-amber-300 tracking-wide font-baskerville">
                               {slide.personName}
                             </h4>
-                            <p className="text-xs font-semibold text-emerald-300">
+                            <p className="text-xs font-bold text-emerald-400">
                               {slide.personRole}
                             </p>
-                            <p className="text-[11px] text-slate-300 font-medium">
+                            <p className="text-[11px] text-slate-200 font-medium leading-tight">
                               {slide.personTitle}
                             </p>
                           </div>
