@@ -421,9 +421,9 @@ export function AboutUs() {
                   <div className="absolute inset-0 bg-gradient-to-br from-orange-500/5 via-transparent to-red-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
 
                   <div className="space-y-3.5 relative z-10">
-                    {/* Top Row: Icon Badge & Number (Gradient on Hover) */}
+                    {/* Top Row: Icon Badge & Number (Orange Before Hover, Gradient on Hover) */}
                     <div className="flex items-center justify-between">
-                      <div className="w-10 h-10 rounded-xl bg-slate-100 text-slate-700 border border-slate-200/80 flex items-center justify-center group-hover:bg-gradient-to-br group-hover:from-orange-500 group-hover:via-red-500 group-hover:to-rose-600 group-hover:text-white group-hover:border-transparent group-hover:scale-110 group-hover:shadow-md group-hover:shadow-red-500/25 transition-all duration-300">
+                      <div className="w-10 h-10 rounded-xl bg-orange-50 text-[#E5532A] border border-orange-200/80 flex items-center justify-center group-hover:bg-gradient-to-br group-hover:from-orange-500 group-hover:via-red-500 group-hover:to-rose-600 group-hover:text-white group-hover:border-transparent group-hover:scale-110 group-hover:shadow-md group-hover:shadow-red-500/25 transition-all duration-300">
                         <IconComp size={19} />
                       </div>
                       <span className="text-[10px] font-mono font-extrabold text-slate-400 bg-slate-50 border border-slate-200/60 group-hover:text-red-600 group-hover:bg-orange-50 group-hover:border-orange-200/80 px-2 py-0.5 rounded-md tracking-wider transition-colors duration-300">
@@ -442,9 +442,9 @@ export function AboutUs() {
                     </div>
                   </div>
 
-                  {/* Expanding Accent Bar (Gradient on Hover) */}
+                  {/* Expanding Accent Bar */}
                   <div className="mt-4 pt-2.5 border-t border-slate-100 relative z-10">
-                    <div className="w-8 h-1 bg-slate-200 rounded-full group-hover:w-full group-hover:bg-gradient-to-r group-hover:from-orange-500 group-hover:via-red-500 group-hover:to-rose-600 transition-all duration-500"></div>
+                    <div className="w-8 h-1 bg-[#E5532A]/30 rounded-full group-hover:w-full group-hover:bg-gradient-to-r group-hover:from-orange-500 group-hover:via-red-500 group-hover:to-rose-600 transition-all duration-500"></div>
                   </div>
                 </div>
               );
