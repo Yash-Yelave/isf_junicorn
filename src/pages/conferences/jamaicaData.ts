@@ -114,7 +114,7 @@ export const jamaicaEventData = {
   ],
   "team": [
     {
-      "name": "J A Chowdary",
+      "name": "Dr. J A Chowdary",
       "role": "",
       "img": "/assets/distinguished-guests/J-A-Chowdary.png"
     },

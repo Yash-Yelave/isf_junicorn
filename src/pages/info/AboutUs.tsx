@@ -186,14 +186,14 @@ export function AboutUs() {
   const mediaCoverage = Array.from({ length: 30 }, (_, i) => `/assets/about-us/media-${i + 1}.png`);
 
   const team = [
-    { name: "J A Chowdary", role: "Key Architect, Indian Tech Industry / Chairperson & Convenor, India Startup Festival", image: "/assets/about-us/J-A-Chowdary.jpg" },
-    { name: "Dr. Siva Mahesh Tangutooru", role: "Founder CEO, Jama Botanics & TurfPearl Agritech / Co-founder & Managing Trustee India Startup Foundation", image: "/assets/about-us/Dr.-Siva-Mahesh-Tangutooru.jpg" },
-    { name: "M. Sathyendra Kumar", role: "Business Unit Head – India, Maccaferri Environmental Solutions Pvt Ltd / Co-founder, India Startup Festival", image: "/assets/about-us/M.-Sathyendra-Kumar.jpg" },
-    { name: "Deenanath Harapanahalli", role: "Founder CEO, LifeCykul / Co-founder & India Startup Foundation", image: "/assets/about-us/Deenanath-Harapanahalli.jpg" },
-    { name: "Seshadri Vangala", role: "Founder and Group CEO IFin Global Group & SGlobal Group / Co-founder & India Startup Festival", image: "/assets/about-us/Seshadri-Vangala.jpg" },
+    { name: "Dr. J A Chowdary", role: "Key Architect, Indian Tech Industry / Founder & Chairman, International Startup Foundation", image: "/assets/about-us/J-A-Chowdary.jpg" },
+    { name: "Dr. Siva Mahesh Tangutooru", role: "Founder CEO, Jama Botanics & TurfPearl Agritech / Co-founder, International Startup Foundation", image: "/assets/about-us/Dr.-Siva-Mahesh-Tangutooru.jpg" },
+    { name: "M. Sathyendra Kumar", role: "Business Unit Head – India, Maccaferri Environmental Solutions Pvt Ltd / Co-founder, International Startup Foundation", image: "/assets/about-us/M.-Sathyendra-Kumar.jpg" },
+    { name: "Deenanath Harapanahalli", role: "Founder CEO, LifeCykul / Co-founder, International Startup Foundation", image: "/assets/about-us/Deenanath-Harapanahalli.jpg" },
+    { name: "Seshadri Vangala", role: "Founder and Group CEO IFin Global Group & SGlobal Group / Co-founder, International Startup Foundation", image: "/assets/about-us/Seshadri-Vangala.jpg" },
     { name: "Achyut Yerragangu", role: "Founder, CEO, Nature Quotient Ventures Pvt Ltd / Co-founder & COO, International Startup Foundation", image: "/assets/about-us/Achyut-Yerragangu.jpg" },
-    { name: "Bipin Chandra Pendyala", role: "CPO, InvenioLSI / Co-founder, India Startup Festival", image: "/assets/about-us/Bipin-Chandra-Pendyala.jpg" },
-    { name: "Dr. Bhanu Prakash Varla", role: "Partner & Director, Plural Technology & EdifyPath / Co-founder, India Startup Festival", image: "/assets/about-us/ct10-2.jpg" }
+    { name: "Bipin Chandra Pendyala", role: "CPO, InvenioLSI / Co-founder, International Startup Foundation", image: "/assets/about-us/Bipin-Chandra-Pendyala.jpg" },
+    { name: "Dr. Bhanu Prakash Varla", role: "Partner & Director, Plural Technology & EdifyPath / Co-founder, International Startup Foundation", image: "/assets/about-us/ct10-2.jpg" }
   ];
 
   return (
@@ -266,7 +266,74 @@ export function AboutUs() {
                 />
               </div>
             </div>
+          </div>
+        </div>
+      </section>
 
+      {/* 2.5 ISF Board of Directors Section */}
+      <section className="py-16 md:py-20 bg-gradient-to-b from-white via-[#FAF8F5]/80 to-white border-b border-gray-150 relative overflow-hidden">
+        {/* Decorative subtle background elements */}
+        <div className="absolute top-1/2 left-0 w-80 h-80 bg-amber-500/5 rounded-full blur-3xl pointer-events-none"></div>
+        <div className="absolute bottom-0 right-0 w-80 h-80 bg-emerald-500/5 rounded-full blur-3xl pointer-events-none"></div>
+
+        <div className="container-custom px-6 max-w-6xl mx-auto space-y-12 relative z-10">
+          <div className="text-center space-y-3 max-w-2xl mx-auto">
+            <span className="text-xs font-bold uppercase tracking-widest text-[#D24D7F] bg-pink-50 border border-pink-100 px-4 py-1.5 rounded-full inline-block">
+              Visionary Leadership
+            </span>
+            <h2 className="text-3xl md:text-4xl font-extrabold text-[#111111] font-baskerville tracking-tight uppercase">
+              ISF Board of Directors
+            </h2>
+            <p className="text-sm text-[#666666] font-normal leading-relaxed">
+              Guiding International Startup Foundation with strategic direction, industry wisdom, and unwavering dedication.
+            </p>
+            <div className="w-16 h-1 bg-[#D24D7F] mx-auto rounded-full mt-1"></div>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {team.slice(0, 3).map((member, idx) => (
+              <div 
+                key={idx}
+                className="group relative bg-white border border-gray-200/90 rounded-3xl p-8 shadow-sm hover:shadow-2xl hover:border-amber-300/80 transition-all duration-300 hover:-translate-y-2 flex flex-col items-center text-center justify-between"
+              >
+                {/* Top color gradient line */}
+                <div className="w-12 h-1 bg-gradient-to-r from-[#0C3E2B] via-[#D24D7F] to-amber-500 rounded-full mb-6 group-hover:w-full transition-all duration-500"></div>
+
+                <div className="flex flex-col items-center space-y-5">
+                  {/* Portrait with multi-color gradient border ring */}
+                  <div className="relative p-1 bg-gradient-to-tr from-amber-400 via-[#D24D7F] to-[#0C3E2B] rounded-full shadow-lg group-hover:scale-105 transition-transform duration-300">
+                    <div className="w-36 h-36 md:w-40 md:h-40 rounded-full overflow-hidden border-4 border-white bg-slate-100">
+                      <img 
+                        src={getImageUrl(member.image)} 
+                        alt={member.name} 
+                        className="w-full h-full object-cover" 
+                      />
+                    </div>
+                  </div>
+
+                  {/* Name and Designation */}
+                  <div className="space-y-2">
+                    <h3 className="text-xl font-bold font-baskerville text-[#111111] group-hover:text-[#0C3E2B] transition-colors leading-tight">
+                      {member.name}
+                    </h3>
+                    <div className="space-y-1">
+                      {member.role.split(' / ').map((part, i) => (
+                        <p key={i} className={`text-xs md:text-sm leading-relaxed ${i === 0 ? "font-bold text-[#D24D7F]" : "text-[#666666] font-medium"}`}>
+                          {part}
+                        </p>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+
+                {/* Bottom subtle badge indicator */}
+                <div className="mt-6 pt-4 border-t border-gray-100 w-full flex justify-center">
+                  <span className="text-[11px] font-extrabold uppercase tracking-widest text-[#0C3E2B] bg-[#FAF8F5] px-3.5 py-1 rounded-full border border-gray-200/80">
+                    {idx === 0 ? "Founder & Chairman" : "Co-Founder"}
+                  </span>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -336,7 +403,7 @@ export function AboutUs() {
              <div className="inline-flex items-center gap-2 bg-[#FAF8F5] border border-gray-200/90 px-6 py-2 rounded-full text-xs md:text-sm font-extrabold text-[#0C3E2B] uppercase tracking-widest shadow-2xs">
                <span className="w-2 h-2 rounded-full bg-isf-orange"></span>
                <span>Startups Engaged</span>
-             </div>
+            </div>
           </div>
         </div>
       </section>
@@ -532,36 +599,7 @@ export function AboutUs() {
         </div>
       </section>
 
-      {/* 8. ISF JUNICORNS */}
-      <section className="py-16 bg-[#E8F5E9] border-b border-gray-200 relative overflow-hidden">
-        <div className="absolute right-0 bottom-0 opacity-20 pointer-events-none w-1/3">
-           <img src={getImageUrl("/assets/about-us/friends.svg")} alt="" className="w-full h-full object-contain" />
-        </div>
-        <div className="container-custom space-y-12 relative z-10 px-4">
-          <div className="text-center space-y-3">
-            <h2 className="text-2xl md:text-3xl font-extrabold tracking-tight uppercase text-teal-800">ISF JUNICONS</h2>
-            <p className="text-xs text-teal-600 font-bold uppercase tracking-wider">Fueling the Innovation Spark in the Next Generation</p>
-            <div className="w-12 h-1 bg-teal-600 mx-auto rounded"></div>
-            <h3 className="text-xl font-bold mt-4 uppercase text-[#D24D7F]">Encouraging Next Generation Innovators</h3>
-          </div>
 
-          <div className="relative flex overflow-hidden group py-6 bg-white shadow-inner border-y border-teal-100 rounded-2xl">
-            <div className="flex gap-6 w-max animate-marquee pr-6 hover:[animation-play-state:paused]">
-               {junicorns.map((img, i) => (
-                   <div key={`slide-1-${i}`} className="w-[280px] md:w-[350px] h-[180px] md:h-[220px] shrink-0 rounded-2xl overflow-hidden shadow-lg hover:scale-105 transition-transform duration-500 bg-gray-100">
-                       <img src={img} alt={`Junicon ${i+1}`} className="w-full h-full object-cover" />
-                   </div>
-               ))}
-               {/* Duplicated for seamless loop */}
-               {junicorns.map((img, i) => (
-                   <div key={`slide-2-${i}`} className="w-[280px] md:w-[350px] h-[180px] md:h-[220px] shrink-0 rounded-2xl overflow-hidden shadow-lg hover:scale-105 transition-transform duration-500 bg-gray-100">
-                       <img src={img} alt={`Junicon ${i+1} duplicated`} className="w-full h-full object-cover" />
-                   </div>
-               ))}
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* 9. ISF MOUs */}
       <section className="py-16 bg-white border-b border-gray-200">
@@ -607,11 +645,12 @@ export function AboutUs() {
 
       {/* 11. Banner Removed */}
 
-      {/* 12. ISF Team */}
+      {/* 12. ISF Board of Directors (Hidden as requested) */}
+      {/* 
       <section className="py-16 bg-white border-b border-gray-150">
         <div className="container-custom space-y-12 px-4">
           <div className="text-center space-y-3">
-            <h2 className="text-2xl md:text-3xl font-extrabold text-[#111111] tracking-tight uppercase">ISF Team</h2>
+            <h2 className="text-2xl md:text-3xl font-extrabold text-[#111111] tracking-tight uppercase">ISF Board of Directors</h2>
             <div className="w-12 h-1 bg-isf-orange mx-auto rounded"></div>
           </div>
           
@@ -635,6 +674,7 @@ export function AboutUs() {
           </div>
         </div>
       </section>
+      */}
 
     </div>
   );

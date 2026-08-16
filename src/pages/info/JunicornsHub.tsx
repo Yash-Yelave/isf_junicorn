@@ -252,7 +252,7 @@ export function JunicornsHub() {
                       <div className="absolute -inset-1.5 bg-gradient-to-br from-[#EAB308] to-[#F59E0B] rounded-full translate-x-1.5 translate-y-1.5 opacity-90 blur-[2px]"></div>
                       <img
                         src={getImageUrl("/assets/themes/jupiterx/junicon-26/images/jac.png")}
-                        alt="J A Chowdary"
+                        alt="Dr. J A Chowdary"
                         className="relative w-20 h-20 sm:w-24 sm:h-24 object-cover rounded-full border-[3px] border-white shadow-md z-10"
                         onError={(e) => {
                           e.currentTarget.src = "/assets/2024/02/J-A-Chowdary.jpg";
@@ -260,7 +260,7 @@ export function JunicornsHub() {
                       />
                     </div>
                     <div className="space-y-2 text-center sm:text-left flex-1">
-                      <h4 className="text-base font-bold text-[#0C3E2B] font-baskerville m-0">J A Chowdary</h4>
+                      <h4 className="text-base font-bold text-[#0C3E2B] font-baskerville m-0">Dr. J A Chowdary</h4>
                       <p className="text-[#0C3E2B]/85 text-[13px] sm:text-sm italic font-medium leading-relaxed bg-white/40 p-3 rounded-xl border border-white/60 inline-block">
                         "To realize Bharat 2047, we must equip youth—especially from rural India and Tier 2 & 3 cities—with the right tools, mentorship, and global exposure. ISF Junicorn100K is a game-changing movement to empower 100,000 innovators."
                       </p>
