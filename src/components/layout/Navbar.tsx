@@ -22,6 +22,10 @@ export function Navbar() {
 
   const menuItems = [
     {
+      name: "About Us",
+      path: "/about-us"
+    },
+    {
       name: "1 Hour a Week",
       path: "/1hour-per-week"
     },
@@ -40,15 +44,11 @@ export function Navbar() {
       name: "Junicorns",
       path: "#",
       submenu: [
-        { name: "Cohort 1 Austin", path: "/cohort-1-austin" },
-        { name: "Cohort 2.0 Dubai 2026", path: "/cohort-2-dubai" },
+        { name: "About Junicorn", path: "/junicornshub" },
         { name: "Cohort 3.0", path: "/cohort-3" },
-        { name: "About Junicorn", path: "/junicornshub" }
+        { name: "Cohort 2.0 Dubai 2026", path: "/cohort-2-dubai" },
+        { name: "Cohort 1 Austin", path: "/cohort-1-austin" }
       ]
-    },
-    {
-      name: "About Us",
-      path: "/about-us"
     }
   ];
 

@@ -178,14 +178,14 @@ export function LandingPage() {
 
   const junicornSlides = [
     {
-      tag: "Cohort 2",
-      title: "Junicorns Cohort 2 Innovators Team",
-      image: "/assets/cohort3/team.png"
-    },
-    {
       tag: "Cohort 1",
       title: "Junicorns Cohort 1 Graduation & Pitches",
       image: "/assets/themes/jupiterx/junicon-26/images/1-Dflng3M3.jpeg"
+    },
+    {
+      tag: "Cohort 1",
+      title: "Junicorns Cohort 1 Innovators Team",
+      image: "/assets/cohort3/team.png"
     }
   ];
 
@@ -866,78 +866,6 @@ export function LandingPage() {
                   ))}
                 </div>
               </div>
-            </div>
-
-          </div>
-        </div>
-      </section>
-
-      {/* 3. Three Event Cards: Pune, USA, AI Summit */}
-      <section className="py-16 bg-gradient-to-tr from-[#FFF7E3]/60 via-slate-50 to-[#FFE7AB]/25 border-b border-gray-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-
-            {/* Card 1: ISF 2024 Pune */}
-            <div className="bg-white p-8 rounded-lg border border-gray-200 shadow-sm space-y-4 hover:border-isf-orange transition-colors group flex flex-col justify-between">
-              <div className="space-y-4">
-                <span className="text-xs font-bold text-isf-orange tracking-widest uppercase block">
-                  Conference
-                </span>
-                <h3 className="text-lg sm:text-xl font-bold">
-                  ISF 2024 Pune
-                </h3>
-                <p className="text-sm text-slate-600 leading-relaxed">
-                  Connect with Pune's vibrant startup ecosystem, engage in strategic conversations, and explore collaboration opportunities with emerging innovators.
-                </p>
-              </div>
-              <Link
-                to="/isf-2024-pune"
-                className="inline-block text-xs sm:text-sm font-bold text-isf-orange hover:text-isf-orange-hover uppercase tracking-wider pt-4 group-hover:underline"
-              >
-                Take Part Now →
-              </Link>
-            </div>
-
-            {/* Card 2: ISF 2024 USA */}
-            <div className="bg-white p-8 rounded-lg border border-gray-200 shadow-sm space-y-4 hover:border-isf-orange transition-colors group flex flex-col justify-between">
-              <div className="space-y-4">
-                <span className="text-xs font-bold text-isf-orange tracking-widest uppercase block">
-                  Global Summit
-                </span>
-                <h3 className="text-lg sm:text-xl font-bold">
-                  ISF 2024 USA
-                </h3>
-                <p className="text-sm text-slate-600 leading-relaxed">
-                  Join global delegates in New Jersey for high-impact networking, investor matchmaking, and cross-border startup collaboration at ISF's USA chapter.
-                </p>
-              </div>
-              <Link
-                to="/conference-delegate-registration-isf-usa-2024"
-                className="inline-block text-xs sm:text-sm font-bold text-isf-orange hover:text-isf-orange-hover uppercase tracking-wider pt-4 group-hover:underline"
-              >
-                Take Part Now →
-              </Link>
-            </div>
-
-            {/* Card 3: ISF AI Summit 2025 */}
-            <div className="bg-white p-8 rounded-lg border border-gray-200 shadow-sm space-y-4 hover:border-isf-orange transition-colors group flex flex-col justify-between">
-              <div className="space-y-4">
-                <span className="text-xs font-bold text-isf-orange tracking-widest uppercase block">
-                  AI Summit
-                </span>
-                <h3 className="text-lg sm:text-xl font-bold">
-                  ISF AI Summit 2025
-                </h3>
-                <p className="text-sm text-slate-600 leading-relaxed">
-                  Explore the frontier of artificial intelligence with top researchers, founders, and investors. Shape the future of tech at ISF's premier AI conference.
-                </p>
-              </div>
-              <Link
-                to="/isf-ai-summit"
-                className="inline-block text-xs sm:text-sm font-bold text-isf-orange hover:text-isf-orange-hover uppercase tracking-wider pt-4 group-hover:underline"
-              >
-                Take Part Now →
-              </Link>
             </div>
 
           </div>
