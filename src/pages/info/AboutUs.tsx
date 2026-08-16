@@ -224,11 +224,11 @@ export function AboutUs() {
 
             {/* Image on Right */}
             <div className="flex justify-center items-center w-full">
-              <div className="relative p-3 sm:p-5 bg-white rounded-3xl border border-slate-200/80 shadow-md hover:shadow-xl transition-all duration-300 max-w-lg lg:max-w-xl w-full">
+              <div className="relative p-2 sm:p-3 bg-white rounded-3xl border border-slate-200/80 shadow-md hover:shadow-xl transition-all duration-300 max-w-xl lg:max-w-2xl w-full">
                 <img 
                   src={getImageUrl("/assets/about-us/about-isf.svg")} 
                   alt="What is International Startup Foundation" 
-                  className="w-full h-auto object-contain max-h-[460px] sm:max-h-[480px]" 
+                  className="w-full h-auto object-contain max-h-[550px]" 
                 />
               </div>
             </div>
@@ -243,12 +243,12 @@ export function AboutUs() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             
             {/* Image on Left */}
-            <div className="order-2 lg:order-1 flex justify-center items-center">
-              <div className="relative rounded-3xl overflow-hidden shadow-xl max-w-md w-full border-4 border-white">
+            <div className="order-2 lg:order-1 flex justify-center items-center w-full">
+              <div className="relative rounded-3xl overflow-hidden shadow-xl max-w-xl w-full border-4 border-white">
                 <img 
                   src={getImageUrl("/assets/about-us/8704.jpg")} 
                   alt="ISF Team Gathering" 
-                  className="w-full h-auto object-cover max-h-[350px]" 
+                  className="w-full h-auto object-cover max-h-[420px]" 
                 />
               </div>
             </div>
@@ -273,7 +273,7 @@ export function AboutUs() {
 
       {/* 2. Quick Stats Section */}
       <section className="py-16 bg-[#f9f9f9] border-b border-gray-200">
-        <div className="container-custom px-4">
+        <div className="container-custom px-4 max-w-6xl mx-auto">
           <div className="text-center space-y-3 mb-10">
             <h2 className="text-2xl md:text-3xl font-extrabold font-inter tracking-tight uppercase text-[#111111]">Quick Stats</h2>
             <p className="text-xs text-[#666666] font-semibold uppercase tracking-wider">Our ISF Ecosystem Numbers</p>
@@ -293,12 +293,16 @@ export function AboutUs() {
             ))}
           </div>
 
-          <div className="max-w-5xl mx-auto bg-white p-4 md:p-6 rounded-3xl border border-gray-150 shadow-[0_20px_50px_rgba(0,0,0,0.06)] hover:shadow-[0_20px_50px_rgba(0,0,0,0.12)] transition-shadow duration-300">
+          <div className="max-w-6xl mx-auto bg-white p-3 sm:p-5 rounded-3xl border border-gray-150 shadow-[0_20px_50px_rgba(0,0,0,0.06)] hover:shadow-[0_20px_50px_rgba(0,0,0,0.12)] transition-shadow duration-300 flex flex-col items-center space-y-4">
              <img 
                src={getImageUrl("/assets/about-us/about-ISF-1024x499.png")} 
-               alt="ISF Ecosystem Growth Timeline (2022 - 2024)" 
-               className="w-full rounded-2xl object-contain" 
+               alt="Startups Engaged Timeline" 
+               className="w-full h-auto rounded-2xl object-contain max-h-[650px]" 
              />
+             <div className="inline-flex items-center gap-2 bg-[#FAF8F5] border border-gray-200/90 px-6 py-2 rounded-full text-xs md:text-sm font-extrabold text-[#0C3E2B] uppercase tracking-widest shadow-2xs">
+               <span className="w-2 h-2 rounded-full bg-isf-orange"></span>
+               <span>Startups Engaged</span>
+             </div>
           </div>
         </div>
       </section>
