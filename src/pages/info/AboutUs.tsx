@@ -186,9 +186,9 @@ export function AboutUs() {
   const mediaCoverage = Array.from({ length: 30 }, (_, i) => `/assets/about-us/media-${i + 1}.png`);
 
   const team = [
-    { name: "Dr. J A Chowdary", role: "Founder & Chairman, International Startup Foundation", linkedin: "https://www.linkedin.com/in/jachowdary/", image: "/assets/about-us/J-A-Chowdary.jpg" },
-    { name: "Dr. Siva Mahesh Tangutooru", role: "Co-Founder, International Startup Foundation", linkedin: "https://www.linkedin.com/in/dr-siva-mahesh-tangutooru-18410926/", image: "/assets/about-us/Dr.-Siva-Mahesh-Tangutooru.jpg" },
-    { name: "M. Sathyendra Kumar", role: "Co-Founder, International Startup Foundation", linkedin: "https://www.linkedin.com/in/sathyendra/", image: "/assets/about-us/M.-Sathyendra-Kumar.jpg" },
+    { name: "Dr. J A Chowdary", role: "Founder & Chairman", linkedin: "https://www.linkedin.com/in/jachowdary/", image: "/assets/about-us/J-A-Chowdary.jpg" },
+    { name: "Dr. Siva Mahesh Tangutooru", role: "Co-Founder", linkedin: "https://www.linkedin.com/in/dr-siva-mahesh-tangutooru-18410926/", image: "/assets/about-us/Dr.-Siva-Mahesh-Tangutooru.jpg" },
+    { name: "M. Sathyendra Kumar", role: "Co-Founder", linkedin: "https://www.linkedin.com/in/sathyendra/", image: "/assets/about-us/M.-Sathyendra-Kumar.jpg" },
     { name: "Deenanath Harapanahalli", role: "Founder CEO, LifeCykul / Co-founder, International Startup Foundation", image: "/assets/about-us/Deenanath-Harapanahalli.jpg" },
     { name: "Seshadri Vangala", role: "Founder and Group CEO IFin Global Group & SGlobal Group / Co-founder, International Startup Foundation", image: "/assets/about-us/Seshadri-Vangala.jpg" },
     { name: "Achyut Yerragangu", role: "Founder, CEO, Nature Quotient Ventures Pvt Ltd / Co-founder & COO, International Startup Foundation", image: "/assets/about-us/Achyut-Yerragangu.jpg" },
@@ -282,27 +282,24 @@ export function AboutUs() {
               Visionary Leadership
             </span>
             <h2 className="text-2xl md:text-3xl font-extrabold text-[#111111] font-baskerville tracking-tight uppercase">
-              ISF Board of Directors
+              Board of Directors
             </h2>
-            <p className="text-xs md:text-sm text-[#666666] font-normal leading-relaxed">
-              Guiding International Startup Foundation with strategic direction, industry wisdom, and unwavering dedication.
-            </p>
-            <div className="w-12 h-1 bg-[#D24D7F] mx-auto rounded-full mt-1"></div>
+            <div className="w-12 h-1 bg-[#D24D7F] mx-auto rounded-full mt-2"></div>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {team.slice(0, 3).map((member, idx) => (
               <div 
                 key={idx}
-                className="group relative bg-white border border-gray-200/90 rounded-2xl p-5 sm:p-6 shadow-2xs hover:shadow-xl hover:border-amber-300/80 transition-all duration-300 hover:-translate-y-1 flex flex-col items-center text-center justify-between"
+                className="group relative bg-white border border-gray-200/90 rounded-2xl p-5 sm:p-6 shadow-2xs hover:shadow-xl hover:border-pink-200 transition-all duration-300 hover:-translate-y-1 flex flex-col items-center text-center justify-between"
               >
-                {/* Top color gradient line */}
-                <div className="w-10 h-1 bg-gradient-to-r from-[#0C3E2B] via-[#D24D7F] to-amber-500 rounded-full mb-4 group-hover:w-full transition-all duration-500"></div>
+                {/* Top theme accent line */}
+                <div className="w-10 h-1 bg-[#D24D7F]/80 rounded-full mb-4 group-hover:w-16 group-hover:bg-[#D24D7F] transition-all duration-300"></div>
 
                 <div className="flex flex-col items-center space-y-3.5">
-                  {/* Portrait with multi-color gradient border ring */}
-                  <div className="relative p-1 bg-gradient-to-tr from-amber-400 via-[#D24D7F] to-[#0C3E2B] rounded-full shadow-md group-hover:scale-105 transition-transform duration-300">
-                    <div className="w-24 h-24 sm:w-28 sm:h-28 rounded-full overflow-hidden border-3 border-white bg-slate-100">
+                  {/* Portrait with theme ring */}
+                  <div className="relative p-1 bg-pink-50 border border-pink-200 rounded-full shadow-xs group-hover:scale-105 group-hover:border-[#D24D7F] transition-all duration-300">
+                    <div className="w-24 h-24 sm:w-28 sm:h-28 rounded-full overflow-hidden border-2 border-white bg-slate-100">
                       <img 
                         src={getImageUrl(member.image)} 
                         alt={member.name} 
