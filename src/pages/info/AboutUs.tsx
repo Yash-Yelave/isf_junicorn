@@ -186,9 +186,9 @@ export function AboutUs() {
   const mediaCoverage = Array.from({ length: 30 }, (_, i) => `/assets/about-us/media-${i + 1}.png`);
 
   const team = [
-    { name: "Dr. J A Chowdary", role: "Key Architect, Indian Tech Industry / Founder & Chairman, International Startup Foundation", image: "/assets/about-us/J-A-Chowdary.jpg" },
-    { name: "Dr. Siva Mahesh Tangutooru", role: "Founder CEO, Jama Botanics & TurfPearl Agritech / Co-founder, International Startup Foundation", image: "/assets/about-us/Dr.-Siva-Mahesh-Tangutooru.jpg" },
-    { name: "M. Sathyendra Kumar", role: "Business Unit Head – India, Maccaferri Environmental Solutions Pvt Ltd / Co-founder, International Startup Foundation", image: "/assets/about-us/M.-Sathyendra-Kumar.jpg" },
+    { name: "Dr. J A Chowdary", role: "Founder & Chairman, International Startup Foundation", linkedin: "https://www.linkedin.com/in/jachowdary/", image: "/assets/about-us/J-A-Chowdary.jpg" },
+    { name: "Dr. Siva Mahesh Tangutooru", role: "Co-Founder, International Startup Foundation", linkedin: "https://www.linkedin.com/in/dr-siva-mahesh-tangutooru-18410926/", image: "/assets/about-us/Dr.-Siva-Mahesh-Tangutooru.jpg" },
+    { name: "M. Sathyendra Kumar", role: "Co-Founder, International Startup Foundation", linkedin: "https://www.linkedin.com/in/sathyendra/", image: "/assets/about-us/M.-Sathyendra-Kumar.jpg" },
     { name: "Deenanath Harapanahalli", role: "Founder CEO, LifeCykul / Co-founder, International Startup Foundation", image: "/assets/about-us/Deenanath-Harapanahalli.jpg" },
     { name: "Seshadri Vangala", role: "Founder and Group CEO IFin Global Group & SGlobal Group / Co-founder, International Startup Foundation", image: "/assets/about-us/Seshadri-Vangala.jpg" },
     { name: "Achyut Yerragangu", role: "Founder, CEO, Nature Quotient Ventures Pvt Ltd / Co-founder & COO, International Startup Foundation", image: "/assets/about-us/Achyut-Yerragangu.jpg" },
@@ -271,38 +271,38 @@ export function AboutUs() {
       </section>
 
       {/* 2.5 ISF Board of Directors Section */}
-      <section className="py-16 md:py-20 bg-gradient-to-b from-white via-[#FAF8F5]/80 to-white border-b border-gray-150 relative overflow-hidden">
+      <section className="py-10 md:py-12 bg-gradient-to-b from-white via-[#FAF8F5]/80 to-white border-b border-gray-150 relative overflow-hidden">
         {/* Decorative subtle background elements */}
         <div className="absolute top-1/2 left-0 w-80 h-80 bg-amber-500/5 rounded-full blur-3xl pointer-events-none"></div>
         <div className="absolute bottom-0 right-0 w-80 h-80 bg-emerald-500/5 rounded-full blur-3xl pointer-events-none"></div>
 
-        <div className="container-custom px-6 max-w-6xl mx-auto space-y-12 relative z-10">
-          <div className="text-center space-y-3 max-w-2xl mx-auto">
-            <span className="text-xs font-bold uppercase tracking-widest text-[#D24D7F] bg-pink-50 border border-pink-100 px-4 py-1.5 rounded-full inline-block">
+        <div className="container-custom px-4 max-w-5xl mx-auto space-y-8 relative z-10">
+          <div className="text-center space-y-2 max-w-2xl mx-auto">
+            <span className="text-[11px] font-bold uppercase tracking-widest text-[#D24D7F] bg-pink-50 border border-pink-100 px-3.5 py-1 rounded-full inline-block">
               Visionary Leadership
             </span>
-            <h2 className="text-3xl md:text-4xl font-extrabold text-[#111111] font-baskerville tracking-tight uppercase">
+            <h2 className="text-2xl md:text-3xl font-extrabold text-[#111111] font-baskerville tracking-tight uppercase">
               ISF Board of Directors
             </h2>
-            <p className="text-sm text-[#666666] font-normal leading-relaxed">
+            <p className="text-xs md:text-sm text-[#666666] font-normal leading-relaxed">
               Guiding International Startup Foundation with strategic direction, industry wisdom, and unwavering dedication.
             </p>
-            <div className="w-16 h-1 bg-[#D24D7F] mx-auto rounded-full mt-1"></div>
+            <div className="w-12 h-1 bg-[#D24D7F] mx-auto rounded-full mt-1"></div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {team.slice(0, 3).map((member, idx) => (
               <div 
                 key={idx}
-                className="group relative bg-white border border-gray-200/90 rounded-3xl p-8 shadow-sm hover:shadow-2xl hover:border-amber-300/80 transition-all duration-300 hover:-translate-y-2 flex flex-col items-center text-center justify-between"
+                className="group relative bg-white border border-gray-200/90 rounded-2xl p-5 sm:p-6 shadow-2xs hover:shadow-xl hover:border-amber-300/80 transition-all duration-300 hover:-translate-y-1 flex flex-col items-center text-center justify-between"
               >
                 {/* Top color gradient line */}
-                <div className="w-12 h-1 bg-gradient-to-r from-[#0C3E2B] via-[#D24D7F] to-amber-500 rounded-full mb-6 group-hover:w-full transition-all duration-500"></div>
+                <div className="w-10 h-1 bg-gradient-to-r from-[#0C3E2B] via-[#D24D7F] to-amber-500 rounded-full mb-4 group-hover:w-full transition-all duration-500"></div>
 
-                <div className="flex flex-col items-center space-y-5">
+                <div className="flex flex-col items-center space-y-3.5">
                   {/* Portrait with multi-color gradient border ring */}
-                  <div className="relative p-1 bg-gradient-to-tr from-amber-400 via-[#D24D7F] to-[#0C3E2B] rounded-full shadow-lg group-hover:scale-105 transition-transform duration-300">
-                    <div className="w-36 h-36 md:w-40 md:h-40 rounded-full overflow-hidden border-4 border-white bg-slate-100">
+                  <div className="relative p-1 bg-gradient-to-tr from-amber-400 via-[#D24D7F] to-[#0C3E2B] rounded-full shadow-md group-hover:scale-105 transition-transform duration-300">
+                    <div className="w-24 h-24 sm:w-28 sm:h-28 rounded-full overflow-hidden border-3 border-white bg-slate-100">
                       <img 
                         src={getImageUrl(member.image)} 
                         alt={member.name} 
@@ -312,25 +312,29 @@ export function AboutUs() {
                   </div>
 
                   {/* Name and Designation */}
-                  <div className="space-y-2">
-                    <h3 className="text-xl font-bold font-baskerville text-[#111111] group-hover:text-[#0C3E2B] transition-colors leading-tight">
+                  <div className="space-y-1.5">
+                    <h3 className="text-base md:text-lg font-bold font-baskerville text-[#111111] group-hover:text-[#0C3E2B] transition-colors leading-tight">
                       {member.name}
                     </h3>
-                    <div className="space-y-1">
-                      {member.role.split(' / ').map((part, i) => (
-                        <p key={i} className={`text-xs md:text-sm leading-relaxed ${i === 0 ? "font-bold text-[#D24D7F]" : "text-[#666666] font-medium"}`}>
-                          {part}
-                        </p>
-                      ))}
-                    </div>
+                    <p className="text-xs sm:text-sm font-bold text-[#D24D7F] leading-relaxed">
+                      {member.role}
+                    </p>
                   </div>
                 </div>
 
-                {/* Bottom subtle badge indicator */}
-                <div className="mt-6 pt-4 border-t border-gray-100 w-full flex justify-center">
-                  <span className="text-[11px] font-extrabold uppercase tracking-widest text-[#0C3E2B] bg-[#FAF8F5] px-3.5 py-1 rounded-full border border-gray-200/80">
-                    {idx === 0 ? "Founder & Chairman" : "Co-Founder"}
-                  </span>
+                {/* Bottom LinkedIn Button */}
+                <div className="mt-4 pt-3 border-t border-gray-100 w-full flex justify-center">
+                  <a 
+                    href={member.linkedin} 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#0A66C2] bg-[#F0F6FF] hover:bg-[#0A66C2] hover:text-white px-3.5 py-1.5 rounded-full border border-[#0A66C2]/20 transition-all duration-300 shadow-2xs group/btn"
+                  >
+                    <svg className="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
+                      <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9v8.37H9.25V10.9H6.46M7.86 6.75a1.45 1.45 0 1 0 0 2.9 1.45 1.45 0 0 0 0-2.9z"/>
+                    </svg>
+                    <span>LinkedIn Profile</span>
+                  </a>
                 </div>
               </div>
             ))}
