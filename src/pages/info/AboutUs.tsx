@@ -192,7 +192,7 @@ export function AboutUs() {
             className="text-2xl md:text-4xl font-extrabold uppercase tracking-wider !text-white drop-shadow"
             style={{ color: '#ffffff' }}
           >
-            ISF INDIA
+            ISF
           </h2>
           <p className="text-xl md:text-2xl italic font-semibold text-amber-100/90 drop-shadow">
             connect. collaborate. celebrate.
@@ -271,11 +271,11 @@ export function AboutUs() {
         </div>
       </section>
 
-      {/* 2. Stats Bar & Video */}
-      <section className="py-16 bg-[#f9f9f9]">
+      {/* 2. Quick Stats Section */}
+      <section className="py-16 bg-[#f9f9f9] border-b border-gray-200">
         <div className="container-custom px-4">
           <div className="text-center space-y-3 mb-10">
-            <h2 className="text-2xl md:text-3xl font-extrabold font-inter tracking-tight uppercase">Quick Stats</h2>
+            <h2 className="text-2xl md:text-3xl font-extrabold font-inter tracking-tight uppercase text-[#111111]">Quick Stats</h2>
             <p className="text-xs text-[#666666] font-semibold uppercase tracking-wider">Our ISF Ecosystem Numbers</p>
             <div className="w-12 h-1 bg-isf-orange mx-auto rounded"></div>
           </div>
@@ -303,12 +303,12 @@ export function AboutUs() {
         </div>
       </section>
 
-      {/* 3. ISF INDIA KEY FEATURES */}
+      {/* 3. ISF KEY FEATURES */}
       <section className="py-16 bg-white border-b border-gray-200">
         <div className="container-custom space-y-12 px-4">
           <div className="text-center space-y-3">
-            <h2 className="text-2xl md:text-3xl font-extrabold text-[#111111] tracking-tight uppercase">ISF INDIA KEY FEATURES</h2>
-            <p className="text-xs text-[#666666] font-semibold uppercase tracking-wider">Signature Features of ISF India’s Support Ecosystem</p>
+            <h2 className="text-2xl md:text-3xl font-extrabold text-[#111111] tracking-tight uppercase">ISF KEY FEATURES</h2>
+            <p className="text-xs text-[#666666] font-semibold uppercase tracking-wider">Signature Features of ISF’s Support Ecosystem</p>
             <div className="w-12 h-1 bg-isf-orange mx-auto rounded"></div>
           </div>
           
@@ -323,11 +323,11 @@ export function AboutUs() {
         </div>
       </section>
 
-      {/* 4. ISF INDIA CORE VALUES */}
+      {/* 4. ISF CORE VALUES */}
       <section className="py-16 bg-[#FAF9F6] border-b border-gray-200">
         <div className="container-custom space-y-12 px-4">
           <div className="text-center space-y-3">
-            <h2 className="text-2xl md:text-3xl font-extrabold font-inter tracking-tight uppercase text-[#111111]">ISF INDIA CORE VALUES</h2>
+            <h2 className="text-2xl md:text-3xl font-extrabold font-inter tracking-tight uppercase text-[#111111]">ISF CORE VALUES</h2>
             <p className="text-xs text-[#666666] font-semibold uppercase tracking-wider">Ambitious Values Shaping the Nation's Future Success</p>
             <div className="w-12 h-1 bg-isf-orange mx-auto rounded"></div>
           </div>
@@ -365,8 +365,8 @@ export function AboutUs() {
       <section className="py-20 bg-white border-b border-gray-200">
         <div className="container-custom space-y-12 px-4">
           <div className="text-center space-y-3">
-            <h2 className="text-2xl md:text-3xl font-extrabold tracking-tight uppercase">ISF INDIA’S PAST ACHIEVEMENTS</h2>
-            <p className="text-xs text-[#666666] font-semibold uppercase tracking-wider">Echoes of Success: ISF India's Remarkable Chronicles</p>
+            <h2 className="text-2xl md:text-3xl font-extrabold tracking-tight uppercase">ISF’S PAST ACHIEVEMENTS</h2>
+            <p className="text-xs text-[#666666] font-semibold uppercase tracking-wider">Echoes of Success: ISF's Remarkable Chronicles</p>
             <div className="w-12 h-1 bg-isf-orange mx-auto rounded"></div>
             <h3 className="text-xl font-bold mt-4 text-[#D24D7F] uppercase">ISF 2023 Journey Highlights</h3>
           </div>

@@ -49,6 +49,10 @@ export function Navbar() {
         { name: "Cohort 2.0 Dubai 2026", path: "/cohort-2-dubai" },
         { name: "Cohort 1 Austin", path: "/cohort-1-austin" }
       ]
+    },
+    {
+      name: "ISF Journey",
+      path: "/isf-journey"
     }
   ];
 
