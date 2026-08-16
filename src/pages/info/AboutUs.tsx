@@ -284,17 +284,16 @@ export function AboutUs() {
             <h2 className="text-2xl md:text-3xl font-extrabold text-[#111111] font-baskerville tracking-tight uppercase">
               Board of Directors
             </h2>
-            <div className="w-12 h-1 bg-[#D24D7F] mx-auto rounded-full mt-2"></div>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {team.slice(0, 3).map((member, idx) => (
               <div 
                 key={idx}
-                className="group relative bg-white border border-gray-200/90 rounded-2xl p-5 sm:p-6 shadow-2xs hover:shadow-xl hover:border-pink-200 transition-all duration-300 hover:-translate-y-1 flex flex-col items-center text-center justify-between"
+                className="group relative bg-white border border-gray-200/90 rounded-2xl p-5 sm:p-6 shadow-2xs hover:shadow-xl hover:border-orange-200 transition-all duration-300 hover:-translate-y-1 flex flex-col items-center text-center justify-between"
               >
-                {/* Top theme accent line */}
-                <div className="w-10 h-1 bg-[#D24D7F]/80 rounded-full mb-4 group-hover:w-16 group-hover:bg-[#D24D7F] transition-all duration-300"></div>
+                {/* Top orange accent line */}
+                <div className="w-10 h-1 bg-[#E5532A] rounded-full mb-4 group-hover:w-16 transition-all duration-300"></div>
 
                 <div className="flex flex-col items-center space-y-3.5">
                   {/* Portrait with theme ring */}
