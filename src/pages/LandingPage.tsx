@@ -69,40 +69,7 @@ const mediaVideos = [
   { id: "fDpX7sfh8d4", title: "Innovation Spotlight", category: "Spotlight" }
 ];
 
-const faqs = [
-  {
-    q: "What is the Junicorn Rural Innovation Challenge?",
-    a: "The Junicorn (Junior Unicorns) Rural Innovation Challenge is a flagship national program by the International Startup Foundation (ISF). It bridges the gap between rural ambition and global opportunities by empowering young innovators aged 8 to 25 to solve community problems and transform their ideas into scalable, impact-driven startup ventures."
-  },
-  {
-    q: "Who is eligible to participate in the Junicorn program?",
-    a: "Students and young innovators aged 8 to 25 are eligible to apply. The initiative encompasses dedicated school-level and college-level programs to support and nurture ideas at different stages of educational growth."
-  },
-  {
-    q: "What are the core focus sectors/arenas for Cohort 3.0?",
-    a: "Cohort 3.0 invites solutions in vital domains including Agriculture & Food Security, Healthcare & Well-being, Smart Manufacturing & MSME Growth, Clean Energy & Sustainability, Water Security & Climate Action, Space & Deep-Tech, and Education & Skill Development."
-  },
-  {
-    q: "Do I need a registered startup or a working prototype to apply?",
-    a: "No, you do not need a registered company or a working prototype. We welcome early-stage problem statements and promising ideas. The program's build phase is designed to help you construct your MVP (Minimum Viable Product) from scratch with expert guidance."
-  },
-  {
-    q: "What does the '3 M's' ecosystem stand for?",
-    a: "ISF supports startups through the '3 M's': Mentorship (guidance from 800+ global industry experts), Market Access (opportunities to showcase ideas at global summits in Austin and Dubai), and Money (direct connection to angel networks, VCs, and development grants)."
-  },
-  {
-    q: "Is there a registration fee to participate in the challenge?",
-    a: "No, participation in Junicorn camps, mentorship sessions, and startup challenges is completely free. Furthermore, ISF offers travel and accommodation support for top selected teams to present at global summits."
-  },
-  {
-    q: "Can I apply individually, and are cross-school teams allowed?",
-    a: "Yes! You can apply as an individual innovator or as a team. We also highly encourage cross-institutional collaboration, allowing teams to form with members from different schools or colleges."
-  },
-  {
-    q: "How can industry professionals and schools partner with ISF?",
-    a: "Industry leaders can apply to join the Global Mentorship Program ('One Hour a Week') to guide student founders. Schools and colleges can partner with us as institutional nodes to host localized innovation bootcamps on their campuses."
-  }
-];
+
 
 interface VideoCardProps {
   videoId: string;
@@ -174,7 +141,7 @@ export function LandingPage() {
   const videoRef = useRef<HTMLVideoElement | null>(null);
   const [isMuted, setIsMuted] = useState(true);
   const [junicornIndex, setJunicornIndex] = useState(0);
-  const [openFaq, setOpenFaq] = useState<number | null>(null);
+
 
   const junicornSlides = [
     {
@@ -1109,53 +1076,7 @@ export function LandingPage() {
         </div>
       </section>
 
-      {/* 6.5. FAQ Section */}
-      <section className="py-20 bg-slate-50 border-b border-gray-100">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center space-y-3 mb-12">
-            <span className="text-xs font-extrabold text-isf-orange tracking-widest uppercase block font-inter">
-              HAVE QUESTIONS?
-            </span>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold font-baskerville text-slate-900 leading-tight text-center">
-              Frequently Asked Questions
-            </h2>
-            <div className="w-12 h-1 bg-isf-orange mx-auto rounded mt-4"></div>
-          </div>
 
-          <div className="space-y-4">
-            {faqs.map((faq, idx) => (
-              <div 
-                key={idx} 
-                className="bg-white border border-slate-200/80 rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-300"
-              >
-                <button
-                  onClick={() => setOpenFaq(openFaq === idx ? null : idx)}
-                  className="w-full text-left px-6 py-5 flex items-center justify-between focus:outline-none hover:bg-slate-50/50 transition-colors cursor-pointer"
-                >
-                  <span className="font-bold text-slate-900 pr-8 font-baskerville text-base sm:text-lg leading-snug">
-                    {faq.q}
-                  </span>
-                  {openFaq === idx ? (
-                    <ChevronUp size={20} className="text-isf-orange shrink-0 transition-transform duration-300" />
-                  ) : (
-                    <ChevronDown size={20} className="text-slate-400 shrink-0 transition-transform duration-300" />
-                  )}
-                </button>
-                
-                <div 
-                  className={`transition-all duration-300 ease-in-out overflow-hidden ${
-                    openFaq === idx ? "max-h-[300px] border-t border-slate-100" : "max-h-0"
-                  }`}
-                >
-                  <div className="px-6 py-5 text-slate-600 text-sm leading-relaxed font-inter">
-                    {faq.a}
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* 7. Organiser & Ecosystem Section */}
       <section className="py-12 bg-slate-50">

@@ -73,14 +73,7 @@ export function Navbar() {
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-6">
-            <Link
-              to="/"
-              className={`text-sm font-semibold link-transition py-2 ${
-                location.pathname === "/" ? "text-isf-orange" : "text-slate-800 hover:text-isf-orange"
-              }`}
-            >
-              Home
-            </Link>
+
 
             {menuItems.map((item) => (
               <div
@@ -143,13 +136,7 @@ export function Navbar() {
       {isOpen && (
         <div className="md:hidden bg-white border-t border-gray-100 shadow-inner max-h-[85vh] overflow-y-auto">
           <div className="px-4 py-4 space-y-2">
-            <Link
-              to="/"
-              className="block py-2 text-sm font-semibold text-slate-800 border-b border-gray-50"
-              onClick={closeMenu}
-            >
-              Home
-            </Link>
+
             
             {menuItems.map((item) => (
               <div key={item.name} className="py-2 border-b border-gray-50">

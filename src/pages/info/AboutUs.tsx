@@ -215,7 +215,7 @@ export function AboutUs() {
                 <div className="w-12 h-1 bg-isf-orange rounded"></div>
               </div>
               <p className="text-base md:text-lg text-[#666666] leading-relaxed text-justify">
-                Dedicated to enhancing India’s entrepreneurial landscape, the International Startup Foundation (ISF), managed by Jnanana Foundation, fosters vital connections between entrepreneurs, resources, investors, and mentors. Our commitment extends beyond conventional boundaries, embracing nature, nurturing enduring relationships, and championing youth and rural empowerment.
+                Dedicated to enhancing India’s entrepreneurial landscape, the International Startup Foundation (ISF) fosters vital connections between entrepreneurs, resources, investors, and mentors. Our commitment extends beyond conventional boundaries, embracing nature, nurturing enduring relationships, and championing youth and rural empowerment.
               </p>
               <p className="text-base md:text-lg text-[#666666] leading-relaxed text-justify">
                 Aligned with GOI’s pivotal initiatives like Startup India, Digital India, and Make-in-India, ISF aims to collaborate with over 50,000 startups, fostering their growth and bolstering the vision of an Atmanirbhar Bharat.
@@ -223,12 +223,12 @@ export function AboutUs() {
             </div>
 
             {/* Image on Right */}
-            <div className="flex justify-center items-center">
-              <div className="relative p-6 bg-amber-50/50 rounded-3xl border border-amber-100 max-w-md w-full">
+            <div className="flex justify-center items-center w-full">
+              <div className="relative p-3 sm:p-5 bg-white rounded-3xl border border-slate-200/80 shadow-md hover:shadow-xl transition-all duration-300 max-w-lg lg:max-w-xl w-full">
                 <img 
                   src={getImageUrl("/assets/about-us/about-isf.svg")} 
-                  alt="About ISF" 
-                  className="w-full h-auto object-contain max-h-[350px]" 
+                  alt="What is International Startup Foundation" 
+                  className="w-full h-auto object-contain max-h-[460px] sm:max-h-[480px]" 
                 />
               </div>
             </div>
@@ -263,7 +263,7 @@ export function AboutUs() {
                 <div className="w-12 h-1 bg-[#D24D7F] rounded"></div>
               </div>
               <p className="text-base md:text-lg text-[#666666] leading-relaxed text-justify">
-                ISF India reimagines the startup ecosystem, fueling creativity and innovation to shape a brighter future. We empower startups, forge meaningful connections, and cultivate an environment where entrepreneurship thrives.
+                ISF reimagines the startup ecosystem, fueling creativity and innovation to shape a brighter future. We empower startups, forge meaningful connections, and cultivate an environment where entrepreneurship thrives.
               </p>
             </div>
 
