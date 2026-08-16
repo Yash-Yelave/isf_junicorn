@@ -251,15 +251,46 @@ export function LandingPage() {
       secondaryBtnLink: "/registration/student",
       image: "/assets/images/1hour-1week.png",
       bgGradient: "from-orange-50 to-orange-100"
+    },
+    {
+      isCustom: true,
+      tag: "JNANANA FOUNDATION × ISF JUNICORNS",
+      title: "J-SPOTLIGHT",
+      subtitle: "FINDING THE NEXT JUNICORN",
+      edition: "EDITION 01",
+      format: "MONTHLY MEETUP",
+      date: "29 AUGUST 2026",
+      time: "4:00 - 6:00 PM",
+      location: "DRAPER U INDIA",
+      coreMessage: "Do you have an idea",
+      coreMessageHighlight: "worth putting in the spotlight?",
+      supportingMessage: "One room. New ideas. The next Junicorn could be here.",
+      audience: ["Students", "Builders", "Innovators", "Dreamers", "Problem Solvers"],
+      primaryBtnText: "STAY TUNED FOR REGISTRATION",
+      primaryBtnLink: "",
+      seats: "ONLY 50 SEATS",
+      personImage: "/assets/events/j-spotlight/j-spotlight-person.png",
+      personName: "DR. JA CHOWDARY",
+      personRole: "Founder & Chairman, ISF Junicorns",
+      personTitle: "Visionary Leader | Mentor | Nation Builder",
+      bgGradient: "from-[#FFFDF9] via-[#FAF6EE] to-[#F0F7F4]"
     }
   ];
 
+  const [isHeroHovered, setIsHeroHovered] = useState(false);
+
   useEffect(() => {
+    if (isHeroHovered) return;
+    const currentSlide = heroSlides[heroIndex];
+    // Give custom/information-rich slides 8 seconds and standard slides 6 seconds
+    const duration = currentSlide?.isCustom ? 8000 : 6000;
+
     const timer = setInterval(() => {
       setHeroIndex((prev) => (prev + 1) % heroSlides.length);
-    }, 5000);
+    }, duration);
+
     return () => clearInterval(timer);
-  }, [heroSlides.length]);
+  }, [heroIndex, isHeroHovered, heroSlides.length]);
 
 
   interface EventDetail {
@@ -405,87 +436,239 @@ export function LandingPage() {
   return (
     <div className="font-inter pt-20">
       {/* 1. Hero Sliding Banner Section */}
-      <section className="relative w-full border-b border-gray-200 overflow-hidden h-[680px] md:h-[520px]">
+      <section 
+        className="relative w-full border-b border-gray-200 overflow-hidden h-[680px] md:h-[520px]"
+        onMouseEnter={() => setIsHeroHovered(true)}
+        onMouseLeave={() => setIsHeroHovered(false)}
+      >
         {/* Carousel Container */}
         <div 
           className="flex w-full h-full transition-transform duration-700 ease-in-out"
           style={{ transform: `translateX(-${heroIndex * 100}%)` }}
         >
           {heroSlides.map((slide, idx) => (
-            <div 
-              key={idx} 
-              className={`w-full h-full shrink-0 flex items-center justify-center bg-gradient-to-r ${slide.bgGradient} py-12 md:py-16`}
-            >
-              <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-                <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-center h-full">
-                  
-                  {/* Left Column Text */}
-                  <div className="md:col-span-7 space-y-5 text-left flex flex-col justify-center min-h-[260px]">
-                    <span className="text-isf-orange font-bold uppercase tracking-wider text-xs block font-inter">
-                      {slide.tag}
-                    </span>
-                    <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold text-slate-900 leading-tight">
-                      {slide.title}
-                    </h1>
-                    <p className="text-sm md:text-base text-slate-600 leading-relaxed max-w-2xl font-inter min-h-[60px]">
-                      {slide.desc}
-                    </p>
+            slide.isCustom ? (
+              <div 
+                key={idx} 
+                className="w-full h-full shrink-0 flex items-center justify-center bg-gradient-to-br from-[#FFFDF9] via-[#FAF6EE] to-[#F0F7F4] relative overflow-hidden py-6 md:py-10 border-b border-emerald-900/10"
+              >
+                {/* Background Decorative Elements */}
+                <div className="absolute inset-0 bg-[radial-gradient(#0F5A47_1px,transparent_1px)] [background-size:24px_24px] opacity-[0.04] pointer-events-none" />
+                <div className="absolute -top-24 -left-24 w-96 h-96 bg-emerald-300/20 rounded-full blur-3xl pointer-events-none" />
+                <div className="absolute -bottom-20 right-1/3 w-80 h-80 bg-rose-300/15 rounded-full blur-3xl pointer-events-none" />
+
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10">
+                  <div className="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-8 items-center">
                     
-                    <div className="flex flex-wrap gap-4 pt-2">
-                      {slide.primaryBtnLink.startsWith("http") ? (
-                        <a
-                          href={slide.primaryBtnLink}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="bg-isf-orange hover:bg-isf-orange-hover text-white text-xs sm:text-sm font-semibold uppercase tracking-wider px-5 sm:px-6 py-3 sm:py-3.5 rounded shadow transition-all cursor-pointer inline-flex items-center"
-                        >
-                          {slide.primaryBtnText}
-                        </a>
-                      ) : (
-                        <Link
-                          to={slide.primaryBtnLink}
-                          className="bg-isf-orange hover:bg-isf-orange-hover text-white text-xs sm:text-sm font-semibold uppercase tracking-wider px-5 sm:px-6 py-3 sm:py-3.5 rounded shadow transition-all cursor-pointer"
-                        >
-                          {slide.primaryBtnText}
-                        </Link>
-                      )}
+                    {/* Left Column: Event Information */}
+                    <div className="md:col-span-7 flex flex-col justify-center space-y-3 text-left">
+                      
+                      {/* Eyebrow + Badge */}
+                      <div className="flex flex-wrap items-center gap-2">
+                        <span className="text-[10px] sm:text-xs font-extrabold uppercase tracking-widest text-[#0F5A47] font-inter">
+                          {slide.tag}
+                        </span>
+                        <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-[10px] font-extrabold tracking-wider bg-[#D24D7F] text-white uppercase shadow-xs">
+                          {slide.format}
+                        </span>
+                      </div>
 
-                      {slide.secondaryBtnLink && (
-                        slide.secondaryBtnLink.startsWith("http") ? (
-                          <a
-                            href={slide.secondaryBtnLink}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="bg-white border border-gray-300 text-slate-800 text-xs sm:text-sm font-semibold uppercase tracking-wider px-5 sm:px-6 py-3 sm:py-3.5 rounded hover:bg-gray-50 transition-all cursor-pointer inline-flex items-center"
-                          >
-                            {slide.secondaryBtnText}
-                          </a>
-                        ) : (
-                          <Link
-                            to={slide.secondaryBtnLink}
-                            className="bg-white border border-gray-300 text-slate-800 text-xs sm:text-sm font-semibold uppercase tracking-wider px-5 sm:px-6 py-3 sm:py-3.5 rounded hover:bg-gray-50 transition-all cursor-pointer"
-                          >
-                            {slide.secondaryBtnText}
-                          </Link>
-                        )
-                      )}
+                      {/* Main Title & Subtitle */}
+                      <div>
+                        <h1 className="text-3xl sm:text-4xl md:text-5xl font-black text-[#0B4637] tracking-tight leading-none flex items-center flex-wrap gap-x-1.5">
+                          <span>J-SP</span>
+                          {/* Spotlight 'O' Highlight */}
+                          <span className="inline-flex items-center justify-center w-8 h-8 sm:w-10 sm:h-10 md:w-11 md:h-11 rounded-full bg-amber-400 text-amber-950 shadow-inner border-2 border-[#0B4637] relative -top-0.5 mx-0.5">
+                            <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5 sm:w-6 sm:h-6 text-amber-950" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+                            </svg>
+                          </span>
+                          <span>TLIGHT</span>
+                        </h1>
+
+                        <div className="flex items-center gap-2 mt-2 flex-wrap">
+                          <span className="bg-[#D24D7F] text-white text-xs sm:text-sm font-extrabold uppercase px-3 py-1 rounded shadow-xs tracking-wider">
+                            {slide.subtitle}
+                          </span>
+                          <span className="bg-[#0F5A47] text-amber-300 text-xs font-bold uppercase px-2.5 py-1 rounded tracking-wide border border-emerald-700">
+                            {slide.edition}
+                          </span>
+                        </div>
+                      </div>
+
+                      {/* Core Message & Supporting */}
+                      <div className="space-y-0.5">
+                        <p className="text-sm sm:text-base md:text-lg font-semibold text-slate-800 leading-snug">
+                          {slide.coreMessage}{" "}
+                          <span className="text-[#D24D7F] font-extrabold underline decoration-amber-400 decoration-2 underline-offset-4">
+                            {slide.coreMessageHighlight}
+                          </span>
+                        </p>
+                        <p className="text-xs sm:text-sm text-slate-600 font-medium">
+                          {slide.supportingMessage}
+                        </p>
+                      </div>
+
+                      {/* Metadata Row: Date, Time, Location */}
+                      <div className="flex flex-wrap items-center gap-3 py-1.5 px-3 bg-white/80 backdrop-blur border border-emerald-900/10 rounded-lg text-xs font-semibold text-slate-700 w-fit">
+                        <div className="flex items-center gap-1.5 text-[#0F5A47]">
+                          <Calendar size={15} className="text-[#D24D7F]" />
+                          <span>{slide.date}</span>
+                        </div>
+                        <span className="text-slate-300">|</span>
+                        <div className="flex items-center gap-1.5 text-[#0F5A47]">
+                          <Clock size={15} className="text-[#D24D7F]" />
+                          <span>{slide.time}</span>
+                        </div>
+                        <span className="text-slate-300">|</span>
+                        <div className="flex items-center gap-1.5 text-[#0F5A47]">
+                          <MapPin size={15} className="text-[#D24D7F]" />
+                          <span>{slide.location}</span>
+                        </div>
+                      </div>
+
+                      {/* Audience Tags */}
+                      <div className="flex flex-wrap items-center gap-1.5 text-[11px] text-slate-600">
+                        <span className="font-bold text-[#0F5A47] uppercase tracking-wider">For:</span>
+                        {slide.audience?.map((item: string, i: number) => (
+                          <span key={i} className="inline-flex items-center bg-emerald-50 text-[#0F5A47] px-2 py-0.5 rounded border border-emerald-200/60 font-medium">
+                            {item}
+                          </span>
+                        ))}
+                      </div>
+
+                      {/* CTA & Seat Count */}
+                      <div className="flex flex-wrap items-center gap-3 pt-1">
+                        <button
+                          className="bg-[#0F5A47] hover:bg-[#083b2e] text-white text-xs sm:text-sm font-bold uppercase tracking-wider px-5 py-2.5 rounded-lg shadow-md hover:shadow-lg transition-all cursor-default border border-emerald-600/50 flex items-center gap-2 group"
+                        >
+                          <span>{slide.primaryBtnText}</span>
+                          <span className="w-2 h-2 rounded-full bg-amber-400 group-hover:scale-125 transition-transform" />
+                        </button>
+
+                        <div className="bg-amber-50 border border-amber-300/80 text-amber-900 text-xs font-bold px-3 py-2 rounded-lg flex items-center gap-1.5 shadow-xs">
+                          <span className="w-2 h-2 rounded-full bg-amber-500 animate-ping" />
+                          <span>{slide.seats}</span>
+                        </div>
+                      </div>
+
                     </div>
-                  </div>
 
-                  {/* Right Column Graphic */}
-                  <div className="md:col-span-5 relative flex items-center justify-center">
-                    <img
-                      src={slide.image}
-                      alt={slide.title}
-                      className="w-full max-h-[240px] md:max-h-[300px] object-contain"
-                      onError={(e) => {
-                        e.currentTarget.src = "/assets/isf-logo.webp";
-                      }}
-                    />
+                    {/* Right Column: Person Profile */}
+                    <div className="md:col-span-5 flex flex-col items-center justify-center relative">
+                      <div className="relative w-full max-w-[280px] sm:max-w-[320px] md:max-w-[340px]">
+                        {/* Soft backdrop frame */}
+                        <div className="absolute inset-0 bg-gradient-to-tr from-[#0F5A47]/15 to-[#D24D7F]/10 rounded-2xl transform rotate-1 scale-105 border border-emerald-900/10" />
+                        
+                        {/* Person Image Card */}
+                        <div className="relative overflow-hidden rounded-2xl bg-gradient-to-b from-emerald-900/5 to-emerald-900/15 border border-emerald-800/15 shadow-xl">
+                          <img
+                            src={slide.personImage}
+                            alt={slide.personName}
+                            className="w-full h-[210px] sm:h-[240px] md:h-[260px] object-cover object-top filter contrast-[1.03]"
+                            onError={(e) => {
+                              e.currentTarget.src = "/assets/images/J-A-Chowdary.png";
+                            }}
+                          />
+
+                          {/* Inauguration Ribbon Overlay */}
+                          <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-slate-950 via-slate-900/95 to-transparent p-3 pt-6 text-white text-left">
+                            <span className="bg-[#D24D7F] text-white text-[9px] font-black uppercase tracking-widest px-2 py-0.5 rounded shadow-xs inline-block mb-1">
+                              INAUGURATION BY
+                            </span>
+                            <h4 className="text-sm font-extrabold text-white leading-snug">
+                              {slide.personName}
+                            </h4>
+                            <p className="text-[11px] font-medium text-emerald-300">
+                              {slide.personRole}
+                            </p>
+                            <p className="text-[10px] text-slate-300 opacity-90 mt-0.5 line-clamp-1">
+                              {slide.personTitle}
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
                   </div>
                 </div>
               </div>
-            </div>
+            ) : (
+              <div 
+                key={idx} 
+                className={`w-full h-full shrink-0 flex items-center justify-center bg-gradient-to-r ${slide.bgGradient} py-12 md:py-16`}
+              >
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+                  <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-center h-full">
+                    
+                    {/* Left Column Text */}
+                    <div className="md:col-span-7 space-y-5 text-left flex flex-col justify-center min-h-[260px]">
+                      <span className="text-isf-orange font-bold uppercase tracking-wider text-xs block font-inter">
+                        {slide.tag}
+                      </span>
+                      <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold text-slate-900 leading-tight">
+                        {slide.title}
+                      </h1>
+                      <p className="text-sm md:text-base text-slate-600 leading-relaxed max-w-2xl font-inter min-h-[60px]">
+                        {slide.desc}
+                      </p>
+                      
+                      <div className="flex flex-wrap gap-4 pt-2">
+                        {slide.primaryBtnLink.startsWith("http") ? (
+                          <a
+                            href={slide.primaryBtnLink}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="bg-isf-orange hover:bg-isf-orange-hover text-white text-xs sm:text-sm font-semibold uppercase tracking-wider px-5 sm:px-6 py-3 sm:py-3.5 rounded shadow transition-all cursor-pointer inline-flex items-center"
+                          >
+                            {slide.primaryBtnText}
+                          </a>
+                        ) : (
+                          <Link
+                            to={slide.primaryBtnLink}
+                            className="bg-isf-orange hover:bg-isf-orange-hover text-white text-xs sm:text-sm font-semibold uppercase tracking-wider px-5 sm:px-6 py-3 sm:py-3.5 rounded shadow transition-all cursor-pointer"
+                          >
+                            {slide.primaryBtnText}
+                          </Link>
+                        )}
+
+                        {slide.secondaryBtnLink && (
+                          slide.secondaryBtnLink.startsWith("http") ? (
+                            <a
+                              href={slide.secondaryBtnLink}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="bg-white border border-gray-300 text-slate-800 text-xs sm:text-sm font-semibold uppercase tracking-wider px-5 sm:px-6 py-3 sm:py-3.5 rounded hover:bg-gray-50 transition-all cursor-pointer inline-flex items-center"
+                            >
+                              {slide.secondaryBtnText}
+                            </a>
+                          ) : (
+                            <Link
+                              to={slide.secondaryBtnLink}
+                              className="bg-white border border-gray-300 text-slate-800 text-xs sm:text-sm font-semibold uppercase tracking-wider px-5 sm:px-6 py-3 sm:py-3.5 rounded hover:bg-gray-50 transition-all cursor-pointer"
+                            >
+                              {slide.secondaryBtnText}
+                            </Link>
+                          )
+                        )}
+                      </div>
+                    </div>
+
+                    {/* Right Column Graphic */}
+                    <div className="md:col-span-5 relative flex items-center justify-center">
+                      <img
+                        src={slide.image}
+                        alt={slide.title}
+                        className="w-full max-h-[240px] md:max-h-[300px] object-contain"
+                        onError={(e) => {
+                          e.currentTarget.src = "/assets/isf-logo.webp";
+                        }}
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            )
           ))}
         </div>
 
