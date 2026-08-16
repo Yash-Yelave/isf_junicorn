@@ -29,26 +29,7 @@ export function JunicornsHub() {
   // Active Cohort Tab State
   const [activeCohortTab, setActiveCohortTab] = useState<"cohort-3" | "cohort-2" | "cohort-1">("cohort-3");
 
-  // Carousel Index State per cohort
-  const [cohort1ImageIndex, setCohort1ImageIndex] = useState(0);
-  const [cohort2ImageIndex, setCohort2ImageIndex] = useState(0);
 
-  const cohort1Images = [
-    "/assets/themes/jupiterx/junicon-26/images/1-Dflng3M3.jpeg",
-    "/assets/themes/jupiterx/junicon-26/images/2-D5iViCrB.jpeg",
-    "/assets/themes/jupiterx/junicon-26/images/3-ABFBH8VL.jpeg",
-    "/assets/themes/jupiterx/junicon-26/images/4-CuFzIIly.jpeg",
-    "/assets/themes/jupiterx/junicon-26/images/5-BbKaZVGX.jpeg",
-    "/assets/themes/jupiterx/junicon-26/images/6-DQAgMgq0.jpeg",
-    "/assets/themes/jupiterx/junicon-26/images/7-liHkMaih.jpeg",
-    "/assets/themes/jupiterx/junicon-26/images/8-BQhgRRGq.jpeg"
-  ];
-
-  const cohort2Images = [
-    getImageUrl("/assets/images/dubai-illustration.png"),
-    getImageUrl("/assets/images/global-cxo-summit.png"),
-    getImageUrl("/assets/images/journey-highlight-1.jpg")
-  ];
 
 
   const toggleFaq = (idx: number) => {
@@ -734,41 +715,20 @@ export function JunicornsHub() {
                   </div>
                 </div>
 
-                {/* Cohort 2.0 Image Carousel */}
+                {/* Cohort 2.0 Featured Image */}
                 <div className="lg:col-span-6 flex justify-center">
-                  <div className="w-full aspect-video rounded-2xl overflow-hidden relative shadow-lg border border-slate-200/90 bg-white">
-                    <img
-                      src={cohort2Images[cohort2ImageIndex]}
-                      alt={`Cohort 2 Dubai Image ${cohort2ImageIndex + 1}`}
-                      className="h-full w-full object-cover"
-                    />
-                    
-                    <button
-                      type="button"
-                      onClick={() => setCohort2ImageIndex((prev) => (prev - 1 + cohort2Images.length) % cohort2Images.length)}
-                      className="absolute left-3 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white text-slate-800 p-2 rounded-full shadow transition-all focus:outline-none cursor-pointer"
-                    >
-                      <ChevronLeft size={18} />
-                    </button>
-                    <button
-                      type="button"
-                      onClick={() => setCohort2ImageIndex((prev) => (prev + 1) % cohort2Images.length)}
-                      className="absolute right-3 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white text-slate-800 p-2 rounded-full shadow transition-all focus:outline-none cursor-pointer"
-                    >
-                      <ChevronRight size={18} />
-                    </button>
-
-                    <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-1.5 z-10">
-                      {cohort2Images.map((_, idx) => (
-                        <button
-                          key={idx}
-                          type="button"
-                          onClick={() => setCohort2ImageIndex(idx)}
-                          className={`h-1.5 rounded-full transition-all duration-300 ${
-                            cohort2ImageIndex === idx ? "w-4 bg-isf-orange" : "w-1.5 bg-white/60"
-                          }`}
-                        />
-                      ))}
+                  <div className="bg-white p-3 rounded-2xl border border-emerald-200/80 shadow-md w-full">
+                    <div className="aspect-video rounded-xl overflow-hidden shadow-xs border border-slate-100">
+                      <img
+                        src={getImageUrl("/assets/cohort3/group-photo.png")}
+                        alt="Cohort 2.0 Dubai Group Photo"
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                    <div className="mt-3 p-2.5 bg-emerald-50 rounded-xl text-center border border-emerald-100">
+                      <span className="text-xs font-bold text-[#026956]">
+                        Cohort 2.0 Delegates & Global Mentors
+                      </span>
                     </div>
                   </div>
                 </div>
@@ -834,41 +794,20 @@ export function JunicornsHub() {
                   </div>
                 </div>
 
-                {/* Cohort 1.0 Image Carousel */}
+                {/* Cohort 1.0 Featured Image */}
                 <div className="lg:col-span-6 flex justify-center">
-                  <div className="w-full aspect-video rounded-2xl overflow-hidden relative shadow-lg border border-slate-200/90 bg-white">
-                    <img
-                      src={cohort1Images[cohort1ImageIndex]}
-                      alt={`Austin Summit Highlight ${cohort1ImageIndex + 1}`}
-                      className="h-full w-full object-cover"
-                    />
-                    
-                    <button
-                      type="button"
-                      onClick={() => setCohort1ImageIndex((prev) => (prev - 1 + cohort1Images.length) % cohort1Images.length)}
-                      className="absolute left-3 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white text-slate-800 p-2 rounded-full shadow transition-all focus:outline-none cursor-pointer"
-                    >
-                      <ChevronLeft size={18} />
-                    </button>
-                    <button
-                      type="button"
-                      onClick={() => setCohort1ImageIndex((prev) => (prev + 1) % cohort1Images.length)}
-                      className="absolute right-3 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white text-slate-800 p-2 rounded-full shadow transition-all focus:outline-none cursor-pointer"
-                    >
-                      <ChevronRight size={18} />
-                    </button>
-
-                    <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-1.5 z-10">
-                      {cohort1Images.map((_, idx) => (
-                        <button
-                          key={idx}
-                          type="button"
-                          onClick={() => setCohort1ImageIndex(idx)}
-                          className={`h-1.5 rounded-full transition-all duration-300 ${
-                            cohort1ImageIndex === idx ? "w-4 bg-isf-orange" : "w-1.5 bg-white/60"
-                          }`}
-                        />
-                      ))}
+                  <div className="bg-white p-3 rounded-2xl border border-orange-200/80 shadow-md w-full">
+                    <div className="aspect-video rounded-xl overflow-hidden shadow-xs border border-slate-100">
+                      <img
+                        src="/assets/themes/jupiterx/junicon-26/images/1-Dflng3M3.jpeg"
+                        alt="Cohort 1.0 Austin Texas Summit"
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                    <div className="mt-3 p-2.5 bg-orange-50 rounded-xl text-center border border-orange-100">
+                      <span className="text-xs font-bold text-[#E5532A]">
+                        Cohort 1.0 Austin Summit Delegation
+                      </span>
                     </div>
                   </div>
                 </div>
