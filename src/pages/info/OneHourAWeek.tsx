@@ -1,5 +1,5 @@
 import { getImageUrl } from "../../utils/imageUtils";
-import { Calendar, UserCheck, ShieldCheck, HelpCircle } from "lucide-react";
+import { Calendar, UserCheck, ShieldCheck, HelpCircle, Globe, Lock, Sparkles } from "lucide-react";
 import { Link } from "react-router-dom";
 export function OneHourAWeek() {
   const steps = [
@@ -79,39 +79,61 @@ export function OneHourAWeek() {
         </div>
       </section>
 
-      {/* 3. Deep Dive Copy & Sliding Photos */}
-      <section className="py-16 bg-slate-50 border-t border-b border-gray-100 overflow-hidden">
-        <div className="max-w-4xl mx-auto px-4 text-center space-y-6 mb-12">
-          <h2 className="text-2xl font-bold font-baskerville text-slate-800">
-            Secure, Structured and Impactful
-          </h2>
-          <p className="text-sm text-slate-600 leading-relaxed max-w-2xl mx-auto">
-            Our program ensures a secure and structured mentorship experience, with password-protected mentor information and an AI-powered algorithm that maintains privacy and security while connecting mentees with suitable mentors.
-          </p>
-          <p className="text-sm text-slate-600 leading-relaxed max-w-2xl mx-auto">
-            We're proud to have the support of prominent institutions from the USA and across the globe. We aim to assemble a diverse network of 1 million mentors. Join us in donating one hour a week to make a meaningful difference in the lives of students and startups.
-          </p>
-        </div>
+      {/* 3. Deep Dive Copy & Photo Grid */}
+      <section className="py-16 md:py-24 bg-gradient-to-b from-slate-50/70 via-white to-orange-50/20 border-t border-b border-gray-200/80">
+        <div className="max-w-6xl mx-auto px-4 md:px-8 space-y-12">
+          
+          {/* Header & Aligned Feature Cards */}
+          <div className="space-y-8 max-w-4xl mx-auto text-center">
+            <div className="space-y-3">
+              <span className="text-[11px] font-bold uppercase tracking-widest text-isf-orange bg-orange-50 border border-orange-200/80 px-3.5 py-1 rounded-full inline-block shadow-2xs">
+                Trust & Global Impact
+              </span>
+              <h2 className="text-2xl md:text-4xl font-extrabold font-baskerville text-slate-900 tracking-tight">
+                Secure, Structured and Impactful
+              </h2>
+              <div className="w-12 h-1 bg-isf-orange mx-auto rounded-full"></div>
+            </div>
 
-        {/* Infinite Sliding Photos */}
-        <div className="relative flex overflow-hidden group py-6 bg-white shadow-inner border-y border-gray-200">
-          <div className="flex gap-6 w-max animate-marquee pr-6 hover:[animation-play-state:paused]">
+            {/* 2 Highlight Feature Cards */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-left">
+              <div className="bg-white border border-slate-200/90 rounded-2xl p-6 shadow-2xs hover:shadow-md hover:border-orange-300 transition-all space-y-3">
+                <div className="w-11 h-11 rounded-xl bg-orange-50 text-isf-orange border border-orange-200/60 flex items-center justify-center">
+                  <ShieldCheck size={22} />
+                </div>
+                <h3 className="text-base font-bold font-baskerville text-slate-900">
+                  AI-Powered Privacy & Security
+                </h3>
+                <p className="text-xs md:text-sm text-slate-600 leading-relaxed font-normal">
+                  Our program ensures a secure and structured mentorship experience, featuring password-protected mentor profiles and an intelligent AI algorithm that guarantees privacy while connecting mentees with ideal guides.
+                </p>
+              </div>
+
+              <div className="bg-white border border-slate-200/90 rounded-2xl p-6 shadow-2xs hover:shadow-md hover:border-orange-300 transition-all space-y-3">
+                <div className="w-11 h-11 rounded-xl bg-orange-50 text-isf-orange border border-orange-200/60 flex items-center justify-center">
+                  <Globe size={22} />
+                </div>
+                <h3 className="text-base font-bold font-baskerville text-slate-900">
+                  Global Network of 1 Million Mentors
+                </h3>
+                <p className="text-xs md:text-sm text-slate-600 leading-relaxed font-normal">
+                  Backed by prominent institutions across the USA and worldwide, we are building a network of 1 million mentors. Join us by donating just one hour a week to make a lasting difference for students and startups.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Photo Grid */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 pt-4">
             {[1, 2, 3, 4, 6, 8, 9].map((num) => (
-              <div key={`slide-1-${num}`} className="w-[280px] md:w-[350px] h-[180px] md:h-[220px] shrink-0 rounded-xl overflow-hidden shadow-md bg-gray-100">
+              <div
+                key={num}
+                className="group aspect-[4/3] rounded-2xl overflow-hidden shadow-sm hover:shadow-xl border border-gray-200/90 bg-white transition-all duration-300 hover:-translate-y-1"
+              >
                 <img
                   src={`/assets/images/1h-1w-pic${num}.jpg`}
                   alt={`1 Hour 1 Week Event ${num}`}
-                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
-                />
-              </div>
-            ))}
-            {/* Duplicated for seamless loop */}
-            {[1, 2, 3, 4, 6, 8, 9].map((num) => (
-              <div key={`slide-2-${num}`} className="w-[280px] md:w-[350px] h-[180px] md:h-[220px] shrink-0 rounded-xl overflow-hidden shadow-md bg-gray-100">
-                <img
-                  src={`/assets/images/1h-1w-pic${num}.jpg`}
-                  alt={`1 Hour 1 Week Event ${num} duplicated`}
-                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 />
               </div>
             ))}
