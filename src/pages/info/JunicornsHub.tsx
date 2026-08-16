@@ -1,16 +1,39 @@
 import { getImageUrl } from "../../utils/imageUtils";
 import { useState } from "react";
-import { ChevronDown, ChevronUp, ChevronLeft, ChevronRight, Rocket, Globe, Sparkles, Cpu, Flag, Zap, GraduationCap, Lightbulb } from "lucide-react";
+import { 
+  ChevronDown, 
+  ChevronUp, 
+  ChevronLeft, 
+  ChevronRight, 
+  Rocket, 
+  Globe, 
+  Sparkles, 
+  Cpu, 
+  Flag, 
+  Zap, 
+  GraduationCap, 
+  Lightbulb,
+  Calendar,
+  MapPin,
+  Users,
+  CheckCircle2,
+  ArrowRight
+} from "lucide-react";
 import { Link } from "react-router-dom";
 import heroImg from "../../assets/hero.png";
+
 export function JunicornsHub() {
   // FAQs State
   const [openFaq, setOpenFaq] = useState<number | null>(null);
 
-  // Carousel State
-  const [carouselIndex, setCarouselIndex] = useState(0);
+  // Active Cohort Tab State
+  const [activeCohortTab, setActiveCohortTab] = useState<"cohort-3" | "cohort-2" | "cohort-1">("cohort-3");
 
-  const carouselImages = [
+  // Carousel Index State per cohort
+  const [cohort1ImageIndex, setCohort1ImageIndex] = useState(0);
+  const [cohort2ImageIndex, setCohort2ImageIndex] = useState(0);
+
+  const cohort1Images = [
     "/assets/themes/jupiterx/junicon-26/images/1-Dflng3M3.jpeg",
     "/assets/themes/jupiterx/junicon-26/images/2-D5iViCrB.jpeg",
     "/assets/themes/jupiterx/junicon-26/images/3-ABFBH8VL.jpeg",
@@ -21,13 +44,12 @@ export function JunicornsHub() {
     "/assets/themes/jupiterx/junicon-26/images/8-BQhgRRGq.jpeg"
   ];
 
-  const handleNextSlide = () => {
-    setCarouselIndex((prev) => (prev + 1) % carouselImages.length);
-  };
+  const cohort2Images = [
+    getImageUrl("/assets/images/dubai-illustration.png"),
+    getImageUrl("/assets/images/global-cxo-summit.png"),
+    getImageUrl("/assets/images/journey-highlight-1.jpg")
+  ];
 
-  const handlePrevSlide = () => {
-    setCarouselIndex((prev) => (prev - 1 + carouselImages.length) % carouselImages.length);
-  };
 
   const toggleFaq = (idx: number) => {
     setOpenFaq(openFaq === idx ? null : idx);
@@ -517,65 +539,342 @@ export function JunicornsHub() {
         </div>
       </section>
 
-      {/* 7. Austin Highlights Carousel */}
-      <section className="py-16 bg-[#f9f9f9] border-b border-gray-200">
+      {/* 7. Our Cohorts Timeline Section */}
+      <section className="py-16 md:py-24 bg-slate-50 border-b border-gray-200" id="our-cohorts">
         <div className="container-custom space-y-12">
+          {/* Header */}
           <div className="text-center space-y-3">
-            <h2 className="text-2xl md:text-3xl font-bold font-baskerville text-[#111111]">
-              Austin Summit Highlights
+            <span className="text-xs font-bold text-isf-orange uppercase tracking-widest block font-inter">
+              ISF JUNICORNS PROGRAMME
+            </span>
+            <h2 className="text-3xl md:text-5xl font-extrabold font-baskerville text-slate-900 leading-tight">
+              Our Cohorts
             </h2>
-            <div className="w-12 h-1 bg-isf-orange mx-auto rounded"></div>
+            <p className="text-xs sm:text-sm text-slate-600 font-normal leading-relaxed max-w-2xl mx-auto">
+              Transforming young innovators across global stages—from Austin, Texas to Dubai, UAE and across India.
+            </p>
+            <div className="w-16 h-1 bg-isf-orange mx-auto rounded-full mt-3"></div>
           </div>
 
-          <div className="bg-[#fff9eb] rounded-xl p-6 md:p-12 flex flex-col md:flex-row items-center gap-8 md:gap-16 border border-[#fedb8d]/50">
-            {/* Carousel display */}
-            <div className="w-full md:w-1/2 aspect-video rounded-xl overflow-hidden relative shadow border border-gray-200">
-              <img
-                src={carouselImages[carouselIndex]}
-                alt={`Austin Summit Highlight ${carouselIndex + 1}`}
-                className="h-full w-full object-cover"
-              />
-              
-              {/* Navigation arrows inside carousel */}
-              <button
-                onClick={handlePrevSlide}
-                className="absolute left-3 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white text-slate-700 p-2 rounded-full shadow transition-all focus:outline-none cursor-pointer flex items-center justify-center"
-              >
-                <ChevronLeft size={16} />
-              </button>
-              <button
-                onClick={handleNextSlide}
-                className="absolute right-3 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white text-slate-700 p-2 rounded-full shadow transition-all focus:outline-none cursor-pointer flex items-center justify-center"
-              >
-                <ChevronRight size={16} />
-              </button>
+          {/* Cohort Tabs */}
+          <div className="flex justify-center gap-2 sm:gap-4 relative z-10 -mb-[1px] flex-wrap">
+            <button
+              type="button"
+              onClick={() => setActiveCohortTab("cohort-3")}
+              className={`px-5 sm:px-8 py-3 text-sm sm:text-base font-bold rounded-t-2xl transition-all cursor-pointer ${
+                activeCohortTab === "cohort-3"
+                  ? "bg-[#FFF9EB] text-[#D24D7F] border-t-2 border-x border-[#FFE7C4] shadow-2xs font-extrabold"
+                  : "bg-slate-200/80 text-slate-600 hover:bg-slate-300/80 hover:text-slate-900"
+              }`}
+            >
+              Cohort 3.0 (Active 2026)
+            </button>
+            <button
+              type="button"
+              onClick={() => setActiveCohortTab("cohort-2")}
+              className={`px-5 sm:px-8 py-3 text-sm sm:text-base font-bold rounded-t-2xl transition-all cursor-pointer ${
+                activeCohortTab === "cohort-2"
+                  ? "bg-[#FFF9EB] text-[#D24D7F] border-t-2 border-x border-[#FFE7C4] shadow-2xs font-extrabold"
+                  : "bg-slate-200/80 text-slate-600 hover:bg-slate-300/80 hover:text-slate-900"
+              }`}
+            >
+              Cohort 2.0 (Dubai 2026)
+            </button>
+            <button
+              type="button"
+              onClick={() => setActiveCohortTab("cohort-1")}
+              className={`px-5 sm:px-8 py-3 text-sm sm:text-base font-bold rounded-t-2xl transition-all cursor-pointer ${
+                activeCohortTab === "cohort-1"
+                  ? "bg-[#FFF9EB] text-[#D24D7F] border-t-2 border-x border-[#FFE7C4] shadow-2xs font-extrabold"
+                  : "bg-slate-200/80 text-slate-600 hover:bg-slate-300/80 hover:text-slate-900"
+              }`}
+            >
+              Cohort 1.0 (Austin USA)
+            </button>
+          </div>
 
-              {/* Dots indicator inside carousel */}
-              <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-1.5 z-10">
-                {carouselImages.map((_, idx) => (
-                  <button
-                    key={idx}
-                    onClick={() => setCarouselIndex(idx)}
-                    className={`h-1.5 rounded-full transition-all duration-300 ${
-                      carouselIndex === idx ? "w-4 bg-isf-orange" : "w-1.5 bg-white/50"
-                    }`}
-                  />
-                ))}
+          {/* Cohort Card Container */}
+          <div className="bg-[#FFF9EB] p-6 sm:p-8 md:p-12 rounded-3xl border border-[#FFE7C4] shadow-sm">
+            
+            {/* Cohort 3.0 Tab Content */}
+            {activeCohortTab === "cohort-3" && (
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-12 items-center">
+                <div className="lg:col-span-6 space-y-6">
+                  <span className="text-[11px] font-extrabold uppercase tracking-widest text-[#D24D7F] bg-pink-50 border border-pink-200 px-3.5 py-1 rounded-full inline-block">
+                    COHORT 3.0 • NATIONAL MOVEMENT
+                  </span>
+                  <h3 className="text-2xl sm:text-3xl md:text-4xl font-extrabold font-baskerville text-slate-900 leading-tight">
+                    Cohort 3.0: 100K Rural Innovators Movement
+                  </h3>
+                  
+                  <div className="space-y-2.5 py-1">
+                    <div className="flex items-center gap-2.5 text-xs sm:text-sm text-slate-700 font-medium">
+                      <Calendar size={18} className="text-isf-orange shrink-0" />
+                      <span>2026 - Present (Ongoing National Campaign)</span>
+                    </div>
+                    <div className="flex items-center gap-2.5 text-xs sm:text-sm text-slate-700 font-medium">
+                      <MapPin size={18} className="text-isf-orange shrink-0" />
+                      <span>Pan-India & Global Tech Ecosystems</span>
+                    </div>
+                    <div className="flex items-center gap-2.5 text-xs sm:text-sm text-slate-700 font-medium">
+                      <Users size={18} className="text-isf-orange shrink-0" />
+                      <span>Targeting 100,000 Young Innovators & 25 Breakthrough Prototypes</span>
+                    </div>
+                  </div>
+
+                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-normal">
+                    Cohort 3.0 elevates the Junicorns initiative into a landmark national movement. Connecting students from rural schools, universities, and Tier 2/3 cities directly with global mentors, prototyping support, and venture capital channels.
+                  </p>
+
+                  <div className="space-y-2 pt-2">
+                    <h4 className="text-xs font-bold text-slate-900 uppercase tracking-wider">Key Highlights:</h4>
+                    <ul className="space-y-2 text-xs sm:text-sm text-slate-700">
+                      <li className="flex items-start gap-2">
+                        <CheckCircle2 size={16} className="text-emerald-600 shrink-0 mt-0.5" />
+                        <span>25 Hardware and Software Breakthrough Prototypes cataloged</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <CheckCircle2 size={16} className="text-emerald-600 shrink-0 mt-0.5" />
+                        <span>Monthly J-SPOTLIGHT Meetups & live investor pitching</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <CheckCircle2 size={16} className="text-emerald-600 shrink-0 mt-0.5" />
+                        <span>Direct pathway to international summits and angel funding</span>
+                      </li>
+                    </ul>
+                  </div>
+
+                  <div className="pt-4">
+                    <Link
+                      to="/cohort-3"
+                      className="inline-flex items-center gap-2 bg-[#D24D7F] hover:bg-[#C73E6E] text-white text-xs sm:text-sm font-bold px-6 py-3.5 rounded-full shadow transition-all"
+                    >
+                      <span>Explore Cohort 3.0</span>
+                      <ArrowRight size={16} />
+                    </Link>
+                  </div>
+                </div>
+
+                <div className="lg:col-span-6 flex justify-center">
+                  <div className="bg-white p-4 rounded-2xl border border-amber-200/80 shadow-md w-full max-w-md">
+                    <img
+                      src={getImageUrl("/assets/images/hero-De-l_Mnh.png")}
+                      alt="Cohort 3.0 Illustration"
+                      className="w-full h-auto object-contain rounded-xl"
+                      onError={(e) => {
+                        e.currentTarget.src = "/assets/images/1hour-1week.png";
+                      }}
+                    />
+                    <div className="mt-3 p-3 bg-amber-50 rounded-xl text-center border border-amber-100">
+                      <span className="text-xs font-bold text-[#0C3E2B]">
+                        Empowering 100,000 Young Minds for Bharat 2047
+                      </span>
+                    </div>
+                  </div>
+                </div>
               </div>
-            </div>
+            )}
 
-            {/* Description next to carousel */}
-            <div className="w-full md:w-1/2 space-y-4">
-              <span className="text-xs font-bold text-isf-orange uppercase tracking-wider block">
-                Youth Powered Impact - UN SDGs
-              </span>
-              <h3 className="text-xl font-bold font-baskerville text-[#111111]">
-                Democratizing Global Tech Ecosystems
-              </h3>
-              <p className="text-xs text-[#666666] font-light leading-relaxed">
-                Watch actual delegates pitching hardware prototypes directly to international venture capitalists. Junicorn provides the structured pipeline to connect local talent with global capital channels.
-              </p>
-            </div>
+            {/* Cohort 2.0 Tab Content */}
+            {activeCohortTab === "cohort-2" && (
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-12 items-center">
+                <div className="lg:col-span-6 space-y-6">
+                  <span className="text-[11px] font-extrabold uppercase tracking-widest text-[#026956] bg-emerald-50 border border-emerald-200 px-3.5 py-1 rounded-full inline-block">
+                    COHORT 2.0 • DUBAI SUMMIT 2026
+                  </span>
+                  <h3 className="text-2xl sm:text-3xl md:text-4xl font-extrabold font-baskerville text-slate-900 leading-tight">
+                    Cohort 2.0: Dubai Global Innovation Summit & Retreat
+                  </h3>
+                  
+                  <div className="space-y-2.5 py-1">
+                    <div className="flex items-center gap-2.5 text-xs sm:text-sm text-slate-700 font-medium">
+                      <Calendar size={18} className="text-isf-orange shrink-0" />
+                      <span>January 9-11, 2026</span>
+                    </div>
+                    <div className="flex items-center gap-2.5 text-xs sm:text-sm text-slate-700 font-medium">
+                      <MapPin size={18} className="text-isf-orange shrink-0" />
+                      <span>InterContinental Dubai Festival City, UAE</span>
+                    </div>
+                    <div className="flex items-center gap-2.5 text-xs sm:text-sm text-slate-700 font-medium">
+                      <Users size={18} className="text-isf-orange shrink-0" />
+                      <span>500+ Global Delegates, CXOs & International Investors</span>
+                    </div>
+                  </div>
+
+                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-normal">
+                    Cohort 2.0 brought Junicorn innovators to the Middle East's premier innovation hub in Dubai, connecting youth founders with international venture capitalists, CXOs, and diplomatic leaders across 3 transformational days.
+                  </p>
+
+                  <div className="space-y-2 pt-2">
+                    <h4 className="text-xs font-bold text-slate-900 uppercase tracking-wider">Key Highlights:</h4>
+                    <ul className="space-y-2 text-xs sm:text-sm text-slate-700">
+                      <li className="flex items-start gap-2">
+                        <CheckCircle2 size={16} className="text-emerald-600 shrink-0 mt-0.5" />
+                        <span>Hosted alongside Global CIO Circle at InterContinental Dubai</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <CheckCircle2 size={16} className="text-emerald-600 shrink-0 mt-0.5" />
+                        <span>Live prototype showcases to GCC & international investors</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <CheckCircle2 size={16} className="text-emerald-600 shrink-0 mt-0.5" />
+                        <span>Cross-border trade and ecosystem integration workshops</span>
+                      </li>
+                    </ul>
+                  </div>
+
+                  <div className="pt-4">
+                    <Link
+                      to="/cohort-2-dubai"
+                      className="inline-flex items-center gap-2 bg-[#026956] hover:bg-[#025243] text-white text-xs sm:text-sm font-bold px-6 py-3.5 rounded-full shadow transition-all"
+                    >
+                      <span>View Dubai Summit</span>
+                      <ArrowRight size={16} />
+                    </Link>
+                  </div>
+                </div>
+
+                {/* Cohort 2.0 Image Carousel */}
+                <div className="lg:col-span-6 flex justify-center">
+                  <div className="w-full aspect-video rounded-2xl overflow-hidden relative shadow-lg border border-slate-200/90 bg-white">
+                    <img
+                      src={cohort2Images[cohort2ImageIndex]}
+                      alt={`Cohort 2 Dubai Image ${cohort2ImageIndex + 1}`}
+                      className="h-full w-full object-cover"
+                    />
+                    
+                    <button
+                      type="button"
+                      onClick={() => setCohort2ImageIndex((prev) => (prev - 1 + cohort2Images.length) % cohort2Images.length)}
+                      className="absolute left-3 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white text-slate-800 p-2 rounded-full shadow transition-all focus:outline-none cursor-pointer"
+                    >
+                      <ChevronLeft size={18} />
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => setCohort2ImageIndex((prev) => (prev + 1) % cohort2Images.length)}
+                      className="absolute right-3 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white text-slate-800 p-2 rounded-full shadow transition-all focus:outline-none cursor-pointer"
+                    >
+                      <ChevronRight size={18} />
+                    </button>
+
+                    <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-1.5 z-10">
+                      {cohort2Images.map((_, idx) => (
+                        <button
+                          key={idx}
+                          type="button"
+                          onClick={() => setCohort2ImageIndex(idx)}
+                          className={`h-1.5 rounded-full transition-all duration-300 ${
+                            cohort2ImageIndex === idx ? "w-4 bg-isf-orange" : "w-1.5 bg-white/60"
+                          }`}
+                        />
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {/* Cohort 1.0 Tab Content */}
+            {activeCohortTab === "cohort-1" && (
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-12 items-center">
+                <div className="lg:col-span-6 space-y-6">
+                  <span className="text-[11px] font-extrabold uppercase tracking-widest text-[#E5532A] bg-orange-50 border border-orange-200 px-3.5 py-1 rounded-full inline-block">
+                    COHORT 1.0 • AUSTIN TEXAS USA
+                  </span>
+                  <h3 className="text-2xl sm:text-3xl md:text-4xl font-extrabold font-baskerville text-slate-900 leading-tight">
+                    Cohort 1.0: Austin USA Pitch Competition & Summit
+                  </h3>
+                  
+                  <div className="space-y-2.5 py-1">
+                    <div className="flex items-center gap-2.5 text-xs sm:text-sm text-slate-700 font-medium">
+                      <Calendar size={18} className="text-isf-orange shrink-0" />
+                      <span>May 2024 - 2025</span>
+                    </div>
+                    <div className="flex items-center gap-2.5 text-xs sm:text-sm text-slate-700 font-medium">
+                      <MapPin size={18} className="text-isf-orange shrink-0" />
+                      <span>McCoy College of Business, Texas State University, Austin TX</span>
+                    </div>
+                    <div className="flex items-center gap-2.5 text-xs sm:text-sm text-slate-700 font-medium">
+                      <Users size={18} className="text-isf-orange shrink-0" />
+                      <span>100+ Delegates, 27 Student Delegates & US Investors</span>
+                    </div>
+                  </div>
+
+                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-normal">
+                    The inaugural Junicorns Cohort took 27 student innovators from rural India to Austin, Texas. Delegates pitched their hardware & software solutions directly to Silicon Hills venture capitalists, academic deans, and global leaders.
+                  </p>
+
+                  <div className="space-y-2 pt-2">
+                    <h4 className="text-xs font-bold text-slate-900 uppercase tracking-wider">Key Highlights:</h4>
+                    <ul className="space-y-2 text-xs sm:text-sm text-slate-700">
+                      <li className="flex items-start gap-2">
+                        <CheckCircle2 size={16} className="text-emerald-600 shrink-0 mt-0.5" />
+                        <span>Pioneering delegation of rural Indian youth to Silicon Hills</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <CheckCircle2 size={16} className="text-emerald-600 shrink-0 mt-0.5" />
+                        <span>Partnerships with McCoy College of Business & Texas State University</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <CheckCircle2 size={16} className="text-emerald-600 shrink-0 mt-0.5" />
+                        <span>100% of delegates received mentorship & US investor exposure</span>
+                      </li>
+                    </ul>
+                  </div>
+
+                  <div className="pt-4">
+                    <Link
+                      to="/cohort-1-austin"
+                      className="inline-flex items-center gap-2 bg-[#E5532A] hover:bg-[#D4431B] text-white text-xs sm:text-sm font-bold px-6 py-3.5 rounded-full shadow transition-all"
+                    >
+                      <span>Explore Cohort 1.0 Austin</span>
+                      <ArrowRight size={16} />
+                    </Link>
+                  </div>
+                </div>
+
+                {/* Cohort 1.0 Image Carousel */}
+                <div className="lg:col-span-6 flex justify-center">
+                  <div className="w-full aspect-video rounded-2xl overflow-hidden relative shadow-lg border border-slate-200/90 bg-white">
+                    <img
+                      src={cohort1Images[cohort1ImageIndex]}
+                      alt={`Austin Summit Highlight ${cohort1ImageIndex + 1}`}
+                      className="h-full w-full object-cover"
+                    />
+                    
+                    <button
+                      type="button"
+                      onClick={() => setCohort1ImageIndex((prev) => (prev - 1 + cohort1Images.length) % cohort1Images.length)}
+                      className="absolute left-3 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white text-slate-800 p-2 rounded-full shadow transition-all focus:outline-none cursor-pointer"
+                    >
+                      <ChevronLeft size={18} />
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => setCohort1ImageIndex((prev) => (prev + 1) % cohort1Images.length)}
+                      className="absolute right-3 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white text-slate-800 p-2 rounded-full shadow transition-all focus:outline-none cursor-pointer"
+                    >
+                      <ChevronRight size={18} />
+                    </button>
+
+                    <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-1.5 z-10">
+                      {cohort1Images.map((_, idx) => (
+                        <button
+                          key={idx}
+                          type="button"
+                          onClick={() => setCohort1ImageIndex(idx)}
+                          className={`h-1.5 rounded-full transition-all duration-300 ${
+                            cohort1ImageIndex === idx ? "w-4 bg-isf-orange" : "w-1.5 bg-white/60"
+                          }`}
+                        />
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            )}
+
           </div>
         </div>
       </section>
