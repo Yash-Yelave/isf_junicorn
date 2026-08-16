@@ -31,9 +31,12 @@ import { IsfAiSummit } from "./pages/conferences/IsfAiSummit";
 import { Cohort1Austin } from "./pages/conferences/Cohort1Austin";
 import { DubaiEvent } from "./pages/conferences/DubaiEvent";
 
+import { ScrollToTop } from "./components/common/ScrollToTop";
+
 function App() {
   return (
     <BrowserRouter>
+      <ScrollToTop />
       <div className="flex flex-col min-h-screen bg-white text-slate-800 antialiased font-inter">
         {/* Global Navbar */}
         <Navbar />

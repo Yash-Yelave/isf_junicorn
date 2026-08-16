@@ -204,12 +204,6 @@ export function AboutUs() {
             </svg>
           </div>
 
-          <h2 
-            className="text-2xl md:text-4xl font-extrabold uppercase tracking-wider !text-white drop-shadow"
-            style={{ color: '#ffffff' }}
-          >
-            ISF
-          </h2>
           <p className="text-xl md:text-2xl italic font-semibold text-amber-100/90 drop-shadow">
             connect. collaborate. celebrate.
           </p>
