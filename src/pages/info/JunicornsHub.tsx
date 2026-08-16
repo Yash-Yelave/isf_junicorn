@@ -164,6 +164,44 @@ export function JunicornsHub() {
     }
   ];
 
+  const cardThemes = [
+    {
+      bg: "bg-gradient-to-br from-pink-50/80 via-white to-rose-50/40",
+      border: "border-pink-200/90 hover:border-[#D24D7F]",
+      badgeBg: "bg-gradient-to-r from-[#D24D7F] to-pink-500",
+      titleColor: "text-[#D24D7F]",
+      accentLine: "bg-gradient-to-r from-[#D24D7F] to-pink-400"
+    },
+    {
+      bg: "bg-gradient-to-br from-emerald-50/80 via-white to-teal-50/40",
+      border: "border-emerald-200/90 hover:border-[#026956]",
+      badgeBg: "bg-gradient-to-r from-[#026956] to-teal-500",
+      titleColor: "text-[#026956]",
+      accentLine: "bg-gradient-to-r from-[#026956] to-emerald-400"
+    },
+    {
+      bg: "bg-gradient-to-br from-amber-50/80 via-white to-orange-50/40",
+      border: "border-amber-200/90 hover:border-[#D45625]",
+      badgeBg: "bg-gradient-to-r from-[#D45625] to-amber-500",
+      titleColor: "text-[#D45625]",
+      accentLine: "bg-gradient-to-r from-[#D45625] to-amber-400"
+    },
+    {
+      bg: "bg-gradient-to-br from-sky-50/80 via-white to-blue-50/40",
+      border: "border-sky-200/90 hover:border-sky-600",
+      badgeBg: "bg-gradient-to-r from-sky-500 to-blue-600",
+      titleColor: "text-sky-700",
+      accentLine: "bg-gradient-to-r from-sky-500 to-blue-400"
+    },
+    {
+      bg: "bg-gradient-to-br from-purple-50/80 via-white to-indigo-50/40",
+      border: "border-purple-200/90 hover:border-purple-600",
+      badgeBg: "bg-gradient-to-r from-purple-500 to-indigo-600",
+      titleColor: "text-purple-700",
+      accentLine: "bg-gradient-to-r from-purple-500 to-indigo-400"
+    }
+  ];
+
   const innovations = [
     { name: "Jalapatra", desc: "Capsule purifier, no electricity, biodegradable pot system" },
     { name: "ATLITOS", desc: "AI match engine, booking system, rentals, decentralized sports ecosystem" },

@@ -118,6 +118,20 @@ export function Footer() {
                 <span>310, Saideep Hulas, #32/2B, Old Madaras Road, Near Budigere Cross, Virgonagar, Aavalahalli, Bandapura, Bangalore Karnataka 560049</span>
               </li>
             </ul>
+
+            {/* Managed By Info & Logo */}
+            <div className="pt-2 border-t border-gray-800/80 space-y-2">
+              <span className="text-[11px] font-semibold text-slate-400 block tracking-wide uppercase">
+                Managed by
+              </span>
+              <div className="inline-block bg-white p-2 rounded-xl border border-slate-700 shadow-sm">
+                <img
+                  src={getImageUrl("/assets/images/jnanana-logo.png")}
+                  alt="Jnanana Foundation Logo"
+                  className="h-10 w-auto object-contain"
+                />
+              </div>
+            </div>
           </div>
         </div>
 
