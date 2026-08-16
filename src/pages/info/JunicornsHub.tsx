@@ -1,6 +1,6 @@
 import { getImageUrl } from "../../utils/imageUtils";
 import { useState } from "react";
-import { ChevronDown, ChevronUp, ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronDown, ChevronUp, ChevronLeft, ChevronRight, Rocket, Globe, Sparkles, Cpu, Flag, Zap, GraduationCap, Lightbulb } from "lucide-react";
 import { Link } from "react-router-dom";
 import heroImg from "../../assets/hero.png";
 export function JunicornsHub() {
@@ -35,44 +35,68 @@ export function JunicornsHub() {
 
   const missions = [
     {
-      icon: "/assets/2026/03/rocket-icon.svg",
       name: "Core Mission",
-      desc: "Empowering rural youth by connecting them to global opportunities and driving national sector growth."
+      desc: "Empowering rural youth by connecting them to global opportunities and driving national sector growth.",
+      icon: Rocket,
+      gradient: "from-[#D24D7F] to-[#E5532A]",
+      badgeBg: "bg-pink-50 text-[#D24D7F]",
+      badgeBorder: "border-pink-200/80"
     },
     {
-      icon: "/assets/2026/03/green-globe.svg",
       name: "Global Expeditions",
-      desc: "Immersive experiences in tech hubs to foster a global mindset and collaborative innovation."
+      desc: "Immersive experiences in tech hubs to foster a global mindset and collaborative innovation.",
+      icon: Globe,
+      gradient: "from-emerald-500 to-teal-600",
+      badgeBg: "bg-emerald-50 text-emerald-600",
+      badgeBorder: "border-emerald-200/80"
     },
     {
-      icon: "/assets/2026/03/talent.svg",
       name: "Rural Talent",
-      desc: "Discovering and nurturing undiscovered talent in rural areas, providing resources to help them shine."
+      desc: "Discovering and nurturing undiscovered talent in rural areas, providing resources to help them shine.",
+      icon: Sparkles,
+      gradient: "from-amber-500 to-yellow-600",
+      badgeBg: "bg-amber-50 text-amber-600",
+      badgeBorder: "border-amber-200/80"
     },
     {
-      icon: "/assets/2026/03/green-brian.svg",
-      name: "MVP prototyping",
-      desc: "Enabling participants to build and test their ideas, turning innovative concepts into tangible solutions."
+      name: "MVP Prototyping",
+      desc: "Enabling participants to build and test their ideas, turning innovative concepts into tangible solutions.",
+      icon: Cpu,
+      gradient: "from-purple-500 to-indigo-600",
+      badgeBg: "bg-purple-50 text-purple-600",
+      badgeBorder: "border-purple-200/80"
     },
     {
-      icon: "/assets/2026/03/flag.svg",
       name: "National Priorities",
-      desc: "Aligning innovations with national priority sectors to ensure impactful and relevant outcomes."
+      desc: "Aligning innovations with national priority sectors to ensure impactful and relevant outcomes.",
+      icon: Flag,
+      gradient: "from-[#E5532A] to-red-600",
+      badgeBg: "bg-orange-50 text-[#E5532A]",
+      badgeBorder: "border-orange-200/80"
     },
     {
-      icon: "/assets/2026/03/youth.svg",
       name: "Youth Empowerment",
-      desc: "Providing young innovators with the tools and mentorship needed to succeed on global stage."
+      desc: "Providing young innovators with the tools and mentorship needed to succeed on the global stage.",
+      icon: Zap,
+      gradient: "from-sky-500 to-blue-600",
+      badgeBg: "bg-sky-50 text-sky-600",
+      badgeBorder: "border-sky-200/80"
     },
     {
-      icon: "/assets/2026/03/cap.svg",
       name: "University Collaboration",
-      desc: "Partnering with universities to bridge the gap between academia and industry for practical innovation."
+      desc: "Partnering with universities to bridge the gap between academia and industry for practical innovation.",
+      icon: GraduationCap,
+      gradient: "from-rose-500 to-pink-600",
+      badgeBg: "bg-rose-50 text-rose-600",
+      badgeBorder: "border-rose-200/80"
     },
     {
-      icon: "/assets/2026/03/rocket-icon.svg",
       name: "Global Ideas",
-      desc: "Creating a platform for the cross-pollination of ideas from diverse minds across the world."
+      desc: "Creating a platform for the cross-pollination of ideas from diverse minds across the world.",
+      icon: Lightbulb,
+      gradient: "from-teal-500 to-cyan-600",
+      badgeBg: "bg-teal-50 text-teal-600",
+      badgeBorder: "border-teal-200/80"
     }
   ];
 
@@ -241,29 +265,35 @@ export function JunicornsHub() {
               </div>
 
               {/* Founder Message Section */}
-              <div className="mt-4 pt-6 border-t border-gray-200/50">
-                <div className="bg-white/60 backdrop-blur-md p-5 md:p-6 rounded-2xl border border-white/50 shadow-[0_4px_20px_-4px_rgba(0,0,0,0.05)] hover:shadow-lg transition-all">
-                  <h3 className="text-lg font-bold font-baskerville text-[#0C3E2B] mb-4 text-center sm:text-left">
-                    Message from the Founder & Chairman
-                  </h3>
-                  <div className="flex flex-col sm:flex-row gap-5 items-center sm:items-start">
-                    <div className="relative shrink-0">
-                      {/* Background blob behind founder photo */}
-                      <div className="absolute -inset-1.5 bg-gradient-to-br from-[#EAB308] to-[#F59E0B] rounded-full translate-x-1.5 translate-y-1.5 opacity-90 blur-[2px]"></div>
-                      <img
-                        src={getImageUrl("/assets/themes/jupiterx/junicon-26/images/jac.png")}
-                        alt="Dr. J A Chowdary"
-                        className="relative w-20 h-20 sm:w-24 sm:h-24 object-cover rounded-full border-[3px] border-white shadow-md z-10"
-                        onError={(e) => {
-                          e.currentTarget.src = "/assets/2024/02/J-A-Chowdary.jpg";
-                        }}
-                      />
-                    </div>
-                    <div className="space-y-2 text-center sm:text-left flex-1">
-                      <h4 className="text-base font-bold text-[#0C3E2B] font-baskerville m-0">Dr. J A Chowdary</h4>
-                      <p className="text-[#0C3E2B]/85 text-[13px] sm:text-sm italic font-medium leading-relaxed bg-white/40 p-3 rounded-xl border border-white/60 inline-block">
-                        "To realize Bharat 2047, we must equip youth—especially from rural India and Tier 2 & 3 cities—with the right tools, mentorship, and global exposure. ISF Junicorn100K is a game-changing movement to empower 100,000 innovators."
-                      </p>
+              <div className="mt-6 pt-6 border-t border-gray-200/80">
+                <div className="bg-white p-6 sm:p-7 rounded-2xl shadow-lg border border-emerald-100 hover:shadow-xl transition-all relative overflow-hidden">
+                  <div className="space-y-4">
+                    <h3 className="text-base sm:text-lg font-bold font-baskerville text-[#0C3E2B] mb-2 text-center sm:text-left">
+                      Message from the Founder & Chairman
+                    </h3>
+
+                    <div className="flex flex-col sm:flex-row gap-5 items-center sm:items-start">
+                      <div className="relative shrink-0">
+                        <div className="absolute -inset-1 bg-gradient-to-br from-[#E5532A] to-[#D24D7F] rounded-full blur-[1px]"></div>
+                        <img
+                          src={getImageUrl("/assets/themes/jupiterx/junicon-26/images/jac.png")}
+                          alt="Dr. J A Chowdary"
+                          className="relative w-20 h-20 sm:w-24 sm:h-24 object-cover rounded-full border-2 border-white shadow-md z-10"
+                          onError={(e) => {
+                            e.currentTarget.src = "/assets/2024/02/J-A-Chowdary.jpg";
+                          }}
+                        />
+                      </div>
+
+                      <div className="space-y-2 text-center sm:text-left flex-1">
+                        <div>
+                          <h4 className="text-base font-bold text-[#0C3E2B] font-baskerville m-0">Dr. J A Chowdary</h4>
+                          <p className="text-xs font-semibold text-[#D24D7F] mt-0.5">Founder & Chairman, International Startup Foundation</p>
+                        </div>
+                        <p className="text-[#0C3E2B] text-xs sm:text-sm italic font-medium leading-relaxed bg-[#FAF8F5] p-3.5 rounded-xl border border-emerald-100/80 shadow-2xs">
+                          "To realize Bharat 2047, we must equip youth—especially from rural India and Tier 2 & 3 cities—with the right tools, mentorship, and global exposure. ISF Junicorn100K is a game-changing movement to empower 100,000 innovators."
+                        </p>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -290,40 +320,61 @@ export function JunicornsHub() {
       </section>
 
       {/* 2. 8-part Mission Grid */}
-      <section className="py-10 md:py-12 bg-[#6B9D8F] text-center border-none relative z-0 shadow-[inset_0_15px_40px_rgba(0,0,0,0.2)]">
-        {/* Subtle radial gradient for center lighting effect */}
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-white/10 to-transparent -z-10 pointer-events-none"></div>
-        <div className="container-custom space-y-8">
-          <div>
-            <h2 className="text-3xl md:text-4xl font-bold text-white font-inter tracking-tight m-0">
+      <section className="py-16 md:py-24 bg-gradient-to-b from-[#F0FDF4] via-[#F8FAFC] to-[#FFF7ED] text-center relative overflow-hidden border-t border-b border-emerald-100/80">
+        {/* Soft pastel ambient background glows */}
+        <div className="absolute top-10 left-10 w-96 h-96 bg-pink-100/40 rounded-full blur-3xl pointer-events-none"></div>
+        <div className="absolute bottom-10 right-10 w-96 h-96 bg-amber-100/50 rounded-full blur-3xl pointer-events-none"></div>
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-emerald-100/40 rounded-full blur-3xl pointer-events-none"></div>
+
+        <div className="container-custom space-y-10 relative z-10">
+          <div className="max-w-3xl mx-auto space-y-3">
+            <span className="text-[11px] font-bold uppercase tracking-widest text-[#0C3E2B] bg-emerald-100/80 border border-emerald-200 px-4 py-1.5 rounded-full inline-block shadow-2xs">
+              Empowering 100,000 Innovators
+            </span>
+            <h2 className="text-3xl md:text-5xl font-extrabold text-[#0C3E2B] font-baskerville tracking-tight m-0">
               Junicorn100K Initiative
             </h2>
+            <p className="text-xs md:text-sm text-slate-600 font-normal leading-relaxed max-w-2xl mx-auto">
+              Unlocking rural potential, building breakthrough prototypes, and connecting young minds to global ecosystems.
+            </p>
+            <div className="w-16 h-1 bg-gradient-to-r from-[#D24D7F] via-[#E5532A] to-[#EAB308] mx-auto rounded-full mt-4"></div>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-            {missions.map((item, idx) => (
-              <div
-                key={idx}
-                className="bg-white rounded-xl p-5 md:p-6 flex flex-col items-start text-left space-y-3 shadow-md hover:shadow-xl transition-shadow border-none"
-              >
-                <div className="w-10 h-10 flex items-center justify-start mb-1">
-                  <img
-                    src={item.icon}
-                    alt={item.name}
-                    className="w-8 h-8 object-contain opacity-80"
-                    onError={(e) => {
-                      e.currentTarget.src = "/assets/2026/03/rocket-icon.svg";
-                    }}
-                  />
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {missions.map((item, idx) => {
+              const IconComponent = item.icon;
+              return (
+                <div
+                  key={idx}
+                  className="group bg-white rounded-2xl p-6 flex flex-col justify-between text-left space-y-4 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1.5 border border-slate-200/80 relative overflow-hidden"
+                >
+                  {/* Top colorful gradient accent line */}
+                  <div className={`absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r ${item.gradient}`}></div>
+
+                  <div className="space-y-3.5 pt-1">
+                    {/* Icon badge with matching signature color */}
+                    <div className={`w-12 h-12 rounded-xl ${item.badgeBg} border ${item.badgeBorder} flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-2xs`}>
+                      <IconComponent size={24} />
+                    </div>
+
+                    <h3 className="text-lg font-bold text-slate-900 font-baskerville leading-snug group-hover:text-[#0C3E2B] transition-colors">
+                      {item.name}
+                    </h3>
+                    <p className="text-xs md:text-sm text-slate-600 leading-relaxed font-normal">
+                      {item.desc}
+                    </p>
+                  </div>
+
+                  {/* Subtle bottom pillar indicator */}
+                  <div className="pt-3 border-t border-slate-100 flex items-center justify-between">
+                    <span className="text-[10px] font-mono font-bold text-slate-400 uppercase tracking-wider group-hover:text-[#0C3E2B] transition-colors">
+                      Pillar 0{idx + 1}
+                    </span>
+                    <span className="w-2 h-2 rounded-full bg-slate-200 group-hover:bg-[#E5532A] transition-colors"></span>
+                  </div>
                 </div>
-                <h3 className="text-lg md:text-[20px] font-bold text-[#0C3E2B] font-inter">
-                  {item.name}
-                </h3>
-                <p className="text-[13px] md:text-[14px] text-[#0C3E2B]/85 leading-snug font-medium">
-                  {item.desc}
-                </p>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>
@@ -436,17 +487,24 @@ export function JunicornsHub() {
 
           {/* Auto-revolving marquee container */}
           <div className="relative flex overflow-hidden group py-4">
-            <div className="flex gap-6 w-max animate-marquee pr-6">
+            {/* Side fading gradient masks for smooth transition */}
+            <div className="absolute left-0 top-0 bottom-0 w-16 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none"></div>
+            <div className="absolute right-0 top-0 bottom-0 w-16 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none"></div>
+
+            <div 
+              className="flex gap-6 w-max animate-marquee hover:[animation-play-state:paused] pr-6"
+              style={{ animationDuration: '280s' }}
+            >
               {[...innovations, ...innovations].map((item, idx) => (
                 <div
                   key={idx}
-                  className="w-[300px] md:w-[320px] shrink-0 bg-white p-6 rounded-xl border border-[#e6e6e6] shadow-sm hover:shadow-md hover:border-isf-orange transition-all flex flex-col relative"
+                  className="w-[300px] md:w-[320px] shrink-0 bg-white p-6 rounded-xl border border-[#e6e6e6] shadow-sm hover:shadow-md hover:border-isf-orange transition-all flex flex-col relative group/card"
                   style={{ minHeight: "180px" }}
                 >
-                  <div className="absolute top-4 right-4 w-8 h-8 flex items-center justify-center rounded-full text-white font-bold text-xs bg-isf-orange">
+                  <div className="absolute top-4 right-4 w-8 h-8 flex items-center justify-center rounded-full text-white font-bold text-xs bg-isf-orange shadow-2xs">
                     {(idx % innovations.length) + 1}
                   </div>
-                  <h3 className="text-base font-bold text-[#111111] mb-2 pr-12 font-baskerville">
+                  <h3 className="text-base font-bold text-[#111111] mb-2 pr-12 font-baskerville group-hover/card:text-isf-orange transition-colors">
                     {item.name}
                   </h3>
                   <p className="text-xs text-[#666666] font-light leading-relaxed grow">
