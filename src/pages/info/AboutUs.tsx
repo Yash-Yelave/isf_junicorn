@@ -71,55 +71,37 @@ export function AboutUs() {
       id: "01",
       title: "Enduring Connections",
       desc: "Driving sustained entrepreneurial success through lasting strategic connections across global markets.",
-      icon: Handshake,
-      badgeBg: "bg-emerald-500/10 text-emerald-700 border-emerald-200",
-      iconBg: "from-emerald-600 to-teal-700 text-white shadow-emerald-600/30",
-      accent: "bg-emerald-600"
+      icon: Handshake
     },
     {
       id: "02",
       title: "Extensive Network",
       desc: "Connecting 50,000+ startups with international investors, corporate leaders, and trade delegations.",
-      icon: Globe,
-      badgeBg: "bg-pink-500/10 text-[#D24D7F] border-pink-200",
-      iconBg: "from-[#D24D7F] to-rose-600 text-white shadow-pink-500/30",
-      accent: "bg-[#D24D7F]"
+      icon: Globe
     },
     {
       id: "03",
       title: "Mentorship & Guidance",
       desc: "Providing 1-on-1 access to seasoned CXOs, VCs, and domain experts worldwide.",
-      icon: Users,
-      badgeBg: "bg-amber-500/10 text-amber-700 border-amber-200",
-      iconBg: "from-amber-400 to-orange-500 text-white shadow-amber-500/30",
-      accent: "bg-amber-500"
+      icon: Users
     },
     {
       id: "04",
       title: "Rural Enhancement",
       desc: "Championing grassroots rural entrepreneurship for inclusive and sustainable economic development.",
-      icon: Building2,
-      badgeBg: "bg-purple-500/10 text-purple-700 border-purple-200",
-      iconBg: "from-purple-600 to-indigo-700 text-white shadow-purple-600/30",
-      accent: "bg-purple-600"
+      icon: Building2
     },
     {
       id: "05",
       title: "Youth Empowerment",
       desc: "Supporting student & under-16 founders with incubators, tools, and global recognition.",
-      icon: Award,
-      badgeBg: "bg-blue-500/10 text-blue-700 border-blue-200",
-      iconBg: "from-blue-500 to-cyan-600 text-white shadow-blue-500/30",
-      accent: "bg-blue-500"
+      icon: Award
     },
     {
       id: "06",
       title: "And Many More",
       desc: "Continuous innovation, global pitch stages, and dedicated startup acceleration programs.",
-      icon: Sparkles,
-      badgeBg: "bg-orange-500/10 text-orange-700 border-orange-200",
-      iconBg: "from-orange-500 to-amber-600 text-white shadow-orange-500/30",
-      accent: "bg-orange-500"
+      icon: Sparkles
     }
   ];
 
@@ -409,23 +391,22 @@ export function AboutUs() {
       </section>
 
       {/* 3. ISF KEY FEATURES */}
-      <section className="py-10 md:py-12 bg-gradient-to-b from-white via-[#FAF8F5]/60 to-white border-b border-gray-200 relative overflow-hidden">
+      <section className="py-10 md:py-12 bg-gradient-to-b from-slate-50/70 via-white to-slate-50/50 border-b border-gray-200 relative overflow-hidden">
         {/* Subtle background decorative glows */}
-        <div className="absolute top-1/3 left-0 w-96 h-96 bg-emerald-500/5 rounded-full blur-3xl pointer-events-none -z-0"></div>
-        <div className="absolute bottom-10 right-0 w-96 h-96 bg-amber-500/5 rounded-full blur-3xl pointer-events-none -z-0"></div>
+        <div className="absolute top-1/3 left-0 w-96 h-96 bg-orange-500/5 rounded-full blur-3xl pointer-events-none -z-0"></div>
+        <div className="absolute bottom-10 right-0 w-96 h-96 bg-red-500/5 rounded-full blur-3xl pointer-events-none -z-0"></div>
 
         <div className="container-custom space-y-6 md:space-y-8 px-4 max-w-6xl mx-auto relative z-10">
           <div className="text-center space-y-2 max-w-2xl mx-auto">
-            <span className="text-[11px] font-bold uppercase tracking-widest text-[#D24D7F] bg-pink-50 border border-pink-100 px-3.5 py-1 rounded-full inline-block">
+            <span className="text-[11px] font-bold uppercase tracking-widest text-slate-700 bg-slate-100 border border-slate-200 px-3.5 py-1 rounded-full inline-block">
               Core Ecosystem Pillars
             </span>
-            <h2 className="text-2xl md:text-3xl font-extrabold text-[#111111] font-baskerville tracking-tight uppercase">
-              ISF Key Features
+            <h2 className="text-2xl md:text-3xl font-extrabold text-slate-900 font-baskerville tracking-tight uppercase">
+              Key Features
             </h2>
-            <p className="text-xs md:text-sm text-[#666666] font-normal">
+            <p className="text-xs md:text-sm text-slate-500 font-normal">
               Signature features and foundation pillars driving our startup support ecosystem globally.
             </p>
-            <div className="w-12 h-1 bg-[#D24D7F] mx-auto rounded-full mt-1"></div>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
@@ -434,36 +415,36 @@ export function AboutUs() {
               return (
                 <div
                   key={idx}
-                  className="group relative bg-white border border-gray-150 rounded-2xl p-5 hover:shadow-xl hover:border-gray-300 transition-all duration-300 hover:-translate-y-1 flex flex-col justify-between overflow-hidden shadow-2xs"
+                  className="group relative bg-white border border-slate-200/90 rounded-2xl p-5 shadow-2xs hover:shadow-xl hover:border-orange-300/80 transition-all duration-300 hover:-translate-y-1 flex flex-col justify-between overflow-hidden"
                 >
                   {/* Subtle hover gradient sheen */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-transparent via-transparent to-[#FAF8F5]/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
+                  <div className="absolute inset-0 bg-gradient-to-br from-orange-500/5 via-transparent to-red-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
 
                   <div className="space-y-3.5 relative z-10">
-                    {/* Top Row: Icon Badge & Number */}
+                    {/* Top Row: Icon Badge & Number (Gradient on Hover) */}
                     <div className="flex items-center justify-between">
-                      <div className={`w-11 h-11 rounded-xl bg-gradient-to-br ${feat.iconBg} flex items-center justify-center shadow-md group-hover:scale-105 transition-transform duration-300`}>
-                        <IconComp size={20} />
+                      <div className="w-10 h-10 rounded-xl bg-slate-100 text-slate-700 border border-slate-200/80 flex items-center justify-center group-hover:bg-gradient-to-br group-hover:from-orange-500 group-hover:via-red-500 group-hover:to-rose-600 group-hover:text-white group-hover:border-transparent group-hover:scale-110 group-hover:shadow-md group-hover:shadow-red-500/25 transition-all duration-300">
+                        <IconComp size={19} />
                       </div>
-                      <span className={`text-[10px] font-black px-2.5 py-1 rounded-full border ${feat.badgeBg}`}>
+                      <span className="text-[10px] font-mono font-extrabold text-slate-400 bg-slate-50 border border-slate-200/60 group-hover:text-red-600 group-hover:bg-orange-50 group-hover:border-orange-200/80 px-2 py-0.5 rounded-md tracking-wider transition-colors duration-300">
                         {feat.id}
                       </span>
                     </div>
 
                     {/* Content */}
                     <div className="space-y-1.5">
-                      <h3 className="text-base font-bold font-baskerville text-[#111111] group-hover:text-[#0C3E2B] transition-colors leading-snug">
+                      <h3 className="text-base font-bold font-baskerville text-slate-900 group-hover:text-red-600 transition-colors leading-snug">
                         {feat.title}
                       </h3>
-                      <p className="text-xs text-[#666666] font-normal leading-relaxed">
+                      <p className="text-xs md:text-sm text-slate-600 font-normal leading-relaxed">
                         {feat.desc}
                       </p>
                     </div>
                   </div>
 
-                  {/* Expanding accent bar at bottom */}
-                  <div className="mt-4 pt-2.5 border-t border-gray-100 relative z-10">
-                    <div className={`w-8 h-1 ${feat.accent} rounded-full group-hover:w-full transition-all duration-500`}></div>
+                  {/* Expanding Accent Bar (Gradient on Hover) */}
+                  <div className="mt-4 pt-2.5 border-t border-slate-100 relative z-10">
+                    <div className="w-8 h-1 bg-slate-200 rounded-full group-hover:w-full group-hover:bg-gradient-to-r group-hover:from-orange-500 group-hover:via-red-500 group-hover:to-rose-600 transition-all duration-500"></div>
                   </div>
                 </div>
               );
@@ -472,11 +453,11 @@ export function AboutUs() {
         </div>
       </section>
 
-      {/* 4. ISF CORE VALUES */}
+      {/* 4. CORE VALUES */}
       <section className="py-16 bg-[#FAF9F6] border-b border-gray-200">
         <div className="container-custom space-y-12 px-4">
           <div className="text-center space-y-3">
-            <h2 className="text-2xl md:text-3xl font-extrabold font-inter tracking-tight uppercase text-[#111111]">ISF CORE VALUES</h2>
+            <h2 className="text-2xl md:text-3xl font-extrabold font-inter tracking-tight uppercase text-[#111111]">CORE VALUES</h2>
             <p className="text-xs text-[#666666] font-semibold uppercase tracking-wider">Ambitious Values Shaping the Nation's Future Success</p>
             <div className="w-12 h-1 bg-isf-orange mx-auto rounded"></div>
           </div>
@@ -514,10 +495,10 @@ export function AboutUs() {
       <section className="py-20 bg-white border-b border-gray-200">
         <div className="container-custom space-y-12 px-4">
           <div className="text-center space-y-3">
-            <h2 className="text-2xl md:text-3xl font-extrabold tracking-tight uppercase">ISF’S PAST ACHIEVEMENTS</h2>
-            <p className="text-xs text-[#666666] font-semibold uppercase tracking-wider">Echoes of Success: ISF's Remarkable Chronicles</p>
+            <h2 className="text-2xl md:text-3xl font-extrabold tracking-tight uppercase">PAST ACHIEVEMENTS</h2>
+            <p className="text-xs text-[#666666] font-semibold uppercase tracking-wider">Echoes of Success: Remarkable Chronicles</p>
             <div className="w-12 h-1 bg-isf-orange mx-auto rounded"></div>
-            <h3 className="text-xl font-bold mt-4 text-[#D24D7F] uppercase">ISF 2023 Journey Highlights</h3>
+            <h3 className="text-xl font-bold mt-4 text-[#D24D7F] uppercase">2023 Journey Highlights</h3>
           </div>
 
           <div className="flex flex-col lg:flex-row gap-8 rounded-2xl border border-gray-200 p-4 md:p-6 shadow-sm bg-[#f9f9f9]">
@@ -558,8 +539,8 @@ export function AboutUs() {
       <section className="py-16 bg-[#FAF8F5] border-b border-gray-200">
         <div className="container-custom space-y-12 px-4">
           <div className="text-center space-y-3">
-            <h2 className="text-2xl md:text-3xl font-extrabold text-[#111111] tracking-tight uppercase">ISF LIFETIME ACHIEVEMENT AWARDEES</h2>
-            <p className="text-xs text-[#666666] font-semibold uppercase tracking-wider">Honoring Excellence: Meet the Stalwarts of ISF</p>
+            <h2 className="text-2xl md:text-3xl font-extrabold text-[#111111] tracking-tight uppercase">LIFETIME ACHIEVEMENT AWARDEES</h2>
+            <p className="text-xs text-[#666666] font-semibold uppercase tracking-wider">Honoring Excellence: Meet the Stalwarts</p>
             <div className="w-12 h-1 bg-isf-orange mx-auto rounded"></div>
           </div>
 
@@ -577,11 +558,11 @@ export function AboutUs() {
         </div>
       </section>
 
-      {/* 7. ISF STARTUP AWARD WINNERS */}
+      {/* 7. STARTUP AWARD WINNERS */}
       <section className="py-16 bg-white border-b border-gray-200">
         <div className="container-custom space-y-12 px-4">
           <div className="text-center space-y-3">
-            <h2 className="text-2xl md:text-3xl font-extrabold text-[#111111] tracking-tight uppercase">ISF STARTUP AWARD WINNERS</h2>
+            <h2 className="text-2xl md:text-3xl font-extrabold text-[#111111] tracking-tight uppercase">STARTUP AWARD WINNERS</h2>
             <p className="text-xs text-[#666666] font-semibold uppercase tracking-wider">The Trailblazers of Tomorrow Making Lasting Impact</p>
             <div className="w-12 h-1 bg-isf-orange mx-auto rounded"></div>
           </div>
@@ -601,11 +582,11 @@ export function AboutUs() {
 
 
 
-      {/* 9. ISF MOUs */}
+      {/* 9. MOUs */}
       <section className="py-16 bg-white border-b border-gray-200">
         <div className="container-custom space-y-12 px-4">
           <div className="text-center space-y-3">
-            <h2 className="text-2xl md:text-3xl font-extrabold tracking-tight uppercase">ISF MOUs</h2>
+            <h2 className="text-2xl md:text-3xl font-extrabold tracking-tight uppercase">MOUs</h2>
             <div className="w-12 h-1 bg-isf-orange mx-auto rounded"></div>
           </div>
 
@@ -625,11 +606,11 @@ export function AboutUs() {
         </div>
       </section>
 
-      {/* 10. ISF MEDIA COVERAGE */}
+      {/* 10. MEDIA COVERAGE */}
       <section className="py-16 bg-[#FAF8F5] border-b border-gray-200">
         <div className="container-custom space-y-12 px-4">
           <div className="text-center space-y-3">
-            <h2 className="text-2xl md:text-3xl font-extrabold tracking-tight uppercase">ISF MEDIA COVERAGE</h2>
+            <h2 className="text-2xl md:text-3xl font-extrabold tracking-tight uppercase">MEDIA COVERAGE</h2>
             <div className="w-12 h-1 bg-isf-orange mx-auto rounded"></div>
           </div>
           
