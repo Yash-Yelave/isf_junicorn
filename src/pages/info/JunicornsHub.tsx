@@ -579,45 +579,62 @@ export function JunicornsHub() {
       </section>
 
       {/* 6. Innovations Catalog */}
-      <section className="py-16 bg-white border-b border-gray-150 overflow-hidden">
+      <section className="py-16 md:py-24 bg-gradient-to-b from-[#FAF9F5] via-slate-50/80 to-[#FFF7ED]/50 border-b border-gray-200/80 overflow-hidden relative">
+        {/* Soft pastel ambient background glows */}
+        <div className="absolute top-1/2 left-1/4 w-72 h-72 bg-pink-100/40 rounded-full blur-3xl -z-10 pointer-events-none"></div>
+        <div className="absolute bottom-10 right-1/4 w-72 h-72 bg-emerald-100/40 rounded-full blur-3xl -z-10 pointer-events-none"></div>
+
         <div className="container-custom space-y-12">
+          {/* Header */}
           <div className="text-center space-y-3">
-            <h2 className="text-2xl md:text-3xl font-bold font-baskerville text-[#111111]">
+            <span className="text-xs font-bold text-isf-orange uppercase tracking-widest block font-inter">
+              NATIONAL PROTOTYPE CATALOG
+            </span>
+            <h2 className="text-3xl md:text-5xl font-extrabold font-baskerville text-slate-900 leading-tight">
               Junicorn Innovations
             </h2>
-            <p className="text-xs text-[#666666] font-semibold uppercase tracking-wider">
-              25 Hardware and Software Breakthroughs catalog
+            <p className="text-xs sm:text-sm text-slate-600 font-normal leading-relaxed max-w-xl mx-auto">
+              Exploring 25 breakthrough hardware and software solutions built by India's next generation of student founders.
             </p>
-            <div className="w-12 h-1 bg-isf-orange mx-auto rounded"></div>
+            <div className="w-16 h-1 bg-gradient-to-r from-[#D24D7F] via-[#EAB308] to-[#026956] mx-auto rounded-full mt-3"></div>
           </div>
 
           {/* Auto-revolving marquee container */}
           <div className="relative flex overflow-hidden group py-4">
             {/* Side fading gradient masks for smooth transition */}
-            <div className="absolute left-0 top-0 bottom-0 w-16 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none"></div>
-            <div className="absolute right-0 top-0 bottom-0 w-16 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none"></div>
+            <div className="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-[#FAF9F6] via-[#FAF9F6]/80 to-transparent z-10 pointer-events-none"></div>
+            <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-[#FAF9F6] via-[#FAF9F6]/80 to-transparent z-10 pointer-events-none"></div>
 
             <div 
               className="flex gap-6 w-max animate-marquee hover:[animation-play-state:paused] pr-6"
               style={{ animationDuration: '280s' }}
             >
-              {[...innovations, ...innovations].map((item, idx) => (
-                <div
-                  key={idx}
-                  className="w-[300px] md:w-[320px] shrink-0 bg-white p-6 rounded-xl border border-[#e6e6e6] shadow-sm hover:shadow-md hover:border-isf-orange transition-all flex flex-col relative group/card"
-                  style={{ minHeight: "180px" }}
-                >
-                  <div className="absolute top-4 right-4 w-8 h-8 flex items-center justify-center rounded-full text-white font-bold text-xs bg-isf-orange shadow-2xs">
-                    {(idx % innovations.length) + 1}
+              {[...innovations, ...innovations].map((item, idx) => {
+                const theme = cardThemes[idx % cardThemes.length];
+                const itemNum = (idx % innovations.length) + 1;
+                return (
+                  <div
+                    key={idx}
+                    className={`w-[300px] md:w-[320px] shrink-0 ${theme.bg} p-6 rounded-2xl border ${theme.border} shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 flex flex-col relative group/card overflow-hidden`}
+                    style={{ minHeight: "195px" }}
+                  >
+                    {/* Top colored accent line */}
+                    <div className={`absolute top-0 left-0 right-0 h-1.5 ${theme.accentLine}`}></div>
+
+                    {/* Top right number badge */}
+                    <div className={`absolute top-4 right-4 w-7 h-7 flex items-center justify-center rounded-full text-white font-extrabold text-[11px] ${theme.badgeBg} shadow-2xs`}>
+                      {itemNum}
+                    </div>
+
+                    <h3 className={`text-base font-bold mb-2 pr-10 font-baskerville ${theme.titleColor} transition-colors`}>
+                      {item.name}
+                    </h3>
+                    <p className="text-xs text-slate-600 font-normal leading-relaxed grow pt-1">
+                      {item.desc}
+                    </p>
                   </div>
-                  <h3 className="text-base font-bold text-[#111111] mb-2 pr-12 font-baskerville group-hover/card:text-isf-orange transition-colors">
-                    {item.name}
-                  </h3>
-                  <p className="text-xs text-[#666666] font-light leading-relaxed grow">
-                    {item.desc}
-                  </p>
-                </div>
-              ))}
+                );
+              })}
             </div>
           </div>
         </div>
