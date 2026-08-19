@@ -30,6 +30,10 @@ export function Navbar() {
       path: "/1hour-per-week"
     },
     {
+      name: "J-Spotlight",
+      path: "/j-spotlight"
+    },
+    {
       name: "ISF Events",
       path: "#",
       submenu: [

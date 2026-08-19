@@ -269,12 +269,12 @@ export function JSpotlight() {
             className="flex flex-wrap items-center justify-center gap-4 pt-2"
           >
             <a
-              href="https://luma.com/oiv1aoqu"
+              href="https://forms.gle/y5R1jv5FbQuu6VrNA"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 bg-[#09523B] hover:bg-[#073f2d] text-white text-sm sm:text-base font-extrabold px-8 py-3.5 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 border border-emerald-600/40 cursor-pointer group"
             >
-              <span>BOOK YOUR SPOT (₹349)</span>
+              <span>REQUEST DELEGATE SEAT</span>
               <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
             </a>
 
@@ -860,12 +860,12 @@ export function JSpotlight() {
 
               {/* Booking CTA Button */}
               <a
-                href="https://luma.com/oiv1aoqu"
+                href="https://forms.gle/y5R1jv5FbQuu6VrNA"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-full md:w-auto bg-gradient-to-r from-amber-400 to-yellow-300 hover:from-amber-300 hover:to-yellow-200 text-slate-950 text-base font-black px-8 py-4 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 flex items-center justify-center gap-2.5 cursor-pointer border border-white shrink-0 group transform hover:-translate-y-0.5"
               >
-                <span>BOOK YOUR SPOT</span>
+                <span>REQUEST DELEGATE SEAT</span>
                 <Ticket size={20} className="group-hover:rotate-12 transition-transform text-slate-950" />
               </a>
             </motion.div>

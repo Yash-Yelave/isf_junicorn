@@ -177,7 +177,7 @@ export function ISFJourney() {
         "Direct connection to seed grants & Draper U acceleration pathways"
       ],
       image: getImageUrl("/assets/images/hero-De-l_Mnh.png"),
-      link: "https://luma.com/oiv1aoqu",
+      link: "https://forms.gle/y5R1jv5FbQuu6VrNA",
       isExternal: true,
       linkText: "Request Event Access"
     },

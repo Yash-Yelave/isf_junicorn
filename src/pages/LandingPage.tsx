@@ -212,7 +212,7 @@ export function LandingPage() {
       supportingMessage: "An exclusive monthly pitch & mentorship conclave connecting curated student innovators with industry chairs, venture capital leads, and global incubation pathways.",
       audience: ["Student Founders", "Deep-Tech Builders", "Patent Innovators", "Startup Researchers"],
       primaryBtnText: "REQUEST DELEGATE SEAT",
-      primaryBtnLink: "https://luma.com/oiv1aoqu",
+      primaryBtnLink: "https://forms.gle/y5R1jv5FbQuu6VrNA",
       seats: "ONLY 50 DELEGATE SEATS",
       personImage: "/assets/events/j-spotlight/j-spotlight-person.png",
       personName: "DR. J.A. CHOWDARY",
