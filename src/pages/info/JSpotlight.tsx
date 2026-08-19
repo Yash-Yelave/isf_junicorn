@@ -37,52 +37,32 @@ export function JSpotlight() {
       <div className="absolute top-10 left-1/2 -translate-x-1/2 w-[700px] h-[500px] bg-gradient-to-b from-amber-200/40 via-yellow-100/20 to-transparent rounded-full blur-3xl pointer-events-none -z-10" />
 
       {/* Main Container */}
-      <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-16 md:space-y-24">
+      <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-6 md:py-10 space-y-16 md:space-y-24">
         
-        {/* TOP BRANDING BAR */}
-        <div className="flex justify-between items-center border-b border-amber-900/10 pb-6">
-          <img
-            src={getImageUrl("/assets/images/isf-Logo-Final-TOL.png")}
-            alt="International Startup Foundation"
-            className="h-10 sm:h-12 w-auto object-contain"
-            onError={(e) => { e.currentTarget.src = "/assets/isf-logo.webp"; }}
-          />
-          <div className="text-center hidden sm:block">
-            <span className="text-[11px] font-black uppercase tracking-widest text-[#09523B]">
-              Jnanana Foundation × ISF Junicorns
-            </span>
-          </div>
-          <span className="font-serif italic font-extrabold text-xl sm:text-2xl text-[#09523B]">
-            Junicorn
-          </span>
-        </div>
-
-
         {/* ========================================================================= */}
         {/* SECTION 1: HERO SPOTLIGHT (PDF Page 1) */}
         {/* ========================================================================= */}
-        <section className="relative flex flex-col items-center text-center py-6 md:py-12 space-y-8">
+        <section className="relative flex flex-col items-center text-center py-4 md:py-8 space-y-6">
           
           {/* Eyebrow Header Badge */}
           <motion.div 
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="inline-flex flex-col items-center gap-1.5"
+            className="inline-flex flex-wrap items-center justify-center gap-2 bg-white/90 backdrop-blur border border-amber-900/15 px-4 py-1.5 rounded-full shadow-xs text-xs font-extrabold uppercase tracking-widest text-[#09523B]"
           >
-            <span className="text-xs sm:text-sm font-black uppercase tracking-[0.2em] text-slate-700">
-              Jnanana Foundation
-            </span>
-            <span className="text-[10px] sm:text-xs font-bold uppercase tracking-widest text-[#C22B57] bg-pink-100/80 px-3 py-1 rounded-full border border-pink-200">
-              Presents • A Monthly Spotlight Series
-            </span>
+            <span>Jnanana Foundation Presents</span>
+            <span className="text-amber-400">•</span>
+            <span className="text-[#C22B57]">A Monthly Spotlight Series</span>
+            <span className="text-amber-400">•</span>
+            <span className="bg-[#09523B] text-amber-300 text-[10px] px-2 py-0.5 rounded border border-emerald-700">Edition 01</span>
           </motion.div>
 
           {/* Glowing Downward Spotlight Cone Graphic Backdrop */}
-          <div className="relative w-full max-w-3xl flex justify-center items-center my-4">
+          <div className="relative w-full max-w-3xl flex flex-col items-center justify-center my-2">
             
             {/* SVG Spotlight Beam Triangle */}
-            <div className="absolute -top-16 inset-x-0 mx-auto w-full h-80 max-w-xl opacity-70 pointer-events-none">
+            <div className="absolute -top-12 inset-x-0 mx-auto w-full h-80 max-w-xl opacity-70 pointer-events-none -z-10">
               <svg viewBox="0 0 100 100" preserveAspectRatio="none" className="w-full h-full">
                 <polygon points="35,0 65,0 100,100 0,100" fill="url(#heroSpotlightGrad)" />
                 <defs>
@@ -96,17 +76,17 @@ export function JSpotlight() {
             </div>
 
             {/* Concentric Decorative Rings */}
-            <div className="absolute w-[320px] h-[320px] sm:w-[460px] sm:h-[460px] rounded-full border border-slate-400/25 pointer-events-none -z-10" />
-            <div className="absolute w-[240px] h-[240px] sm:w-[350px] sm:h-[350px] rounded-full border border-slate-400/15 pointer-events-none -z-10" />
+            <div className="absolute w-[300px] h-[300px] sm:w-[440px] sm:h-[440px] rounded-full border border-slate-400/20 pointer-events-none -z-10" />
+            <div className="absolute w-[220px] h-[220px] sm:w-[330px] sm:h-[330px] rounded-full border border-slate-400/15 pointer-events-none -z-10" />
 
             {/* Main Heading */}
             <motion.div 
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.6, delay: 0.1 }}
-              className="relative z-10 space-y-4"
+              className="relative z-10 space-y-3"
             >
-              <h2 className="text-xl sm:text-2xl font-black text-slate-800 tracking-widest uppercase font-inter">
+              <h2 className="text-lg sm:text-xl font-black text-slate-800 tracking-widest uppercase font-inter">
                 What is
               </h2>
 
@@ -136,17 +116,10 @@ export function JSpotlight() {
               </h1>
 
               {/* Brush Stroke Banner */}
-              <div className="inline-block relative mt-2">
+              <div className="inline-block relative pt-1">
                 <div className="bg-[#80243E] text-white text-sm sm:text-lg font-black uppercase px-6 py-2 rounded-xl tracking-wider shadow-md transform -rotate-1 border border-pink-700/50">
                   Finding The Next Junicorn
                 </div>
-              </div>
-
-              {/* Edition Pill */}
-              <div>
-                <span className="inline-block bg-[#09523B] text-amber-300 text-xs font-bold uppercase px-3 py-1 rounded-md tracking-wider border border-emerald-700 shadow-xs">
-                  Edition 01
-                </span>
               </div>
             </motion.div>
           </div>
@@ -156,7 +129,7 @@ export function JSpotlight() {
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="text-base sm:text-xl font-medium text-slate-700 max-w-2xl leading-relaxed"
+            className="text-base sm:text-xl font-medium text-slate-700 max-w-2xl leading-relaxed pt-2"
           >
             A monthly gathering where <span className="font-bold text-[#09523B]">ideas</span>, <span className="font-bold text-[#09523B]">people</span> and <span className="font-bold text-[#C22B57]">possible</span> come together.
           </motion.p>
@@ -166,7 +139,7 @@ export function JSpotlight() {
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.3 }}
-            className="flex flex-wrap items-center justify-center gap-4 pt-4"
+            className="flex flex-wrap items-center justify-center gap-4 pt-2"
           >
             <a
               href="https://luma.com/oiv1aoqu"
@@ -180,7 +153,7 @@ export function JSpotlight() {
 
             <div className="inline-flex items-center gap-2 bg-white px-5 py-3 rounded-full border border-amber-300/80 shadow-xs text-xs sm:text-sm font-bold text-slate-800">
               <span className="w-2.5 h-2.5 rounded-full bg-amber-500 animate-ping" />
-              <span>29 AUG 2026 • DRAPER U INDIA</span>
+              <span>29 AUG 2026 • 4:00 - 6:00 PM • DRAPER U INDIA</span>
             </div>
           </motion.div>
 
@@ -190,50 +163,92 @@ export function JSpotlight() {
         {/* ========================================================================= */}
         {/* SECTION 2: THE GAP (PDF Page 2) */}
         {/* ========================================================================= */}
-        <section className="space-y-8 pt-6">
-          <div className="space-y-3">
-            <span className="text-xs font-black uppercase tracking-widest text-[#C22B57]">
-              The Gap
-            </span>
-            <h2 className="text-2xl sm:text-4xl font-extrabold text-[#09523B] leading-tight">
-              THERE ARE <span className="text-[#C22B57] underline decoration-amber-400 decoration-4 underline-offset-4">THOUSANDS</span> OF YOUNG PEOPLE WITH IDEAS.
+        <motion.section 
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-60px" }}
+          transition={{ duration: 0.6 }}
+          className="space-y-6 pt-2 md:pt-4"
+        >
+          {/* Header Alignment */}
+          <div className="space-y-2 max-w-4xl">
+            <div className="inline-flex items-center gap-2">
+              <span className="text-xs font-black uppercase tracking-widest text-[#C22B57] bg-pink-100/90 px-3.5 py-1 rounded-full border border-pink-200">
+                The Gap
+              </span>
+              <Sparkles size={16} className="text-amber-500 animate-spin" style={{ animationDuration: '6s' }} />
+            </div>
+
+            <h2 className="text-2xl sm:text-4xl font-black text-[#09523B] leading-tight tracking-tight">
+              THERE ARE <span className="text-[#C22B57] relative inline-block">
+                THOUSANDS
+                <svg viewBox="0 0 100 20" fill="none" className="absolute -bottom-1.5 left-0 w-full h-2.5 text-amber-400">
+                  <path d="M2 15 Q 50 2, 98 15" stroke="currentColor" strokeWidth="4" strokeLinecap="round" />
+                </svg>
+              </span> OF YOUNG PEOPLE WITH IDEAS.
             </h2>
-            <p className="text-base sm:text-lg text-slate-600 font-medium">
+
+            <p className="text-sm sm:text-lg text-slate-600 font-medium pt-0.5">
               But not everyone gets a chance to...
             </p>
           </div>
 
-          {/* 4 White Cards Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          {/* 2x2 Grid Cards Layout - Fits Single Screen Scroll View! */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 max-w-4xl">
             {[
-              "SHARE THEM.",
-              "BE HEARD.",
-              "MEET THE RIGHT PEOPLE.",
-              "GET THE RIGHT GUIDANCE."
-            ].map((text, idx) => (
-              <div 
+              { text: "SHARE THEM.", delay: 0.1 },
+              { text: "BE HEARD.", delay: 0.2 },
+              { text: "MEET THE RIGHT PEOPLE.", delay: 0.3 },
+              { text: "GET THE RIGHT GUIDANCE.", delay: 0.4 }
+            ].map((card, idx) => (
+              <motion.div 
                 key={idx}
-                className="bg-white border border-amber-900/10 rounded-2xl p-5 shadow-sm hover:shadow-md transition-all duration-300 flex items-center gap-3.5 group"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: card.delay }}
+                whileHover={{ y: -3, scale: 1.01 }}
+                className="bg-white border-2 border-pink-100/80 hover:border-pink-300 rounded-2xl p-3.5 sm:p-4.5 shadow-xs hover:shadow-md transition-all duration-300 flex items-center gap-3.5 group cursor-pointer"
               >
-                <div className="w-8 h-8 rounded-full bg-amber-100 flex items-center justify-center text-amber-600 shrink-0 group-hover:scale-110 transition-transform">
-                  <Star size={16} fill="currentColor" />
+                <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-gradient-to-tr from-amber-400 to-yellow-200 flex items-center justify-center text-slate-950 shrink-0 shadow-xs group-hover:scale-110 group-hover:rotate-12 transition-transform">
+                  <Star size={16} fill="currentColor" className="text-slate-900" />
                 </div>
-                <span className="text-sm sm:text-base font-extrabold text-[#C22B57] tracking-wide">
-                  {text}
+
+                <span className="text-sm sm:text-base font-extrabold text-[#C22B57] tracking-wider uppercase">
+                  {card.text}
                 </span>
-              </div>
+              </motion.div>
             ))}
           </div>
 
-          {/* Featured Green Highlight Callout Box */}
-          <div className="bg-[#09523B] text-white rounded-3xl p-6 sm:p-8 shadow-xl border border-emerald-700/50 flex items-center gap-4">
-            <div className="space-y-1">
-              <h3 className="text-xl sm:text-2xl font-bold tracking-tight">
-                We believe great ideas shouldn't stay hidden.
-              </h3>
+          {/* Featured Deep Green Banner */}
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.97 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.4 }}
+            className="relative max-w-4xl"
+          >
+            {/* Ambient Glow */}
+            <div className="absolute -inset-1 rounded-2xl bg-gradient-to-r from-emerald-600 via-teal-500 to-emerald-700 opacity-25 blur-md -z-10" />
+
+            <div className="bg-gradient-to-r from-[#09523B] via-[#0B5B42] to-[#073F2D] text-white rounded-2xl p-5 sm:p-6 shadow-xl border border-emerald-600/40 flex items-center justify-between gap-4 overflow-hidden relative">
+              <div className="space-y-0.5 relative z-10">
+                <h3 className="text-lg sm:text-2xl font-extrabold tracking-tight text-white leading-snug">
+                  We believe great ideas shouldn't stay hidden.
+                </h3>
+                <p className="text-xs sm:text-sm text-emerald-200 font-medium">
+                  J-Spotlight creates the room where early-stage builders turn vision into reality.
+                </p>
+              </div>
+
+              {/* Decorative Gold Star Icon */}
+              <div className="hidden sm:flex w-11 h-11 rounded-xl bg-amber-400/20 border border-amber-300/40 items-center justify-center text-amber-300 shrink-0 relative z-10">
+                <Sparkles size={22} />
+              </div>
             </div>
-          </div>
-        </section>
+          </motion.div>
+        </motion.section>
 
 
         {/* ========================================================================= */}
