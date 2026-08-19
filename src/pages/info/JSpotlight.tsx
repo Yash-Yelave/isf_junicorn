@@ -242,122 +242,231 @@ export function JSpotlight() {
       <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-6 md:py-10 space-y-16 md:space-y-24">
         
         {/* ========================================================================= */}
-        {/* SECTION 1: HERO SPOTLIGHT (PDF Page 1) */}
+        {/* SECTION 1: HERO SPOTLIGHT - IDEATION (Poster Graphic Redesign) */}
         {/* ========================================================================= */}
-        <section className="relative flex flex-col items-center text-center py-4 md:py-8 space-y-6">
+        <section className="relative py-4 md:py-6 space-y-6">
           
-          {/* Eyebrow Header Badge */}
-          <motion.div 
-            initial={{ opacity: 0, y: 15 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="inline-flex flex-wrap items-center justify-center gap-2 bg-white/90 backdrop-blur border border-amber-900/15 px-4 py-1.5 rounded-full shadow-xs text-xs font-extrabold uppercase tracking-widest text-[#09523B]"
-          >
-            <span>Jnanana Foundation Presents</span>
-            <span className="text-amber-400">•</span>
-            <span className="text-[#C22B57]">A Monthly Spotlight Series</span>
-            <span className="text-amber-400">•</span>
-            <span className="bg-[#09523B] text-amber-300 text-[10px] px-2 py-0.5 rounded border border-emerald-700">Edition 01</span>
-          </motion.div>
-
-          {/* Glowing Downward Spotlight Cone Graphic Backdrop */}
-          <div className="relative w-full max-w-3xl flex flex-col items-center justify-center my-2">
+          {/* Main 2-Column Hero Layout */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center pt-2">
             
-            {/* SVG Spotlight Beam Triangle */}
-            <div className="absolute -top-12 inset-x-0 mx-auto w-full h-80 max-w-xl opacity-70 pointer-events-none -z-10">
-              <svg viewBox="0 0 100 100" preserveAspectRatio="none" className="w-full h-full">
-                <polygon points="35,0 65,0 100,100 0,100" fill="url(#heroSpotlightGrad)" />
-                <defs>
-                  <linearGradient id="heroSpotlightGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-                    <stop offset="0%" stopColor="#F4B825" stopOpacity="0.5" />
-                    <stop offset="60%" stopColor="#FDE68A" stopOpacity="0.25" />
-                    <stop offset="100%" stopColor="#FAF8F3" stopOpacity="0" />
-                  </linearGradient>
-                </defs>
-              </svg>
+            {/* LEFT COLUMN: IDEATION Content */}
+            <div className="lg:col-span-7 space-y-6 text-left">
+              
+              {/* Eyebrow Brush Badge */}
+              <motion.div 
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.5 }}
+                className="inline-flex items-center bg-[#09523B] text-white text-xs sm:text-sm font-black uppercase px-4 py-1.5 rounded-lg tracking-widest shadow-md transform -rotate-1 border border-emerald-700/60"
+              >
+                <span>THE FIRST STEP</span>
+              </motion.div>
+
+              {/* Massive Title: IDEATION. */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.1 }}
+                className="space-y-1"
+              >
+                <h1 className="text-5xl sm:text-7xl lg:text-8xl font-black text-[#09523B] tracking-tight leading-none flex items-center flex-wrap gap-0.5 sm:gap-1 font-serif">
+                  <span>IDEAT</span>
+                  
+                  {/* Embedded 'O' with Star Circle */}
+                  <span className="relative inline-flex items-center justify-center w-11 h-11 sm:w-16 sm:h-16 lg:w-20 lg:h-20 rounded-full bg-[#09523B] text-amber-300 mx-1 shadow-md border-2 border-amber-400 shrink-0">
+                    <Sparkles className="w-6 h-6 sm:w-9 sm:h-9 lg:w-11 lg:h-11 text-amber-300 fill-amber-300" />
+                  </span>
+
+                  <span>N</span>
+                  <span className="text-[#C22B57] font-black">.</span>
+                </h1>
+
+                <p className="text-xl sm:text-2xl font-black text-slate-800 font-sans tracking-tight pt-2">
+                  Every Junicorn starts with an idea.
+                </p>
+              </motion.div>
+
+              {/* Subtitle Lines */}
+              <motion.div 
+                initial={{ opacity: 0, y: 15 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.2 }}
+                className="space-y-1 text-slate-700 font-medium text-sm sm:text-base leading-relaxed"
+              >
+                <p>It could be a thought, a problem, a question, or a dream.</p>
+                <p className="text-[#C22B57] font-black text-base sm:text-lg">
+                  Everything begins here.
+                </p>
+              </motion.div>
+
+              {/* 4 Circular Pillar Badges Grid */}
+              <motion.div 
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.3 }}
+                className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 pt-2"
+              >
+                {/* 1. THINK DEEPLY */}
+                <div className="flex flex-col items-center text-center space-y-1.5 p-3 rounded-2xl bg-white/80 border border-amber-200/80 shadow-xs">
+                  <div className="w-12 h-12 rounded-full bg-amber-400 text-slate-950 flex items-center justify-center shadow-md border-2 border-white shrink-0">
+                    <Lightbulb size={22} className="text-slate-950" />
+                  </div>
+                  <span className="text-[11px] font-black uppercase text-slate-900 leading-tight">
+                    THINK<br/>DEEPLY
+                  </span>
+                </div>
+
+                {/* 2. QUESTION BOLDLY */}
+                <div className="flex flex-col items-center text-center space-y-1.5 p-3 rounded-2xl bg-white/80 border border-amber-200/80 shadow-xs">
+                  <div className="w-12 h-12 rounded-full bg-[#C22B57] text-white flex items-center justify-center shadow-md border-2 border-white text-xl font-black shrink-0">
+                    ?
+                  </div>
+                  <span className="text-[11px] font-black uppercase text-slate-900 leading-tight">
+                    QUESTION<br/>BOLDLY
+                  </span>
+                </div>
+
+                {/* 3. EXPLORE POSSIBILITIES */}
+                <div className="flex flex-col items-center text-center space-y-1.5 p-3 rounded-2xl bg-white/80 border border-amber-200/80 shadow-xs">
+                  <div className="w-12 h-12 rounded-full bg-[#09523B] text-amber-300 flex items-center justify-center shadow-md border-2 border-white shrink-0">
+                    <Compass size={22} className="text-amber-300" />
+                  </div>
+                  <span className="text-[11px] font-black uppercase text-slate-900 leading-tight">
+                    EXPLORE<br/>POSSIBILITIES
+                  </span>
+                </div>
+
+                {/* 4. DISCOVER PURPOSE */}
+                <div className="flex flex-col items-center text-center space-y-1.5 p-3 rounded-2xl bg-white/80 border border-amber-200/80 shadow-xs">
+                  <div className="w-12 h-12 rounded-full bg-amber-400 text-slate-950 flex items-center justify-center shadow-md border-2 border-white shrink-0">
+                    <Star size={22} className="text-slate-950 fill-slate-950" />
+                  </div>
+                  <span className="text-[11px] font-black uppercase text-slate-900 leading-tight">
+                    DISCOVER<br/>PURPOSE
+                  </span>
+                </div>
+              </motion.div>
+
+              {/* Bottom-Left Callout Brush Box */}
+              <motion.div 
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.4 }}
+                className="bg-[#09523B] text-white rounded-2xl p-4 sm:p-5 shadow-xl flex items-center gap-4 border border-emerald-700/60 max-w-xl"
+              >
+                <div className="w-12 h-12 rounded-xl bg-emerald-800/90 flex items-center justify-center shrink-0 border border-emerald-600/60 shadow-xs">
+                  <Users size={24} className="text-amber-300" />
+                </div>
+                <div className="space-y-0.5 text-left">
+                  <p className="text-xs sm:text-sm font-black text-white tracking-wide">
+                    IDEAS DON'T NEED TO BE PERFECT.
+                  </p>
+                  <p className="text-xs sm:text-sm font-black text-amber-300 tracking-wide">
+                    THEY NEED A PLACE TO GROW.
+                  </p>
+                </div>
+              </motion.div>
+
             </div>
 
-            {/* Concentric Decorative Rings */}
-            <div className="absolute w-[300px] h-[300px] sm:w-[440px] sm:h-[440px] rounded-full border border-slate-400/20 pointer-events-none -z-10" />
-            <div className="absolute w-[220px] h-[220px] sm:w-[330px] sm:h-[330px] rounded-full border border-slate-400/15 pointer-events-none -z-10" />
-
-            {/* Main Heading */}
+            {/* RIGHT COLUMN: Spotlight Lamp & Lightbulb Graphic Artwork */}
             <motion.div 
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.6, delay: 0.1 }}
-              className="relative z-10 space-y-3"
+              transition={{ duration: 0.7, delay: 0.2 }}
+              className="lg:col-span-5 relative flex flex-col items-center justify-center py-6 min-h-[380px] sm:min-h-[460px] bg-amber-50/40 rounded-3xl border border-amber-200/60 shadow-inner overflow-hidden"
             >
-              <h2 className="text-lg sm:text-xl font-black text-slate-800 tracking-widest uppercase font-inter">
-                What is
-              </h2>
-
-              <h1 className="text-4xl sm:text-6xl md:text-7xl font-black text-[#09523B] tracking-tight leading-none flex items-center justify-center flex-wrap gap-x-1 sm:gap-x-2">
-                <span>J-SP</span>
-                
-                {/* Custom Glowing Stage Spotlight Beam SVG 'O' */}
-                <span className="relative inline-flex items-center justify-center w-11 h-11 sm:w-16 sm:h-16 rounded-full bg-gradient-to-tr from-amber-400 via-amber-300 to-yellow-100 text-slate-950 shadow-[0_0_30px_rgba(244,184,37,0.8)] border-2 border-[#09523B] mx-1 overflow-visible">
-                  <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-7 h-7 sm:w-10 sm:h-10 text-slate-950 drop-shadow-md">
-                    <path d="M16 3L11 9H21L16 3Z" fill="#09523B" />
-                    <ellipse cx="16" cy="9" rx="5" ry="1.5" fill="#F4B825" />
-                    <path d="M11 9.5L4 28H28L21 9.5H11Z" fill="url(#heroLightConeGrad)" opacity="0.85" />
-                    <circle cx="16" cy="9.5" r="3" fill="#FFFFFF" />
-                    <defs>
-                      <linearGradient id="heroLightConeGrad" x1="16" y1="9.5" x2="16" y2="28" gradientUnits="userSpaceOnUse">
-                        <stop stopColor="#FFFFFF" stopOpacity="0.95" />
-                        <stop offset="0.5" stopColor="#FBBF24" stopOpacity="0.75" />
-                        <stop offset="100%" stopColor="#F59E0B" stopOpacity="0.15" />
-                      </linearGradient>
-                    </defs>
-                  </svg>
-                  <span className="absolute -inset-2 rounded-full bg-amber-400/30 blur-md -z-10 animate-pulse" />
-                </span>
-
-                <span>TLIGHT</span>
-                <span className="text-[#C22B57] font-black ml-1">?</span>
-              </h1>
-
-              {/* Brush Stroke Banner */}
-              <div className="inline-block relative pt-1">
-                <div className="bg-[#80243E] text-white text-sm sm:text-lg font-black uppercase px-6 py-2 rounded-xl tracking-wider shadow-md transform -rotate-1 border border-pink-700/50">
-                  Finding The Next Junicorn
-                </div>
+              {/* Hanging Lamp Fixture */}
+              <div className="absolute top-0 inset-x-0 mx-auto w-16 h-12 flex flex-col items-center z-20">
+                <div className="w-1.5 h-6 bg-[#09523B]" />
+                <div className="w-14 h-7 rounded-t-full bg-[#09523B] border-b-2 border-amber-400 shadow-md" />
               </div>
+
+              {/* Golden Spotlight Cone Beam */}
+              <div className="absolute top-10 inset-x-0 mx-auto w-[260px] sm:w-[340px] h-[320px] sm:h-[400px] pointer-events-none z-0">
+                <svg viewBox="0 0 100 100" preserveAspectRatio="none" className="w-full h-full opacity-70">
+                  <polygon points="35,0 65,0 100,100 0,100" fill="url(#heroPosterSpotlightGrad)" />
+                  <defs>
+                    <linearGradient id="heroPosterSpotlightGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                      <stop offset="0%" stopColor="#F59E0B" stopOpacity="0.5" />
+                      <stop offset="65%" stopColor="#FDE68A" stopOpacity="0.25" />
+                      <stop offset="100%" stopColor="#FAF8F3" stopOpacity="0" />
+                    </linearGradient>
+                  </defs>
+                </svg>
+              </div>
+
+              {/* Paper Crumple Lightbulb Graphic & Doodles */}
+              <div className="relative z-10 flex flex-col items-center pt-14 space-y-4">
+                
+                {/* Lightbulb Structure */}
+                <div className="relative w-36 h-48 sm:w-44 sm:h-56 flex flex-col items-center justify-center">
+                  
+                  {/* Glowing Aura Behind Bulb */}
+                  <div className="absolute w-32 h-32 sm:w-40 sm:h-40 rounded-full bg-amber-400/35 blur-2xl pointer-events-none animate-pulse" />
+
+                  {/* Crumpled Yellow Paper Ball Bulb Head */}
+                  <div className="w-24 h-24 sm:w-30 sm:h-30 rounded-full bg-gradient-to-tr from-amber-500 via-yellow-400 to-amber-200 border-2 border-amber-300 shadow-xl flex items-center justify-center relative overflow-hidden transform hover:scale-105 transition-transform duration-300 cursor-pointer">
+                    <Sparkles size={32} className="text-amber-950 opacity-40 animate-spin" style={{ animationDuration: '10s' }} />
+                    <div className="absolute inset-0 bg-[radial-gradient(#F59E0B_1px,transparent_1px)] [background-size:8px_8px] opacity-30" />
+                  </div>
+
+                  {/* Line Art Screw Base SVG */}
+                  <svg className="w-16 h-20 -mt-2 text-slate-800" viewBox="0 0 40 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M10 5 H30 V12 C30 15 25 18 20 18 C15 18 10 15 10 12 Z" fill="#09523B" stroke="#09523B" strokeWidth="2"/>
+                    <path d="M12 18 H28 V24 H12 Z" fill="#CBD5E1" stroke="#475569" strokeWidth="2"/>
+                    <path d="M14 24 H26 V30 H14 Z" fill="#94A3B8" stroke="#475569" strokeWidth="2"/>
+                    <path d="M16 30 L24 30 L20 36 Z" fill="#09523B"/>
+                    <path d="M20 36 Q 5 45 2 60" stroke="#09523B" strokeWidth="2.5" strokeLinecap="round" fill="none"/>
+                  </svg>
+                </div>
+
+                {/* Floating Doodles */}
+                <div className="absolute top-10 left-3 text-slate-700 animate-bounce" style={{ animationDuration: '4s' }}>
+                  <svg className="w-7 h-7 text-slate-700" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
+                    <path d="M22 2L11 13M22 2L15 22L11 13M22 2L2 9L11 13" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                </div>
+
+                <div className="absolute top-14 right-4 text-slate-700">
+                  <MessageSquare size={18} className="text-slate-700" />
+                </div>
+
+                <div className="absolute bottom-28 right-3 text-slate-700">
+                  <Compass size={20} className="text-slate-700" />
+                </div>
+
+                {/* Bottom Right Badge Stack & CTA */}
+                <div className="flex flex-col items-center space-y-2 pt-2">
+                  <div className="flex items-center gap-1">
+                    <span className="text-base font-black text-[#09523B] tracking-wider font-serif">J-SPOTLIGHT</span>
+                    <span className="text-[#C22B57] font-black text-xl">.</span>
+                  </div>
+
+                  <div className="bg-[#C22B57] text-white text-xs font-black uppercase px-4 py-1.5 rounded-lg shadow-md transform rotate-1 border border-pink-700/50">
+                    FINDING THE NEXT JUNICORN
+                  </div>
+
+                  <div className="bg-[#09523B] text-amber-300 text-[10px] font-black uppercase px-3 py-0.5 rounded border border-emerald-700">
+                    EDITION 01
+                  </div>
+
+                  <a
+                    href="https://forms.gle/y5R1jv5FbQuu6VrNA"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-2 inline-flex items-center gap-2 bg-gradient-to-r from-amber-400 via-yellow-400 to-amber-300 hover:from-amber-300 hover:to-yellow-200 text-slate-950 text-xs font-black px-6 py-2.5 rounded-full shadow-md hover:shadow-lg transition-all border border-white cursor-pointer group"
+                  >
+                    <span>REQUEST DELEGATE SEAT</span>
+                    <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
+                  </a>
+                </div>
+
+              </div>
+
             </motion.div>
+
           </div>
-
-          {/* Tagline */}
-          <motion.p 
-            initial={{ opacity: 0, y: 15 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="text-base sm:text-xl font-medium text-slate-700 max-w-2xl leading-relaxed pt-2"
-          >
-            A monthly gathering where <span className="font-bold text-[#09523B]">ideas</span>, <span className="font-bold text-[#09523B]">people</span> and <span className="font-bold text-[#C22B57]">possible</span> come together.
-          </motion.p>
-
-          {/* Action CTAs */}
-          <motion.div 
-            initial={{ opacity: 0, y: 15 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.3 }}
-            className="flex flex-wrap items-center justify-center gap-4 pt-2"
-          >
-            <a
-              href="https://forms.gle/y5R1jv5FbQuu6VrNA"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 bg-[#09523B] hover:bg-[#073f2d] text-white text-sm sm:text-base font-extrabold px-8 py-3.5 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 border border-emerald-600/40 cursor-pointer group"
-            >
-              <span>REQUEST DELEGATE SEAT</span>
-              <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
-            </a>
-
-            <div className="inline-flex items-center gap-2 bg-white px-5 py-3 rounded-full border border-amber-300/80 shadow-xs text-xs sm:text-sm font-bold text-slate-800">
-              <span className="w-2.5 h-2.5 rounded-full bg-amber-500 animate-ping" />
-              <span>29 AUG 2026 • 4:00 - 6:00 PM • DRAPER U INDIA</span>
-            </div>
-          </motion.div>
 
         </section>
 
