@@ -367,6 +367,30 @@ export function JSpotlight() {
                 </div>
               </motion.div>
 
+              {/* Primary Hero CTA Action Row */}
+              <motion.div 
+                initial={{ opacity: 0, y: 15 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.5 }}
+                className="flex flex-wrap items-center gap-3.5 pt-2"
+              >
+                <a
+                  href="https://forms.gle/y5R1jv5FbQuu6VrNA"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-3 bg-gradient-to-r from-[#09523B] via-[#0D6B4E] to-[#042B1E] hover:from-[#073F2E] hover:to-[#09523B] text-amber-300 text-sm sm:text-base font-black px-8 py-4 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 border-2 border-amber-400 group transform hover:-translate-y-0.5 cursor-pointer"
+                >
+                  <Ticket size={20} className="group-hover:rotate-12 transition-transform text-amber-300" />
+                  <span>REQUEST DELEGATE SEAT</span>
+                  <ArrowRight size={18} className="group-hover:translate-x-1.5 transition-transform text-amber-300" />
+                </a>
+
+                <div className="inline-flex items-center gap-2 bg-white/90 px-4.5 py-3.5 rounded-2xl border border-amber-300/80 shadow-xs text-xs font-extrabold text-slate-800">
+                  <span className="w-2.5 h-2.5 rounded-full bg-amber-500 animate-ping" />
+                  <span>29 AUG 2026 • 4-6 PM • DRAPER U</span>
+                </div>
+              </motion.div>
+
             </div>
 
             {/* RIGHT COLUMN: Spotlight Lamp & Lightbulb Graphic Artwork */}
@@ -493,7 +517,7 @@ export function JSpotlight() {
                 </div>
 
                 {/* Bottom Right Badge Stack & CTA */}
-                <div className="flex flex-col items-center space-y-2 pt-1">
+                <div className="flex flex-col items-center space-y-2.5 pt-1">
                   <div className="flex items-center gap-1">
                     <span className="text-base font-black text-[#09523B] tracking-wider font-serif">J-SPOTLIGHT</span>
                     <span className="text-[#C22B57] font-black text-xl">.</span>
@@ -511,10 +535,11 @@ export function JSpotlight() {
                     href="https://forms.gle/y5R1jv5FbQuu6VrNA"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="mt-2 inline-flex items-center gap-2 bg-gradient-to-r from-amber-400 via-yellow-400 to-amber-300 hover:from-amber-300 hover:to-yellow-200 text-slate-950 text-xs font-black px-6 py-2.5 rounded-full shadow-md hover:shadow-lg transition-all border border-white cursor-pointer group"
+                    className="mt-3 inline-flex items-center justify-center gap-3 bg-gradient-to-r from-amber-400 via-yellow-400 to-amber-300 hover:from-amber-300 hover:to-yellow-200 text-slate-950 text-sm sm:text-base font-black px-8 py-3.5 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 border-2 border-white cursor-pointer group transform hover:-translate-y-0.5"
                   >
+                    <Ticket size={20} className="group-hover:rotate-12 transition-transform text-slate-950" />
                     <span>REQUEST DELEGATE SEAT</span>
-                    <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
+                    <ArrowRight size={18} className="group-hover:translate-x-1.5 transition-transform" />
                   </a>
                 </div>
 
