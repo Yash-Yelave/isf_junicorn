@@ -1016,11 +1016,6 @@ export function JSpotlight() {
         >
           {/* Section Header */}
           <div className="text-center space-y-3 max-w-3xl mx-auto">
-            <div className="inline-flex items-center gap-2 bg-amber-100/90 text-amber-950 text-xs font-black uppercase px-4 py-1.5 rounded-full tracking-widest border border-amber-300/80 shadow-xs">
-              <HelpCircle size={14} className="text-[#C22B57]" />
-              <span>J-Spotlight • FAQs</span>
-            </div>
-
             <h2 className="text-3xl sm:text-5xl font-black text-slate-900 tracking-tight leading-tight">
               FREQUENTLY ASKED <span className="text-[#C22B57] font-serif italic">QUESTIONS</span>
             </h2>
