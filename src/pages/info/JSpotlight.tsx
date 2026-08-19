@@ -16,7 +16,9 @@ import {
   CheckCircle2, 
   ArrowRight,
   ShieldCheck,
-  Pencil
+  Pencil,
+  ChevronDown,
+  HelpCircle
 } from "lucide-react";
 
 interface TrailPoint {
@@ -185,7 +187,44 @@ function PencilMouseTrail() {
   );
 }
 
+const spotlightFaqs = [
+  {
+    q: "1. What is J-Spotlight?",
+    a: "J-Spotlight is a monthly spotlight series by Jnanana Foundation × ISF Junicorns, bringing together students, innovators, builders, dreamers and problem-solvers to share ideas, connect with people and discover opportunities."
+  },
+  {
+    q: "2. Who is J-Spotlight for?",
+    a: "It is for anyone with curiosity, an idea or something they are building — including students, young innovators, aspiring founders, creators, researchers and problem-solvers."
+  },
+  {
+    q: "3. Do I need a startup or an idea to attend?",
+    a: "No. You don’t need a startup, funding or a perfect pitch. You simply need something worth sharing, or the curiosity to learn, connect and explore."
+  },
+  {
+    q: "4. Is J-Spotlight invite-only?",
+    a: "Yes. Edition 01 is an invite-only gathering with a curated community and only 50 seats."
+  },
+  {
+    q: "5. Can I share or pitch my idea?",
+    a: "Yes. J-Spotlight creates opportunities for participants to share what they are building, exploring or thinking about. Selected participants may get the opportunity to take the spotlight during the event."
+  },
+  {
+    q: "6. How much is the J-Spotlight pass?",
+    a: "The Event Pass for Edition 01 is ₹349. Your seat is confirmed after successful pass purchase and confirmation from the J-Spotlight team."
+  },
+  {
+    q: "7. When and where is J-Spotlight Edition 01?",
+    a: "J-Spotlight Edition 01 is happening on 29 August 2026, Saturday, from 4:00 PM to 6:00 PM. The venue is currently Draper U India, Bangalore."
+  },
+  {
+    q: "8. Who is inaugurating J-Spotlight Edition 01?",
+    a: "Edition 01 will be inaugurated by Dr. J.A. Chowdary, Founder & Chairman of the International Startup Foundation and ISF Junicorns. The gathering is designed to bring young minds into a room where ideas, people and possibilities can come together."
+  }
+];
+
 export function JSpotlight() {
+  const [openFaq, setOpenFaq] = useState<number | null>(0);
+
   return (
     <div className="font-inter bg-[#FAF8F3] text-slate-900 min-h-screen pt-20 overflow-x-hidden relative">
       
@@ -962,6 +1001,73 @@ export function JSpotlight() {
               </div>
             </motion.div>
 
+          </div>
+        </motion.section>
+
+        {/* ========================================================================= */}
+        {/* SECTION 8: FREQUENTLY ASKED QUESTIONS (FAQS) */}
+        {/* ========================================================================= */}
+        <motion.section 
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-60px" }}
+          transition={{ duration: 0.6 }}
+          className="space-y-8 pt-10 border-t-2 border-amber-900/15"
+        >
+          {/* Section Header */}
+          <div className="text-center space-y-3 max-w-3xl mx-auto">
+            <div className="inline-flex items-center gap-2 bg-amber-100/90 text-amber-950 text-xs font-black uppercase px-4 py-1.5 rounded-full tracking-widest border border-amber-300/80 shadow-xs">
+              <HelpCircle size={14} className="text-[#C22B57]" />
+              <span>J-Spotlight • FAQs</span>
+            </div>
+
+            <h2 className="text-3xl sm:text-5xl font-black text-slate-900 tracking-tight leading-tight">
+              FREQUENTLY ASKED <span className="text-[#C22B57] font-serif italic">QUESTIONS</span>
+            </h2>
+            <p className="text-sm sm:text-base text-slate-600 font-medium max-w-xl mx-auto">
+              Everything you need to know about J-Spotlight Edition 01, delegate access, and how to participate.
+            </p>
+          </div>
+
+          {/* Accordion List */}
+          <div className="max-w-4xl mx-auto space-y-3.5">
+            {spotlightFaqs.map((faq, index) => {
+              const isOpen = openFaq === index;
+              return (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 15 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.3, delay: index * 0.04 }}
+                  className="bg-white/90 backdrop-blur border-2 border-amber-900/10 hover:border-amber-400/80 rounded-2xl overflow-hidden transition-all shadow-xs"
+                >
+                  <button
+                    onClick={() => setOpenFaq(isOpen ? null : index)}
+                    className="w-full p-4 sm:p-5 text-left flex items-center justify-between gap-4 cursor-pointer focus:outline-none"
+                  >
+                    <span className="text-base sm:text-lg font-extrabold text-[#09523B] leading-snug">
+                      {faq.q}
+                    </span>
+                    <div className={`w-8 h-8 rounded-full flex items-center justify-center shrink-0 transition-transform duration-300 ${isOpen ? 'bg-[#09523B] text-amber-300 rotate-180' : 'bg-amber-100 text-slate-700'}`}>
+                      <ChevronDown size={18} />
+                    </div>
+                  </button>
+
+                  {isOpen && (
+                    <motion.div
+                      initial={{ opacity: 0, height: 0 }}
+                      animate={{ opacity: 1, height: "auto" }}
+                      exit={{ opacity: 0, height: 0 }}
+                      transition={{ duration: 0.3 }}
+                      className="px-4 sm:px-5 pb-5 pt-1 text-sm sm:text-base text-slate-700 font-medium leading-relaxed border-t border-amber-100 bg-amber-50/30"
+                    >
+                      {faq.a}
+                    </motion.div>
+                  )}
+                </motion.div>
+              );
+            })}
           </div>
         </motion.section>
 
