@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { getImageUrl } from "../../utils/imageUtils";
 import { 
   Sparkles, 
@@ -216,9 +216,91 @@ const spotlightFaqs = [
 
 export function JSpotlight() {
   const [openFaq, setOpenFaq] = useState<number | null>(0);
+  const [isLampOn, setIsLampOn] = useState(false);
+  const [isFullyRevealed, setIsFullyRevealed] = useState(false);
+
+  useEffect(() => {
+    // Step 1: At 150ms, top overhead lamp turns ON in the dark room
+    const timer1 = setTimeout(() => {
+      setIsLampOn(true);
+    }, 150);
+
+    // Step 2: At 1150ms (1 second after lamp turns on), full website stage lights turn ON!
+    const timer2 = setTimeout(() => {
+      setIsFullyRevealed(true);
+    }, 1150);
+
+    return () => {
+      clearTimeout(timer1);
+      clearTimeout(timer2);
+    };
+  }, []);
 
   return (
     <div className="font-inter bg-[#FAF8F3] text-slate-900 min-h-screen pt-20 overflow-x-hidden relative">
+      
+      {/* Dramatic Pitch-Black Theater Spotlight Reveal Intro Overlay */}
+      <AnimatePresence>
+        {!isFullyRevealed && (
+          <motion.div 
+            initial={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.8, ease: "easeInOut" }}
+            className="fixed inset-0 bg-[#07130E] z-[120] pointer-events-none flex flex-col items-center justify-center overflow-hidden"
+          >
+            {/* Dark Theater Ambient Background */}
+            <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-[#122A20] via-[#07130E] to-[#040B08]" />
+
+            {/* Spotlight Beam turning ON dynamically */}
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: isLampOn ? 1 : 0, scale: isLampOn ? 1 : 0.8 }}
+              transition={{ duration: 0.5, ease: "easeOut" }}
+              className="relative flex flex-col items-center z-10 -mt-10"
+            >
+              {/* Overhead Lamp Fixture in Dark Room */}
+              <div className="relative w-20 flex flex-col items-center z-20">
+                <div className="w-1.5 h-12 bg-emerald-950 border-x border-emerald-800" />
+                <div className="relative w-16 h-8 rounded-t-full bg-emerald-900 border-b-2 border-amber-400 shadow-[0_0_30px_#F59E0B] flex items-center justify-center">
+                  <div className="absolute bottom-0 w-12 h-2 rounded-full bg-amber-200 shadow-[0_0_25px_#F59E0B] blur-[0.5px] animate-pulse" />
+                </div>
+              </div>
+
+              {/* Glowing Stage Cone in Dark Room */}
+              <div className="relative w-[320px] sm:w-[420px] h-[360px] sm:h-[440px] -mt-1 pointer-events-none">
+                <svg viewBox="0 0 100 100" preserveAspectRatio="none" className="w-full h-full">
+                  <polygon points="38,0 62,0 100,100 0,100" fill="url(#introSpotlightGradOuter)" opacity="0.95" />
+                  <polygon points="42,0 58,0 90,100 10,100" fill="url(#introSpotlightGradInner)" opacity="0.85" />
+                  <defs>
+                    <linearGradient id="introSpotlightGradOuter" x1="0%" y1="0%" x2="0%" y2="100%">
+                      <stop offset="0%" stopColor="#F59E0B" stopOpacity="0.85" />
+                      <stop offset="50%" stopColor="#FDE68A" stopOpacity="0.5" />
+                      <stop offset="100%" stopColor="#FAF8F3" stopOpacity="0" />
+                    </linearGradient>
+                    <linearGradient id="introSpotlightGradInner" x1="0%" y1="0%" x2="0%" y2="100%">
+                      <stop offset="0%" stopColor="#FEF08A" stopOpacity="0.95" />
+                      <stop offset="60%" stopColor="#FDE047" stopOpacity="0.6" />
+                      <stop offset="100%" stopColor="#FAF8F3" stopOpacity="0" />
+                    </linearGradient>
+                  </defs>
+                </svg>
+
+                {/* Glowing Paper Lightbulb emerging inside the beam */}
+                <div className="absolute top-20 inset-x-0 mx-auto flex flex-col items-center space-y-3">
+                  <div className="w-24 h-24 sm:w-32 sm:h-32 rounded-full bg-[radial-gradient(ellipse_at_30%_30%,_var(--tw-gradient-stops))] from-[#FFFBEB] via-[#FBBF24] to-[#D97706] border-2 border-amber-300 shadow-[0_0_60px_rgba(251,191,36,0.95),inset_0_0_20px_rgba(255,255,255,0.9)] flex items-center justify-center">
+                    <Sparkles size={36} className="text-amber-950 animate-spin" style={{ animationDuration: '8s' }} />
+                  </div>
+
+                  <span className="text-xs sm:text-sm font-black tracking-widest uppercase text-amber-300 animate-pulse pt-2 drop-shadow-md">
+                    J-SPOTLIGHT • EDITION 01
+                  </span>
+                </div>
+              </div>
+            </motion.div>
+
+          </motion.div>
+        )}
+      </AnimatePresence>
       
       {/* Interactive Pencil Writing Mouse Trail */}
       <PencilMouseTrail />
@@ -374,70 +456,126 @@ export function JSpotlight() {
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.7, delay: 0.2 }}
-              className="lg:col-span-5 relative flex flex-col items-center justify-center py-6 min-h-[380px] sm:min-h-[460px] bg-amber-50/40 rounded-3xl border border-amber-200/60 shadow-inner overflow-hidden"
+              className="lg:col-span-5 relative flex flex-col items-center justify-center py-8 min-h-[420px] sm:min-h-[500px] bg-gradient-to-b from-amber-50/60 via-amber-50/20 to-transparent rounded-3xl border border-amber-200/50 shadow-xs overflow-hidden"
             >
-              {/* Hanging Lamp Fixture */}
-              <div className="absolute top-0 inset-x-0 mx-auto w-16 h-12 flex flex-col items-center z-20">
-                <div className="w-1.5 h-6 bg-[#09523B]" />
-                <div className="w-14 h-7 rounded-t-full bg-[#09523B] border-b-2 border-amber-400 shadow-md" />
+              {/* Hanging Dark Green Lamp Fixture */}
+              <div className="absolute top-0 inset-x-0 mx-auto w-20 flex flex-col items-center z-30">
+                {/* Overhead Wire */}
+                <div className="w-1.5 h-7 bg-[#09523B]" />
+                
+                {/* Lamp Dome Shade */}
+                <div className="relative w-16 h-8 rounded-t-full bg-[#09523B] border-b-2 border-amber-400 shadow-lg flex items-center justify-center overflow-hidden">
+                  {/* Glowing Bulb Rim Aperture */}
+                  <div className="absolute bottom-0 w-12 h-2 rounded-full bg-amber-200 shadow-[0_0_15px_#F59E0B] blur-[0.5px]" />
+                </div>
               </div>
 
-              {/* Golden Spotlight Cone Beam */}
-              <div className="absolute top-10 inset-x-0 mx-auto w-[260px] sm:w-[340px] h-[320px] sm:h-[400px] pointer-events-none z-0">
-                <svg viewBox="0 0 100 100" preserveAspectRatio="none" className="w-full h-full opacity-70">
-                  <polygon points="35,0 65,0 100,100 0,100" fill="url(#heroPosterSpotlightGrad)" />
+              {/* Radiant Stage Spotlight Cone Beam (Glowing Ambient Cone) */}
+              <div className="absolute top-12 inset-x-0 mx-auto w-[280px] sm:w-[360px] h-[360px] sm:h-[440px] pointer-events-none z-0">
+                <svg viewBox="0 0 100 100" preserveAspectRatio="none" className="w-full h-full">
+                  <polygon points="38,0 62,0 100,100 0,100" fill="url(#heroPosterSpotlightGradOuter)" opacity="0.85" />
+                  <polygon points="42,0 58,0 90,100 10,100" fill="url(#heroPosterSpotlightGradInner)" opacity="0.6" />
                   <defs>
-                    <linearGradient id="heroPosterSpotlightGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-                      <stop offset="0%" stopColor="#F59E0B" stopOpacity="0.5" />
-                      <stop offset="65%" stopColor="#FDE68A" stopOpacity="0.25" />
+                    <linearGradient id="heroPosterSpotlightGradOuter" x1="0%" y1="0%" x2="0%" y2="100%">
+                      <stop offset="0%" stopColor="#F59E0B" stopOpacity="0.55" />
+                      <stop offset="50%" stopColor="#FDE68A" stopOpacity="0.3" />
+                      <stop offset="100%" stopColor="#FAF8F3" stopOpacity="0" />
+                    </linearGradient>
+                    <linearGradient id="heroPosterSpotlightGradInner" x1="0%" y1="0%" x2="0%" y2="100%">
+                      <stop offset="0%" stopColor="#FEF08A" stopOpacity="0.7" />
+                      <stop offset="60%" stopColor="#FDE047" stopOpacity="0.35" />
                       <stop offset="100%" stopColor="#FAF8F3" stopOpacity="0" />
                     </linearGradient>
                   </defs>
                 </svg>
               </div>
 
-              {/* Paper Crumple Lightbulb Graphic & Doodles */}
-              <div className="relative z-10 flex flex-col items-center pt-14 space-y-4">
+              {/* Lightbulb & Doodles Canvas Box */}
+              <div className="relative z-10 flex flex-col items-center pt-10 space-y-3">
                 
-                {/* Lightbulb Structure */}
-                <div className="relative w-36 h-48 sm:w-44 sm:h-56 flex flex-col items-center justify-center">
+                {/* Paper Lightbulb Graphic + Radial Rays Burst */}
+                <div className="relative w-52 h-64 sm:w-64 sm:h-76 flex flex-col items-center justify-center">
                   
-                  {/* Glowing Aura Behind Bulb */}
-                  <div className="absolute w-32 h-32 sm:w-40 sm:h-40 rounded-full bg-amber-400/35 blur-2xl pointer-events-none animate-pulse" />
+                  {/* Radial Ray Lines Radiating Outwards */}
+                  <svg className="absolute inset-0 w-full h-full pointer-events-none z-0" viewBox="0 0 200 240" fill="none" stroke="#09523B" strokeWidth="2" strokeLinecap="round">
+                    {/* Top Rays */}
+                    <line x1="100" y1="25" x2="100" y2="10" />
+                    <line x1="60" y1="38" x2="48" y2="25" />
+                    <line x1="140" y1="38" x2="152" y2="25" />
+                    {/* Side Rays */}
+                    <line x1="35" y1="75" x2="18" y2="70" />
+                    <line x1="165" y1="75" x2="182" y2="70" />
+                    <line x1="42" y1="120" x2="25" y2="125" />
+                    <line x1="158" y1="120" x2="175" y2="125" />
+                  </svg>
+
+                  {/* Multi-layered Glowing Radial Aura */}
+                  <div className="absolute w-36 h-36 sm:w-44 sm:h-44 rounded-full bg-amber-400/40 blur-3xl pointer-events-none animate-pulse -z-10" />
+                  <div className="absolute w-28 h-28 sm:w-36 sm:h-36 rounded-full bg-yellow-300/50 blur-xl pointer-events-none -z-10" />
 
                   {/* Crumpled Yellow Paper Ball Bulb Head */}
-                  <div className="w-24 h-24 sm:w-30 sm:h-30 rounded-full bg-gradient-to-tr from-amber-500 via-yellow-400 to-amber-200 border-2 border-amber-300 shadow-xl flex items-center justify-center relative overflow-hidden transform hover:scale-105 transition-transform duration-300 cursor-pointer">
-                    <Sparkles size={32} className="text-amber-950 opacity-40 animate-spin" style={{ animationDuration: '10s' }} />
-                    <div className="absolute inset-0 bg-[radial-gradient(#F59E0B_1px,transparent_1px)] [background-size:8px_8px] opacity-30" />
+                  <motion.div 
+                    whileHover={{ scale: 1.05 }}
+                    transition={{ duration: 0.3 }}
+                    className="w-28 h-28 sm:w-36 sm:h-36 rounded-full bg-[radial-gradient(ellipse_at_30%_30%,_var(--tw-gradient-stops))] from-[#FFFBEB] via-[#FBBF24] to-[#D97706] border-2 border-amber-400 shadow-[0_0_40px_rgba(251,191,36,0.85),inset_0_0_15px_rgba(255,255,255,0.9)] flex items-center justify-center relative overflow-hidden cursor-pointer z-10"
+                  >
+                    {/* Paper Texture Wrinkle Overlay */}
+                    <div className="absolute inset-0 bg-[radial-gradient(#B45309_1.5px,transparent_1.5px)] [background-size:10px_10px] opacity-25" />
+                    
+                    {/* Inner Paper Fold Sparkle */}
+                    <div className="relative z-10 text-amber-950/70 flex flex-col items-center justify-center">
+                      <Sparkles size={28} className="animate-spin" style={{ animationDuration: '12s' }} />
+                    </div>
+                  </motion.div>
+
+                  {/* Metallic Screw Base & Collar SVG */}
+                  <div className="relative -mt-3 z-10 flex flex-col items-center">
+                    <svg className="w-16 h-24 text-slate-800" viewBox="0 0 50 65" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      {/* Dark Green Socket Collar */}
+                      <path d="M10 2 H40 V16 C40 20 35 24 25 24 C15 24 10 20 10 16 Z" fill="#09523B" stroke="#09523B" strokeWidth="2"/>
+                      {/* Screw Threads */}
+                      <path d="M14 24 H36 V30 H14 Z" fill="#CBD5E1" stroke="#334155" strokeWidth="2"/>
+                      <path d="M16 30 H34 V36 H16 Z" fill="#94A3B8" stroke="#334155" strokeWidth="2"/>
+                      <path d="M18 36 H32 V42 H18 Z" fill="#64748B" stroke="#334155" strokeWidth="2"/>
+                      {/* Bottom Contact Tip */}
+                      <path d="M21 42 L29 42 L25 48 Z" fill="#09523B"/>
+                      {/* Flowing Dark Green Wire Curve */}
+                      <path d="M25 48 C 20 58, 5 55, 0 65" stroke="#09523B" strokeWidth="3" strokeLinecap="round" fill="none"/>
+                    </svg>
                   </div>
 
-                  {/* Line Art Screw Base SVG */}
-                  <svg className="w-16 h-20 -mt-2 text-slate-800" viewBox="0 0 40 50" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M10 5 H30 V12 C30 15 25 18 20 18 C15 18 10 15 10 12 Z" fill="#09523B" stroke="#09523B" strokeWidth="2"/>
-                    <path d="M12 18 H28 V24 H12 Z" fill="#CBD5E1" stroke="#475569" strokeWidth="2"/>
-                    <path d="M14 24 H26 V30 H14 Z" fill="#94A3B8" stroke="#475569" strokeWidth="2"/>
-                    <path d="M16 30 L24 30 L20 36 Z" fill="#09523B"/>
-                    <path d="M20 36 Q 5 45 2 60" stroke="#09523B" strokeWidth="2.5" strokeLinecap="round" fill="none"/>
-                  </svg>
                 </div>
 
                 {/* Floating Doodles */}
-                <div className="absolute top-10 left-3 text-slate-700 animate-bounce" style={{ animationDuration: '4s' }}>
-                  <svg className="w-7 h-7 text-slate-700" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
-                    <path d="M22 2L11 13M22 2L15 22L11 13M22 2L2 9L11 13" strokeLinecap="round" strokeLinejoin="round"/>
+                {/* Origami Paper Plane Doodle */}
+                <div className="absolute top-8 left-2 text-slate-800 animate-bounce" style={{ animationDuration: '4s' }}>
+                  <svg className="w-8 h-8 text-slate-800" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M22 2L11 13M22 2L15 22L11 13M22 2L2 9L11 13" />
                   </svg>
                 </div>
 
-                <div className="absolute top-14 right-4 text-slate-700">
-                  <MessageSquare size={18} className="text-slate-700" />
+                {/* Speech Bubble Doodle */}
+                <div className="absolute top-12 right-2 text-slate-800">
+                  <div className="w-7 h-7 rounded-lg border-2 border-slate-800 flex items-center justify-center bg-white/60">
+                    <span className="text-xs font-black text-slate-800">...</span>
+                  </div>
                 </div>
 
-                <div className="absolute bottom-28 right-3 text-slate-700">
-                  <Compass size={20} className="text-slate-700" />
+                {/* Magnifying Glass Doodle */}
+                <div className="absolute top-36 right-0 text-slate-800">
+                  <svg className="w-7 h-7 text-slate-800" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
+                    <circle cx="11" cy="11" r="7" />
+                    <line x1="16.5" y1="16.5" x2="21" y2="21" />
+                  </svg>
+                </div>
+
+                {/* Question Mark Doodle */}
+                <div className="absolute bottom-24 right-4 text-slate-800 font-serif text-2xl font-black italic">
+                  ?
                 </div>
 
                 {/* Bottom Right Badge Stack & CTA */}
-                <div className="flex flex-col items-center space-y-2 pt-2">
+                <div className="flex flex-col items-center space-y-2 pt-1">
                   <div className="flex items-center gap-1">
                     <span className="text-base font-black text-[#09523B] tracking-wider font-serif">J-SPOTLIGHT</span>
                     <span className="text-[#C22B57] font-black text-xl">.</span>
