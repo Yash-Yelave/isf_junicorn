@@ -211,14 +211,6 @@ const spotlightFaqs = [
   {
     q: "6. How much is the J-Spotlight pass?",
     a: "The Event Pass for Edition 01 is ₹349. Your seat is confirmed after successful pass purchase and confirmation from the J-Spotlight team."
-  },
-  {
-    q: "7. When and where is J-Spotlight Edition 01?",
-    a: "J-Spotlight Edition 01 is happening on 29 August 2026, Saturday, from 4:00 PM to 6:00 PM. The venue is currently Draper U India, Bangalore."
-  },
-  {
-    q: "8. Who is inaugurating J-Spotlight Edition 01?",
-    a: "Edition 01 will be inaugurated by Dr. J.A. Chowdary, Founder & Chairman of the International Startup Foundation and ISF Junicorns. The gathering is designed to bring young minds into a room where ideas, people and possibilities can come together."
   }
 ];
 
