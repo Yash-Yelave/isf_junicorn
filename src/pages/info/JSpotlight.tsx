@@ -31,7 +31,7 @@ function PencilMouseTrail() {
   const lastMouseRef = useRef<{ x: number; y: number } | null>(null);
 
   useEffect(() => {
-    // Hide default system cursor ONLY on J-Spotlight page
+    // Hide default system cursor ONLY on desktop devices with fine pointer
     document.body.classList.add("custom-pencil-cursor");
 
     const canvas = canvasRef.current;
@@ -41,9 +41,12 @@ function PencilMouseTrail() {
 
     let animId: number;
 
+    // Retina & High-DPI Display Scaling for iPhone / iPad Super Retina screens
     const updateCanvasSize = () => {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
+      const dpr = Math.min(window.devicePixelRatio || 1, 2);
+      canvas.width = Math.floor(window.innerWidth * dpr);
+      canvas.height = Math.floor(window.innerHeight * dpr);
+      ctx.scale(dpr, dpr);
     };
     updateCanvasSize();
     window.addEventListener("resize", updateCanvasSize);
@@ -53,23 +56,46 @@ function PencilMouseTrail() {
     const svgStr = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="%2380243E" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z"/><path d="m15 5 4 4"/></svg>`;
     pencilImg.src = `data:image/svg+xml;utf8,${svgStr}`;
 
+    // Mouse movement handler
     const handleMouseMove = (e: MouseEvent) => {
       const x = e.clientX;
       const y = e.clientY;
       lastMouseRef.current = { x, y };
 
-      // Append mouse point to Ref array for zero-latency frame sync
       pointsRef.current.push({ x, y, alpha: 1 });
       if (pointsRef.current.length > 12) {
         pointsRef.current.shift();
       }
     };
 
+    // Touch event handlers for iOS Safari & Mobile touchscreens
+    const handleTouchMove = (e: TouchEvent) => {
+      if (e.touches.length > 0) {
+        const x = e.touches[0].clientX;
+        const y = e.touches[0].clientY;
+        lastMouseRef.current = { x, y };
+
+        pointsRef.current.push({ x, y, alpha: 1 });
+        if (pointsRef.current.length > 12) {
+          pointsRef.current.shift();
+        }
+      }
+    };
+
+    const handleTouchEnd = () => {
+      lastMouseRef.current = null;
+    };
+
     window.addEventListener("mousemove", handleMouseMove);
+    window.addEventListener("touchstart", handleTouchMove, { passive: true });
+    window.addEventListener("touchmove", handleTouchMove, { passive: true });
+    window.addEventListener("touchend", handleTouchEnd, { passive: true });
+    window.addEventListener("touchcancel", handleTouchEnd, { passive: true });
 
     // 60 FPS GPU-accelerated Canvas render loop
     const render = () => {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      const dpr = Math.min(window.devicePixelRatio || 1, 2);
+      ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
 
       const points = pointsRef.current;
       
@@ -99,7 +125,7 @@ function PencilMouseTrail() {
         }
       }
 
-      // 2. Draw Pencil Cursor in real-time at exact mouse position (ZERO frame latency!)
+      // 2. Draw Pencil Cursor in real-time at exact coordinates (ZERO frame latency!)
       if (lastMouseRef.current) {
         const { x, y } = lastMouseRef.current;
         ctx.save();
@@ -127,16 +153,26 @@ function PencilMouseTrail() {
       document.body.classList.remove("custom-pencil-cursor");
       window.removeEventListener("resize", updateCanvasSize);
       window.removeEventListener("mousemove", handleMouseMove);
+      window.removeEventListener("touchstart", handleTouchMove);
+      window.removeEventListener("touchmove", handleTouchMove);
+      window.removeEventListener("touchend", handleTouchEnd);
+      window.removeEventListener("touchcancel", handleTouchEnd);
       cancelAnimationFrame(animId);
     };
   }, []);
 
   return (
     <>
-      {/* Scoped CSS rule to hide standard browser cursor on J-Spotlight page */}
+      {/* Scoped CSS rule to hide standard browser cursor on desktop while preserving iOS touch support */}
       <style>{`
-        .custom-pencil-cursor, .custom-pencil-cursor * {
-          cursor: none !important;
+        @media (pointer: fine) {
+          .custom-pencil-cursor, .custom-pencil-cursor * {
+            cursor: none !important;
+          }
+        }
+        /* Mobile & iOS Tap Highlight Reset */
+        * {
+          -webkit-tap-highlight-color: transparent;
         }
       `}</style>
 
@@ -829,38 +865,47 @@ export function JSpotlight() {
               </div>
             </div>
 
-            {/* Realistic VIP Ticket Stub Design with Ultra High-Contrast Text */}
+            {/* Realistic VIP Ticket Stub Design with Ultra High-Contrast White Text & Executive Texture */}
             <motion.div 
               initial={{ opacity: 0, scale: 0.97 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.2 }}
-              className="relative bg-gradient-to-r from-slate-950 via-slate-900 to-[#073F2D] text-white rounded-3xl p-6 sm:p-7 border-2 border-amber-400/90 shadow-2xl flex flex-col md:flex-row items-center justify-between gap-6 overflow-hidden"
+              className="relative bg-gradient-to-r from-[#073A29] via-[#09523B] to-[#042B1E] text-white rounded-3xl p-6 sm:p-7 border-2 border-amber-400 shadow-2xl flex flex-col md:flex-row items-center justify-between gap-6 overflow-hidden"
             >
-              {/* Decorative Perforated Ticket Notches */}
-              <div className="hidden md:block absolute -left-3.5 top-1/2 -translate-y-1/2 w-7 h-7 rounded-full bg-white border-2 border-amber-400" />
-              <div className="hidden md:block absolute -right-3.5 top-1/2 -translate-y-1/2 w-7 h-7 rounded-full bg-white border-2 border-amber-400" />
+              {/* Decorative Subtle Background Texture Pattern */}
+              <div 
+                className="absolute inset-0 pointer-events-none opacity-10"
+                style={{
+                  backgroundImage: `radial-gradient(#F59E0B 1px, transparent 1px)`,
+                  backgroundSize: '20px 20px'
+                }}
+              />
+
+              {/* Decorative Perforated Ticket Side Notches */}
+              <div className="hidden md:block absolute -left-3.5 top-1/2 -translate-y-1/2 w-7 h-7 rounded-full bg-[#FAF8F3] border-2 border-amber-400 z-20" />
+              <div className="hidden md:block absolute -right-3.5 top-1/2 -translate-y-1/2 w-7 h-7 rounded-full bg-[#FAF8F3] border-2 border-amber-400 z-20" />
               
-              {/* Background Ambient Glow */}
-              <div className="absolute top-0 right-0 w-64 h-64 bg-amber-400/10 rounded-full blur-3xl pointer-events-none" />
+              {/* Background Radiant Gold Glow */}
+              <div className="absolute top-0 right-0 w-80 h-80 bg-amber-400/15 rounded-full blur-3xl pointer-events-none" />
 
               {/* Price & Ticket Info */}
               <div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-5 text-center sm:text-left relative z-10">
-                <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-gradient-to-tr from-amber-400 via-amber-300 to-yellow-100 text-slate-950 flex flex-col items-center justify-center font-black shrink-0 shadow-lg border-2 border-white">
+                <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-gradient-to-tr from-amber-400 via-amber-300 to-yellow-100 text-slate-950 flex flex-col items-center justify-center font-black shrink-0 shadow-xl border-2 border-white">
                   <span className="text-2xl sm:text-3xl leading-none">₹349</span>
-                  <span className="text-[9px] uppercase tracking-widest text-slate-800 font-black">ENTRY PASS</span>
+                  <span className="text-[9px] uppercase tracking-widest text-slate-900 font-black">ENTRY PASS</span>
                 </div>
 
-                <div className="space-y-1">
+                <div className="space-y-1.5">
                   <div className="inline-flex items-center gap-2 bg-amber-400/20 px-3 py-0.5 rounded-full border border-amber-300/40">
                     <span className="w-2 h-2 rounded-full bg-amber-400 animate-pulse" />
                     <span className="text-[11px] font-black uppercase tracking-widest text-amber-300">OFFICIAL EVENT PASS</span>
                   </div>
-                  {/* High-Contrast Bold Text */}
-                  <h4 className="text-xl sm:text-2xl font-black text-white tracking-tight leading-snug drop-shadow-sm">
+                  {/* High-Contrast Pure White Bold Headline */}
+                  <h4 className="text-xl sm:text-2xl font-black !text-white tracking-tight leading-snug drop-shadow-md" style={{ color: '#FFFFFF' }}>
                     Edition 01 Entry Delegate Access
                   </h4>
-                  <p className="text-xs text-slate-300 font-medium">
+                  <p className="text-xs text-emerald-100/90 font-medium">
                     Includes pitch conclave access, founder networking, and keynote inauguration session.
                   </p>
                 </div>
@@ -871,7 +916,7 @@ export function JSpotlight() {
                 href="https://forms.gle/y5R1jv5FbQuu6VrNA"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full md:w-auto bg-gradient-to-r from-amber-400 to-yellow-300 hover:from-amber-300 hover:to-yellow-200 text-slate-950 text-base font-black px-8 py-4 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 flex items-center justify-center gap-2.5 cursor-pointer border border-white shrink-0 group transform hover:-translate-y-0.5"
+                className="w-full md:w-auto bg-gradient-to-r from-amber-400 via-yellow-400 to-amber-300 hover:from-amber-300 hover:to-yellow-200 text-slate-950 text-base font-black px-8 py-4 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 flex items-center justify-center gap-2.5 cursor-pointer border-2 border-white shrink-0 group transform hover:-translate-y-0.5 relative z-10"
               >
                 <span>REQUEST DELEGATE SEAT</span>
                 <Ticket size={20} className="group-hover:rotate-12 transition-transform text-slate-950" />
