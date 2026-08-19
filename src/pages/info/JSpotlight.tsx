@@ -33,6 +33,9 @@ function PencilMouseTrail() {
   const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
+    // Hide default system cursor ONLY on J-Spotlight page
+    document.body.classList.add("custom-pencil-cursor");
+
     const canvas = canvasRef.current;
     if (!canvas) return;
     const ctx = canvas.getContext("2d");
@@ -59,7 +62,7 @@ function PencilMouseTrail() {
         isMovingRef.current = false;
       }, 300);
 
-      // Append mouse point to Ref array (no React re-render for smooth 60 FPS performance)
+      // Append mouse point to Ref array
       pointsRef.current.push({ x, y, alpha: 1 });
       if (pointsRef.current.length > 10) {
         pointsRef.current.shift();
@@ -77,21 +80,18 @@ function PencilMouseTrail() {
         ctx.beginPath();
         ctx.moveTo(points[0].x, points[0].y);
 
-        // Smooth quadratic bezier curves between points
         for (let i = 1; i < points.length; i++) {
           const xc = (points[i].x + points[i - 1].x) / 2;
           const yc = (points[i].y + points[i - 1].y) / 2;
           ctx.quadraticCurveTo(points[i - 1].x, points[i - 1].y, xc, yc);
         }
 
-        // Thin, elegant pencil stroke (#09523B deep emerald graphite)
-        ctx.strokeStyle = "rgba(9, 82, 59, 0.75)";
-        ctx.lineWidth = 1.5; // Fine 1.5px pencil tip!
+        ctx.strokeStyle = "rgba(9, 82, 59, 0.85)";
+        ctx.lineWidth = 1.5;
         ctx.lineCap = "round";
         ctx.lineJoin = "round";
         ctx.stroke();
 
-        // Fade out points quickly for a short, crisp pencil trail
         for (let i = points.length - 1; i >= 0; i--) {
           points[i].alpha -= 0.09;
           if (points[i].alpha <= 0) {
@@ -106,6 +106,7 @@ function PencilMouseTrail() {
     render();
 
     return () => {
+      document.body.classList.remove("custom-pencil-cursor");
       window.removeEventListener("resize", updateCanvasSize);
       window.removeEventListener("mousemove", handleMouseMove);
       cancelAnimationFrame(animId);
@@ -115,16 +116,23 @@ function PencilMouseTrail() {
 
   return (
     <>
+      {/* Scoped CSS rule to hide standard browser cursor on J-Spotlight page */}
+      <style>{`
+        .custom-pencil-cursor, .custom-pencil-cursor * {
+          cursor: none !important;
+        }
+      `}</style>
+
       {/* Hardware-accelerated 60 FPS Canvas overlay */}
       <canvas
         ref={canvasRef}
-        className="fixed inset-0 w-full h-full pointer-events-none z-50"
+        className="fixed inset-0 w-full h-full pointer-events-none z-[100]"
       />
 
-      {/* Hardware-accelerated floating fine pencil tip follower */}
+      {/* Custom Pencil Cursor at mouse coordinates */}
       {pencilPos && (
         <div
-          className="fixed pointer-events-none z-50 transition-opacity duration-200"
+          className="fixed pointer-events-none z-[100] transition-opacity duration-150"
           style={{
             left: `${pencilPos.x}px`,
             top: `${pencilPos.y}px`,
@@ -133,7 +141,8 @@ function PencilMouseTrail() {
           }}
         >
           <div className="relative">
-            <Pencil size={18} className="text-[#80243E] drop-shadow-xs" />
+            <Pencil size={22} className="text-[#80243E] drop-shadow-md" />
+            <span className="absolute -bottom-0.5 -left-0.5 w-1.5 h-1.5 rounded-full bg-amber-400 blur-xs" />
           </div>
         </div>
       )}
