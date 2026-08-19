@@ -216,91 +216,9 @@ const spotlightFaqs = [
 
 export function JSpotlight() {
   const [openFaq, setOpenFaq] = useState<number | null>(0);
-  const [isLampOn, setIsLampOn] = useState(false);
-  const [isFullyRevealed, setIsFullyRevealed] = useState(false);
-
-  useEffect(() => {
-    // Step 1: At 150ms, top overhead lamp turns ON in the dark room
-    const timer1 = setTimeout(() => {
-      setIsLampOn(true);
-    }, 150);
-
-    // Step 2: At 1150ms (1 second after lamp turns on), full website stage lights turn ON!
-    const timer2 = setTimeout(() => {
-      setIsFullyRevealed(true);
-    }, 1150);
-
-    return () => {
-      clearTimeout(timer1);
-      clearTimeout(timer2);
-    };
-  }, []);
 
   return (
     <div className="font-inter bg-[#FAF8F3] text-slate-900 min-h-screen pt-20 overflow-x-hidden relative">
-      
-      {/* Dramatic Pitch-Black Theater Spotlight Reveal Intro Overlay */}
-      <AnimatePresence>
-        {!isFullyRevealed && (
-          <motion.div 
-            initial={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.8, ease: "easeInOut" }}
-            className="fixed inset-0 bg-[#07130E] z-[120] pointer-events-none flex flex-col items-center justify-center overflow-hidden"
-          >
-            {/* Dark Theater Ambient Background */}
-            <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-[#122A20] via-[#07130E] to-[#040B08]" />
-
-            {/* Spotlight Beam turning ON dynamically */}
-            <motion.div 
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: isLampOn ? 1 : 0, scale: isLampOn ? 1 : 0.8 }}
-              transition={{ duration: 0.5, ease: "easeOut" }}
-              className="relative flex flex-col items-center z-10 -mt-10"
-            >
-              {/* Overhead Lamp Fixture in Dark Room */}
-              <div className="relative w-20 flex flex-col items-center z-20">
-                <div className="w-1.5 h-12 bg-emerald-950 border-x border-emerald-800" />
-                <div className="relative w-16 h-8 rounded-t-full bg-emerald-900 border-b-2 border-amber-400 shadow-[0_0_30px_#F59E0B] flex items-center justify-center">
-                  <div className="absolute bottom-0 w-12 h-2 rounded-full bg-amber-200 shadow-[0_0_25px_#F59E0B] blur-[0.5px] animate-pulse" />
-                </div>
-              </div>
-
-              {/* Glowing Stage Cone in Dark Room */}
-              <div className="relative w-[320px] sm:w-[420px] h-[360px] sm:h-[440px] -mt-1 pointer-events-none">
-                <svg viewBox="0 0 100 100" preserveAspectRatio="none" className="w-full h-full">
-                  <polygon points="38,0 62,0 100,100 0,100" fill="url(#introSpotlightGradOuter)" opacity="0.95" />
-                  <polygon points="42,0 58,0 90,100 10,100" fill="url(#introSpotlightGradInner)" opacity="0.85" />
-                  <defs>
-                    <linearGradient id="introSpotlightGradOuter" x1="0%" y1="0%" x2="0%" y2="100%">
-                      <stop offset="0%" stopColor="#F59E0B" stopOpacity="0.85" />
-                      <stop offset="50%" stopColor="#FDE68A" stopOpacity="0.5" />
-                      <stop offset="100%" stopColor="#FAF8F3" stopOpacity="0" />
-                    </linearGradient>
-                    <linearGradient id="introSpotlightGradInner" x1="0%" y1="0%" x2="0%" y2="100%">
-                      <stop offset="0%" stopColor="#FEF08A" stopOpacity="0.95" />
-                      <stop offset="60%" stopColor="#FDE047" stopOpacity="0.6" />
-                      <stop offset="100%" stopColor="#FAF8F3" stopOpacity="0" />
-                    </linearGradient>
-                  </defs>
-                </svg>
-
-                {/* Glowing Paper Lightbulb emerging inside the beam */}
-                <div className="absolute top-20 inset-x-0 mx-auto flex flex-col items-center space-y-3">
-                  <div className="w-24 h-24 sm:w-32 sm:h-32 rounded-full bg-[radial-gradient(ellipse_at_30%_30%,_var(--tw-gradient-stops))] from-[#FFFBEB] via-[#FBBF24] to-[#D97706] border-2 border-amber-300 shadow-[0_0_60px_rgba(251,191,36,0.95),inset_0_0_20px_rgba(255,255,255,0.9)] flex items-center justify-center">
-                    <Sparkles size={36} className="text-amber-950 animate-spin" style={{ animationDuration: '8s' }} />
-                  </div>
-
-                  <span className="text-xs sm:text-sm font-black tracking-widest uppercase text-amber-300 animate-pulse pt-2 drop-shadow-md">
-                    J-SPOTLIGHT • EDITION 01
-                  </span>
-                </div>
-              </div>
-            </motion.div>
-
-          </motion.div>
-        )}
-      </AnimatePresence>
       
       {/* Interactive Pencil Writing Mouse Trail */}
       <PencilMouseTrail />
