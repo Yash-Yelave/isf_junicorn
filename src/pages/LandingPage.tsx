@@ -1,7 +1,7 @@
 import { getImageUrl } from "../utils/imageUtils";
 import { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
-import { Calendar, MapPin, ChevronLeft, ChevronRight, Play, Clock, Building, Map, Volume2, VolumeX, ChevronDown, ChevronUp } from "lucide-react";
+import { Calendar, MapPin, ChevronLeft, ChevronRight, Play, Clock, Building, Map, Volume2, VolumeX, ChevronDown, ChevronUp, ArrowRight } from "lucide-react";
 import { speakers as austinSpeakers, junicorns as austinJunicorns, angels as austinAngels } from "./conferences/summitData";
 import { junicorns as dubaiJunicorns } from "./conferences/dubaiEventData";
 // --- Animated CountUp Component ---
@@ -525,13 +525,21 @@ export function LandingPage() {
                           href={slide.primaryBtnLink}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="bg-[#0F5A47] hover:bg-[#083b2e] text-white text-xs sm:text-sm font-extrabold uppercase tracking-wider px-6 py-3 rounded-xl shadow-md hover:shadow-lg transition-all cursor-pointer border border-emerald-600/50 flex items-center gap-2 group"
+                          className="bg-[#0F5A47] hover:bg-[#083b2e] text-white text-xs sm:text-sm font-extrabold uppercase tracking-wider px-5 py-2.5 rounded-xl shadow-md hover:shadow-lg transition-all cursor-pointer border border-emerald-600/50 flex items-center gap-2 group"
                         >
                           <span>{slide.primaryBtnText}</span>
                           <span className="w-2.5 h-2.5 rounded-full bg-amber-400 group-hover:scale-125 transition-transform" />
                         </a>
 
-                        <div className="bg-amber-100/90 border border-amber-300 text-amber-950 text-xs font-extrabold px-4 py-2.5 rounded-xl flex items-center gap-2 shadow-xs">
+                        <a
+                          href="/j-spotlight"
+                          className="bg-white hover:bg-slate-50 text-[#09523B] text-xs sm:text-sm font-extrabold uppercase tracking-wider px-5 py-2.5 rounded-xl shadow-xs hover:shadow-md transition-all border border-emerald-700/40 flex items-center gap-1.5"
+                        >
+                          <span>View Details</span>
+                          <ArrowRight size={14} />
+                        </a>
+
+                        <div className="bg-amber-100/90 border border-amber-300 text-amber-950 text-xs font-extrabold px-3.5 py-2.5 rounded-xl flex items-center gap-2 shadow-xs">
                           <span className="w-2.5 h-2.5 rounded-full bg-amber-500 animate-ping" />
                           <span>{slide.seats}</span>
                         </div>

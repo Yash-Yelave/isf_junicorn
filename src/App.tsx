@@ -23,6 +23,7 @@ import { JunicornsHub } from "./pages/info/JunicornsHub";
 import Cohort3 from "./pages/info/Cohort3";
 import { DistinguishedGuests } from "./pages/info/DistinguishedGuests";
 import { ISFJourney } from "./pages/info/ISFJourney";
+import { JSpotlight } from "./pages/info/JSpotlight";
 import { IsfHyderabad2024 } from "./pages/conferences/IsfHyderabad2024";
 import { IsfPune2024 } from "./pages/conferences/IsfPune2024";
 import { IsfJamaica2024 } from "./pages/conferences/IsfJamaica2024";
@@ -50,6 +51,7 @@ function App() {
             <Route path="/about-us" element={<AboutUs />} />
             <Route path="/1hour-per-week" element={<OneHourAWeek />} />
             <Route path="/junicornshub" element={<JunicornsHub />} />
+            <Route path="/j-spotlight" element={<JSpotlight />} />
             <Route path="/cohort-3" element={<Cohort3 />} />
             <Route path="/distinguished-guests" element={<DistinguishedGuests />} />
             <Route path="/isf-journey" element={<ISFJourney />} />
