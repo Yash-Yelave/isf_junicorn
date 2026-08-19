@@ -1,3 +1,4 @@
+import { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import { getImageUrl } from "../../utils/imageUtils";
 import { 
@@ -14,13 +15,139 @@ import {
   X, 
   CheckCircle2, 
   ArrowRight,
-  ShieldCheck
+  ShieldCheck,
+  Pencil
 } from "lucide-react";
+
+interface TrailPoint {
+  x: number;
+  y: number;
+  alpha: number;
+}
+
+function PencilMouseTrail() {
+  const canvasRef = useRef<HTMLCanvasElement | null>(null);
+  const pointsRef = useRef<TrailPoint[]>([]);
+  const [pencilPos, setPencilPos] = useState<{ x: number; y: number } | null>(null);
+  const isMovingRef = useRef(false);
+  const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const ctx = canvas.getContext("2d");
+    if (!ctx) return;
+
+    let animId: number;
+
+    const updateCanvasSize = () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    };
+    updateCanvasSize();
+    window.addEventListener("resize", updateCanvasSize);
+
+    const handleMouseMove = (e: MouseEvent) => {
+      const x = e.clientX;
+      const y = e.clientY;
+
+      setPencilPos({ x, y });
+      isMovingRef.current = true;
+
+      if (timeoutRef.current) clearTimeout(timeoutRef.current);
+      timeoutRef.current = setTimeout(() => {
+        isMovingRef.current = false;
+      }, 300);
+
+      // Append mouse point to Ref array (no React re-render for smooth 60 FPS performance)
+      pointsRef.current.push({ x, y, alpha: 1 });
+      if (pointsRef.current.length > 10) {
+        pointsRef.current.shift();
+      }
+    };
+
+    window.addEventListener("mousemove", handleMouseMove);
+
+    // 60 FPS GPU-accelerated Canvas render loop
+    const render = () => {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      const points = pointsRef.current;
+      if (points.length > 1) {
+        ctx.beginPath();
+        ctx.moveTo(points[0].x, points[0].y);
+
+        // Smooth quadratic bezier curves between points
+        for (let i = 1; i < points.length; i++) {
+          const xc = (points[i].x + points[i - 1].x) / 2;
+          const yc = (points[i].y + points[i - 1].y) / 2;
+          ctx.quadraticCurveTo(points[i - 1].x, points[i - 1].y, xc, yc);
+        }
+
+        // Thin, elegant pencil stroke (#09523B deep emerald graphite)
+        ctx.strokeStyle = "rgba(9, 82, 59, 0.75)";
+        ctx.lineWidth = 1.5; // Fine 1.5px pencil tip!
+        ctx.lineCap = "round";
+        ctx.lineJoin = "round";
+        ctx.stroke();
+
+        // Fade out points quickly for a short, crisp pencil trail
+        for (let i = points.length - 1; i >= 0; i--) {
+          points[i].alpha -= 0.09;
+          if (points[i].alpha <= 0) {
+            points.splice(i, 1);
+          }
+        }
+      }
+
+      animId = requestAnimationFrame(render);
+    };
+
+    render();
+
+    return () => {
+      window.removeEventListener("resize", updateCanvasSize);
+      window.removeEventListener("mousemove", handleMouseMove);
+      cancelAnimationFrame(animId);
+      if (timeoutRef.current) clearTimeout(timeoutRef.current);
+    };
+  }, []);
+
+  return (
+    <>
+      {/* Hardware-accelerated 60 FPS Canvas overlay */}
+      <canvas
+        ref={canvasRef}
+        className="fixed inset-0 w-full h-full pointer-events-none z-50"
+      />
+
+      {/* Hardware-accelerated floating fine pencil tip follower */}
+      {pencilPos && (
+        <div
+          className="fixed pointer-events-none z-50 transition-opacity duration-200"
+          style={{
+            left: `${pencilPos.x}px`,
+            top: `${pencilPos.y}px`,
+            transform: "translate3d(-2px, -20px, 0) rotate(-40deg)",
+            willChange: "transform",
+          }}
+        >
+          <div className="relative">
+            <Pencil size={18} className="text-[#80243E] drop-shadow-xs" />
+          </div>
+        </div>
+      )}
+    </>
+  );
+}
 
 export function JSpotlight() {
   return (
     <div className="font-inter bg-[#FAF8F3] text-slate-900 min-h-screen pt-20 overflow-x-hidden relative">
       
+      {/* Interactive Pencil Writing Mouse Trail */}
+      <PencilMouseTrail />
+
       {/* Background Subtle Grid Texture Pattern matching PDF carousel */}
       <div 
         className="fixed inset-0 pointer-events-none opacity-40 z-0"
@@ -234,7 +361,7 @@ export function JSpotlight() {
 
             <div className="bg-gradient-to-r from-[#09523B] via-[#0B5B42] to-[#073F2D] text-white rounded-2xl p-5 sm:p-6 shadow-xl border border-emerald-600/40 flex items-center justify-between gap-4 overflow-hidden relative">
               <div className="space-y-0.5 relative z-10">
-                <h3 className="text-lg sm:text-2xl font-extrabold tracking-tight text-white leading-snug">
+                <h3 className="text-lg sm:text-2xl font-extrabold tracking-tight !text-white leading-snug" style={{ color: '#FFFFFF' }}>
                   We believe great ideas shouldn't stay hidden.
                 </h3>
                 <p className="text-xs sm:text-sm text-emerald-200 font-medium">
@@ -254,53 +381,150 @@ export function JSpotlight() {
         {/* ========================================================================= */}
         {/* SECTION 3: THE IDEA (PDF Page 3) */}
         {/* ========================================================================= */}
-        <section className="space-y-10 pt-6">
-          <div className="space-y-3 text-center max-w-3xl mx-auto">
-            <span className="text-xs font-black uppercase tracking-widest text-[#C22B57]">
-              The Idea
-            </span>
-            <h2 className="text-2xl sm:text-4xl font-extrabold text-[#09523B] leading-tight">
-              J-SPOTLIGHT IS A PLATFORM FOR <span className="text-[#C22B57] font-serif italic">YOUNG MINDS</span> TO STEP INTO THE SPOTLIGHT.
+        <motion.section 
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-60px" }}
+          transition={{ duration: 0.6 }}
+          className="space-y-6 pt-2 md:pt-4"
+        >
+          {/* Header Alignment - Matching Section 2 & 4 Editorial Alignment */}
+          <div className="space-y-2.5 max-w-4xl">
+            <div className="inline-flex items-center gap-2">
+              <span className="text-xs font-black uppercase tracking-widest text-[#C22B57] bg-pink-100/90 px-3.5 py-1 rounded-full border border-pink-200">
+                The Idea
+              </span>
+              <Sparkles size={16} className="text-amber-500 animate-spin" style={{ animationDuration: '6s' }} />
+            </div>
+
+            <h2 className="text-2xl sm:text-4xl font-black text-[#09523B] leading-tight tracking-tight">
+              J-SPOTLIGHT IS A PLATFORM FOR <span className="text-[#C22B57] font-serif italic relative inline-block">
+                YOUNG MINDS
+                <span className="absolute bottom-0 left-0 w-full h-1 bg-amber-400/80 rounded-full" />
+              </span> TO STEP INTO THE SPOTLIGHT.
             </h2>
           </div>
 
-          {/* Orbiting Radial Diagram */}
-          <div className="relative py-12 flex items-center justify-center">
+          {/* Animated Interactive Orbiting Radial Diagram */}
+          <div className="relative py-6 sm:py-10 flex items-center justify-center overflow-visible">
             
-            {/* Outer Dotted Orbit Circle */}
-            <div className="w-[300px] h-[300px] sm:w-[420px] sm:h-[420px] rounded-full border-2 border-dashed border-slate-300 flex items-center justify-center relative">
-              
-              {/* Center Glowing Gold Sphere */}
-              <div className="w-36 h-36 sm:w-48 sm:h-48 rounded-full bg-gradient-to-tr from-amber-500 via-amber-400 to-yellow-200 shadow-[0_0_40px_rgba(244,184,37,0.6)] flex items-center justify-center p-4 text-center border-4 border-white z-10">
-                <span className="text-xs sm:text-sm font-black uppercase text-slate-950 tracking-wider leading-tight">
+            {/* Ambient Background Glow behind Diagram */}
+            <div className="absolute w-[260px] h-[260px] sm:w-[360px] sm:h-[360px] rounded-full bg-gradient-to-tr from-amber-300/30 via-yellow-200/20 to-pink-200/20 blur-2xl pointer-events-none" />
+
+            {/* Continuously Rotating Dotted Orbit Ring */}
+            <motion.div 
+              animate={{ rotate: 360 }}
+              transition={{ duration: 35, repeat: Infinity, ease: "linear" }}
+              className="w-[260px] h-[260px] sm:w-[380px] sm:h-[380px] rounded-full border-2 border-dashed border-amber-500/40 flex items-center justify-center relative pointer-events-none"
+            >
+              {/* Decorative Orbit Particles */}
+              <div className="absolute top-0 left-1/2 -translate-x-1/2 w-2.5 h-2.5 rounded-full bg-amber-400 shadow-md animate-pulse" />
+              <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-2.5 h-2.5 rounded-full bg-[#C22B57] shadow-md animate-pulse" />
+              <div className="absolute top-1/2 left-0 -translate-y-1/2 w-2.5 h-2.5 rounded-full bg-[#09523B] shadow-md animate-pulse" />
+              <div className="absolute top-1/2 right-0 -translate-y-1/2 w-2.5 h-2.5 rounded-full bg-yellow-400 shadow-md animate-pulse" />
+            </motion.div>
+
+            {/* Inner Concentric Pulse Circle */}
+            <motion.div 
+              animate={{ scale: [1, 1.08, 1], opacity: [0.3, 0.6, 0.3] }}
+              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+              className="absolute w-[180px] h-[180px] sm:w-[260px] sm:h-[260px] rounded-full border border-amber-400/50 pointer-events-none"
+            />
+
+            {/* Center Glowing Gold Sphere */}
+            <motion.div 
+              animate={{ 
+                scale: [1, 1.04, 1],
+                boxShadow: [
+                  "0 0 25px rgba(244,184,37,0.5)",
+                  "0 0 55px rgba(244,184,37,0.85)",
+                  "0 0 25px rgba(244,184,37,0.5)"
+                ]
+              }}
+              transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+              whileHover={{ scale: 1.08 }}
+              className="absolute w-32 h-32 sm:w-44 sm:h-44 rounded-full bg-gradient-to-tr from-amber-500 via-amber-400 to-yellow-200 flex items-center justify-center p-3.5 text-center border-4 border-white z-20 cursor-pointer shadow-xl group"
+            >
+              <div className="space-y-0.5">
+                <Sparkles size={18} className="mx-auto text-slate-950 group-hover:rotate-180 transition-transform duration-500" />
+                <span className="block text-xs sm:text-sm font-black uppercase text-slate-950 tracking-wider leading-tight">
                   Step Into<br/>The Light
                 </span>
               </div>
+            </motion.div>
 
-              {/* Orbiting Cohort Pills */}
-              <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-white border border-slate-200 px-4 py-1.5 rounded-full shadow-md text-xs font-extrabold text-[#09523B]">
-                STUDENTS
-              </div>
-              <div className="absolute top-12 -right-4 sm:-right-8 bg-white border border-slate-200 px-4 py-1.5 rounded-full shadow-md text-xs font-extrabold text-[#C22B57]">
-                INNOVATORS
-              </div>
-              <div className="absolute bottom-12 -right-4 sm:-right-8 bg-white border border-slate-200 px-4 py-1.5 rounded-full shadow-md text-xs font-extrabold text-[#C22B57]">
-                DREAMERS
-              </div>
-              <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 bg-white border border-slate-200 px-4 py-1.5 rounded-full shadow-md text-xs font-extrabold text-[#09523B]">
-                PROBLEM SOLVERS
-              </div>
-              <div className="absolute top-1/2 -left-6 sm:-left-12 -translate-y-1/2 bg-white border border-slate-200 px-4 py-1.5 rounded-full shadow-md text-xs font-extrabold text-[#09523B]">
-                BUILDERS
-              </div>
+            {/* Orbiting Floating Cohort Pills */}
+            <div className="absolute inset-0 max-w-[260px] max-h-[260px] sm:max-w-[380px] sm:max-h-[380px] mx-auto my-auto pointer-events-auto">
+              
+              {/* STUDENTS (Top Center) */}
+              <motion.div 
+                animate={{ y: [-3, 3, -3] }}
+                transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut", delay: 0 }}
+                whileHover={{ scale: 1.1, y: -4 }}
+                className="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-white border-2 border-emerald-500/40 px-3.5 sm:px-4.5 py-1 rounded-full shadow-md text-[11px] sm:text-xs font-extrabold text-[#09523B] flex items-center gap-1.5 cursor-pointer z-30 group"
+              >
+                <span className="w-2 h-2 rounded-full bg-emerald-500 group-hover:scale-150 transition-transform" />
+                <span>STUDENTS</span>
+              </motion.div>
+
+              {/* INNOVATORS (Top Right) */}
+              <motion.div 
+                animate={{ y: [3, -3, 3] }}
+                transition={{ duration: 3.8, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
+                whileHover={{ scale: 1.1, y: -4 }}
+                className="absolute top-6 -right-3 sm:-right-8 bg-white border-2 border-pink-500/40 px-3.5 sm:px-4.5 py-1 rounded-full shadow-md text-[11px] sm:text-xs font-extrabold text-[#C22B57] flex items-center gap-1.5 cursor-pointer z-30 group"
+              >
+                <span className="w-2 h-2 rounded-full bg-[#C22B57] group-hover:scale-150 transition-transform" />
+                <span>INNOVATORS</span>
+              </motion.div>
+
+              {/* DREAMERS (Bottom Right) */}
+              <motion.div 
+                animate={{ y: [-3, 3, -3] }}
+                transition={{ duration: 4.2, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+                whileHover={{ scale: 1.1, y: -4 }}
+                className="absolute bottom-6 -right-3 sm:-right-8 bg-white border-2 border-amber-500/40 px-3.5 sm:px-4.5 py-1 rounded-full shadow-md text-[11px] sm:text-xs font-extrabold text-amber-600 flex items-center gap-1.5 cursor-pointer z-30 group"
+              >
+                <span className="w-2 h-2 rounded-full bg-amber-500 group-hover:scale-150 transition-transform" />
+                <span>DREAMERS</span>
+              </motion.div>
+
+              {/* PROBLEM SOLVERS (Bottom Center) */}
+              <motion.div 
+                animate={{ y: [3, -3, 3] }}
+                transition={{ duration: 3.6, repeat: Infinity, ease: "easeInOut", delay: 1.5 }}
+                whileHover={{ scale: 1.1, y: -4 }}
+                className="absolute -bottom-3.5 left-1/2 -translate-x-1/2 bg-white border-2 border-emerald-500/40 px-3.5 sm:px-4.5 py-1 rounded-full shadow-md text-[11px] sm:text-xs font-extrabold text-[#09523B] flex items-center gap-1.5 cursor-pointer z-30 group"
+              >
+                <span className="w-2 h-2 rounded-full bg-emerald-500 group-hover:scale-150 transition-transform" />
+                <span>PROBLEM SOLVERS</span>
+              </motion.div>
+
+              {/* BUILDERS (Left Center) */}
+              <motion.div 
+                animate={{ y: [-3, 3, -3] }}
+                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 0.8 }}
+                whileHover={{ scale: 1.1, y: -4 }}
+                className="absolute top-1/2 -left-5 sm:-left-12 -translate-y-1/2 bg-white border-2 border-indigo-500/40 px-3.5 sm:px-4.5 py-1 rounded-full shadow-md text-[11px] sm:text-xs font-extrabold text-indigo-700 flex items-center gap-1.5 cursor-pointer z-30 group"
+              >
+                <span className="w-2 h-2 rounded-full bg-indigo-600 group-hover:scale-150 transition-transform" />
+                <span>BUILDERS</span>
+              </motion.div>
 
             </div>
           </div>
 
-          <p className="text-center text-sm sm:text-base font-medium text-slate-700 max-w-xl mx-auto">
+          {/* Bottom Summary Quote */}
+          <motion.p 
+            initial={{ opacity: 0, y: 15 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.3 }}
+            className="text-center text-xs sm:text-base font-semibold text-slate-700 max-w-2xl mx-auto bg-white/90 backdrop-blur border border-amber-900/15 p-3.5 sm:p-4 rounded-2xl shadow-xs"
+          >
             A space for people to come together, share what they're working on, and learn from one another.
-          </p>
-        </section>
+          </motion.p>
+        </motion.section>
 
 
         {/* ========================================================================= */}
@@ -415,7 +639,7 @@ export function JSpotlight() {
 
           {/* Green Central Highlight Banner */}
           <div className="bg-[#09523B] text-white rounded-3xl p-8 text-center shadow-xl border border-emerald-700">
-            <h3 className="text-xl sm:text-3xl font-extrabold tracking-tight">
+            <h3 className="text-xl sm:text-3xl font-extrabold tracking-tight !text-white" style={{ color: '#FFFFFF' }}>
               YOU JUST NEED SOMETHING WORTH SHARING.
             </h3>
           </div>
@@ -498,128 +722,186 @@ export function JSpotlight() {
         {/* ========================================================================= */}
         {/* SECTION 7: EDITION 01 EVENT PASS & REGISTRATION (PDF Page 7) */}
         {/* ========================================================================= */}
-        <section className="space-y-8 pt-8 border-t border-amber-900/15">
-          <div className="text-center space-y-2">
-            <span className="bg-[#09523B] text-amber-300 text-xs font-extrabold uppercase px-4 py-1.5 rounded-full tracking-widest border border-emerald-700 shadow-xs">
-              J-Spotlight Edition 01
-            </span>
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
-              THE NEXT JUNICORN COULD BE IN THIS ROOM
+        <motion.section 
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-60px" }}
+          transition={{ duration: 0.6 }}
+          className="space-y-8 pt-8 border-t-2 border-amber-900/15"
+        >
+          {/* Header */}
+          <div className="text-center space-y-3 max-w-3xl mx-auto">
+            <div className="inline-flex items-center gap-2 bg-[#09523B] text-amber-300 text-xs font-black uppercase px-4 py-1.5 rounded-full tracking-widest border border-emerald-700 shadow-sm">
+              <Sparkles size={14} className="text-amber-300" />
+              <span>J-Spotlight Edition 01 • Bengaluru Conclave</span>
+            </div>
+
+            <h2 className="text-3xl sm:text-5xl font-black text-slate-900 tracking-tight leading-tight">
+              THE NEXT JUNICORN COULD BE <span className="text-[#C22B57] font-serif italic">IN THIS ROOM</span>
             </h2>
+            <p className="text-sm sm:text-base text-slate-600 font-medium max-w-xl mx-auto">
+              Join curated student founders, mentors, and ecosystem leads for an exclusive 2-hour pitch & exchange conclave.
+            </p>
           </div>
 
-          {/* Key Event Details Grid Pass Card */}
-          <div className="bg-white border-2 border-[#09523B] rounded-3xl p-6 sm:p-10 shadow-2xl space-y-8 relative overflow-hidden">
+          {/* Key Event Details Card */}
+          <div className="bg-white border-2 border-amber-900/15 rounded-3xl p-6 sm:p-8 shadow-xl space-y-6 relative overflow-hidden">
             
-            {/* Event Details Grid */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 border-b border-slate-200 pb-8 text-center md:text-left">
+            {/* 3 Main Details Grid */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-5 border-b border-slate-200/80 pb-6">
               
               {/* Date */}
-              <div className="flex items-center gap-4 justify-center md:justify-start">
-                <div className="w-12 h-12 rounded-2xl bg-emerald-50 text-[#09523B] flex items-center justify-center shrink-0">
-                  <Calendar size={24} />
+              <motion.div 
+                whileHover={{ scale: 1.02 }}
+                className="flex items-center gap-4 p-4 rounded-2xl bg-emerald-50/70 border border-emerald-200/60"
+              >
+                <div className="w-12 h-12 rounded-xl bg-[#09523B] text-amber-300 flex items-center justify-center shrink-0 shadow-sm">
+                  <Calendar size={22} />
                 </div>
                 <div>
-                  <h4 className="text-base font-extrabold text-[#09523B]">29 AUGUST 2026</h4>
-                  <p className="text-xs font-bold text-slate-500 uppercase tracking-wider">SATURDAY</p>
+                  <p className="text-[11px] font-black text-emerald-800 uppercase tracking-wider">DATE</p>
+                  <h4 className="text-base sm:text-lg font-black text-slate-900">29 AUGUST 2026</h4>
+                  <p className="text-xs font-bold text-slate-500">Saturday Afternoon</p>
                 </div>
-              </div>
+              </motion.div>
 
               {/* Time */}
-              <div className="flex items-center gap-4 justify-center md:justify-start">
-                <div className="w-12 h-12 rounded-2xl bg-pink-50 text-[#C22B57] flex items-center justify-center shrink-0">
-                  <Clock size={24} />
+              <motion.div 
+                whileHover={{ scale: 1.02 }}
+                className="flex items-center gap-4 p-4 rounded-2xl bg-pink-50/70 border border-pink-200/60"
+              >
+                <div className="w-12 h-12 rounded-xl bg-[#C22B57] text-white flex items-center justify-center shrink-0 shadow-sm">
+                  <Clock size={22} />
                 </div>
                 <div>
-                  <h4 className="text-base font-extrabold text-[#C22B57]">4:00 – 6:00 PM</h4>
-                  <p className="text-xs font-bold text-slate-500 uppercase tracking-wider">DURATION 2 HOURS</p>
+                  <p className="text-[11px] font-black text-[#C22B57] uppercase tracking-wider">TIME</p>
+                  <h4 className="text-base sm:text-lg font-black text-slate-900">4:00 – 6:00 PM</h4>
+                  <p className="text-xs font-bold text-slate-500">2 Hours Duration</p>
                 </div>
-              </div>
+              </motion.div>
 
               {/* Location */}
-              <div className="flex items-center gap-4 justify-center md:justify-start">
-                <div className="w-12 h-12 rounded-2xl bg-amber-50 text-amber-700 flex items-center justify-center shrink-0">
-                  <MapPin size={24} />
+              <motion.div 
+                whileHover={{ scale: 1.02 }}
+                className="flex items-center gap-4 p-4 rounded-2xl bg-amber-50/70 border border-amber-200/60"
+              >
+                <div className="w-12 h-12 rounded-xl bg-amber-500 text-slate-950 flex items-center justify-center shrink-0 shadow-sm">
+                  <MapPin size={22} />
                 </div>
                 <div>
-                  <h4 className="text-base font-extrabold text-slate-800">DRAPER U INDIA</h4>
-                  <p className="text-xs font-bold text-slate-500 uppercase tracking-wider">BANGALORE, KARNATAKA</p>
+                  <p className="text-[11px] font-black text-amber-800 uppercase tracking-wider">VENUE</p>
+                  <h4 className="text-base sm:text-lg font-black text-slate-900">DRAPER U INDIA</h4>
+                  <p className="text-xs font-bold text-slate-500">Bangalore, Karnataka</p>
                 </div>
-              </div>
+              </motion.div>
 
             </div>
 
-            {/* Curated Badges Row */}
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 text-center">
-              <div className="bg-slate-50 border border-slate-200 rounded-2xl p-4 flex flex-col items-center">
-                <Users size={20} className="text-[#09523B] mb-1" />
-                <span className="text-xs font-extrabold text-[#09523B] uppercase">INVITE ONLY</span>
-                <span className="text-[11px] text-slate-500 font-medium">Curated Community</span>
+            {/* 3 Curated Badges Row */}
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3.5 text-center">
+              <div className="bg-slate-50 border border-slate-200/80 rounded-2xl p-4 flex flex-col items-center hover:bg-slate-100/80 transition-colors">
+                <Users size={20} className="text-[#09523B] mb-1.5" />
+                <span className="text-xs font-extrabold text-[#09523B] uppercase tracking-wide">INVITE ONLY</span>
+                <span className="text-[11px] text-slate-500 font-medium">Curated Innovator Cohort</span>
               </div>
 
-              <div className="bg-pink-50 border border-pink-200 rounded-2xl p-4 flex flex-col items-center">
-                <Sparkles size={20} className="text-[#C22B57] mb-1" />
-                <span className="text-xs font-extrabold text-[#C22B57] uppercase">ONLY 50 SEATS</span>
+              <div className="bg-pink-50/60 border border-pink-200/80 rounded-2xl p-4 flex flex-col items-center hover:bg-pink-50 transition-colors">
+                <div className="flex items-center gap-1.5 mb-1.5">
+                  <span className="w-2 h-2 rounded-full bg-[#C22B57] animate-ping" />
+                  <Sparkles size={18} className="text-[#C22B57]" />
+                </div>
+                <span className="text-xs font-extrabold text-[#C22B57] uppercase tracking-wide">ONLY 50 SEATS</span>
                 <span className="text-[11px] text-slate-500 font-medium">High Value, High Impact</span>
               </div>
 
-              <div className="bg-amber-50 border border-amber-200 rounded-2xl p-4 flex flex-col items-center">
-                <ShieldCheck size={20} className="text-amber-700 mb-1" />
-                <span className="text-xs font-extrabold text-slate-800 uppercase">CONFIRMED PASS</span>
+              <div className="bg-amber-50/60 border border-amber-200/80 rounded-2xl p-4 flex flex-col items-center hover:bg-amber-50 transition-colors">
+                <ShieldCheck size={20} className="text-amber-700 mb-1.5" />
+                <span className="text-xs font-extrabold text-slate-800 uppercase tracking-wide">CONFIRMED PASS</span>
                 <span className="text-[11px] text-slate-500 font-medium">Details Shared Post Registration</span>
               </div>
             </div>
 
-            {/* Ticket Stub Price & CTA */}
-            <div className="flex flex-col sm:flex-row items-center justify-between gap-6 bg-slate-900 text-white rounded-2xl p-6 border-2 border-amber-400">
-              <div className="flex items-center gap-4 text-center sm:text-left">
-                <div className="w-14 h-14 rounded-2xl bg-amber-400 text-slate-950 flex items-center justify-center font-black text-2xl shrink-0">
-                  ₹349
+            {/* Realistic VIP Ticket Stub Design with Ultra High-Contrast Text */}
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.97 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              className="relative bg-gradient-to-r from-slate-950 via-slate-900 to-[#073F2D] text-white rounded-3xl p-6 sm:p-7 border-2 border-amber-400/90 shadow-2xl flex flex-col md:flex-row items-center justify-between gap-6 overflow-hidden"
+            >
+              {/* Decorative Perforated Ticket Notches */}
+              <div className="hidden md:block absolute -left-3.5 top-1/2 -translate-y-1/2 w-7 h-7 rounded-full bg-white border-2 border-amber-400" />
+              <div className="hidden md:block absolute -right-3.5 top-1/2 -translate-y-1/2 w-7 h-7 rounded-full bg-white border-2 border-amber-400" />
+              
+              {/* Background Ambient Glow */}
+              <div className="absolute top-0 right-0 w-64 h-64 bg-amber-400/10 rounded-full blur-3xl pointer-events-none" />
+
+              {/* Price & Ticket Info */}
+              <div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-5 text-center sm:text-left relative z-10">
+                <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-gradient-to-tr from-amber-400 via-amber-300 to-yellow-100 text-slate-950 flex flex-col items-center justify-center font-black shrink-0 shadow-lg border-2 border-white">
+                  <span className="text-2xl sm:text-3xl leading-none">₹349</span>
+                  <span className="text-[9px] uppercase tracking-widest text-slate-800 font-black">ENTRY PASS</span>
                 </div>
-                <div>
-                  <span className="text-xs font-black uppercase tracking-widest text-amber-400">EVENT PASS</span>
-                  <h4 className="text-lg font-bold text-white">Edition 01 Entry Delegate Access</h4>
+
+                <div className="space-y-1">
+                  <div className="inline-flex items-center gap-2 bg-amber-400/20 px-3 py-0.5 rounded-full border border-amber-300/40">
+                    <span className="w-2 h-2 rounded-full bg-amber-400 animate-pulse" />
+                    <span className="text-[11px] font-black uppercase tracking-widest text-amber-300">OFFICIAL EVENT PASS</span>
+                  </div>
+                  {/* High-Contrast Bold Text */}
+                  <h4 className="text-xl sm:text-2xl font-black text-white tracking-tight leading-snug drop-shadow-sm">
+                    Edition 01 Entry Delegate Access
+                  </h4>
+                  <p className="text-xs text-slate-300 font-medium">
+                    Includes pitch conclave access, founder networking, and keynote inauguration session.
+                  </p>
                 </div>
               </div>
 
+              {/* Booking CTA Button */}
               <a
                 href="https://luma.com/oiv1aoqu"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full sm:w-auto bg-amber-400 hover:bg-amber-300 text-slate-950 text-base font-black px-8 py-4 rounded-xl shadow-lg transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer border border-amber-300"
+                className="w-full md:w-auto bg-gradient-to-r from-amber-400 to-yellow-300 hover:from-amber-300 hover:to-yellow-200 text-slate-950 text-base font-black px-8 py-4 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 flex items-center justify-center gap-2.5 cursor-pointer border border-white shrink-0 group transform hover:-translate-y-0.5"
               >
                 <span>BOOK YOUR SPOT</span>
-                <Ticket size={20} />
+                <Ticket size={20} className="group-hover:rotate-12 transition-transform text-slate-950" />
               </a>
-            </div>
+            </motion.div>
 
-            {/* Speaker Inauguration Box */}
-            <div className="bg-gradient-to-r from-emerald-50 via-teal-50 to-amber-50 rounded-2xl p-4 sm:p-5 border border-emerald-200 flex flex-col sm:flex-row items-center gap-4">
+            {/* Keynote Speaker Inauguration Profile Box */}
+            <motion.div 
+              whileHover={{ y: -2 }}
+              className="bg-gradient-to-r from-emerald-50/80 via-teal-50/60 to-amber-50/80 rounded-2xl p-4 sm:p-5 border border-emerald-200/80 flex flex-col sm:flex-row items-center gap-4 transition-all shadow-xs"
+            >
               <img
                 src={getImageUrl("/assets/speakers/JA_chowdary.jpg")}
                 alt="Dr. J.A. Chowdary"
                 className="w-16 h-16 rounded-full object-cover border-2 border-amber-400 shadow-md shrink-0"
                 onError={(e) => { e.currentTarget.src = "/assets/images/J-A-Chowdary.png"; }}
               />
-              <div className="text-center sm:text-left space-y-0.5">
-                <span className="text-[10px] font-black uppercase tracking-widest text-[#C22B57] bg-pink-100 px-2.5 py-0.5 rounded-md">
-                  Inauguration & Keynote
-                </span>
-                <h4 className="text-base font-black text-slate-900 font-serif">
+              <div className="text-center sm:text-left space-y-1">
+                <div className="inline-flex items-center gap-2">
+                  <span className="text-[10px] font-black uppercase tracking-widest text-[#C22B57] bg-pink-100 px-2.5 py-0.5 rounded-md border border-pink-200">
+                    Inauguration & Keynote
+                  </span>
+                </div>
+                <h4 className="text-lg font-black text-slate-900 font-serif">
                   Dr. J.A. Chowdary
                 </h4>
-                <p className="text-xs font-semibold text-[#09523B]">
+                <p className="text-xs font-bold text-[#09523B]">
                   Founder & Chairman, International Startup Foundation (ISF)
                 </p>
               </div>
-            </div>
+            </motion.div>
 
           </div>
-        </section>
+        </motion.section>
 
         {/* BOTTOM FOOTER BRANDING */}
-        <div className="text-center pt-8 border-t border-slate-300 text-xs font-bold text-slate-500 uppercase tracking-widest">
-          Jnanana Foundation × ISF Junicorns • Edition 01 Spotlight
+        <div className="text-center pt-8 border-t border-slate-300/80 text-xs font-extrabold text-slate-600 uppercase tracking-widest">
+          Jnanana Foundation × ISF Junicorns • Edition 01 Spotlight Conclave
         </div>
 
       </div>
