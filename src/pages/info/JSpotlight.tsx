@@ -28,9 +28,7 @@ interface TrailPoint {
 function PencilMouseTrail() {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const pointsRef = useRef<TrailPoint[]>([]);
-  const [pencilPos, setPencilPos] = useState<{ x: number; y: number } | null>(null);
-  const isMovingRef = useRef(false);
-  const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const lastMouseRef = useRef<{ x: number; y: number } | null>(null);
 
   useEffect(() => {
     // Hide default system cursor ONLY on J-Spotlight page
@@ -50,21 +48,19 @@ function PencilMouseTrail() {
     updateCanvasSize();
     window.addEventListener("resize", updateCanvasSize);
 
+    // Pre-load Lucide Pencil SVG Image
+    const pencilImg = new Image();
+    const svgStr = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="%2380243E" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z"/><path d="m15 5 4 4"/></svg>`;
+    pencilImg.src = `data:image/svg+xml;utf8,${svgStr}`;
+
     const handleMouseMove = (e: MouseEvent) => {
       const x = e.clientX;
       const y = e.clientY;
+      lastMouseRef.current = { x, y };
 
-      setPencilPos({ x, y });
-      isMovingRef.current = true;
-
-      if (timeoutRef.current) clearTimeout(timeoutRef.current);
-      timeoutRef.current = setTimeout(() => {
-        isMovingRef.current = false;
-      }, 300);
-
-      // Append mouse point to Ref array
+      // Append mouse point to Ref array for zero-latency frame sync
       pointsRef.current.push({ x, y, alpha: 1 });
-      if (pointsRef.current.length > 10) {
+      if (pointsRef.current.length > 12) {
         pointsRef.current.shift();
       }
     };
@@ -76,6 +72,8 @@ function PencilMouseTrail() {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
       const points = pointsRef.current;
+      
+      // 1. Draw smooth emerald pencil graphite line
       if (points.length > 1) {
         ctx.beginPath();
         ctx.moveTo(points[0].x, points[0].y);
@@ -87,17 +85,37 @@ function PencilMouseTrail() {
         }
 
         ctx.strokeStyle = "rgba(9, 82, 59, 0.85)";
-        ctx.lineWidth = 1.5;
+        ctx.lineWidth = 1.6;
         ctx.lineCap = "round";
         ctx.lineJoin = "round";
         ctx.stroke();
 
+        // Fade out points for a short, clean trail
         for (let i = points.length - 1; i >= 0; i--) {
-          points[i].alpha -= 0.09;
+          points[i].alpha -= 0.08;
           if (points[i].alpha <= 0) {
             points.splice(i, 1);
           }
         }
+      }
+
+      // 2. Draw Pencil Cursor in real-time at exact mouse position (ZERO frame latency!)
+      if (lastMouseRef.current) {
+        const { x, y } = lastMouseRef.current;
+        ctx.save();
+        ctx.translate(x, y);
+        ctx.rotate((-35 * Math.PI) / 180);
+        
+        // Offset (-2.5, -21.5) puts the SVG pencil lead tip at (x, y)
+        ctx.drawImage(pencilImg, -2.5, -21.5, 24, 24);
+
+        // Gold lead tip sparkle point
+        ctx.fillStyle = "#F59E0B";
+        ctx.beginPath();
+        ctx.arc(0, 0, 1.25, 0, Math.PI * 2);
+        ctx.fill();
+
+        ctx.restore();
       }
 
       animId = requestAnimationFrame(render);
@@ -110,7 +128,6 @@ function PencilMouseTrail() {
       window.removeEventListener("resize", updateCanvasSize);
       window.removeEventListener("mousemove", handleMouseMove);
       cancelAnimationFrame(animId);
-      if (timeoutRef.current) clearTimeout(timeoutRef.current);
     };
   }, []);
 
@@ -128,24 +145,6 @@ function PencilMouseTrail() {
         ref={canvasRef}
         className="fixed inset-0 w-full h-full pointer-events-none z-[100]"
       />
-
-      {/* Custom Pencil Cursor at mouse coordinates */}
-      {pencilPos && (
-        <div
-          className="fixed pointer-events-none z-[100] transition-opacity duration-150"
-          style={{
-            left: `${pencilPos.x}px`,
-            top: `${pencilPos.y}px`,
-            transform: "translate3d(-2px, -20px, 0) rotate(-40deg)",
-            willChange: "transform",
-          }}
-        >
-          <div className="relative">
-            <Pencil size={22} className="text-[#80243E] drop-shadow-md" />
-            <span className="absolute -bottom-0.5 -left-0.5 w-1.5 h-1.5 rounded-full bg-amber-400 blur-xs" />
-          </div>
-        </div>
-      )}
     </>
   );
 }
