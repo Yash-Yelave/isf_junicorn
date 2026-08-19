@@ -865,62 +865,75 @@ export function JSpotlight() {
               </div>
             </div>
 
-            {/* Realistic VIP Ticket Stub Design with Ultra High-Contrast White Text & Executive Texture */}
+            {/* High-End Executive Ticket Pass Card (NO GREEN BACKGROUND, ENLARGED FONT SIZES) */}
             <motion.div 
               initial={{ opacity: 0, scale: 0.97 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.2 }}
-              className="relative bg-gradient-to-r from-[#073A29] via-[#09523B] to-[#042B1E] text-white rounded-3xl p-6 sm:p-7 border-2 border-amber-400 shadow-2xl flex flex-col md:flex-row items-center justify-between gap-6 overflow-hidden"
+              className="relative bg-gradient-to-br from-white via-amber-50/40 to-yellow-50/30 text-slate-900 rounded-3xl p-7 sm:p-9 border-2 border-amber-400 shadow-2xl flex flex-col md:flex-row items-center justify-between gap-6 overflow-hidden"
             >
               {/* Decorative Subtle Background Texture Pattern */}
               <div 
-                className="absolute inset-0 pointer-events-none opacity-10"
+                className="absolute inset-0 pointer-events-none opacity-20"
                 style={{
-                  backgroundImage: `radial-gradient(#F59E0B 1px, transparent 1px)`,
-                  backgroundSize: '20px 20px'
+                  backgroundImage: `radial-gradient(#F59E0B 1.2px, transparent 1.2px)`,
+                  backgroundSize: '24px 24px'
                 }}
               />
 
               {/* Decorative Perforated Ticket Side Notches */}
-              <div className="hidden md:block absolute -left-3.5 top-1/2 -translate-y-1/2 w-7 h-7 rounded-full bg-[#FAF8F3] border-2 border-amber-400 z-20" />
-              <div className="hidden md:block absolute -right-3.5 top-1/2 -translate-y-1/2 w-7 h-7 rounded-full bg-[#FAF8F3] border-2 border-amber-400 z-20" />
+              <div className="hidden md:block absolute -left-4 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-[#FAF8F3] border-2 border-amber-400 z-20 shadow-xs" />
+              <div className="hidden md:block absolute -right-4 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-[#FAF8F3] border-2 border-amber-400 z-20 shadow-xs" />
               
-              {/* Background Radiant Gold Glow */}
-              <div className="absolute top-0 right-0 w-80 h-80 bg-amber-400/15 rounded-full blur-3xl pointer-events-none" />
+              {/* Background Radiant Amber Glow */}
+              <div className="absolute top-0 right-0 w-80 h-80 bg-amber-400/20 rounded-full blur-3xl pointer-events-none" />
 
-              {/* Price & Ticket Info */}
-              <div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-5 text-center sm:text-left relative z-10">
-                <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-gradient-to-tr from-amber-400 via-amber-300 to-yellow-100 text-slate-950 flex flex-col items-center justify-center font-black shrink-0 shadow-xl border-2 border-white">
-                  <span className="text-2xl sm:text-3xl leading-none">₹349</span>
-                  <span className="text-[9px] uppercase tracking-widest text-slate-900 font-black">ENTRY PASS</span>
+              {/* Price & Ticket Info (Perfect Vertical Alignment) */}
+              <div className="flex flex-col sm:flex-row items-center gap-5 sm:gap-6 text-center sm:text-left relative z-10 w-full md:w-auto self-center">
+                
+                {/* Price Badge Icon Box (Burgundy & Gold Accent - NO GREEN) */}
+                <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-2xl bg-gradient-to-br from-[#C22B57] via-[#A02146] to-[#801835] text-white flex flex-col items-center justify-center font-black shrink-0 shadow-xl border-2 border-white self-center">
+                  <span className="text-2xl sm:text-3xl font-black text-amber-300 leading-none">₹349</span>
+                  <span className="text-[9px] uppercase tracking-widest text-amber-100 font-black mt-1">ENTRY PASS</span>
                 </div>
 
-                <div className="space-y-1.5">
-                  <div className="inline-flex items-center gap-2 bg-amber-400/20 px-3 py-0.5 rounded-full border border-amber-300/40">
-                    <span className="w-2 h-2 rounded-full bg-amber-400 animate-pulse" />
-                    <span className="text-[11px] font-black uppercase tracking-widest text-amber-300">OFFICIAL EVENT PASS</span>
+                {/* Text Stack with Prominent Enlarged Typography */}
+                <div className="space-y-2 self-center max-w-xl">
+                  <div className="inline-flex items-center gap-2 bg-amber-100/90 px-3.5 py-1 rounded-full border border-amber-300/80">
+                    <span className="w-2 h-2 rounded-full bg-amber-500 animate-pulse" />
+                    <span className="text-xs font-black uppercase tracking-widest text-amber-950">OFFICIAL EVENT PASS</span>
                   </div>
-                  {/* High-Contrast Pure White Bold Headline */}
-                  <h4 className="text-xl sm:text-2xl font-black !text-white tracking-tight leading-snug drop-shadow-md" style={{ color: '#FFFFFF' }}>
+
+                  {/* Prominent Headline (Enlarged to 2xl/3xl) */}
+                  <h3 className="text-2xl sm:text-3xl font-black text-slate-950 tracking-tight leading-tight drop-shadow-2xs">
                     Edition 01 Entry Delegate Access
-                  </h4>
-                  <p className="text-xs text-emerald-100/90 font-medium">
+                  </h3>
+
+                  {/* Clear Subtitle (Enlarged to sm/base) */}
+                  <p className="text-sm sm:text-base text-slate-700 font-semibold leading-relaxed">
                     Includes pitch conclave access, founder networking, and keynote inauguration session.
                   </p>
                 </div>
               </div>
 
-              {/* Booking CTA Button */}
-              <a
-                href="https://forms.gle/y5R1jv5FbQuu6VrNA"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-full md:w-auto bg-gradient-to-r from-amber-400 via-yellow-400 to-amber-300 hover:from-amber-300 hover:to-yellow-200 text-slate-950 text-base font-black px-8 py-4 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 flex items-center justify-center gap-2.5 cursor-pointer border-2 border-white shrink-0 group transform hover:-translate-y-0.5 relative z-10"
-              >
-                <span>REQUEST DELEGATE SEAT</span>
-                <Ticket size={20} className="group-hover:rotate-12 transition-transform text-slate-950" />
-              </a>
+              {/* Booking CTA Button (Enlarged High-Impact Gold Button) */}
+              <div className="relative z-10 w-full md:w-auto flex flex-col items-center md:items-end gap-2.5 shrink-0 self-center">
+                <a
+                  href="https://forms.gle/y5R1jv5FbQuu6VrNA"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full md:w-auto bg-gradient-to-r from-amber-400 via-yellow-400 to-amber-300 hover:from-amber-300 hover:to-yellow-200 text-slate-950 text-base sm:text-lg font-black px-8 py-4.5 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 flex items-center justify-center gap-3 cursor-pointer border-2 border-white group transform hover:-translate-y-0.5"
+                >
+                  <span>REQUEST DELEGATE SEAT</span>
+                  <Ticket size={22} className="group-hover:rotate-12 transition-transform text-slate-950" />
+                </a>
+
+                <div className="flex items-center gap-1.5 text-xs font-black text-[#C22B57]">
+                  <span className="w-2 h-2 rounded-full bg-[#C22B57] animate-ping" />
+                  <span>Curated 50 Seats Only • Edition 01 Passes</span>
+                </div>
+              </div>
             </motion.div>
 
             {/* Keynote Speaker Inauguration Profile Box */}
