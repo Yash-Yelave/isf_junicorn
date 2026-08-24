@@ -161,27 +161,6 @@ export function ISFJourney() {
   // Timeline events array sorted NEWEST to OLDEST (2026 → Genesis)
   const timelineEvents = [
     {
-      id: "j-spotlight-aug-2026",
-      year: "2026",
-      date: "August 29, 2026",
-      title: "J-SPOTLIGHT Edition 01: Finding the Next Junicorn",
-      location: "Draper U India, Bangalore",
-      category: "Monthly Pitch Meet",
-      tagColor: "bg-amber-100 text-amber-900 border-amber-300",
-      badgeColor: "bg-amber-500 text-slate-950",
-      accentLine: "bg-gradient-to-r from-[#D24D7F] to-amber-500",
-      desc: "Inaugural monthly meetup series gathering 50 hand-picked student innovators, builders, and dreamers for live pitching and direct mentorship.",
-      highlights: [
-        "Special inaugural session led by Dr. J A Chowdary",
-        "Curated selection of 50 breakthrough student prototypes",
-        "Direct connection to seed grants & Draper U acceleration pathways"
-      ],
-      image: getImageUrl("/assets/images/hero-De-l_Mnh.png"),
-      link: "https://forms.gle/y5R1jv5FbQuu6VrNA",
-      isExternal: true,
-      linkText: "Request Event Access"
-    },
-    {
       id: "cohort-3-launch-2026",
       year: "2026",
       date: "June 2026",

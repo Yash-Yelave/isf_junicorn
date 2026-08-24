@@ -30,14 +30,9 @@ export function Navbar() {
       path: "/1hour-per-week"
     },
     {
-      name: "J-Spotlight",
-      path: "/j-spotlight"
-    },
-    {
       name: "ISF Events",
       path: "#",
       submenu: [
-        { name: "J-Spotlight Edition 01", path: "/j-spotlight" },
         { name: "ISF AI Summit 2025", path: "/isf-ai-summit" },
         { name: "ISF 2024 Hyderabad", path: "/isf-hyderabad-2024-main" },
         { name: "ISF 2024 Pune", path: "/isf-2024-pune" },
