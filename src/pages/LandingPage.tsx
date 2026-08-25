@@ -198,29 +198,6 @@ export function LandingPage() {
 
   const heroSlides = [
     {
-      isCustom: true,
-      tag: "JNANANA FOUNDATION × ISF JUNICORNS",
-      title: "J-SPOTLIGHT",
-      subtitle: "NATIONAL INNOVATION CONCLAVE",
-      edition: "EDITION 01 • BENGALURU",
-      format: "MONTHLY INNOVATION SERIES",
-      date: "Saturday, 29 August 2026",
-      time: "4:00 PM – 6:00 PM IST",
-      location: "Draper U India, Bangalore",
-      coreMessage: "Empowering India's Next Generation of",
-      coreMessageHighlight: "High-Impact Founders",
-      supportingMessage: "An exclusive monthly pitch & mentorship conclave connecting curated student innovators with industry chairs, venture capital leads, and global incubation pathways.",
-      audience: ["Student Founders", "Deep-Tech Builders", "Patent Innovators", "Startup Researchers"],
-      primaryBtnText: "REQUEST DELEGATE SEAT",
-      primaryBtnLink: "https://forms.gle/y5R1jv5FbQuu6VrNA",
-      seats: "ONLY 50 DELEGATE SEATS",
-      personImage: "/assets/events/j-spotlight/j-spotlight-person.png",
-      personName: "DR. J.A. CHOWDARY",
-      personRole: "Founder & Chairman, International Startup Foundation",
-      personTitle: "Former IT Advisor to Govt of AP & TN | Ecosystem Architect",
-      bgGradient: "from-[#FFFDF9] via-[#FAF6EE] to-[#F0F7F4]"
-    },
-    {
       tag: "Cohort 3.0",
       title: "Junicorn Rural Innovation Challenge — Cohort 3.0",
       desc: "Bridging the gap between rural ambition and global opportunity. Empowering young innovators from across 20+ states to transform ideas into viable start-up ventures. Tentative Event Date: December 2026.",
@@ -248,9 +225,7 @@ export function LandingPage() {
 
   useEffect(() => {
     if (isHeroHovered) return;
-    const currentSlide = heroSlides[heroIndex];
-    // Give custom/information-rich slides 8 seconds and standard slides 6 seconds
-    const duration = currentSlide?.isCustom ? 8000 : 6000;
+    const duration = 6000;
 
     const timer = setInterval(() => {
       setHeroIndex((prev) => (prev + 1) % heroSlides.length);
@@ -414,187 +389,10 @@ export function LandingPage() {
           style={{ transform: `translateX(-${heroIndex * 100}%)` }}
         >
           {heroSlides.map((slide, idx) => (
-            slide.isCustom ? (
-              <div 
-                key={idx} 
-                className="w-full h-full shrink-0 flex items-center justify-center bg-gradient-to-br from-[#FFFDF9] via-[#FAF6EE] to-[#F0F7F4] relative overflow-hidden py-6 md:py-8 border-b border-emerald-900/10"
-              >
-                {/* Background Decorative Elements */}
-                <div className="absolute inset-0 bg-[radial-gradient(#0F5A47_1px,transparent_1px)] [background-size:24px_24px] opacity-[0.04] pointer-events-none" />
-                <div className="absolute -top-24 -left-24 w-96 h-96 bg-emerald-300/20 rounded-full blur-3xl pointer-events-none" />
-                <div className="absolute -bottom-20 right-1/3 w-80 h-80 bg-rose-300/15 rounded-full blur-3xl pointer-events-none" />
-
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10">
-                  <div className="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-8 items-center">
-                    
-                    {/* Left Column: Event Information */}
-                    <div className="md:col-span-7 flex flex-col justify-center space-y-4 text-left pr-0 md:pr-2">
-                      
-                      {/* Eyebrow + Badge */}
-                      <div className="flex flex-wrap items-center gap-2.5">
-                        <span className="text-[11px] sm:text-xs font-extrabold uppercase tracking-widest text-[#0F5A47] font-inter">
-                          {slide.tag}
-                        </span>
-                        <span className="inline-flex items-center px-3 py-0.5 rounded-full text-[10px] font-extrabold tracking-wider bg-[#D24D7F] text-white uppercase shadow-xs">
-                          {slide.format}
-                        </span>
-                      </div>
-
-                      {/* Main Title & Subtitle */}
-                      <div>
-                        <h1 className="text-3xl sm:text-4xl md:text-5xl font-black text-[#0B4637] tracking-tight leading-none flex items-center flex-wrap gap-x-1.5">
-                          <span>J-SP</span>
-                          {/* Radiant Spotlight Light Beam 'O' Highlight */}
-                          <span className="relative inline-flex items-center justify-center w-9 h-9 sm:w-11 sm:h-11 md:w-12 md:h-12 rounded-full bg-gradient-to-tr from-amber-400 via-amber-300 to-yellow-100 text-slate-950 shadow-[0_0_22px_rgba(245,158,11,0.7)] border-2 border-[#0B4637] relative -top-0.5 mx-0.5 overflow-visible">
-                            <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-6 h-6 sm:w-7 sm:h-7 text-amber-950 drop-shadow-md">
-                              {/* Stage Lamp Housing */}
-                              <path d="M16 3L11 9H21L16 3Z" fill="#1E293B" />
-                              {/* Lamp Lens Ring */}
-                              <ellipse cx="16" cy="9" rx="5" ry="1.5" fill="#F59E0B" />
-                              {/* Downward Radiant Light Beam Cone */}
-                              <path d="M11 9.5L4 28H28L21 9.5H11Z" fill="url(#stageLightConeGrad)" opacity="0.85" />
-                              {/* Focal Beam Flare Core */}
-                              <circle cx="16" cy="9.5" r="3" fill="#FFFFFF" />
-                              <defs>
-                                <linearGradient id="stageLightConeGrad" x1="16" y1="9.5" x2="16" y2="28" gradientUnits="userSpaceOnUse">
-                                  <stop stopColor="#FFFFFF" stopOpacity="0.95" />
-                                  <stop offset="0.5" stopColor="#FBBF24" stopOpacity="0.75" />
-                                  <stop offset="1" stopColor="#F59E0B" stopOpacity="0.15" />
-                                </linearGradient>
-                              </defs>
-                            </svg>
-                            <span className="absolute -inset-1 rounded-full bg-amber-400/40 blur-sm -z-10 animate-pulse" />
-                          </span>
-                          <span>TLIGHT</span>
-                        </h1>
-
-                        <div className="flex items-center gap-2 mt-3 flex-wrap">
-                          <span className="bg-[#D24D7F] text-white text-xs sm:text-sm font-extrabold uppercase px-3.5 py-1 rounded-md shadow-xs tracking-wider">
-                            {slide.subtitle}
-                          </span>
-                          <span className="bg-[#0F5A47] text-amber-300 text-xs font-bold uppercase px-3 py-1 rounded-md tracking-wide border border-emerald-700">
-                            {slide.edition}
-                          </span>
-                        </div>
-                      </div>
-
-                      {/* Core Message & Supporting */}
-                      <div className="space-y-1.5 pt-1">
-                        <p className="text-base sm:text-lg md:text-xl font-semibold text-slate-800 leading-snug tracking-tight">
-                          {slide.coreMessage}{" "}
-                          <span className="text-[#D24D7F] font-bold">
-                            {slide.coreMessageHighlight}
-                          </span>
-                        </p>
-                        <p className="text-xs sm:text-sm text-slate-600 font-normal leading-relaxed max-w-xl">
-                          {slide.supportingMessage}
-                        </p>
-                      </div>
-
-                      {/* Metadata Row: Date, Time, Location */}
-                      <div className="flex flex-wrap items-center gap-3 py-2 px-4 bg-white/95 backdrop-blur border border-emerald-900/15 rounded-xl text-xs sm:text-sm font-semibold text-slate-800 shadow-xs w-fit">
-                        <div className="flex items-center gap-1.5 text-[#0F5A47]">
-                          <Calendar size={16} className="text-[#D24D7F]" />
-                          <span>{slide.date}</span>
-                        </div>
-                        <span className="text-slate-300 font-normal">|</span>
-                        <div className="flex items-center gap-1.5 text-[#0F5A47]">
-                          <Clock size={16} className="text-[#D24D7F]" />
-                          <span>{slide.time}</span>
-                        </div>
-                        <span className="text-slate-300 font-normal">|</span>
-                        <div className="flex items-center gap-1.5 text-[#0F5A47]">
-                          <MapPin size={16} className="text-[#D24D7F]" />
-                          <span>{slide.location}</span>
-                        </div>
-                      </div>
-
-                      {/* Audience / Experience Tags */}
-                      <div className="flex flex-wrap items-center gap-1.5 text-xs text-slate-600">
-                        <span className="font-extrabold text-[#0F5A47] uppercase tracking-wider text-[11px] mr-1">Target Cohort:</span>
-                        {slide.audience?.map((item: string, i: number) => (
-                          <span key={i} className="inline-flex items-center bg-white text-[#0F5A47] px-3 py-1 rounded-full border border-emerald-300/80 font-bold text-[11px] shadow-2xs">
-                            {item}
-                          </span>
-                        ))}
-                      </div>
-
-                      {/* CTA & Seat Count */}
-                      <div className="flex flex-wrap items-center gap-3.5 pt-1">
-                        <a
-                          href={slide.primaryBtnLink}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="bg-[#0F5A47] hover:bg-[#083b2e] text-white text-xs sm:text-sm font-extrabold uppercase tracking-wider px-5 py-2.5 rounded-xl shadow-md hover:shadow-lg transition-all cursor-pointer border border-emerald-600/50 flex items-center gap-2 group"
-                        >
-                          <span>{slide.primaryBtnText}</span>
-                          <span className="w-2.5 h-2.5 rounded-full bg-amber-400 group-hover:scale-125 transition-transform" />
-                        </a>
-
-                        <a
-                          href="/j-spotlight"
-                          className="bg-white hover:bg-slate-50 text-[#09523B] text-xs sm:text-sm font-extrabold uppercase tracking-wider px-5 py-2.5 rounded-xl shadow-xs hover:shadow-md transition-all border border-emerald-700/40 flex items-center gap-1.5"
-                        >
-                          <span>View Details</span>
-                          <ArrowRight size={14} />
-                        </a>
-
-                        <div className="bg-amber-100/90 border border-amber-300 text-amber-950 text-xs font-extrabold px-3.5 py-2.5 rounded-xl flex items-center gap-2 shadow-xs">
-                          <span className="w-2.5 h-2.5 rounded-full bg-amber-500 animate-ping" />
-                          <span>{slide.seats}</span>
-                        </div>
-                      </div>
-
-                    </div>
-
-                    {/* Right Column: Person Profile Card */}
-                    <div className="md:col-span-5 flex flex-col items-center justify-center relative">
-                      <div className="relative w-full max-w-[300px] sm:max-w-[330px]">
-                        
-                        {/* Person Card Structure */}
-                        <div className="relative overflow-hidden rounded-2xl bg-white border border-emerald-800/20 shadow-2xl flex flex-col">
-                          
-                          {/* Image Frame */}
-                          <div className="relative h-[230px] sm:h-[250px] bg-gradient-to-b from-emerald-50/90 via-amber-50/20 to-slate-100 flex items-center justify-center p-2 overflow-hidden">
-                            <img
-                              src={slide.personImage}
-                              alt={slide.personName}
-                              className="h-full w-auto object-contain drop-shadow-md transform hover:scale-105 transition-transform duration-500"
-                              onError={(e) => {
-                                e.currentTarget.src = "/assets/images/J-A-Chowdary.png";
-                              }}
-                            />
-                            <span className="absolute top-3 left-3 bg-gradient-to-r from-[#D24D7F] to-[#E5532A] text-white text-[10px] font-extrabold uppercase tracking-widest px-3 py-1 rounded-md shadow-md">
-                              KEYNOTE INAUGURATION
-                            </span>
-                          </div>
-
-                          {/* Info Panel Below Photo with High Contrast Executive Styling */}
-                          <div className="p-4 bg-gradient-to-b from-slate-900 to-slate-950 text-white text-left space-y-1 border-t-2 border-amber-400">
-                            <h4 className="text-base font-extrabold text-amber-300 tracking-wide font-baskerville">
-                              {slide.personName}
-                            </h4>
-                            <p className="text-xs font-bold text-emerald-400">
-                              {slide.personRole}
-                            </p>
-                            <p className="text-[11px] text-slate-200 font-medium leading-tight">
-                              {slide.personTitle}
-                            </p>
-                          </div>
-
-                        </div>
-
-                      </div>
-                    </div>
-
-                  </div>
-                </div>
-              </div>
-            ) : (
-              <div 
-                key={idx} 
-                className={`w-full h-full shrink-0 flex items-center justify-center bg-gradient-to-r ${slide.bgGradient} py-12 md:py-16`}
-              >
+            <div 
+              key={idx} 
+              className={`w-full h-full shrink-0 flex items-center justify-center bg-gradient-to-r ${slide.bgGradient} py-12 md:py-16`}
+            >
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
                   <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-center h-full">
                     
@@ -665,7 +463,6 @@ export function LandingPage() {
                   </div>
                 </div>
               </div>
-            )
           ))}
         </div>
 
