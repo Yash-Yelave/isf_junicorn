@@ -75,12 +75,18 @@ export function OneHourAWeek() {
             <p className="text-sm text-slate-600 leading-relaxed">
               Empower the next generation of innovators! This program connects mentors (experienced professionals, industry leaders) with mentees (startups, students, and aspiring entrepreneurs) worldwide. Share your expertise, inspire growth, and make a global impact—all in just one hour a week.
             </p>
-            <div className="flex gap-4">
+            <div className="flex flex-wrap gap-4">
               <Link
                 to="/mentor-form"
                 className="bg-isf-orange hover:bg-isf-orange-hover text-white text-xs font-bold uppercase tracking-wider px-6 py-3.5 rounded shadow transition-all"
               >
                 Mentor Registration
+              </Link>
+              <Link
+                to="/registration/student"
+                className="bg-slate-900 hover:bg-slate-800 text-white text-xs font-bold uppercase tracking-wider px-6 py-3.5 rounded shadow transition-all"
+              >
+                Mentee Registration
               </Link>
             </div>
           </div>
@@ -191,7 +197,7 @@ export function OneHourAWeek() {
           </p>
         </div>
 
-        <div className="max-w-xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
           <div className="bg-white border border-gray-200 rounded-lg p-8 shadow-sm flex flex-col justify-between hover:border-isf-orange transition-colors">
             <div className="space-y-4 mb-6">
               <h3 className="text-lg font-bold font-baskerville text-slate-900">
@@ -206,6 +212,23 @@ export function OneHourAWeek() {
               className="block text-center text-xs font-bold uppercase tracking-wider text-white bg-isf-orange hover:bg-isf-orange-hover py-3 rounded"
             >
               Mentor Registration
+            </Link>
+          </div>
+
+          <div className="bg-white border border-gray-200 rounded-lg p-8 shadow-sm flex flex-col justify-between hover:border-slate-800 transition-colors">
+            <div className="space-y-4 mb-6">
+              <h3 className="text-lg font-bold font-baskerville text-slate-900">
+                Register as a Mentee
+              </h3>
+              <p className="text-xs text-slate-500 leading-relaxed">
+                Gain invaluable 1-on-1 mentorship from industry leaders, CXOs, and experts to scale your startup or student venture.
+              </p>
+            </div>
+            <Link
+              to="/registration/student"
+              className="block text-center text-xs font-bold uppercase tracking-wider text-white bg-slate-900 hover:bg-slate-800 py-3 rounded"
+            >
+              Mentee Registration
             </Link>
           </div>
         </div>
