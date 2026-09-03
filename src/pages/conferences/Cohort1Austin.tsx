@@ -106,7 +106,6 @@ export function Cohort1Austin() {
           <a href="#speakers" className="hover:text-[#d94686] transition-colors whitespace-nowrap">Speakers</a>
           <a href="#schedule" className="hover:text-[#d94686] transition-colors whitespace-nowrap">Schedule</a>
           <a href="#angels" className="hover:text-[#d94686] transition-colors whitespace-nowrap">Idea Angels</a>
-          <a href="#usa-team" className="hover:text-[#d94686] transition-colors whitespace-nowrap">USA Committee</a>
           <a href="#junicorn-team" className="hover:text-[#d94686] transition-colors whitespace-nowrap">Project Teams</a>
           <a href="#venue" className="hover:text-[#d94686] transition-colors whitespace-nowrap">Venue & City</a>
           <a href="#partners" className="hover:text-[#d94686] transition-colors whitespace-nowrap">Partners</a>
@@ -639,51 +638,6 @@ export function Cohort1Austin() {
                 </div>
                 <p className="text-[10px] text-[#666666] leading-snug mt-3 border-t border-[#eaeaea] pt-2.5">
                   {a.description}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* USA Host Committee */}
-      <section className="py-16 md:py-24 bg-[#FAF9F6] border-t border-b border-[#eaeaea]" id="usa-team">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <span className="px-3 py-1 text-xs font-semibold bg-[#d94686]/10 text-[#d94686] rounded-full tracking-wider uppercase inline-block mb-3">
-              Committee
-            </span>
-            <h2 className="text-3xl md:text-4xl font-bold font-sans text-[#063a31]">
-              USA Host Committee
-            </h2>
-            <p className="text-[#666666] text-sm md:text-base max-w-2xl mx-auto mt-2">
-              Meet the team driving our mission in the USA.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-6">
-            {usaCommittee.map((u, idx) => (
-              <div 
-                key={idx}
-                className="bg-white border border-[#eaeaea] rounded-3xl p-5 shadow-sm text-center flex flex-col justify-between h-full hover:shadow-md transition-shadow"
-              >
-                <div>
-                  <div className="w-20 h-20 rounded-full overflow-hidden mx-auto mb-4 border border-[#eaeaea] bg-[#FAF8F5]">
-                    <img 
-                      src={u.image} 
-                      alt={u.name} 
-                      className="w-full h-full object-cover object-top"
-                      onError={(e) => {
-                        e.currentTarget.src = "/assets/images/404";
-                      }}
-                    />
-                  </div>
-                  <h3 className="text-xs font-bold text-[#063a31] font-sans leading-tight">
-                    {u.name}
-                  </h3>
-                </div>
-                <p className="text-[10px] text-[#666666] leading-snug mt-3 border-t border-[#eaeaea] pt-2.5 line-clamp-3" title={u.description}>
-                  {u.description}
                 </p>
               </div>
             ))}
