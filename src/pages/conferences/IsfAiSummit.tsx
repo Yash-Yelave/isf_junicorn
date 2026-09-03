@@ -106,7 +106,6 @@ export function IsfAiSummit() {
           <a href="#schedule" className="hover:text-isf-orange transition-colors whitespace-nowrap">Schedule</a>
           <a href="#angels" className="hover:text-isf-orange transition-colors whitespace-nowrap">Idea Angels</a>
           <a href="#usa-team" className="hover:text-isf-orange transition-colors whitespace-nowrap">USA Committee</a>
-          <a href="#junicorn-team" className="hover:text-isf-orange transition-colors whitespace-nowrap">Project Teams</a>
           <a href="#venue" className="hover:text-isf-orange transition-colors whitespace-nowrap">Venue & City</a>
           <a href="#partners" className="hover:text-isf-orange transition-colors whitespace-nowrap">Partners</a>
         </div>
@@ -597,93 +596,6 @@ export function IsfAiSummit() {
               </div>
             ))}
           </div>
-        </div>
-      </section>
-
-      {/* Project Leadership & Management Team */}
-      <section className="py-16 md:py-24 bg-white" id="junicorn-team">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          
-          {/* Leadership Team */}
-          <div className="mb-20">
-            <div className="text-center mb-12">
-              <span className="px-3 py-1 text-xs font-semibold bg-isf-orange/10 text-isf-orange rounded-full tracking-wider uppercase inline-block mb-3">
-                Leadership
-              </span>
-              <h2 className="text-3xl font-bold font-baskerville text-slate-900">
-                ISF Junicorn Project Leadership Team
-              </h2>
-            </div>
-
-            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-7 gap-5">
-              {leadershipTeam.map((l, idx) => (
-                <div 
-                  key={idx}
-                  className="bg-slate-50 border border-slate-200 rounded-xl p-4 shadow-sm text-center flex flex-col justify-between h-full hover:shadow-md transition-shadow"
-                >
-                  <div>
-                    <div className="w-16 h-16 rounded-full overflow-hidden mx-auto mb-3 border border-slate-200 bg-slate-100">
-                      <img 
-                        src={l.image} 
-                        alt={l.name} 
-                        className="w-full h-full object-cover object-top"
-                        onError={(e) => {
-                          e.currentTarget.src = "/assets/images/404";
-                        }}
-                      />
-                    </div>
-                    <h3 className="text-xs font-bold text-slate-900 font-baskerville leading-tight">
-                      {l.name}
-                    </h3>
-                  </div>
-                  <p className="text-[9px] text-slate-500 leading-snug mt-3 border-t border-slate-200/60 pt-2 line-clamp-3" title={l.description}>
-                    {l.description}
-                  </p>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Management Team */}
-          <div>
-            <div className="text-center mb-12">
-              <span className="px-3 py-1 text-xs font-semibold bg-isf-orange/10 text-isf-orange rounded-full tracking-wider uppercase inline-block mb-3">
-                Management
-              </span>
-              <h2 className="text-3xl font-bold font-baskerville text-slate-900">
-                ISF Junicorn Project Management Team
-              </h2>
-            </div>
-
-            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 xl:grid-cols-9 gap-4">
-              {managementTeam.map((m, idx) => (
-                <div 
-                  key={idx}
-                  className="bg-slate-50 border border-slate-200 rounded-xl p-3 shadow-sm text-center flex flex-col justify-between h-full hover:shadow-md transition-shadow"
-                >
-                  <div>
-                    <div className="w-14 h-14 rounded-full overflow-hidden mx-auto mb-2 border border-slate-200 bg-slate-100">
-                      <img 
-                        src={m.image} 
-                        alt={m.name} 
-                        className="w-full h-full object-cover object-top"
-                        onError={(e) => {
-                          e.currentTarget.src = "/assets/images/404";
-                        }}
-                      />
-                    </div>
-                    <h3 className="text-[10px] font-bold text-slate-900 font-baskerville leading-tight">
-                      {m.name}
-                    </h3>
-                  </div>
-                  <p className="text-[9px] text-slate-500 leading-snug mt-2 border-t border-slate-200/60 pt-1.5">
-                    {m.description}
-                  </p>
-                </div>
-              ))}
-            </div>
-          </div>
-
         </div>
       </section>
 

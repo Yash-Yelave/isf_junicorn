@@ -391,7 +391,7 @@ export function DubaiEvent() {
               Rising Stars
             </span>
             <h2 className="text-3xl md:text-5xl font-bold text-[#063a31]">
-              Junicorns Dubai & Austin
+              Junicorns Dubai
             </h2>
           </div>
 
