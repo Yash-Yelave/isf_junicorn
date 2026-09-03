@@ -33,11 +33,11 @@ export function Navbar() {
       name: "ISF Events",
       path: "#",
       submenu: [
-        { name: "ISF AI Summit 2025", path: "/isf-ai-summit" },
-        { name: "ISF 2024 Hyderabad", path: "/isf-hyderabad-2024-main" },
-        { name: "ISF 2024 Pune", path: "/isf-2024-pune" },
-        { name: "ISF 2024 Jamaica", path: "/isf-jamaica-isf-global-cxo-summit" },
-        { name: "ISF 2024 USA", path: "/conference-delegate-registration-isf-usa-2024" }
+        { name: "Global AI Summit 2025 USA", path: "/isf-ai-summit" },
+        { name: "International Startup Festival 2024 Hyderabad", path: "/isf-hyderabad-2024-main" },
+        { name: "Investor Connect & Curtain Raiser 2024 Pune", path: "/isf-2024-pune" },
+        { name: "USA ISF Chapter Curtain Raiser 2024", path: "/conference-delegate-registration-isf-usa-2024" },
+        { name: "Global CXO Retreat Jamica 2024", path: "/isf-jamaica-isf-global-cxo-summit" }
       ]
     },
     {
@@ -46,7 +46,7 @@ export function Navbar() {
       submenu: [
         { name: "About Junicorn", path: "/junicornshub" },
         { name: "Cohort 3.0", path: "/cohort-3" },
-        { name: "Cohort 2.0 Dubai 2026", path: "/cohort-2-dubai" },
+        { name: "Cohort 2.0 Dubai", path: "/cohort-2-dubai" },
         { name: "Cohort 1 Austin", path: "/cohort-1-austin" }
       ]
     },
@@ -103,7 +103,7 @@ export function Navbar() {
 
                 {/* Submenu Dropdown */}
                 {item.submenu && activeDropdown === item.name && (
-                  <div className="absolute left-0 mt-0 w-64 bg-white border border-gray-200 rounded-md shadow-lg py-2 z-50">
+                  <div className="absolute left-0 mt-0 w-80 bg-white border border-gray-200 rounded-md shadow-lg py-2 z-50">
                     {item.submenu.map((subItem, idx) => (
                       <Link
                         key={idx}

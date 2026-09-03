@@ -51,23 +51,28 @@ export function Footer() {
                 </Link>
               </li>
               <li>
+                <Link to="/isf-ai-summit" className="hover:text-isf-orange transition-colors">
+                  Global AI Summit 2025 USA
+                </Link>
+              </li>
+              <li>
                 <Link to="/isf-hyderabad-2024-main" className="hover:text-isf-orange transition-colors">
-                  ISF 2024 Hyderabad
+                  International Startup Festival 2024 Hyderabad
                 </Link>
               </li>
               <li>
                 <Link to="/isf-2024-pune" className="hover:text-isf-orange transition-colors">
-                  ISF 2024 Pune
-                </Link>
-              </li>
-              <li>
-                <Link to="/isf-jamaica-isf-global-cxo-summit" className="hover:text-isf-orange transition-colors">
-                  ISF 2024 Jamaica
+                  Investor Connect & Curtain Raiser 2024 Pune
                 </Link>
               </li>
               <li>
                 <Link to="/conference-delegate-registration-isf-usa-2024" className="hover:text-isf-orange transition-colors">
-                  ISF 2024 New Jersey
+                  USA ISF Chapter Curtain Raiser 2024
+                </Link>
+              </li>
+              <li>
+                <Link to="/isf-jamaica-isf-global-cxo-summit" className="hover:text-isf-orange transition-colors">
+                  Global CXO Retreat Jamica 2024
                 </Link>
               </li>
             </ul>
