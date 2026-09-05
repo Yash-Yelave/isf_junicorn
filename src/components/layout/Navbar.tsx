@@ -33,6 +33,7 @@ export function Navbar() {
       name: "ISF Events",
       path: "#",
       submenu: [
+        { name: "Global Innovation Summit 2026 Dubai", path: "/isf-global-retreat-dubai-2026" },
         { name: "Global AI Summit 2025 USA", path: "/isf-ai-summit" },
         { name: "International Startup Festival 2024 Hyderabad", path: "/isf-hyderabad-2024-main" },
         { name: "Investor Connect & Curtain Raiser 2024 Pune", path: "/isf-2024-pune" },

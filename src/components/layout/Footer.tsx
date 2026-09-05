@@ -51,6 +51,11 @@ export function Footer() {
                 </Link>
               </li>
               <li>
+                <Link to="/isf-global-retreat-dubai-2026" className="hover:text-isf-orange transition-colors">
+                  Global Innovation Summit 2026 Dubai
+                </Link>
+              </li>
+              <li>
                 <Link to="/isf-ai-summit" className="hover:text-isf-orange transition-colors">
                   Global AI Summit 2025 USA
                 </Link>

@@ -163,16 +163,7 @@ export const speakers = [
     "role": "Indian Ambassador to the United Arab Emirates (UAE)",
     "image": "/assets/images/user-placeholder.png"
   },
-  {
-    "name": "Hon. Sridhar Babu Dudilla",
-    "role": "Cabinet Minister, Minister of IT, Electronics & Communications",
-    "image": "/assets/images/user-placeholder.png"
-  },
-  {
-    "name": "Hon. K T Rama Rao",
-    "role": "MLA, Telangana & Working President of Bharat Rashtra Samithi (BRS)",
-    "image": "/assets/images/user-placeholder.png"
-  },
+
   {
     "name": "Amb. Dr. Dunston P",
     "role": "CEO, Private Office of H.H. Sheikh Ahmed Bin Faisal Al-Qassimi",

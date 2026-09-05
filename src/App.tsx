@@ -58,6 +58,7 @@ function App() {
             
             {/* Conferences Pages */}
             <Route path="/isf-ai-summit" element={<IsfAiSummit />} />
+            <Route path="/isf-global-retreat-dubai-2026" element={<DubaiEvent />} />
             <Route path="/cohort-1-austin" element={<Cohort1Austin />} />
             <Route path="/cohort-2-dubai" element={<DubaiEvent />} />
             <Route path="/isf-hyderabad-2024-main" element={<IsfHyderabad2024 />} />

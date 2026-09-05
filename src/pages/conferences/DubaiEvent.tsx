@@ -1,5 +1,6 @@
 import { getImageUrl } from "../../utils/imageUtils";
 import React, { useState } from "react";
+import { useLocation } from "react-router-dom";
 import { 
   Calendar, 
   MapPin, 
@@ -21,11 +22,10 @@ import {
   ArrowRight
 } from "lucide-react";
 import { 
-schedule, 
+  schedule, 
   speakers, 
   panels, 
-  roundtables, 
-  junicorns 
+  roundtables 
 } from "./dubaiEventData";
 
 const IconMap: Record<string, React.ComponentType<any>> = {
@@ -39,6 +39,9 @@ const IconMap: Record<string, React.ComponentType<any>> = {
 };
 
 export function DubaiEvent() {
+  const location = useLocation();
+  const isCohort2Dubai = location.pathname.includes("cohort-2-dubai");
+
   const [activeScheduleDay, setActiveScheduleDay] = useState(0);
   const [speakerCount, setSpeakerCount] = useState(12);
   const [activeHighlight, setActiveHighlight] = useState(3);
@@ -81,11 +84,14 @@ export function DubaiEvent() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5 overflow-x-auto flex gap-6 md:gap-8 scrollbar-none justify-start md:justify-center text-xs md:text-sm font-semibold text-[#1a1a1a]">
           <a href="#highlights" className="hover:text-[#d94686] transition-colors whitespace-nowrap">Highlights</a>
           <a href="#schedule" className="hover:text-[#d94686] transition-colors whitespace-nowrap">Schedule</a>
-          <a href="#speakers" className="hover:text-[#d94686] transition-colors whitespace-nowrap">Speakers</a>
-          <a href="#panels" className="hover:text-[#d94686] transition-colors whitespace-nowrap">Panels</a>
-          <a href="#roundtables" className="hover:text-[#d94686] transition-colors whitespace-nowrap">Roundtables</a>
-          <a href="#junicorns" className="hover:text-[#d94686] transition-colors whitespace-nowrap">Junicorns</a>
-          <a href="#venue" className="hover:text-[#d94686] transition-colors whitespace-nowrap">Venue</a>
+          {!isCohort2Dubai && (
+            <>
+              <a href="#speakers" className="hover:text-[#d94686] transition-colors whitespace-nowrap">Speakers</a>
+              <a href="#panels" className="hover:text-[#d94686] transition-colors whitespace-nowrap">Panels</a>
+              <a href="#roundtables" className="hover:text-[#d94686] transition-colors whitespace-nowrap">Roundtables</a>
+              <a href="#venue" className="hover:text-[#d94686] transition-colors whitespace-nowrap">Venue</a>
+            </>
+          )}
         </div>
       </div>
 
@@ -98,96 +104,114 @@ export function DubaiEvent() {
         </div>
         
         <div className="max-w-7xl mx-auto w-full relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-12 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
             
-            {/* Left Column: Text Content */}
-            <div className="lg:col-span-7 text-center lg:text-left space-y-6 animate-fade-in-up">
-              <span className="px-4 py-1.5 text-xs font-bold uppercase tracking-widest text-[#063a31] inline-flex items-center gap-1.5 mb-2 bg-[#eae3d2]/20 rounded-full">
-                <Calendar size={14} />
-                Jan 9-11, 2026 • Dubai, UAE
-              </span>
-              <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-[#063a31] leading-tight">
-                Global Innovation <br className="hidden sm:inline" />
-                <span className="text-transparent bg-clip-text bg-[linear-gradient(90deg,#D7438F_0%,#FEC305_44.71%,#026956_100%)]">Summit & Retreat</span>
+            {/* Left Content */}
+            <div className="lg:col-span-7 space-y-6 text-left">
+              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white border border-[#e6f2ef] shadow-sm">
+                <Calendar size={14} className="text-[#016a56]" />
+                <span className="text-xs font-bold text-[#063a31] uppercase tracking-wider">Jan 9-11, 2026 • Dubai, UAE</span>
+              </div>
+              
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-[#063a31] leading-[1.1]">
+                Global Innovation <br />
+                <span className="text-transparent bg-clip-text bg-[linear-gradient(90deg,#016a56_0%,#cd8e05_100%)]">Summit &amp; Retreat</span>
               </h1>
-              <p className="text-sm md:text-base text-[#4d4d4d] max-w-2xl mx-auto lg:mx-0 leading-relaxed">
-                Join us for an unforgettable experience at Summit 2026! Hosted by ISF & Global CIO Circle at InterContinental Hotel Dubai Festival City by IHG.
+              
+              <p className="text-base sm:text-lg text-[#4d4d4d] max-w-2xl font-normal leading-relaxed">
+                Connect with global investors, tech leaders, and ecosystem builders in the heart of Dubai for 3 days of high-impact networking, keynotes, and strategic roundtables.
               </p>
-              <div className="flex justify-center lg:justify-start">
+
+              <div className="flex flex-wrap gap-4 pt-2">
                 <a 
-                  href="#schedule" 
-                  className="inline-flex items-center justify-center text-sm font-bold bg-[linear-gradient(90deg,#D7438F_0%,#FEC305_44.71%,#026956_100%)] text-white px-8 py-3.5 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-0.5"
+                  href="#schedule"
+                  className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-[#016a56] hover:bg-[#063a31] text-white font-bold text-sm shadow-md transition-all duration-300 hover:shadow-lg"
                 >
-                  View Schedule
+                  View Schedule <ArrowRight size={16} />
                 </a>
+                {!isCohort2Dubai && (
+                  <a 
+                    href="#speakers"
+                    className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-white hover:bg-slate-50 text-[#063a31] border border-[#eaeaea] font-bold text-sm shadow-sm transition-all duration-300"
+                  >
+                    Explore Speakers
+                  </a>
+                )}
               </div>
             </div>
 
-            {/* Right Column: Illustration Image */}
-            <div className="lg:col-span-5 flex items-center justify-center animate-fade-in">
-              <img
-                src={getImageUrl("/assets/images/dubai-illustration.png")}
-                alt="Dubai Skyline Illustration"
-                className="w-full max-w-[450px] md:max-w-[500px] h-auto object-contain drop-shadow-[0_15px_30px_rgba(0,0,0,0.05)]"
-              />
+            {/* Right Card / Visual */}
+            <div className="lg:col-span-5">
+              <div className="bg-white border-2 border-[#e6f2ef] rounded-3xl p-6 sm:p-8 shadow-xl relative overflow-hidden space-y-6">
+                <div className="absolute top-0 right-0 w-32 h-32 bg-[radial-gradient(ellipse_at_top_right,#FFA2D2_0%,transparent_70%)] opacity-30 pointer-events-none"></div>
+                
+                <div className="space-y-4">
+                  <span className="px-3 py-1 text-[11px] font-bold uppercase tracking-wider bg-[#fff7e3] text-[#cd8e05] rounded-full inline-block">
+                    Premier Global Gathering
+                  </span>
+                  <h3 className="text-2xl font-bold text-[#063a31]">
+                    InterContinental Hotel Dubai
+                  </h3>
+                  <p className="text-xs text-[#4d4d4d] leading-relaxed">
+                    Festival City by IHG — hosting 500+ delegates, CXOs, and Middle East VCs assembled for cross-border collaboration.
+                  </p>
+                </div>
+
+                <div className="grid grid-cols-2 gap-4 border-t border-b border-[#eaeaea] py-4 text-left">
+                  <div>
+                    <span className="block text-2xl font-bold text-[#016a56]">500+</span>
+                    <span className="text-[11px] text-[#4d4d4d] uppercase font-semibold">Global Delegates</span>
+                  </div>
+                  <div>
+                    <span className="block text-2xl font-bold text-[#cd8e05]">50+</span>
+                    <span className="text-[11px] text-[#4d4d4d] uppercase font-semibold">Pitching Startups</span>
+                  </div>
+                </div>
+
+                <div className="space-y-2">
+                  <div className="flex items-center gap-2 text-xs font-semibold text-[#063a31]">
+                    <CheckCircle2 size={16} className="text-[#016a56]" />
+                    <span>Live prototype showcases to VC funds</span>
+                  </div>
+                  <div className="flex items-center gap-2 text-xs font-semibold text-[#063a31]">
+                    <CheckCircle2 size={16} className="text-[#016a56]" />
+                    <span>Cross-border trade &amp; ecosystem integration</span>
+                  </div>
+                </div>
+              </div>
             </div>
-            
+
           </div>
         </div>
       </section>
 
-      {/* Highlights Section */}
-      <section className="py-20 md:py-28 bg-[linear-gradient(180deg,#FFFFFF_0%,#FAF9F6_100%)] overflow-hidden" id="highlights">
+      {/* Highlights Interactive Grid */}
+      <section className="py-16 md:py-24 bg-white" id="highlights">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <span className="px-4 py-1 text-xs font-bold bg-[#e6f2ef] text-[#016a56] rounded-full tracking-widest uppercase inline-block mb-4 border border-[#016a56]/10">
-              Highlights
+            <span className="px-4 py-1 text-xs font-bold bg-[#e6f2ef] text-[#016a56] rounded-full tracking-widest uppercase inline-block mb-4">
+              Key Focus Areas
             </span>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#063a31]">
+            <h2 className="text-3xl md:text-5xl font-bold text-[#063a31]">
               Summit Highlights
             </h2>
-            <p className="text-[#4d4d4d] text-sm md:text-base max-w-xl mx-auto mt-3">
-              Discover what awaits you at the Dubai Global Innovation Summit & Retreat
-            </p>
           </div>
 
-          {/* Overlapping Cards Stack */}
-          <div className="flex flex-col md:flex-row items-stretch justify-center pt-6 pb-10 px-2 max-w-6xl mx-auto min-h-[320px]">
-            {highlights.map((item, idx) => {
-              const IconComp = item.icon;
-              const isActive = activeHighlight === idx;
-              
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {highlights.map((h, idx) => {
+              const Icon = h.icon;
               return (
-                <div
+                <div 
                   key={idx}
-                  onClick={() => setActiveHighlight(idx)}
-                  onMouseEnter={() => setActiveHighlight(idx)}
-                  className={`relative cursor-pointer transition-all duration-700 ease-in-out rounded-2xl p-7 md:p-8 flex flex-col justify-start w-full md:w-[280px] lg:w-[300px] shrink-0 mb-6 md:mb-0 ${
-                    idx > 0 ? "md:-ml-8 lg:-ml-12" : ""
-                  } ${
-                    isActive
-                      ? "z-30 bg-white text-[#063a31] scale-[1.05] -translate-y-4 border-2 border-[#016a56] shadow-none"
-                      : "z-10 bg-white text-[#063a31] border border-[#e6f2ef] hover:z-20 hover:-translate-y-2 opacity-95 hover:opacity-100 shadow-[0_18px_40px_rgba(0,0,0,0.22)]"
-                  }`}
+                  className="bg-[#fafafa] border border-[#eaeaea] hover:border-[#016a56]/40 rounded-2xl p-6 shadow-sm hover:shadow-md transition-all duration-300 flex flex-col justify-between group"
                 >
-                  {/* Icon Container */}
-                  <div className={`w-16 h-16 rounded-2xl flex items-center justify-center mb-6 transition-all duration-700 ease-in-out ${
-                    isActive 
-                      ? "bg-[#016a56] text-white scale-105" 
-                      : "bg-[#e6f2ef] text-[#016a56]"
-                  }`}>
-                    <IconComp size={28} />
+                  <div className="space-y-4">
+                    <div className="w-12 h-12 rounded-xl bg-white border border-[#e6f2ef] flex items-center justify-center text-[#016a56] group-hover:bg-[#016a56] group-hover:text-white transition-colors duration-300 shadow-sm">
+                      <Icon size={24} />
+                    </div>
+                    <h3 className="text-lg font-bold text-[#063a31]">{h.title}</h3>
+                    <p className="text-xs text-[#4d4d4d] leading-relaxed">{h.description}</p>
                   </div>
-
-                  {/* Card Title */}
-                  <h3 className="text-xl md:text-2xl font-bold text-[#063a31] mb-3 leading-snug">
-                    {item.title}
-                  </h3>
-
-                  {/* Card Description */}
-                  <p className="text-sm leading-relaxed text-[#555555]">
-                    {item.description}
-                  </p>
                 </div>
               );
             })}
@@ -195,237 +219,221 @@ export function DubaiEvent() {
         </div>
       </section>
 
-      {/* Event Schedule Section */}
+      {/* Schedule Section */}
       <section className="py-16 md:py-24 bg-[#fafafa] border-t border-b border-[#eaeaea]" id="schedule">
-        <div className="max-w-4xl mx-auto px-4">
-          <div className="text-center mb-16">
-            <span className="px-4 py-1 text-xs font-bold bg-[#e6f2ef] text-[#016a56] rounded-full tracking-widest uppercase inline-block mb-4">
-              Timeline
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <span className="px-4 py-1 text-xs font-bold bg-[#fff7e3] text-[#cd8e05] rounded-full tracking-widest uppercase inline-block mb-4">
+              Agenda
             </span>
             <h2 className="text-3xl md:text-5xl font-bold text-[#063a31]">
-              Event Agenda
+              Event Schedule
             </h2>
-            <p className="text-[#4d4d4d] text-base max-w-lg mx-auto mt-4">
-              January 9–11, 2026 | InterContinental Dubai Festival City
-            </p>
           </div>
 
-          <div className="flex bg-white rounded-full p-1.5 shadow-[0_4px_20px_rgba(0,0,0,0.05)] mb-12">
-            {schedule.map((day, idx) => (
-              <button 
-                key={idx}
-                onClick={() => setActiveScheduleDay(idx)}
-                className={`flex-1 text-center py-3.5 rounded-full text-sm font-bold transition-all duration-300 ${
-                  activeScheduleDay === idx 
-                    ? "bg-[#063a31] text-white shadow-md" 
-                    : "text-[#4d4d4d] hover:text-[#063a31]"
-                }`}
-              >
-                {day.day} ({day.date})
-              </button>
-            ))}
+          {/* Day Selector */}
+          <div className="flex justify-center mb-12">
+            <div className="inline-flex bg-white p-1.5 rounded-2xl border border-[#eaeaea] shadow-sm">
+              {schedule.map((s, idx) => (
+                <button
+                  key={idx}
+                  onClick={() => setActiveScheduleDay(idx)}
+                  className={`px-5 py-2.5 rounded-xl text-xs md:text-sm font-bold transition-all duration-300 ${
+                    activeScheduleDay === idx 
+                      ? "bg-[#016a56] text-white shadow-md" 
+                      : "text-[#4d4d4d] hover:text-[#063a31]"
+                  }`}
+                >
+                  {s.day} ({s.date})
+                </button>
+              ))}
+            </div>
           </div>
 
-          <div className="relative border-l-2 border-[#e6f2ef] pl-8 ml-4 space-y-8">
+          {/* Timeline Items */}
+          <div className="space-y-4 max-w-3xl mx-auto text-left">
             {schedule[activeScheduleDay].events.map((ev, idx) => {
               const EventIcon = IconMap[ev.icon] || Clock;
               return (
-                <div key={idx} className="relative group">
-                  <div className="absolute -left-[41px] top-1.5 w-5 h-5 bg-white border-4 border-[#016a56] rounded-full flex items-center justify-center transition-transform group-hover:scale-125 z-10 shadow-sm">
+                <div 
+                  key={idx}
+                  className="bg-white border border-[#eaeaea] rounded-2xl p-5 shadow-sm hover:shadow-md transition-all duration-300 flex items-start gap-4"
+                >
+                  <div className="w-10 h-10 rounded-xl bg-[#e6f2ef] text-[#016a56] flex items-center justify-center shrink-0 mt-0.5">
+                    <EventIcon size={20} />
                   </div>
-                  <div className="bg-white rounded-2xl p-6 shadow-sm hover:shadow-[0_8px_30px_rgba(0,0,0,0.08)] transition-all duration-300 flex flex-col sm:flex-row justify-between sm:items-center gap-4 border border-transparent hover:border-[#e6f2ef]">
-                    <div className="flex items-center gap-5">
-                      <div className="w-12 h-12 flex items-center justify-center rounded-xl bg-[#fff7e3] text-[#cd8e05] group-hover:bg-[#d94686]/10 group-hover:text-[#d94686] transition-colors">
-                        <EventIcon size={20} />
-                      </div>
-                      <h4 className="text-base font-bold text-[#063a31] leading-tight">
-                        {ev.title}
-                      </h4>
-                    </div>
-                    <div className="flex items-center gap-2 text-sm font-bold bg-[#fafafa] border border-[#eaeaea] rounded-full px-4 py-2 self-start sm:self-auto text-[#4d4d4d]">
-                      <Clock size={14} className="text-[#d94686]" />
-                      <span>{ev.time}</span>
+                  <div className="flex-grow space-y-1">
+                    <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
+                      <h4 className="text-sm md:text-base font-bold text-[#063a31]">{ev.title}</h4>
+                      <span className="text-xs font-bold text-[#cd8e05] bg-[#fff7e3] px-2.5 py-1 rounded-full w-fit">
+                        {ev.time}
+                      </span>
                     </div>
                   </div>
                 </div>
               );
             })}
           </div>
+
         </div>
       </section>
 
-      {/* Speakers Section */}
-      <section className="py-16 md:py-24 bg-white" id="speakers">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <span className="px-4 py-1 text-xs font-bold bg-[#fff7e3] text-[#cd8e05] rounded-full tracking-widest uppercase inline-block mb-4">
-              Speakers
-            </span>
-            <h2 className="text-3xl md:text-5xl font-bold text-[#063a31]">
-              Summit Speakers
-            </h2>
-          </div>
-
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6 md:gap-8">
-            {speakers.slice(0, speakerCount).map((s, idx) => (
-              <div 
-                key={idx}
-                className="bg-[#fafafa] rounded-2xl overflow-hidden hover:shadow-[0_12px_24px_rgba(0,0,0,0.06)] transition-all duration-300 flex flex-col h-full text-center group p-6"
-              >
-                <div className="mx-auto w-28 h-28 md:w-32 md:h-32 rounded-full overflow-hidden mb-5 border-4 border-white shadow-sm bg-[#e6f2ef]">
-                  <img 
-                    src={s.image} 
-                    alt={s.name} 
-                    className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-110"
-                    onError={(e) => {
-                      e.currentTarget.src = "/assets/images/404";
-                    }}
-                  />
-                </div>
-                <div className="flex-grow flex flex-col justify-center">
-                  <h3 className="text-base md:text-lg font-bold text-[#063a31] mb-1">
-                    {s.name}
-                  </h3>
-                  <p className="text-xs md:text-sm text-[#d94686] font-medium leading-relaxed">
-                    {s.role}
-                  </p>
-                </div>
+      {!isCohort2Dubai && (
+        <>
+          {/* Speakers Section */}
+          <section className="py-16 md:py-24 bg-white" id="speakers">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+              <div className="text-center mb-16">
+                <span className="px-4 py-1 text-xs font-bold bg-[#e6f2ef] text-[#016a56] rounded-full tracking-widest uppercase inline-block mb-4">
+                  Thought Leaders
+                </span>
+                <h2 className="text-3xl md:text-5xl font-bold text-[#063a31]">
+                  Featured Speakers
+                </h2>
               </div>
-            ))}
-          </div>
 
-          {speakers.length > 12 && (
-            <div className="text-center mt-16">
-              <button 
-                onClick={toggleSpeakers}
-                className="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-wider text-white bg-[#016a56] hover:bg-[#063a31] px-8 py-3.5 rounded-full transition-all duration-300 shadow-md hover:shadow-lg transform hover:-translate-y-0.5"
-              >
-                {speakerCount === 12 ? (
-                  <>Show All Speakers ({speakers.length}) <ChevronDown size={18} /></>
-                ) : (
-                  <>Show Less <ChevronUp size={18} /></>
-                )}
-              </button>
+              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6">
+                {speakers.slice(0, speakerCount).map((sp, idx) => (
+                  <div 
+                    key={idx}
+                    className="bg-[#fafafa] border border-[#eaeaea] rounded-2xl p-4 text-center shadow-sm hover:shadow-md transition-all duration-300 flex flex-col justify-between group"
+                  >
+                    <div className="space-y-3">
+                      <div className="w-20 h-20 rounded-full overflow-hidden mx-auto border-2 border-white shadow-md bg-slate-200">
+                        <img 
+                          src={sp.image} 
+                          alt={sp.name} 
+                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                          onError={(e) => {
+                            e.currentTarget.src = "/assets/images/user-placeholder.png";
+                          }}
+                        />
+                      </div>
+                      <h3 className="text-xs md:text-sm font-bold text-[#063a31] leading-snug">{sp.name}</h3>
+                    </div>
+                    <p className="text-[10px] text-[#4d4d4d] font-medium leading-relaxed mt-2 border-t border-[#eaeaea] pt-2 line-clamp-3">
+                      {sp.role}
+                    </p>
+                  </div>
+                ))}
+              </div>
+
+              {speakers.length > 12 && (
+                <div className="text-center mt-12">
+                  <button 
+                    onClick={toggleSpeakers}
+                    className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-white border border-[#eaeaea] hover:border-[#016a56] text-[#063a31] font-bold text-xs uppercase tracking-wider shadow-sm transition-all duration-300"
+                  >
+                    {speakerCount === 12 ? (
+                      <>Show All Speakers ({speakers.length}) <ChevronDown size={16} /></>
+                    ) : (
+                      <>Show Less <ChevronUp size={16} /></>
+                    )}
+                  </button>
+                </div>
+              )}
+
             </div>
-          )}
-        </div>
-      </section>
+          </section>
 
-      {/* Panels Section */}
-      <section className="py-16 md:py-24 bg-[#fafafa] border-t border-b border-[#eaeaea]" id="panels">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <span className="px-4 py-1 text-xs font-bold bg-[#e6f2ef] text-[#016a56] rounded-full tracking-widest uppercase inline-block mb-4">
-              Panels
-            </span>
-            <h2 className="text-3xl md:text-5xl font-bold text-[#063a31]">
-              Specialized Panels
-            </h2>
-          </div>
-
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            {panels.map((p, idx) => (
-              <div key={idx} className="bg-white border-l-4 border-l-[#d94686] rounded-2xl p-8 shadow-[0_4px_20px_rgba(0,0,0,0.04)] hover:shadow-[0_12px_30px_rgba(0,0,0,0.08)] transition-all duration-300">
-                <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-6 gap-4">
-                  <div>
-                    <span className="text-xs font-bold text-[#cd8e05] tracking-widest uppercase">Sponsored by {p.sponsoredBy}</span>
-                    <h3 className="text-xl md:text-2xl font-bold text-[#063a31] mt-2">{p.title}</h3>
-                  </div>
-                  <span className="text-xs bg-[#fff7e3] text-[#cd8e05] px-4 py-1.5 rounded-full font-bold whitespace-nowrap">{p.time}</span>
-                </div>
-                {p.moderator && (
-                  <div className="mb-5 text-sm font-medium">
-                    <span className="text-[#4d4d4d]">Moderator:</span> <span className="text-[#d94686] font-bold">{p.moderator}</span>
-                  </div>
-                )}
-                <div>
-                  <p className="text-xs font-bold text-[#4d4d4d] mb-3 uppercase tracking-widest">Speakers</p>
-                  <div className="flex flex-wrap gap-2.5">
-                    {p.speakers.map((sp, i) => (
-                      <span key={i} className="text-sm bg-[#fafafa] border border-[#eaeaea] text-[#2c2c2c] px-4 py-1.5 rounded-full font-medium">{sp}</span>
-                    ))}
-                  </div>
-                </div>
+          {/* Panel Discussions */}
+          <section className="py-16 md:py-24 bg-[#fafafa] border-t border-b border-[#eaeaea]" id="panels">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+              <div className="text-center mb-16">
+                <span className="px-4 py-1 text-xs font-bold bg-[#fff7e3] text-[#cd8e05] rounded-full tracking-widest uppercase inline-block mb-4">
+                  Strategic Dialogues
+                </span>
+                <h2 className="text-3xl md:text-5xl font-bold text-[#063a31]">
+                  Panel Discussions
+                </h2>
               </div>
-            ))}
-          </div>
-        </div>
-      </section>
 
-      {/* Roundtables Section */}
-      <section className="py-16 md:py-24 bg-white" id="roundtables">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <span className="px-4 py-1 text-xs font-bold bg-[#fff7e3] text-[#cd8e05] rounded-full tracking-widest uppercase inline-block mb-4">
-              Discussions
-            </span>
-            <h2 className="text-3xl md:text-5xl font-bold text-[#063a31]">
-              Roundtables
-            </h2>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {roundtables.map((rt, idx) => (
-              <div key={idx} className="bg-[#fafafa] rounded-3xl p-8 flex flex-col h-full hover:shadow-[0_12px_30px_rgba(0,0,0,0.06)] transition-all duration-300 group border border-transparent hover:border-[#eaeaea]">
-                <h3 className="text-xl md:text-2xl font-bold text-[#063a31] mb-3 group-hover:text-[#016a56] transition-colors">{rt.title}</h3>
-                <p className="text-[#4d4d4d] mb-8 flex-grow leading-relaxed">{rt.desc}</p>
-                <div className="border-t border-[#eaeaea] pt-6">
-                  <p className="text-sm font-medium text-[#2c2c2c] mb-4"><span className="text-[#4d4d4d]">Facilitator:</span> <span className="font-bold text-[#d94686]">{rt.facilitator}</span></p>
-                  <div className="flex flex-wrap gap-2">
-                    {Array.from(new Set(rt.speakers)).map((sp, i) => (
-                      <span key={i} className="text-xs text-[#2c2c2c] bg-white border border-[#eaeaea] px-3 py-1 rounded-full font-medium shadow-sm">{sp as string}</span>
-                    ))}
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 text-left">
+                {panels.map((p, idx) => (
+                  <div key={idx} className="bg-white border border-[#eaeaea] rounded-2xl p-6 shadow-sm hover:shadow-md transition-all duration-300 flex flex-col justify-between">
+                    <div className="space-y-3 mb-6">
+                      <span className="text-[10px] font-bold text-[#cd8e05] uppercase tracking-widest bg-[#fff7e3] px-2.5 py-1 rounded-md inline-block">
+                        {p.time}
+                      </span>
+                      <h3 className="text-lg font-bold text-[#063a31] leading-snug">{p.title}</h3>
+                    </div>
+                    
+                    <div className="border-t border-[#eaeaea] pt-4 space-y-2">
+                      <p className="text-xs font-semibold text-[#016a56]"><span className="text-[#4d4d4d] font-normal">Moderator:</span> {p.moderator}</p>
+                      <div className="space-y-1">
+                        <span className="text-[10px] font-bold text-[#4d4d4d] uppercase tracking-wider block">Panelists:</span>
+                        <div className="flex flex-wrap gap-1.5">
+                          {p.speakers.map((sp, i) => (
+                            <span key={i} className="text-[11px] text-[#2c2c2c] bg-[#fafafa] px-2 py-0.5 rounded border border-[#eaeaea]">{sp}</span>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
                   </div>
-                </div>
+                ))}
               </div>
-            ))}
-          </div>
-        </div>
-      </section>
+            </div>
+          </section>
 
-      {/* Junicorns Section */}
-      <section className="py-16 md:py-24 bg-[#fafafa] border-t border-b border-[#eaeaea]" id="junicorns">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <span className="px-4 py-1 text-xs font-bold bg-[#e6f2ef] text-[#016a56] rounded-full tracking-widest uppercase inline-block mb-4">
-              Rising Stars
-            </span>
-            <h2 className="text-3xl md:text-5xl font-bold text-[#063a31]">
-              Junicorns Dubai
-            </h2>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
-            {junicorns.map((j, idx) => (
-              <div key={idx} className="bg-white border-l-4 border-l-[#cd8e05] rounded-xl p-5 shadow-[0_4px_15px_rgba(0,0,0,0.03)] flex flex-col justify-between hover:shadow-[0_8px_20px_rgba(0,0,0,0.06)] transition-all duration-300">
-                <h4 className="text-base font-bold text-[#063a31] mb-2">{j.name}</h4>
-                <p className="text-xs font-bold text-[#d94686] uppercase tracking-widest">{j.project}</p>
+          {/* Roundtables */}
+          <section className="py-16 md:py-24 bg-white" id="roundtables">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+              <div className="text-center mb-16">
+                <span className="px-4 py-1 text-xs font-bold bg-[#e6f2ef] text-[#016a56] rounded-full tracking-widest uppercase inline-block mb-4">
+                  Roundtables
+                </span>
+                <h2 className="text-3xl md:text-5xl font-bold text-[#063a31]">
+                  Industry Roundtables
+                </h2>
               </div>
-            ))}
-          </div>
-        </div>
-      </section>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 text-left">
+                {roundtables.map((rt, idx) => (
+                  <div key={idx} className="bg-[#fafafa] border border-[#eaeaea] hover:border-[#016a56]/40 rounded-3xl p-8 shadow-sm hover:shadow-md transition-all duration-300 flex flex-col justify-between group">
+                    <div>
+                      <h3 className="text-xl md:text-2xl font-bold text-[#063a31] mb-3 group-hover:text-[#016a56] transition-colors">{rt.title}</h3>
+                      <p className="text-[#4d4d4d] mb-8 flex-grow leading-relaxed">{rt.desc}</p>
+                      <div className="border-t border-[#eaeaea] pt-6">
+                        <p className="text-sm font-medium text-[#2c2c2c] mb-4"><span className="text-[#4d4d4d]">Facilitator:</span> <span className="font-bold text-[#d94686]">{rt.facilitator}</span></p>
+                        <div className="flex flex-wrap gap-2">
+                          {Array.from(new Set(rt.speakers)).map((sp, i) => (
+                            <span key={i} className="text-xs text-[#2c2c2c] bg-white border border-[#eaeaea] px-3 py-1 rounded-full font-medium shadow-sm">{sp as string}</span>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+        </>
+      )}
+
+
 
       {/* Venue Section */}
-      <section className="py-16 md:py-32 bg-white" id="venue">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <span className="px-4 py-1 text-xs font-bold bg-[#fff7e3] text-[#cd8e05] rounded-full tracking-widest uppercase inline-block mb-4">
-              Venue
-            </span>
-            <h2 className="text-3xl md:text-5xl font-bold text-[#063a31]">
-              InterContinental Hotel Dubai
-            </h2>
-            <p className="text-[#4d4d4d] text-base mt-4 font-medium">Festival City by IHG</p>
-          </div>
-          <div className="max-w-4xl mx-auto rounded-3xl overflow-hidden shadow-2xl border-4 border-[#e6f2ef] relative group cursor-pointer bg-[#fafafa]">
-            <div className="aspect-video w-full flex items-center justify-center">
-              <MapPin size={64} className="text-[#016a56] opacity-30 group-hover:opacity-60 transition-opacity duration-300" />
+      {!isCohort2Dubai && (
+        <section className="py-16 md:py-32 bg-white" id="venue">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-16">
+              <span className="px-4 py-1 text-xs font-bold bg-[#fff7e3] text-[#cd8e05] rounded-full tracking-widest uppercase inline-block mb-4">
+                Venue
+              </span>
+              <h2 className="text-3xl md:text-5xl font-bold text-[#063a31]">
+                InterContinental Hotel Dubai
+              </h2>
+              <p className="text-[#4d4d4d] text-base mt-4 font-medium">Festival City by IHG</p>
             </div>
-            <div className="absolute inset-0 bg-[#063a31]/5 group-hover:bg-transparent transition-colors duration-300"></div>
+            <div className="max-w-4xl mx-auto rounded-3xl overflow-hidden shadow-2xl border-4 border-[#e6f2ef] relative group cursor-pointer bg-[#fafafa]">
+              <div className="aspect-video w-full flex items-center justify-center">
+                <MapPin size={64} className="text-[#016a56] opacity-30 group-hover:opacity-60 transition-opacity duration-300" />
+              </div>
+              <div className="absolute inset-0 bg-[#063a31]/5 group-hover:bg-transparent transition-colors duration-300"></div>
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      )}
     </div>
   );
 }
